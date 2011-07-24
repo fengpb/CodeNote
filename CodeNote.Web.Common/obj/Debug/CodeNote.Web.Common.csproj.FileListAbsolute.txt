@@ -1,0 +1,5 @@
+F:\Fpbin Project\CodeNote\CodeNote.Web.Common\bin\Debug\CodeNote.Web.Common.dll
+F:\Fpbin Project\CodeNote\CodeNote.Web.Common\bin\Debug\CodeNote.Web.Common.pdb
+F:\Fpbin Project\CodeNote\CodeNote.Web.Common\obj\Debug\ResolveAssemblyReference.cache
+F:\Fpbin Project\CodeNote\CodeNote.Web.Common\obj\Debug\CodeNote.Web.Common.dll
+F:\Fpbin Project\CodeNote\CodeNote.Web.Common\obj\Debug\CodeNote.Web.Common.pdb

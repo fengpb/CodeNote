@@ -1,0 +1,5 @@
+F:\Fpbin Project\CodeNote\CodeNote.Markdown\bin\Debug\CodeNote.Markdown.dll
+F:\Fpbin Project\CodeNote\CodeNote.Markdown\bin\Debug\CodeNote.Markdown.pdb
+F:\Fpbin Project\CodeNote\CodeNote.Markdown\obj\Debug\ResolveAssemblyReference.cache
+F:\Fpbin Project\CodeNote\CodeNote.Markdown\obj\Debug\CodeNote.Markdown.dll
+F:\Fpbin Project\CodeNote\CodeNote.Markdown\obj\Debug\CodeNote.Markdown.pdb

@@ -1,0 +1,10 @@
+﻿
+/* Layout
+----------------------------------------------*/
+#page { }
+#page #bghead { position: absolute; z-index: -1; top: 0px; left: 0px; width: 100%; height: 45px; background-color: #0A2880; }
+#codenote { width: 960px; margin: 0px auto; }
+#codenote #header { height: 35px; margin-top: 9px; background-color: #1B26A4; border-bottom: 1px solid #1B26A4; }
+#codenote #navigation { height: 30px; background-color: #2844C1; }
+#codenote #maincontent { min-height: 450px; }
+#codenote #footer { padding: 10px 15px; background-color: #EFF6FE; border-top: 1px solid #1B26A4; }

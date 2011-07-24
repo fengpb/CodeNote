@@ -1,0 +1,10 @@
+﻿#editarticle { width:950px; margin:5px auto; }
+#editarticle dl.edit { }
+#editarticle dl.edit dt { float: left; line-height: 25px; }
+#editarticle dl.edit dd { display: inline; float: left; }
+#editarticle dl.edit dd.separate { clear: both; display: block; }
+#editarticle dl.edit .subject { width: 908px; }
+#editarticle dl.edit .tag { width: 440px; }
+#editarticle dl.edit .abody { width: 940px; height: 450px; border:1px solid #474747; }
+#editarticle dl.edit .note { margin:2px auto; padding:1px 4px; color:#D4511D; background-color:#F7FFD8; border-left:2px solid #F2F55C;}
+#editarticle dl.edit .btndiv { margin:10px auto;}

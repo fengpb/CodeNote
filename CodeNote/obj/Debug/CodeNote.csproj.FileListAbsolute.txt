@@ -1,0 +1,17 @@
+F:\Fpbin Project\CodeNote\CodeNote\bin\CodeNote.dll
+F:\Fpbin Project\CodeNote\CodeNote\bin\CodeNote.pdb
+F:\Fpbin Project\CodeNote\CodeNote\obj\Debug\ResolveAssemblyReference.cache
+F:\Fpbin Project\CodeNote\CodeNote\obj\Debug\CodeNote.dll
+F:\Fpbin Project\CodeNote\CodeNote\obj\Debug\CodeNote.pdb
+F:\Fpbin Project\CodeNote\CodeNote\bin\CodeNote.Entity.dll
+F:\Fpbin Project\CodeNote\CodeNote\bin\CodeNote.Web.Controllers.dll
+F:\Fpbin Project\CodeNote\CodeNote\bin\CodeNote.Web.Models.dll
+F:\Fpbin Project\CodeNote\CodeNote\bin\CodeNote.Entity.pdb
+F:\Fpbin Project\CodeNote\CodeNote\bin\CodeNote.Web.Controllers.pdb
+F:\Fpbin Project\CodeNote\CodeNote\bin\CodeNote.Web.Models.pdb
+F:\Fpbin Project\CodeNote\CodeNote\bin\CodeNote.Common.dll
+F:\Fpbin Project\CodeNote\CodeNote\bin\CodeNote.Manager.dll
+F:\Fpbin Project\CodeNote\CodeNote\bin\CodeNote.Dal.dll
+F:\Fpbin Project\CodeNote\CodeNote\bin\CodeNote.Common.pdb
+F:\Fpbin Project\CodeNote\CodeNote\bin\CodeNote.Manager.pdb
+F:\Fpbin Project\CodeNote\CodeNote\bin\CodeNote.Dal.pdb

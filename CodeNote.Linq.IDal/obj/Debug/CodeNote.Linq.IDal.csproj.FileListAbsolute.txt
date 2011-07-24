@@ -1,0 +1,5 @@
+F:\Fpbin Project\CodeNote\CodeNote.Linq.IDal\obj\Debug\ResolveAssemblyReference.cache
+F:\Fpbin Project\CodeNote\CodeNote.Linq.IDal\bin\Debug\CodeNote.Linq.IDal.dll
+F:\Fpbin Project\CodeNote\CodeNote.Linq.IDal\bin\Debug\CodeNote.Linq.IDal.pdb
+F:\Fpbin Project\CodeNote\CodeNote.Linq.IDal\obj\Debug\CodeNote.Linq.IDal.dll
+F:\Fpbin Project\CodeNote\CodeNote.Linq.IDal\obj\Debug\CodeNote.Linq.IDal.pdb

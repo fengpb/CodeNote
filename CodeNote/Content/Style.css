@@ -1,0 +1,27 @@
+﻿/* Global
+----------------------------------------------*/
+body, form, div, p, ol, ul, li, h1, h2, h3, h4, h5, h6, dl, dt, dd { margin: 0px; padding: 0px; }
+body { font-family: "Lucida Grande" , "Lucida Sans Unicode" , Verdana, Tahoma, Arial, sans-serif; }
+h1 { font-size: 20px; }
+h2 { font-size: 18px; }
+h3 { font-size: 16px; }
+h4 { font-size: 14px; }
+h5, h6 { font-size: 12px; }
+ul, ol, lin { list-style: none; }
+
+a:link { text-decoration: none; color: #1FB135; }
+a:hover { border-bottom: 1px dotted #1FB135; }
+a:active { }
+a:visited { }
+
+input { vertical-align: middle; }
+input[type=button] { margin: 1px; padding: 0px 4px; vertical-align: middle; height: 22px; line-height: 20px; font-size: 12px; color: #FFF; background-color: #1737A6; border-style: solid; border-width: 1px; border-color: #1737A6 #00001A #00001A #1737A6; }
+input[type=button]:hover { background-color: #1737A6; border-color: #1737A6 #010D3F #010D3F #1737A6; }
+
+/* Common
+----------------------------------------------*/
+.button { margin: 1px; padding: 0px 4px; vertical-align: middle; height: 22px; line-height: 20px; font-size: 12px; color: #FFF; background-color: #1737A6; border-style: solid; border-width: 1px; border-color: #1737A6 #00001A #00001A #1737A6; }
+.button:hover { background-color: #1737A6; border-color: #1737A6 #00001A #00001A #1737A6; }
+.text { border: 1px soid #474747; }
+.red { color: #D01D18; }
+.disinl { display: inline; }
