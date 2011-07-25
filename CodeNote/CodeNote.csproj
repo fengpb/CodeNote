@@ -73,6 +73,7 @@
   <ItemGroup>
     <Content Include="Content\Account.css" />
     <Content Include="Content\Article.css" />
+    <Content Include="Content\Categroy.css" />
     <Content Include="Content\Html\CodeNote.html" />
     <Content Include="Content\Html\Index.html" />
     <Content Include="Content\Index.css" />
@@ -82,6 +83,8 @@
     <Content Include="Scripts\CodeNote.Article.js" />
     <Content Include="Views\Article\AddArticle.aspx" />
     <Content Include="Views\Article\EditArticle.ascx" />
+    <Content Include="Views\Category\Category.aspx" />
+    <Content Include="Views\Category\CategoryList.ascx" />
     <Content Include="Views\Control\Footer.ascx" />
     <Content Include="Views\Control\Header.ascx" />
     <Content Include="Views\Control\Navigation.ascx" />
@@ -127,6 +130,9 @@
   <ItemGroup>
     <Content Include="Views\Shared\Site.Master" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Views\Tag\" />
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
@@ -141,8 +147,8 @@
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
-          <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>1183</DevelopmentServerPort>
+          <AutoAssignPort>False</AutoAssignPort>
+          <DevelopmentServerPort>2010</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>

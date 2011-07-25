@@ -20,12 +20,12 @@
 #navigation ul li a.cur { background-color: #D01D18; color: #FFF; border-bottom: 1px solid #490301; }
 
 #maincontent { min-height: 515px; clear: both; }
-#leftwrap { float: left; width: 720px; padding: 5px; }
-#rightwrap { margin-left: 720px; padding: 5px; }
+#leftwrap { float: left; width: 710px; padding: 5px 5px 5px 2px; }
+#rightwrap { margin-left: 720px; padding: 5px 2px 5px 5px; }
 #leftwrap .leftbox { }
 #rightwrap .rightbox { }
 
 #footer { clear: both; padding: 4px 8px; background-color: #EDEEFF; color: #474747; border-top: 1px solid #2844C1; }
 #footer p { font-size: 12px; }
 
-#poptitle { font-size: 14px; line-height: 25px; padding: 0px 5px; border-left: 3px solid #D01D18; border-bottom: 1px dotted #2844C1; margin-bottom: 5px; color: #0D188C; background-color: #EDEEFF; }
+#poptitle { font-size: 14px; line-height: 24px; padding: 0px 5px; border-left: 3px solid #D01D18; border-bottom: 1px dotted #2844C1; margin-bottom: 5px; color: #0D188C; background-color: #EDEEFF; }

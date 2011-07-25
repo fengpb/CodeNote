@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<dynamic>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
-    Index
+    Category
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="HeadContent" runat="server">
     <link href="/Content/Categroy.css" rel="stylesheet" type="text/css" />
@@ -39,7 +39,7 @@
     </div>
     <div id="rightwrap">
         <div class="rightbox">
-            <% Html.RenderAction("CategoryList", "Category"); %>
+            <% Html.RenderAction("CategoryList", "Category", new { categoryID = "" }); %>
         </div>
     </div>
 </asp:Content>

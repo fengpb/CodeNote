@@ -11,3 +11,16 @@ F:\Fpbin Project\CodeNote\CodeNote.Web.Controllers\bin\Debug\CodeNote.Common.pdb
 F:\Fpbin Project\CodeNote\CodeNote.Web.Controllers\bin\Debug\CodeNote.Entity.pdb
 F:\Fpbin Project\CodeNote\CodeNote.Web.Controllers\bin\Debug\CodeNote.Manager.pdb
 F:\Fpbin Project\CodeNote\CodeNote.Web.Controllers\bin\Debug\CodeNote.Dal.pdb
+E:\github\CodeNote\CodeNote.Web.Controllers\bin\Debug\CodeNote.Web.Controllers.dll
+E:\github\CodeNote\CodeNote.Web.Controllers\bin\Debug\CodeNote.Web.Controllers.pdb
+E:\github\CodeNote\CodeNote.Web.Controllers\bin\Debug\CodeNote.Common.dll
+E:\github\CodeNote\CodeNote.Web.Controllers\bin\Debug\CodeNote.Entity.dll
+E:\github\CodeNote\CodeNote.Web.Controllers\bin\Debug\CodeNote.Manager.dll
+E:\github\CodeNote\CodeNote.Web.Controllers\bin\Debug\CodeNote.Dal.dll
+E:\github\CodeNote\CodeNote.Web.Controllers\bin\Debug\CodeNote.Common.pdb
+E:\github\CodeNote\CodeNote.Web.Controllers\bin\Debug\CodeNote.Entity.pdb
+E:\github\CodeNote\CodeNote.Web.Controllers\bin\Debug\CodeNote.Manager.pdb
+E:\github\CodeNote\CodeNote.Web.Controllers\bin\Debug\CodeNote.Dal.pdb
+E:\github\CodeNote\CodeNote.Web.Controllers\obj\Debug\ResolveAssemblyReference.cache
+E:\github\CodeNote\CodeNote.Web.Controllers\obj\Debug\CodeNote.Web.Controllers.dll
+E:\github\CodeNote\CodeNote.Web.Controllers\obj\Debug\CodeNote.Web.Controllers.pdb

@@ -44,9 +44,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ArticleController.cs" />
+    <Compile Include="CategoryController.cs" />
     <Compile Include="ControlController.cs" />
     <Compile Include="HomeController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TagController.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CodeNote.Common\CodeNote.Common.csproj">
