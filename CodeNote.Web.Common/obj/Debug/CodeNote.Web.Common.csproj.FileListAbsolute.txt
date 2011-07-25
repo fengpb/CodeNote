@@ -8,3 +8,8 @@ E:\github\CodeNote\CodeNote.Web.Common\obj\Debug\CodeNote.Web.Common.pdb
 E:\github\CodeNote\CodeNote.Web.Common\bin\Debug\CodeNote.Web.Common.dll
 E:\github\CodeNote\CodeNote.Web.Common\bin\Debug\CodeNote.Web.Common.pdb
 E:\github\CodeNote\CodeNote.Web.Common\obj\Debug\CodeNote.Web.Common.dll
+F:\github\CodeNote\CodeNote.Web.Common\bin\Debug\CodeNote.Web.Common.dll
+F:\github\CodeNote\CodeNote.Web.Common\bin\Debug\CodeNote.Web.Common.pdb
+F:\github\CodeNote\CodeNote.Web.Common\obj\Debug\ResolveAssemblyReference.cache
+F:\github\CodeNote\CodeNote.Web.Common\obj\Debug\CodeNote.Web.Common.dll
+F:\github\CodeNote\CodeNote.Web.Common\obj\Debug\CodeNote.Web.Common.pdb

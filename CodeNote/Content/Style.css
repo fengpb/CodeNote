@@ -8,8 +8,7 @@ h3 { font-size: 16px; }
 h4 { font-size: 14px; color: #0D188C; font-weight:normal; }
 h5, h6 { font-size: 12px; font-weight:normal; }
 ul, ol, lin { list-style: none; font-weight:normal; }
-
-a:link { text-decoration: none; color: #036f10; }
+a ,a:link { text-decoration: none; color: #036f10; }
 a:hover { border-bottom: 1px dotted #036f10; }
 a:active { color: #355939; }
 a:visited { color: #1737A6; }

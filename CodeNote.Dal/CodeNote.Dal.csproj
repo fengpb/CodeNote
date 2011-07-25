@@ -47,6 +47,7 @@
     <Compile Include="ILinqDal\BaseDalImpl.cs" />
     <Compile Include="ILinqDal\DataContent.cs" />
     <Compile Include="ILinqDal\IBaseDal.cs" />
+    <Compile Include="Proc\CategoryProc.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

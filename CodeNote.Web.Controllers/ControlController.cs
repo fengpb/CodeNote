@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Web.Mvc;
-
+#region using users.
+using CodeNote.Entity;
+using CodeNote.Manager;
+#endregion
 namespace CodeNote.Web.Controllers
 {
     /// <summary>
@@ -17,7 +20,9 @@ namespace CodeNote.Web.Controllers
         }
         public ActionResult Navigation()
         {
-            return PartialView("Navigation");
+            CategoryManager cmg = new CategoryManager();
+            IList<Category> model = cmg.GetMenu();
+            return PartialView("Navigation", model);
         }
         public ActionResult Footer()
         {
