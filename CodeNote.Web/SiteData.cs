@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using CodeNote.Entity;
 
-namespace CodeNote.Web.Models
+namespace CodeNote.Web
 {
     /// <summary>
     /// Global Data 网站全局数据信息

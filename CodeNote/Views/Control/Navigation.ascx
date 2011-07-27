@@ -5,7 +5,7 @@
 <div id="navigation">
     <ul>
         
-        <li><a href="/" <%= SiteData.CurCategory.CategoryID=="Index"?"class=\"cur\"":"" %> title="首页">Index</a> </li>
+        <li><a href="/" <%= SiteData.CurCategory.CategoryID=="Index"?"class=\"cur\"":"" %> title="Index">首页</a> </li>
         <% if (Model != null && Model.Count > 0)
            { %>
         <% foreach (Category item in Model)

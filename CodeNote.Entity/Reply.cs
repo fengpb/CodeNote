@@ -1,7 +1,7 @@
 using System;
 using System.Text;
 using System.Data.Linq.Mapping;
-// create by codesmith 2011-07-24 02:38:42
+// create by codesmith 2011-07-27 21:24:32
 
 namespace CodeNote.Entity
 {   

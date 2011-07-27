@@ -7,12 +7,12 @@
     <link href="/Content/Article.css" rel="stylesheet" type="text/css" />
     <script src="/Scripts/CodeNote.Article.js" type="text/javascript"></script>
 </asp:Content>
-<asp:Content ID="Content5" ContentPlaceHolderID="PopTitle" runat="server">
-    <h4>
-        添加文章
-    </h4>
-</asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContent" runat="server">
+    <div class="poptitle">
+        <h4>
+            添加文章
+        </h4>
+    </div>
     <% Html.RenderAction("EditArticle", "Article"); %>
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="BodyBottomContent" runat="server">

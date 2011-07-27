@@ -10,7 +10,7 @@
 #logo .sitedesp { padding-left: 5px; color: #474747; }
 #logo .logoimg { height: 60px; width: 230px; border: none; }
 #hright { padding-left: 230px; position: relative;  }
-#hright .tar {padding-right:190px; margin-top:4px;}
+#hright .tar {padding-right:190px; line-height:23px;}
 #hright .searchbox { position: absolute; top: 0px; right: 0px; width:180px; } 
 #hright .searchbox .text {width:180px;}
 

@@ -50,20 +50,22 @@
     <Compile Include="Common\HtmlAttribute.cs" />
     <Compile Include="Common\ImageWrap.cs" />
     <Compile Include="Common\SerializedWrap.cs" />
+    <Compile Include="Common\SessionWrap.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ArticleController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\ControlController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\TagController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Models\Constans.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SiteData.cs" />
     <Compile Include="ViewUserControl.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Models\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\CodeNote.Common\CodeNote.Common.csproj">
       <Project>{3C372DE7-4940-48A3-8DA1-45FC26DAF500}</Project>

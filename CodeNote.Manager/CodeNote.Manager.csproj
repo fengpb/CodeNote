@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="ArticleManager.cs" />
     <Compile Include="CategoryManager.cs" />
+    <Compile Include="LoginUserManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -41,7 +41,7 @@ namespace CodeNote.Web.Controllers
                 //暂无次分类信息
                return RedirectToAction("Index", "Home");
             }
-            Web.Models.SiteData.Instance.CurCategory = model;
+            Web.SiteData.Instance.CurCategory = model;
             return View("Category", model);
         }
 

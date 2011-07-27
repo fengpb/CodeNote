@@ -16,9 +16,7 @@
     <div id="page">
         <div id="content">
             <% Html.RenderAction("Header", "Control"); %>
-            <div id="poptitle">
-                <asp:ContentPlaceHolder ID="PopTitle" runat="server"></asp:ContentPlaceHolder>
-            </div>
+           
             <div id="maincontent">
                 <asp:ContentPlaceHolder ID="MainContent" runat="server">
                 </asp:ContentPlaceHolder>
