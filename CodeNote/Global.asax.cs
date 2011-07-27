@@ -16,6 +16,14 @@ namespace CodeNote
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            #region category
+            routes.MapRoute(
+               "CategoryIndex", // 路由名称
+               "Category/{categoryName}", // 带有参数的 URL
+               new { controller = "Category", action = "Category", categoryName = "" } // 参数默认值
+           );
+            #endregion
+
             routes.MapRoute(
                 "Default", // 路由名称
                 "{controller}/{action}/{id}", // 带有参数的 URL

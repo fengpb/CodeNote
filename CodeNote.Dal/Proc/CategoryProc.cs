@@ -13,6 +13,7 @@ namespace CodeNote.Dal.Proc
 {
     public class CategoryProc : CodeNote.Linq.IDal.DataContent<Category>
     {
+        [Function(Name="SP_Category_Like")]
         public ISingleResult<Category> GetLike([Parameter(Name = "Key")]string likeCategoryID)
         {
             IExecuteResult result = this.ExecuteMethodCall(this, (MethodInfo)MethodInfo.GetCurrentMethod(), likeCategoryID);

@@ -8,8 +8,8 @@ h3 { font-size: 16px; }
 h4 { font-size: 14px; color: #0D188C; font-weight:normal; }
 h5, h6 { font-size: 12px; font-weight:normal; }
 ul, ol, lin { list-style: none; font-weight:normal; }
-a ,a:link { text-decoration: none; color: #036f10; }
-a:hover { border-bottom: 1px dotted #036f10; }
+a ,a:link { text-decoration: none; color: #1B26A4; }
+a:hover { border-bottom: 1px dotted #D01D18; color:#D01D18; }
 a:active { color: #355939; }
 a:visited { color: #1737A6; }
 
@@ -21,7 +21,7 @@ input[type=button]:hover { background-color: #1737A6; border-color: #1737A6 #010
 ----------------------------------------------*/
 .button { margin: 1px; padding: 0px 4px; vertical-align: middle; height: 22px; line-height: 20px; font-size: 12px; color: #FFF; background-color: #1737A6; border-style: solid; border-width: 1px; border-color: #1737A6 #00001A #00001A #1737A6; }
 .button:hover { background-color: #1737A6; border-color: #1737A6 #00001A #00001A #1737A6; }
-.text { border: 1px solid #474747; }
+.text { border: 1px solid #AEAEAE; }
 .red { color: #D01D18; }
 .disinl { display: inline; }
 .tar { text-align: right; }

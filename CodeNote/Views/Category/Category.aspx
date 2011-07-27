@@ -1,5 +1,6 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<dynamic>" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<Category>" %>
 
+<%@ Import Namespace="CodeNote.Entity" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
     Category
 </asp:Content>
@@ -39,7 +40,12 @@
     </div>
     <div id="rightwrap">
         <div class="rightbox">
-            <% Html.RenderAction("CategoryList", "Category", new { categoryID = "" }); %>
+            <% Html.RenderAction("CategoryList", "Category", new { categoryID = Model.CategoryID }); %>
+            <div>
+                <h4>
+                    <label>
+                        最近更新</label></h4>
+            </div>
         </div>
     </div>
 </asp:Content>

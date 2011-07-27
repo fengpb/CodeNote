@@ -1,3 +1,3 @@
-﻿.categorylist h4 { border-bottom: 1px dotted #2844C1; margin-bottom:3px; }
-.categorylist h4 label { border-bottom: 2px solid #D01D18; }
-.categorylist ul { }
+﻿
+.categorylist ul { margin:10px auto; }
+.categorylist ul  li { margin:2px 2px;}

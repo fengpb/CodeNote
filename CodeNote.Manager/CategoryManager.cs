@@ -20,11 +20,27 @@ namespace CodeNote.Manager
             }
         }
 
+        public Category GetName(string categoryName)
+        {
+            using (CategoryDal dal = new CategoryDal())
+            {
+                return dal.GetByName(categoryName);
+            }
+        }
+
         public IList<Category> GetMenu()
         {
             using (CategoryDal dal = new CategoryDal())
             {
                 return dal.GetMenu();
+            }
+        }
+
+        public IList<Category> GetByParentID(string parentID)
+        {
+            using (CategoryDal dal = new CategoryDal())
+            {
+                return dal.GetByParentID(parentID);
             }
         }
 

@@ -12,11 +12,13 @@
         </div>
     </div>
     <div id="hright">
-        <div class="searchbox">
-            <form action="" method="post">
-            <input type="text" />
-            </form>
-        </div>
+        <div class="tar">
+            <a>Login</a></div>
+    <div class="searchbox">
+        <form action="" method="post">
+        <input type="text" class="text" />
+        </form>
+    </div>
     </div>
 </div>
 <!-- end header -->

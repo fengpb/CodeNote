@@ -118,13 +118,9 @@
       <Project>{085F9F54-3A74-4629-9E43-EEBDF094FE8B}</Project>
       <Name>CodeNote.Entity</Name>
     </ProjectReference>
-    <ProjectReference Include="..\CodeNote.Web.Controllers\CodeNote.Web.Controllers.csproj">
-      <Project>{2EE9ED79-C588-44A5-BFD8-A6833D4025DF}</Project>
-      <Name>CodeNote.Web.Controllers</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\CodeNote.Web.Models\CodeNote.Web.Models.csproj">
-      <Project>{D2ED9794-B46A-4B23-A938-5303F652B2D7}</Project>
-      <Name>CodeNote.Web.Models</Name>
+    <ProjectReference Include="..\CodeNote.Web\CodeNote.Web.csproj">
+      <Project>{81D7901E-4878-4956-AB12-E9CC1691BAF1}</Project>
+      <Name>CodeNote.Web</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

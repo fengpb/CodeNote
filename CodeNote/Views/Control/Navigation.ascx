@@ -1,15 +1,25 @@
-﻿<%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl<IList<Category>>" %>
+﻿<%@ Control Language="C#" Inherits="CodeNote.Web.ViewUserControl<IList<Category>>" %>
 <%@ Import Namespace="CodeNote.Entity" %>
+<%@ Import Namespace="CodeNote.Web.Common" %>
 <!-- start navigation -->
 <div id="navigation">
     <ul>
-        <li><a href="#" class="cur">首页</a> </li>
+        
+        <li><a href="/" <%= SiteData.CurCategory.CategoryID=="Index"?"class=\"cur\"":"" %> title="首页">Index</a> </li>
         <% if (Model != null && Model.Count > 0)
            { %>
         <% foreach (Category item in Model)
            { %>
-        <li><a href="#">
-            <%: item.Name %></a></li>
+        <li>
+            <% string curClass = "";
+                if (SiteData.CurCategory.CategoryID.StartsWith(item.CategoryID)) {
+                    curClass = "cur";
+               }%>
+            
+            <%= Html.ActionLink(item.Name,"Category","Category",
+                                          new RouteValueDictionary(DictionaryWrap.CreateNew().Add("categoryName", item.Name).Init()),
+                                          DictionaryWrap.CreateNew().Add("title", item.Title).Add("class", curClass).Init())%>
+        </li>
         <%} %>
         <%} %>
     </ul>
