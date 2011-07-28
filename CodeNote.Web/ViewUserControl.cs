@@ -17,6 +17,18 @@ namespace CodeNote.Web
             }
         }
         public bool IsLogin { get { return CurUser != null; } }
+
+        /// <summary>
+        /// 支持 gravatar.com face
+        /// </summary>
+        /// <param name="email"></param>
+        /// <returns></returns>
+        public string FaceImgUrl(string email)
+        {
+            string irl = "http://www.gravatar.com/avatar/{0}?s=48&d=identicon&r=pg";
+
+            return string.Format(irl, CodeNote.Common.Encryption.MD5(email));
+        }
     }
     public class ViewUserControl<T> : System.Web.Mvc.ViewUserControl<T>
     {
@@ -29,5 +41,17 @@ namespace CodeNote.Web
             }
         }
         public bool IsLogin { get { return CurUser != null; } }
+
+        /// <summary>
+        /// 支持 gravatar.com face
+        /// </summary>
+        /// <param name="email"></param>
+        /// <returns></returns>
+        public string FaceImgUrl(string email)
+        {
+            string irl = "http://www.gravatar.com/avatar/{0}?s=48&d=identicon&r=pg";
+
+            return string.Format(irl, CodeNote.Common.Encryption.MD5(email));
+        }
     }
 }

@@ -28,5 +28,13 @@ namespace CodeNote.Web.Controllers
         {
             return PartialView("Footer");
         }
+
+
+        public ActionResult AccountLeft()
+        {
+            LoginUser model = Common.SessionWrap.Get<LoginUser>(Models.Constans.USER_SESSION_KEY);
+            model = new LoginUser() { Eamil = "fengpengbin@live.cn", LoginName = "pobin" };
+            return PartialView("AccountLeft", model);
+        }
     }
 }

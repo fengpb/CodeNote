@@ -86,13 +86,16 @@
     <Content Include="Views\Article\EditArticle.ascx" />
     <Content Include="Views\Category\Category.aspx" />
     <Content Include="Views\Category\CategoryList.ascx" />
+    <Content Include="Views\Control\AccountLeft.ascx" />
     <Content Include="Views\Control\Footer.ascx" />
     <Content Include="Views\Control\Header.ascx" />
     <Content Include="Views\Control\Navigation.ascx" />
     <Content Include="Views\Home\Index.aspx" />
     <Content Include="Views\User\Login.aspx" />
     <Content Include="Views\User\Register.aspx" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
