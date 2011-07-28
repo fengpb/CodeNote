@@ -33,8 +33,12 @@ namespace CodeNote.Web.Controllers
         public ActionResult AccountLeft()
         {
             LoginUser model = Common.SessionWrap.Get<LoginUser>(Models.Constans.USER_SESSION_KEY);
-            model = new LoginUser() { Eamil = "fengpengbin@live.cn", LoginName = "pobin" };
             return PartialView("AccountLeft", model);
+        }
+
+        public ActionResult AccountNav()
+        {
+            return PartialView("AccountNav");
         }
     }
 }

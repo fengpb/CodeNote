@@ -17,7 +17,7 @@ namespace CodeNote.Web.Controllers
     public class ArticleController : Controller
     {
 
-        public ActionResult Add()
+        public ActionResult AddArticle()
         {
             return View("AddArticle");
         }

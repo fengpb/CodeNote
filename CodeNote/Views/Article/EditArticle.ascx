@@ -1,27 +1,35 @@
 ﻿<%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl<dynamic>" %>
 <div id="editarticle">
     <dl class="edit">
-        <dt><label>标题</label></dt>
+        <dt>
+            <label>
+                标题</label></dt>
         <dd>
             <input id="articlesubject" type="text" class="text subject" maxlength="200" /></dd>
-            <dt><label>正文</label></dt>
+        <dt>
+            <label>
+                正文</label>&nbsp;&nbsp;<a class="help" href="#"><b>?</b></a></dt>
         <dd>
-            <div class="note">
-                仅支持<a href="#" title="查看MarkDown语法规则">MarkDown</a>语法. &nbsp;&nbsp;<a href="#" title="预览正文">预览</a></div>
             <textarea id="articlebody" cols="50" rows="10" class="abody"></textarea>
         </dd>
-        <dt><label>分类</label></dt>
+        <dt>
+            <label>
+                分类</label></dt>
         <dd>
             <select>
             </select>
             <a href="#" title="创建新的分类">创建分类</a>
         </dd>
-        <dt><label>标签</label></dt>
+        <dt>
+            <label>
+                标签</label></dt>
         <dd>
             <input type="text" maxlength="50" class="text tag" />
             <a href="#" title="根据正文自动匹配">自动匹配</a>
         </dd>
-        <dt><label>设置</label></dt>
+        <dt>
+            <label>
+                设置</label></dt>
         <dd>
             <div>
                 <label>

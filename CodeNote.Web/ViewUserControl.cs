@@ -22,12 +22,13 @@ namespace CodeNote.Web
         /// 支持 gravatar.com face
         /// </summary>
         /// <param name="email"></param>
+        /// <param name="s"></param>
         /// <returns></returns>
-        public string FaceImgUrl(string email)
+        public string FaceImgUrl(string email,int s)
         {
-            string irl = "http://www.gravatar.com/avatar/{0}?s=48&d=identicon&r=pg";
+            string irl = "http://www.gravatar.com/avatar/{0}?s={1}&d=identicon&r=pg";
 
-            return string.Format(irl, CodeNote.Common.Encryption.MD5(email));
+            return string.Format(irl, CodeNote.Common.Encryption.MD5(email),s);
         }
     }
     public class ViewUserControl<T> : System.Web.Mvc.ViewUserControl<T>
@@ -46,12 +47,13 @@ namespace CodeNote.Web
         /// 支持 gravatar.com face
         /// </summary>
         /// <param name="email"></param>
+        /// <param name="s"></param>
         /// <returns></returns>
-        public string FaceImgUrl(string email)
+        public string FaceImgUrl(string email,int s)
         {
-            string irl = "http://www.gravatar.com/avatar/{0}?s=48&d=identicon&r=pg";
+            string irl = "http://www.gravatar.com/avatar/{0}?s={1}&d=identicon&r=pg";
 
-            return string.Format(irl, CodeNote.Common.Encryption.MD5(email));
+            return string.Format(irl, CodeNote.Common.Encryption.MD5(email),s);
         }
     }
 }

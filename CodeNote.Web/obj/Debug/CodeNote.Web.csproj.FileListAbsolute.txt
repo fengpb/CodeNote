@@ -26,3 +26,5 @@ E:\github\CodeNote\CodeNote.Web\bin\Debug\CodeNote.Manager.pdb
 E:\github\CodeNote\CodeNote.Web\bin\Debug\log4net.xml
 E:\github\CodeNote\CodeNote.Web\bin\Debug\CodeNote.Dal.pdb
 E:\github\CodeNote\CodeNote.Web\obj\Debug\CodeNote.Web.dll
+F:\github\CodeNote\CodeNote.Web\bin\Debug\log4net.dll
+F:\github\CodeNote\CodeNote.Web\bin\Debug\log4net.xml

@@ -87,6 +87,7 @@
     <Content Include="Views\Category\Category.aspx" />
     <Content Include="Views\Category\CategoryList.ascx" />
     <Content Include="Views\Control\AccountLeft.ascx" />
+    <Content Include="Views\Control\AccountNav.ascx" />
     <Content Include="Views\Control\Footer.ascx" />
     <Content Include="Views\Control\Header.ascx" />
     <Content Include="Views\Control\Navigation.ascx" />
@@ -134,6 +135,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Tag\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Account\Account.Master" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

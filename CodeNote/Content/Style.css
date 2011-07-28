@@ -12,16 +12,18 @@ a ,a:link { text-decoration: none; color: #1B26A4; }
 a:hover { border-bottom: 1px dotted #D01D18; color:#D01D18; }
 a:active { color: #355939; }
 a:visited { color: #1737A6; }
+a.help,a.help:link{ color:#F00;}
 
 input { vertical-align: middle; }
-input[type=button] { margin: 1px; padding: 0px 4px; vertical-align: middle; height: 22px; line-height: 20px; font-size: 12px; color: #FFF; background-color: #1737A6; border-style: solid; border-width: 1px; border-color: #1737A6 #00001A #00001A #1737A6; }
+select {margin:0px;}
+input[type=button] { margin: 0px; padding: 0px 4px; vertical-align: middle; height: 22px; line-height: 20px; font-size: 12px; color: #FFF; background-color: #1737A6; border-style: solid; border-width: 1px; border-color: #1737A6 #00001A #00001A #1737A6; }
 input[type=button]:hover { background-color: #1737A6; border-color: #1737A6 #010D3F #010D3F #1737A6; }
 
 /* Common
 ----------------------------------------------*/
-.button { margin: 1px; padding: 0px 4px; vertical-align: middle; height: 22px; line-height: 20px; font-size: 12px; color: #FFF; background-color: #1737A6; border-style: solid; border-width: 1px; border-color: #1737A6 #00001A #00001A #1737A6; }
+.button { margin: 0px; padding: 0px 4px; vertical-align: middle; height: 22px; line-height: 20px; font-size: 12px; color: #FFF; background-color: #1737A6; border-style: solid; border-width: 1px; border-color: #1737A6 #00001A #00001A #1737A6; }
 .button:hover { background-color: #1737A6; border-color: #1737A6 #00001A #00001A #1737A6; }
-.text { border: 1px solid #AEAEAE; }
+.text { border: 1px solid #AEAEAE; line-height:20px; }
 .red { color: #D01D18; }
 .disinl { display: inline; }
 .tar { text-align: right; }

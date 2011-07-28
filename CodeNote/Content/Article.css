@@ -1,13 +1,15 @@
-﻿#editarticle { width: 100%; margin: 5px auto; }
+﻿#leftwrap {border:none;}
+#editarticle { width: 100%; margin: 5px auto; }
 #editarticle dl.edit { }
 #editarticle dl.edit dt { padding: 0px 0px 2px 0px; margin: 2px auto; }
 #editarticle dl.edit dt label { color: #1B26A4; border-bottom: 2px solid #1B26A4; }
 #editarticle dl.edit dd { }
-#editarticle dl.edit .subject { width: 955px; }
-#editarticle dl.edit .tag { width: 440px; }
-#editarticle dl.edit .abody { width: 955px; height: 450px; border: 1px solid #474747; overflow-y: scroll; overflow: visible; }
-#editarticle dl.edit .note { margin: 2px auto; padding: 1px 4px; color: #D01D18; background-color: #F7FFD8; border-left: 2px solid #F2F55C; }
+#editarticle dl.edit .subject { width: 100%; }
+#editarticle dl.edit .tag { width: 40%; }
+#editarticle dl.edit .abody { width: 100%; padding:0px; height: 450px; border: 1px solid #AEAEAE; overflow: visible; }
+#editarticle dl.edit .note { margin: 2px 0px; padding: 1px 0px 1px 4px; width:100%; color: #D01D18; background-color: #F7FFD8; border-left: 2px solid #F2F55C; }
 #editarticle dl.edit .btndiv { margin: 10px auto; }
+
 
 /* 文章列表
 ------------------------------------------------------*/

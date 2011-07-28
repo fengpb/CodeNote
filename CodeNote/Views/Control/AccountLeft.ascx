@@ -3,8 +3,7 @@
 <% if (Model != null)
    { %>
 <div>
-    <img alt="<%:Model.LoginName %>" src="<%= FaceImgUrl(Model.Eamil) %>" />
+    <img style="vertical-align:middle" alt="<%:Model.LoginName %>" src="<%= FaceImgUrl(Model.Eamil,80) %>" />
     <hr />
-    <p><%= FaceImgUrl(Model.Eamil) %></p>
 </div>
 <%} %>
