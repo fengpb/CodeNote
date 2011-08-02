@@ -50,6 +50,7 @@
     <Compile Include="ConvertWrap.cs" />
     <Compile Include="Encryption.cs" />
     <Compile Include="Net\EmailWrap.cs" />
+    <Compile Include="PageList.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReturnValue.cs" />
   </ItemGroup>

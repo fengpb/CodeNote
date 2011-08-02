@@ -3,13 +3,13 @@ F:\Fpbin Project\CodeNote\CodeNote.Entity\bin\Debug\CodeNote.Entity.pdb
 F:\Fpbin Project\CodeNote\CodeNote.Entity\obj\Debug\ResolveAssemblyReference.cache
 F:\Fpbin Project\CodeNote\CodeNote.Entity\obj\Debug\CodeNote.Entity.dll
 F:\Fpbin Project\CodeNote\CodeNote.Entity\obj\Debug\CodeNote.Entity.pdb
-F:\github\CodeNote\CodeNote.Entity\bin\Debug\CodeNote.Entity.dll
-F:\github\CodeNote\CodeNote.Entity\bin\Debug\CodeNote.Entity.pdb
-F:\github\CodeNote\CodeNote.Entity\obj\Debug\ResolveAssemblyReference.cache
-F:\github\CodeNote\CodeNote.Entity\obj\Debug\CodeNote.Entity.dll
-F:\github\CodeNote\CodeNote.Entity\obj\Debug\CodeNote.Entity.pdb
 E:\github\CodeNote\CodeNote.Entity\bin\Debug\CodeNote.Entity.dll
 E:\github\CodeNote\CodeNote.Entity\bin\Debug\CodeNote.Entity.pdb
 E:\github\CodeNote\CodeNote.Entity\obj\Debug\ResolveAssemblyReference.cache
 E:\github\CodeNote\CodeNote.Entity\obj\Debug\CodeNote.Entity.dll
 E:\github\CodeNote\CodeNote.Entity\obj\Debug\CodeNote.Entity.pdb
+F:\github\CodeNote\CodeNote.Entity\bin\Debug\CodeNote.Entity.dll
+F:\github\CodeNote\CodeNote.Entity\bin\Debug\CodeNote.Entity.pdb
+F:\github\CodeNote\CodeNote.Entity\obj\Debug\ResolveAssemblyReference.cache
+F:\github\CodeNote\CodeNote.Entity\obj\Debug\CodeNote.Entity.dll
+F:\github\CodeNote\CodeNote.Entity\obj\Debug\CodeNote.Entity.pdb

@@ -5,6 +5,7 @@ using System.Data.Linq.Mapping;
 
 namespace CodeNote.Entity
 {   
+    [Serializable]
     [Table(Name="Category")]
     public class Category
     {

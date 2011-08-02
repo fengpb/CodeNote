@@ -1,30 +1,33 @@
 ﻿<%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl<dynamic>" %>
 <div id="editarticle">
+    <% Html.BeginForm("DoAdd","Article",FormMethod.Post); %>
     <dl class="edit">
         <dt>
-            <label>
+            <label for="articlesubject">
                 标题</label></dt>
         <dd>
-            <input id="articlesubject" type="text" class="text subject" maxlength="200" /></dd>
+            <input id="articlesubject" type="text" name="subject" class="text subject" maxlength="200" /></dd>
         <dt>
-            <label>
+            <label for="articlebody">
                 正文</label>&nbsp;&nbsp;<a class="help" href="#"><b>?</b></a></dt>
         <dd>
-            <textarea id="articlebody" cols="50" rows="10" class="abody"></textarea>
+            <textarea id="articlebody" name="body" cols="50" rows="10" class="abody"></textarea>
         </dd>
         <dt>
-            <label>
+            <label for="selcategory">
                 分类</label></dt>
         <dd>
-            <select>
-            </select>
-            <a href="#" title="创建新的分类">创建分类</a>
+            <span>
+                <input id="hidcategory" name="category" type="hidden" />
+                <select id="selcategory">
+                </select>
+            </span><a href="#" title="创建新的分类">创建分类</a>
         </dd>
         <dt>
-            <label>
+            <label for="tag">
                 标签</label></dt>
         <dd>
-            <input type="text" maxlength="50" class="text tag" />
+            <input id="tag" type="text" maxlength="50" name="artitag" class="text tag" />
             <a href="#" title="根据正文自动匹配">自动匹配</a>
         </dd>
         <dt>
@@ -47,7 +50,8 @@
             </div>
         </dd>
         <dd class="btndiv">
-            <input type="button" id="savearticle" class="button" value="保存" />
+            <input type="submit" id="savearticle" class="button" value="保存" />
         </dd>
     </dl>
+    <% Html.EndForm(); %>
 </div>

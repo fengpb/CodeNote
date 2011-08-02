@@ -31,6 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="log4net">
+      <HintPath>..\Common.DLL\log\log4net.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
@@ -48,6 +51,7 @@
     <Compile Include="ILinqDal\DataContent.cs" />
     <Compile Include="ILinqDal\IBaseDal.cs" />
     <Compile Include="LoginUserDal.cs" />
+    <Compile Include="Proc\ArticleProc.cs" />
     <Compile Include="Proc\CategoryProc.cs" />
     <Compile Include="Proc\LoginUserProc.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

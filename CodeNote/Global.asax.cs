@@ -22,6 +22,12 @@ namespace CodeNote
                "Category/{categoryName}", // 带有参数的 URL
                new { controller = "Category", action = "Category", categoryName = "" } // 参数默认值
            );
+            routes.MapRoute(
+               "CategoryJson", // 路由名称
+               "CgJson/{categoryID}", // 带有参数的 URL
+               new { controller = "Category", action = "CategoryJson", categoryID = "" } // 参数默认值
+           );
+            
             #endregion
 
             routes.MapRoute(
@@ -34,8 +40,8 @@ namespace CodeNote
 
         protected void Application_Start()
         {
+            log4net.Config.XmlConfigurator.Configure();
             AreaRegistration.RegisterAllAreas();
-
             RegisterRoutes(RouteTable.Routes);
         }
     }

@@ -16,10 +16,7 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="BodyBottomContent" runat="server">
      <script type="text/javascript" language="javascript">
          $(document).ready(function () {
-             $('#savearticle').click(function () {
-                 alert('12');
-                 AddArticle();
-             });
+             GetCategory("0", "selcategory");
          });
     </script>
 </asp:Content>

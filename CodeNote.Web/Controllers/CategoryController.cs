@@ -39,7 +39,7 @@ namespace CodeNote.Web.Controllers
             if (model == null)
             {
                 //暂无次分类信息
-               return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index", "Home");
             }
             Web.SiteData.Instance.CurCategory = model;
             return View("Category", model);
@@ -55,6 +55,21 @@ namespace CodeNote.Web.Controllers
         {
             IList<Category> model = this.CategoryMg.GetByParentID(categoryID);
             return PartialView("CategoryList", model);
+        }
+
+        public JsonResult CategoryJson(string categoryID)
+        {
+            IList<Category> list = this.CategoryMg.GetByParentID(categoryID);
+            Object model;
+            if (list != null)
+            {
+                model = list.Select(e => new { cid = e.CategoryID, cname = e.Name }).ToList();
+            }
+            else
+            {
+                model = null;
+            }
+            return Json(model);
         }
         #endregion
     }

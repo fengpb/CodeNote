@@ -5,6 +5,7 @@ using System.Text;
 #region Using users.
 using CodeNote.Linq.IDal;
 using CodeNote.Entity;
+using CodeNote.Dal.Proc;
 #endregion
 namespace CodeNote.Dal
 {
@@ -13,5 +14,13 @@ namespace CodeNote.Dal
     /// </summary>
     public class ArticleDal : BaseDalImpl<Article>
     {
+
+        public IList<Article> GetList(int page, int pageSize, string filter, ref int rowCount)
+        {
+            using (ArticleProc proc = new ArticleProc())
+            {
+                return proc.GetList(page, pageSize, filter, ref rowCount).ToList();
+            }
+        }
     }
 }

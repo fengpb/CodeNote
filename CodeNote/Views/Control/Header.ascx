@@ -12,22 +12,28 @@
         </div>
     </div>
     <div id="hright">
-        <div class="tar">
-            <% if (IsLogin)
-               { %>
-            <%= Html.ActionLink("退出", "LoginOut", "User", null, new { title = "Loginout" })%>
-            <%= Html.ActionLink(CurUser.LoginName,"Index","Account")%>
-            <%}
-               else
-               { %>
-            <%= Html.ActionLink("登录", "Login", "User", null, new { title = "Login" })%>
-            <%} %>
-        </div>
-        <div class="searchbox">
-            <form action="" method="post">
-            <input type="text" class="text" />
-            </form>
-        </div>
+        <dl>
+            <dd>
+                <div class="tar">
+                    <% if (IsLogin)
+                       { %>
+                    <%= Html.ActionLink("退出", "LoginOut", "User", null, new { title = "Loginout" })%>
+                    <%= Html.ActionLink(CurUser.LoginName,"Index","Account")%>
+                    <%}
+                       else
+                       { %>
+                    <%= Html.ActionLink("登录", "Login", "User", null, new { title = "Login" })%>
+                    <%} %>
+                </div>
+            </dd>
+            <dd>
+                <div class="searchbox">
+                    <form action="" method="post">
+                    <input type="text" class="text" />
+                    </form>
+                </div>
+            </dd>
+        </dl>
     </div>
 </div>
 <!-- end header -->

@@ -45,5 +45,19 @@ namespace CodeNote.Manager
             return retValue;
         }
 
+        public PageList<Article> GetList(int page, int pageSize, string filter)
+        {
+            PageList<Article> pa = new PageList<Article>();
+            using (ArticleDal dal=new ArticleDal())
+            {
+                int rowCount = 0;
+                pa.CurPage = page;
+                pa.PageSize = pageSize;
+                pa.Data = dal.GetList(page, pageSize, filter, ref rowCount);
+                pa.RecordCount = rowCount;
+            }
+            return pa;
+        }
+
     }
 }

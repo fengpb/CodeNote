@@ -1,7 +1,7 @@
 ﻿/* Layout
 ----------------------------------------------*/
-#page { }
-#content { min-width: 960px; margin: 15px; font-size: 14px; }
+#page {  }
+#content { min-width: 960px; margin: 15px; font-size: 14px; background:none; }
 
 #header { height: 70px; margin-top: 10px; /*background-color: #EFF6FE;*/ position: relative; }
 #logo { position: absolute; top: 0px; left: 0px; width: 230px; }
@@ -9,28 +9,35 @@
 #logo h1 a { color: #1B26A4; border: none; }
 #logo .sitedesp { padding-left: 5px; color: #474747; }
 #logo .logoimg { height: 60px; width: 230px; border: none; }
-#hright { padding-left: 230px; position: relative;  }
-#hright .tar {padding-right:190px; line-height:23px;}
-#hright .searchbox { position: absolute; top: 0px; right: 0px; width:180px; } 
-#hright .searchbox .text {width:180px;}
+#hright { padding-left: 230px; position: relative; }
+#hright dl { float:right; height:22px;}
+#hright dl dd{ display:inline; float:left; line-height:20px; margin:0px 4px;}
+#hright dl dd .tar{ line-height:25px;}
+#hright .searchbox {width: 200px; }
+#hright .searchbox .text { width: 180px; vertical-align:middle; }
 
-#navigation { background-color: #EDEEFF; overflow: hidden; }
-#navigation ul { height: 28px; border-bottom: 1px solid #AEAEAE; }
-#navigation ul li { float: left; position: relative; height: 100%; line-height: 28px; border: none; }
+#navigation { overflow: hidden; height: 32px; position: relative; }
+#navigation .navbg { position: absolute; left: 0px; bottom: 0px; height: 30px; width: 100%; border-bottom: 1px solid #1B26A4; background-color: #EDEEFF; z-index: 0; }
+#navigation ul { padding-left: 5px; height: 32px; }
+#navigation ul li { float: left; position: relative; height: 29px; margin: 2px 4px 0px 4px; line-height: 30px; border: none; }
 #navigation ul li a { float: left; font-size: 14px; color: #0D188C; padding: 0px 12px; height: 100%; line-height: 30px; }
-#navigation ul li a:hover { background-color: #1B26A4; color: #FFF; border-bottom: 1px solid #2844C1; }
-#navigation ul li a.cur { background-color: #D01D18; color: #FFF; border-bottom: 1px solid #2844C1; }
+#navigation ul li a:hover { background-color: #1B26A4; color: #FFF; border-bottom: 1px solid #1B26A4; }
+#navigation ul li.cur { margin-top: 0px; }
+#navigation ul li.cur a { height: 32px; background-color: #FFF; color: #1B26A4; border-top: 2px solid #1B26A4; border-bottom: 1px solid #FFF; border-left: 1px solid #1B26A4; border-right: 1px solid #1B26A4; }
 
-#maincontent { clear: both; }
-#leftwrap { float: left; width: 79%; height: 100%; padding: 5px 0px 5px 0px; border-right: 1px solid #AEAEAE; }
-#rightwrap { margin-left: 80%; height: 100%; padding: 5px 0px 5px 0px; }
-#leftwrap .leftbox { width:98%; }
+#maincontent { clear: both; margin:10px 2px;}
+#leftwrap { float: left; width: 79%; height: 100%; border-right: 0px solid #AEAEAE; }
+#rightwrap { margin-left: 80%; height: 100%; }
+#leftwrap .leftbox { width: 98%; }
 #rightwrap .rightbox { }
 #rightwrap .rightbox h4 { border-bottom: 1px dotted #EEE; }
 #rightwrap .rightbox h4 label { border-bottom: 1px solid #D01D18; }
 
-#footer { clear: both; padding: 4px 8px; background-color: #EDEEFF; color: #474747; border-top: 1px solid #AEAEAE; }
+
+#footer { clear: both; margin-top: 10px; padding: 4px 8px; background-color: #EDEEFF; color: #474747; border-top: 1px solid #1B26A4; }
 #footer p { font-size: 12px; }
 
-#poptitle { font-size: 14px; width:100%; line-height: 24px; padding: 0px; border-left: 3px solid #D01D18; border-bottom: 1px dotted #2844C1; margin-bottom: 5px; color: #0D188C; background-color: #EDEEFF; }
-#poptitle h4 { margin-left:5px;}
+#poptitle { font-size: 14px; width: 100%; line-height: 25px; padding: 0px;  border-bottom: 1px solid #1B26A4; margin-bottom: 5px; color: #0D188C; background-color: #EDEEFF; }
+#poptitle h4 { margin-left: 5px; }
+/* clear*/
+#maincontent:after, #footer:after { content: '\0020'; display: block; height: 0; clear: both; }

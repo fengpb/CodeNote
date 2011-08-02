@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using log4net;
 
 namespace CodeNote.Linq.IDal
 {
@@ -13,8 +14,11 @@ namespace CodeNote.Linq.IDal
         }
 
         public BaseDalImpl()
-            //: base(System.Configuration.ConfigurationManager.ConnectionStrings["CodeNoteBlog"].ConnectionString)
+        //: base(System.Configuration.ConfigurationManager.ConnectionStrings["CodeNoteBlog"].ConnectionString)
         { }
+
+        protected ILog log = LogManager.GetLogger(typeof(BaseDalImpl<T>));
+
         public bool Add(T entity)
         {
             try
@@ -23,8 +27,9 @@ namespace CodeNote.Linq.IDal
                 this.SubmitChanges();
                 return true;
             }
-            catch
+            catch (Exception ex)
             {
+                log.Warn(ex.Message,ex);
                 return false;
             }
         }
@@ -37,8 +42,9 @@ namespace CodeNote.Linq.IDal
                 this.SubmitChanges();
                 return true;
             }
-            catch
+            catch(Exception ex)
             {
+                log.Warn(ex.Message, ex);
                 return false;
             }
         }

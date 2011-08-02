@@ -1,8 +1,8 @@
 ﻿#leftwrap {border:none;}
-#editarticle { width: 100%; margin: 5px auto; }
+#editarticle { width: 99%; margin: 5px auto; }
 #editarticle dl.edit { }
-#editarticle dl.edit dt { padding: 0px 0px 2px 0px; margin: 2px auto; }
-#editarticle dl.edit dt label { color: #1B26A4; border-bottom: 2px solid #1B26A4; }
+#editarticle dl.edit dt { padding:0px; margin: 4px auto; }
+#editarticle dl.edit dt label { color: #1B26A4; font-size:14px; border-bottom: 0px solid #1B26A4; }
 #editarticle dl.edit dd { }
 #editarticle dl.edit .subject { width: 100%; }
 #editarticle dl.edit .tag { width: 40%; }

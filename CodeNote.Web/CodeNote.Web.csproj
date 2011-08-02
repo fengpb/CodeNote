@@ -31,6 +31,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Common.DLL\log\log4net.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
@@ -48,6 +52,7 @@
   <ItemGroup>
     <Compile Include="Common\CookieWrap.cs" />
     <Compile Include="Common\HtmlAttribute.cs" />
+    <Compile Include="Common\HtmlHelperExteniones.cs" />
     <Compile Include="Common\ImageWrap.cs" />
     <Compile Include="Common\SerializedWrap.cs" />
     <Compile Include="Common\SessionWrap.cs" />

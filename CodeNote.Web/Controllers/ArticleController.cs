@@ -17,6 +17,16 @@ namespace CodeNote.Web.Controllers
     public class ArticleController : Controller
     {
 
+        private ArticleManager _artMg;
+        public ArticleManager ArtMg
+        {
+            get
+            {
+                if (_artMg == null) { _artMg = new ArticleManager(); }
+                return _artMg;
+            }
+        }
+
         public ActionResult AddArticle()
         {
             return View("AddArticle");
@@ -27,6 +37,8 @@ namespace CodeNote.Web.Controllers
             return PartialView("EditArticle");
         }
 
+
+
         /// <summary>
         /// 添加文章信息
         /// </summary>
@@ -36,15 +48,30 @@ namespace CodeNote.Web.Controllers
             ReturnValue retValue = new ReturnValue();
             string subject = Request["subject"].ToString();
             string body = Request["body"].ToString();
+            string categoryID = Request["category"].ToString();
+            string tag = Request["artitag"].ToString();
+
 
             Article entity = new Article();
             entity.Subject = subject;
             entity.Body = body;
+            entity.CategoryID = categoryID;
+            entity.Tag = tag;
+            entity.CreateID = 0;
+            entity.CreateDate = DateTime.Now;
 
-            ArticleManager articleManager = new ArticleManager();
-            retValue = articleManager.Add(entity);
+
+            retValue = ArtMg.Add(entity);
 
             return Json(retValue);
+        }
+
+
+
+        public ActionResult ArticleList(string categoryID, int page = 1)
+        {
+            PageList<Article> model = ArtMg.GetList(page, 20, "");
+            return PartialView("ArticleList", model);
         }
     }
 }
