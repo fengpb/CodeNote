@@ -35,6 +35,7 @@ namespace CodeNote.Web.Controllers
         public ActionResult LoginOut()
         {
             //退出登录
+            Common.SessionWrap.Remove(Web.Models.Constans.USER_SESSION_KEY);
             return RedirectToAction("Index", "Home");
         }
 

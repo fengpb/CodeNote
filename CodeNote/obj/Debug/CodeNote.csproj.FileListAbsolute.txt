@@ -49,3 +49,5 @@ F:\github\CodeNote\CodeNote\bin\log4net.xml
 F:\github\CodeNote\CodeNote\obj\Debug\ResolveAssemblyReference.cache
 F:\github\CodeNote\CodeNote\obj\Debug\CodeNote.dll
 F:\github\CodeNote\CodeNote\obj\Debug\CodeNote.pdb
+F:\github\CodeNote\CodeNote\bin\CodeNote.Markdown.dll
+F:\github\CodeNote\CodeNote\bin\CodeNote.Markdown.pdb

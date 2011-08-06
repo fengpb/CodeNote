@@ -50,10 +50,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseController.cs" />
     <Compile Include="Common\CookieWrap.cs" />
     <Compile Include="Common\HtmlAttribute.cs" />
     <Compile Include="Common\HtmlHelperExteniones.cs" />
     <Compile Include="Common\ImageWrap.cs" />
+    <Compile Include="Common\MarkDown.cs" />
     <Compile Include="Common\SerializedWrap.cs" />
     <Compile Include="Common\SessionWrap.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -61,8 +63,10 @@
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\ControlController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MarkDownController.cs" />
     <Compile Include="Controllers\TagController.cs" />
     <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Filter\CheckLogin.cs" />
     <Compile Include="Models\Constans.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SiteData.cs" />
@@ -83,6 +87,10 @@
     <ProjectReference Include="..\CodeNote.Manager\CodeNote.Manager.csproj">
       <Project>{585F4C93-2770-484F-B1DF-C8DBC76B1F19}</Project>
       <Name>CodeNote.Manager</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CodeNote.Markdown\CodeNote.Markdown.csproj">
+      <Project>{892AC602-4809-42F2-A539-C62CDF5F1776}</Project>
+      <Name>CodeNote.Markdown</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

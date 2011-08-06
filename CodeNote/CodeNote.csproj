@@ -98,6 +98,7 @@
     <Content Include="Views\Control\Header.ascx" />
     <Content Include="Views\Control\Navigation.ascx" />
     <Content Include="Views\Home\Index.aspx" />
+    <Content Include="Views\MarkDown\Help.aspx" />
     <Content Include="Views\User\Login.aspx" />
     <Content Include="Views\User\Register.aspx" />
     <Content Include="Web.config">

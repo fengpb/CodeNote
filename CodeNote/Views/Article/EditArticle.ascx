@@ -1,6 +1,6 @@
 ﻿<%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl<dynamic>" %>
 <div id="editarticle">
-    <% Html.BeginForm("DoAdd","Article",FormMethod.Post); %>
+    <% Html.BeginForm("DoAdd", "Article", FormMethod.Post); %>
     <dl class="edit">
         <dt>
             <label for="articlesubject">
@@ -9,7 +9,9 @@
             <input id="articlesubject" type="text" name="subject" class="text subject" maxlength="200" /></dd>
         <dt>
             <label for="articlebody">
-                正文</label>&nbsp;&nbsp;<a class="help" href="#"><b>?</b></a></dt>
+                正文</label>&nbsp;
+            <%: Html.ActionLink("?","Help","MarkDown") %>
+        </dt>
         <dd>
             <textarea id="articlebody" name="body" cols="50" rows="10" class="abody"></textarea>
         </dd>

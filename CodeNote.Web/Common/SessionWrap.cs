@@ -34,5 +34,10 @@ namespace CodeNote.Web.Common
         {
             return CurContext.Session[key];
         }
+
+        public static void Remove(string key)
+        {
+            CurContext.Session.Remove(key);
+        }
     }
 }

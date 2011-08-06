@@ -30,5 +30,15 @@ namespace CodeNote.Web
             }
             set { _curCategory = value; }
         }
+
+        public bool IsLogin {
+            get {
+                if (Common.SessionWrap.Get<LoginUser>(Models.Constans.USER_SESSION_KEY) != null)
+                {
+                    return true;
+                }
+                return false;
+            }
+        }
     }
 }
