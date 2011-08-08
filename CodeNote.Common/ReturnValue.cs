@@ -25,6 +25,10 @@ namespace CodeNote.Common
             }
         }
 
+        /// <summary>
+        /// 异常信息
+        /// </summary>
+        public Exception Exceptioin { get; set; }
 
 
         /// <summary>

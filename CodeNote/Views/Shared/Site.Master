@@ -16,7 +16,8 @@
     <div id="page">
         <div id="content">
             <% Html.RenderAction("Header", "Control"); %>
-            <% Html.RenderAction("Navigation", "Control"); %>
+            <asp:ContentPlaceHolder ID="Navigation" runat="server">
+            </asp:ContentPlaceHolder>
             <div id="maincontent">
                 <asp:ContentPlaceHolder ID="MainContent" runat="server">
                 </asp:ContentPlaceHolder>

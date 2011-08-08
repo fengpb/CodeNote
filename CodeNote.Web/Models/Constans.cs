@@ -11,5 +11,11 @@ namespace CodeNote.Web.Models
     public class Constans
     {
         public static readonly string USER_SESSION_KEY = "cur_user_session_key";
+
+        public enum UserType
+        {
+            Administrators = -1,
+            User = 0
+        }
     }
 }

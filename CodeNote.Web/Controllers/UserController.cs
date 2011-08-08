@@ -7,6 +7,7 @@ using System.Web.Mvc;
 using CodeNote.Entity;
 using CodeNote.Manager;
 using CodeNote.Common;
+using CodeNote.Web.Models;
 #endregion
 namespace CodeNote.Web.Controllers
 {
@@ -46,26 +47,34 @@ namespace CodeNote.Web.Controllers
             {
                 retValue.IsExists = false;
                 retValue.Message = "请输入登录名";
-                return Content(retValue.Message);
+                return View("Result", new ReturnMessage("登录消息", retValue));
             }
             if (string.IsNullOrEmpty(password))
             {
                 retValue.IsExists = false;
                 retValue.Message = "请输入密码";
-                return Content(retValue.Message);
+                return View("Result", new ReturnMessage("登录消息", retValue));
             }
             retValue = LoginUserMg.Login(name, password);
             if (retValue.IsExists)
             {
                 Common.SessionWrap.Add(Web.Models.Constans.USER_SESSION_KEY, retValue.RetObjec);
-                return RedirectToAction("Index","Account");
+                return RedirectToAction("Index", "Account");
             }
-            return Content(retValue.Message);
+            return View("Result", new ReturnMessage("登录消息", retValue));
         }
 
         public ActionResult Register()
         {
             return View("Register");
+        }
+        /// <summary>
+        /// 没有权限
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult NoPower()
+        {
+            return View("NoPower");
         }
     }
 }

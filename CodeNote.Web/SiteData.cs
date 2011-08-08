@@ -31,8 +31,27 @@ namespace CodeNote.Web
             set { _curCategory = value; }
         }
 
-        public bool IsLogin {
-            get {
+        public LoginUser CurUser
+        {
+            get { return Common.SessionWrap.Get<LoginUser>(Models.Constans.USER_SESSION_KEY); }
+        }
+
+        public bool IsAdmin
+        {
+            get
+            {
+                if (IsLogin && CurUser.Type == (int)CodeNote.Web.Models.Constans.UserType.Administrators)
+                {
+                    return true;
+                }
+                return false;
+            }
+        }
+
+        public bool IsLogin
+        {
+            get
+            {
                 if (Common.SessionWrap.Get<LoginUser>(Models.Constans.USER_SESSION_KEY) != null)
                 {
                     return true;

@@ -7,9 +7,9 @@
         <asp:ContentPlaceHolder ID="TitleContent" runat="server" />
     </title>
     <link href="/Content/Style.css" rel="stylesheet" type="text/css" />
-    <link href="/Content/Index.css" rel="stylesheet" type="text/css" />
     <link href="/Content/Account.css" rel="stylesheet" type="text/css" />
     <script src="/Scripts/jquery-1.4.1.min.js" type="text/javascript"></script>
+    <script src="/Scripts/CodeNote.Account.js" type="text/javascript"></script>
     <asp:ContentPlaceHolder ID="TopContent" runat="server">
     </asp:ContentPlaceHolder>
 </head>
@@ -18,20 +18,21 @@
         <div id="content">
             <% Html.RenderAction("Header", "Control"); %>
             <div id="maincontent">
-            <div id="leftwrap">
-                <div class="leftbox">
-                    <asp:ContentPlaceHolder ID="MainContent" runat="server">
-                    </asp:ContentPlaceHolder>
+                <div id="leftwrap">
+                    <div class="leftbox">
+                        <% Html.RenderAction("AccountLeft", "Control"); %>
+                        <% Html.RenderAction("AccountNav", "Control"); %>
+                    </div>
+                </div>
+                <div id="rightwrap">
+                    <% Html.RenderAction("Navigation", "Account"); %>
+                    <div class="rightbox">
+                        <asp:ContentPlaceHolder ID="MainContent" runat="server">
+                        </asp:ContentPlaceHolder>
+                    </div>
                 </div>
             </div>
-            <div id="rightwrap">
-                <div class="rightbox">
-                    <% Html.RenderAction("AccountLeft", "Control"); %>
-                    <% Html.RenderAction("AccountNav", "Control"); %>
-                    </div>
-            </div>
-        </div>
-        <% Html.RenderAction("Footer", "Control"); %>
+            <% Html.RenderAction("Footer", "Control"); %>
         </div>
     </div>
     <asp:ContentPlaceHolder ID="BodyBottomContent" runat="server">

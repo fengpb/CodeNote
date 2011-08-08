@@ -5,26 +5,25 @@ using System.Data.Linq.Mapping;
 
 namespace CodeNote.Entity
 {   
-    [Serializable]
     [Table(Name="Category")]
     public class Category
     {
         private string _categoryID;
-        [Column(Name="CategoryID",DbType = "nvarchar", CanBeNull = false)]
+        [Column(Name="CategoryID",DbType = "nvarchar", IsPrimaryKey = true, CanBeNull = false)]
         public string CategoryID
         {
             get{ return this._categoryID ; }
             set{ this._categoryID = value ; }
         }
         private string _title;
-        [Column(Name="Title",DbType = "nvarchar", CanBeNull = true)]
+        [Column(Name="Title",DbType = "nvarchar", CanBeNull = false)]
         public string Title
         {
             get{ return this._title ; }
             set{ this._title = value ; }
         }
         private string _name;
-        [Column(Name="Name",DbType = "nvarchar", CanBeNull = false)]
+        [Column(Name="Name",DbType = "nvarchar", IsPrimaryKey = true, CanBeNull = false)]
         public string Name
         {
             get{ return this._name ; }

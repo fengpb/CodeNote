@@ -67,7 +67,9 @@
     <Compile Include="Controllers\TagController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Filter\CheckLogin.cs" />
+    <Compile Include="Filter\CheckAdmin.cs" />
     <Compile Include="Models\Constans.cs" />
+    <Compile Include="Models\ReturnMessage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SiteData.cs" />
     <Compile Include="ViewUserControl.cs">

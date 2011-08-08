@@ -6,18 +6,17 @@
 <div class="categorylist">
     <h4>
         <label>
-            <%: SiteData.CurCategory.Name %></label></h4>
+            <%: ViewData["partitle"]%></label></h4>
     <ul>
         <% foreach (Category item in Model)
            {
         %><li>
-        
-            <%= Html.ActionLink(item.Name,"Category","Category",
+            <%= Html.ActionLink(item.Title,"Category","Category",
                                           new RouteValueDictionary(DictionaryWrap.CreateNew().Add("categoryName", item.Name).Init()),
                                           DictionaryWrap.CreateNew().Add("title", item.Title).Init())%>
             &nbsp;<%= item.Count > 0 ? string.Format("<small>{0}</small>",item.Count) : ""%></li>
         <%   
-       } %>
+           } %>
     </ul>
 </div>
 <%} %>

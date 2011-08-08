@@ -18,10 +18,12 @@ namespace CodeNote.Web.Controllers
         {
             return PartialView("Header");
         }
-        public ActionResult Navigation()
+        public ActionResult Navigation(string categoryID = "Index")
         {
             CategoryManager cmg = new CategoryManager();
             IList<Category> model = cmg.GetMenu();
+            ViewData["curCategoryID"] = categoryID;
+
             return PartialView("Navigation", model);
         }
         public ActionResult Footer()

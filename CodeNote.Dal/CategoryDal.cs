@@ -33,6 +33,15 @@ namespace CodeNote.Dal
             return this.DataTable.Where(e => e.ParentID == parentID).ToList();
         }
 
+        /// <summary>
+        /// 获取所有的分类信息
+        /// </summary>
+        /// <returns></returns>
+        public IList<Category> GetAll()
+        {
+            return this.DataTable.ToList();
+        }
+
         public IList<Category> GetLike(string likeCategoryID)
         {
             using (CategoryProc proc = new CategoryProc())

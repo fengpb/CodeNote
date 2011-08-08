@@ -8,6 +8,7 @@ using CodeNote.Common;
 using CodeNote.Entity;
 using CodeNote.Manager;
 using CodeNote.Web.Filter;
+using CodeNote.Web.Models;
 #endregion
 namespace CodeNote.Web.Controllers
 {
@@ -27,7 +28,7 @@ namespace CodeNote.Web.Controllers
                 return _artMg;
             }
         }
-
+        [CheckLogin]
         public ActionResult AddArticle()
         {
             return View("AddArticle");
@@ -44,8 +45,8 @@ namespace CodeNote.Web.Controllers
         /// 添加文章信息
         /// </summary>
         /// <returns></returns>
-        [ValidateInput(false),CheckLogin]
-        public JsonResult DoAdd()
+        [ValidateInput(false), CheckLogin]
+        public ActionResult DoAdd()
         {
             ReturnValue retValue = new ReturnValue();
             string body = Request["body"];
@@ -61,19 +62,28 @@ namespace CodeNote.Web.Controllers
 
             retValue = ArtMg.Add(entity);
 
-            return Json(retValue);
+            return View("Result", new ReturnMessage("提示消息", retValue));
         }
 
+        /// <summary>
+        /// 查看文章信息
+        /// </summary>
+        /// <param name="articleID"></param>
+        /// <returns></returns>
+        public ActionResult Detail(int articleID)
+        {
+            return View("Detail");
+        }
 
-
+        /// <summary>
+        /// 文章列表信息
+        /// </summary>
+        /// <param name="categoryID"></param>
+        /// <param name="page"></param>
+        /// <returns></returns>
         public ActionResult ArticleList(string categoryID, int page = 1)
         {
-            string filter = string.Empty;
-            if (!string.IsNullOrEmpty(categoryID))
-            {
-                filter = " CategoryID LIKE '" + categoryID + "%'";
-            }
-            PageList<Article> model = ArtMg.GetList(page, 20,filter);
+            PageList<Article> model = ArtMg.GetListByCategory(page, 20, categoryID);
             return PartialView("ArticleList", model);
         }
     }

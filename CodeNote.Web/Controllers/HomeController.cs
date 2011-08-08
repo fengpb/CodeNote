@@ -14,8 +14,9 @@ namespace CodeNote.Web.Controllers
     {
         public ActionResult Index()
         {
-            SiteData.Instance.CurCategory.CategoryID = "Index";
             return View("Index");
         }
+
+       
     }
 }

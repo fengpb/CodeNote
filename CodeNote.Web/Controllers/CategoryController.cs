@@ -6,6 +6,7 @@ using System.Web.Mvc;
 #region Using users.
 using CodeNote.Entity;
 using CodeNote.Manager;
+using CodeNote.Common;
 #endregion
 
 
@@ -41,9 +42,31 @@ namespace CodeNote.Web.Controllers
                 //暂无次分类信息
                 return RedirectToAction("Index", "Home");
             }
-            Web.SiteData.Instance.CurCategory = model;
             return View("Category", model);
         }
+
+        #region EditCategory
+        /// <summary>
+        /// Admin 修改/添加分类信息
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult EditCategory()
+        {
+            return View("EditCategory");
+        }
+        #endregion
+
+        #region CategoryTree
+        /// <summary>
+        /// 分类树
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult CategoryTree()
+        {
+            TreeWrap<CodeNote.Entity.Category> tree = this.CategoryMg.GetCategoryTree();
+            return PartialView("CategoryTree", tree);
+        }
+        #endregion
 
         #region PartView
         /// <summary>
@@ -53,7 +76,11 @@ namespace CodeNote.Web.Controllers
         /// <returns></returns>
         public ActionResult CategoryList(string categoryID)
         {
-            IList<Category> model = this.CategoryMg.GetByParentID(categoryID);
+            IList<Category> model = this.CategoryMg.GetByParentID(categoryID, true);
+            if (model != null && model.Count > 0)
+            {
+                ViewData["partitle"] = this.CategoryMg.Get(categoryID).Title;
+            }
             return PartialView("CategoryList", model);
         }
 
