@@ -11,6 +11,102 @@ namespace CodeNote.Web.Common
     public static class HtmlHelperExteniones
     {
         #region Paging
+
+        #region AjaxPaging
+        public static MvcHtmlString AjaxPaging(this HtmlHelper hh, Pager pager, string actionName, string controllerName, AjaxPagingOption option, Object routeValues)
+        {
+            return AjaxPaging(hh, pager, actionName, controllerName, option, new RouteValueDictionary(routeValues));
+        }
+        public static MvcHtmlString AjaxPaging(this HtmlHelper hh, Pager pager, string actionName, string controllerName, AjaxPagingOption option, RouteValueDictionary routeValues)
+        {
+            if (option == null)
+            {
+                option = new AjaxPagingOption();
+            }
+            if (routeValues == null)
+            {
+                routeValues = new RouteValueDictionary();
+            }
+            TagBuilder div = new TagBuilder("div");
+            StringBuilder sb = new StringBuilder();
+            if (pager.Cur > 1)
+            {
+                routeValues["page"] = pager.Cur - 1;
+
+                string pageUrl = UrlHelper.GenerateUrl(null, actionName, controllerName, routeValues, hh.RouteCollection, hh.ViewContext.RequestContext, true);
+                TagBuilder parent = new TagBuilder("a");
+                parent.InnerHtml = "&lt;";
+                parent.MergeAttribute("title", "上一页");
+                parent.MergeAttribute("href", pageUrl);
+                sb.Append(parent.ToString());
+            }
+
+            int showPage = 10;
+            int start = 1;
+            int end = (pager.Cur + (showPage / 2)) > pager.Pag ? pager.Pag : showPage;
+            start = (pager.Cur - (showPage / 2)) > 1 ? pager.Cur - (showPage / 2) : 1;
+            if ((pager.Pag - pager.Cur) <= showPage / 2 && pager.Pag > showPage)
+            {
+                end = pager.Pag;
+                start = pager.Pag - showPage + 1;
+            }
+            //首页
+            if (start > showPage)
+            {
+                routeValues["page"] = 1;
+
+                string pageUrl = UrlHelper.GenerateUrl(null, actionName, controllerName, routeValues, hh.RouteCollection, hh.ViewContext.RequestContext, true);
+                TagBuilder parent = new TagBuilder("a");
+                parent.InnerHtml = string.Format("<span>{0}</span>", 1);
+                parent.MergeAttribute("title", "首页");
+                parent.MergeAttribute("href", option.Href);
+                parent.MergeAttribute("onclick", option.ToString(pageUrl));
+                sb.Append(parent.ToString());
+            }
+
+            for (int i = start; i <= end; i++)
+            {
+                routeValues["page"] = i;
+                string pageUrl = UrlHelper.GenerateUrl(null, actionName, controllerName, routeValues, hh.RouteCollection, hh.ViewContext.RequestContext, true);
+                TagBuilder aLink = new TagBuilder("a");
+                if (i == pager.Cur)
+                    aLink.InnerHtml = string.Format("&nbsp;<b>{0}</b>&nbsp;", i);
+                else
+                    aLink.InnerHtml = string.Format("&nbsp;<span>{0}</span>&nbsp;", i);
+                aLink.MergeAttribute("href", option.Href);
+                aLink.MergeAttribute("onclick", option.ToString(pageUrl));
+                sb.Append(aLink.ToString());
+            }
+            if (end < pager.Pag - showPage)
+            {
+                routeValues["page"] = pager.Pag;
+
+                string pageUrl = UrlHelper.GenerateUrl(null, actionName, controllerName, routeValues, hh.RouteCollection, hh.ViewContext.RequestContext, true);
+                TagBuilder next = new TagBuilder("a");
+                next.InnerHtml = string.Format("<span>{0}</span>", pager.Pag);
+                next.MergeAttribute("title", "尾页");
+                next.MergeAttribute("href", option.Href);
+                next.MergeAttribute("onclick", option.ToString(pageUrl));
+                sb.Append(next.ToString());
+            }
+            if (pager.Cur < pager.Pag)
+            {
+                routeValues["page"] = pager.Cur + 1;
+
+                string pageUrl = UrlHelper.GenerateUrl(null, actionName, controllerName, routeValues, hh.RouteCollection, hh.ViewContext.RequestContext, true);
+                TagBuilder next = new TagBuilder("a");
+                next.InnerHtml = "&gt;";
+                next.MergeAttribute("title", "下一页");
+                next.MergeAttribute("href", option.Href);
+                next.MergeAttribute("onclick", option.ToString(pageUrl));
+                sb.Append(next.ToString());
+            }
+            div.InnerHtml = sb.ToString();
+            return MvcHtmlString.Create(div.ToString());
+        }
+        #endregion
+
+        #region Paging
         /// <summary>
         /// Page
         /// <br/>
@@ -30,7 +126,6 @@ namespace CodeNote.Web.Common
         {
             return Paging(hh, pager, actionName, controllerName, new RouteValueDictionary(routeValues));
         }
-
         /// <summary>
         /// Page：分页 
         /// </summary>
@@ -46,7 +141,10 @@ namespace CodeNote.Web.Common
             string actionName,
             string controllerName, RouteValueDictionary routeValues)
         {
-
+            if (routeValues == null)
+            {
+                routeValues = new RouteValueDictionary();
+            }
             TagBuilder div = new TagBuilder("div");
             StringBuilder sb = new StringBuilder();
             if (pager.Cur > 1)
@@ -120,6 +218,9 @@ namespace CodeNote.Web.Common
             div.InnerHtml = sb.ToString();
             return MvcHtmlString.Create(div.ToString());
         }
+
+        #endregion
+
         #endregion
 
         #region tree
@@ -150,6 +251,38 @@ namespace CodeNote.Web.Common
             return string.Empty;
         }
         #endregion
+    }
+
+    /// <summary>
+    /// Ajax Page option
+    /// </summary>
+    public class AjaxPagingOption
+    {
+        public AjaxPagingOption()
+        {
+            this.Function = "AjaxPager('{0}','{1}')";
+            this.Href = "javascript:;";
+        }
+        public AjaxPagingOption(string target)
+        {
+            this.Function = "AjaxPager('{0}','{1}')";
+            this.Href = "javascript:;";
+            this.Targer = target;
+        }
+        public AjaxPagingOption(string function, string target)
+        {
+            this.Function = function;
+            this.Href = "javascript:;";
+            this.Targer = target;
+        }
+        public string Href { get; set; }
+        public string Function { get; set; }
+        public string Targer { get; set; }
+
+        public string ToString(string url)
+        {
+            return string.Format(this.Function, url, this.Targer);
+        }
     }
 
     public class Pager

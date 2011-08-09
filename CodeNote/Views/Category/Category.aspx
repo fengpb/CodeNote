@@ -13,7 +13,9 @@
 <asp:Content ID="Conten4" ContentPlaceHolderID="MainContent" runat="server">
     <div id="leftwrap">
         <div class="leftbox">
+            <div id="articlelist">
             <% Html.RenderAction("ArticleList", "Article", new { categoryID = Model.CategoryID }); %>
+            </div>
         </div>
     </div>
     <div id="rightwrap">

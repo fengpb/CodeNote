@@ -87,6 +87,7 @@
     <Content Include="Global.asax" />
     <Content Include="Scripts\CodeNote.Account.js" />
     <Content Include="Scripts\CodeNote.Article.js" />
+    <Content Include="Scripts\CodeNote.Script.js" />
     <Content Include="Views\Account\Category.aspx" />
     <Content Include="Views\Account\Navigation.ascx" />
     <Content Include="Views\Account\Index.aspx" />

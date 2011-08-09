@@ -8,16 +8,14 @@
     <link href="/Content/Categroy.css" rel="stylesheet" type="text/css" />
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Navigation" runat="server">
-    <% Html.RenderAction("Navigation", "Control",new { categoryID = "Index" }); %>
+    <% Html.RenderAction("Navigation", "Control", new { categoryID = "Index" }); %>
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="MainContent" runat="server">
     <div id="leftwrap">
         <div class="leftbox">
-            <% Html.RenderAction("ArticleList", "Article"); %>
-            <%= Html.Paging(new Pager(2, 10, 1000), "", "", new { })%>
-            <%= Html.Paging(new Pager(1, 10, 1000), "", "", new { })%>
-             <%= Html.Paging(new Pager(98, 10, 1000), "", "", new { })%>
-             <%= Html.Paging(new Pager(100, 10, 1000), "", "", new { })%>
+            <div id="articlelist">
+                <% Html.RenderAction("ArticleList", "Article"); %>
+            </div>
         </div>
     </div>
     <div id="rightwrap">

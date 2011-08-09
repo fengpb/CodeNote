@@ -9,7 +9,7 @@
 %>
 <div>
     <h3>
-        <%= Html.ActionLink(item.Subject,"Detail","Article") %>
+        <%= Html.ActionLink(item.Subject,"Detail","Article",new {articleID=item.ID},null) %>
         <span>
             <%: item.CategoryID %></span>
     </h3>
@@ -20,6 +20,6 @@
    } %>
 <% if (Model.TotolPage > 1)
    { %>
-<% Html.Paging(new Pager() { Cur = Model.CurPage, Count = Model.RecordCount, Size = Model.PageSize }, "ArticleList", "Article", null); %>
+<%= Html.AjaxPaging(new Pager() { Cur = Model.CurPage, Count = Model.RecordCount, Size = Model.PageSize }, "ArticleList", "Article",new AjaxPagingOption ("articlelist"), new { })%>
 <%} %>
 <%} %>
