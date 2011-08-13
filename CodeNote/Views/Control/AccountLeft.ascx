@@ -1,9 +1,10 @@
 ﻿<%@ Control Language="C#" Inherits="CodeNote.Web.ViewUserControl<LoginUser>" %>
 <%@ Import Namespace="CodeNote.Entity" %>
+<%@ Import Namespace="CodeNote.Web.Common" %>
 <% if (Model != null)
    { %>
 <div>
-    <img style="vertical-align:middle" alt="<%:Model.LoginName %>" src="<%= FaceImgUrl(Model.Eamil,80) %>" />
+    <%= Html.Avatar(CurUser.Email)%><%= Html.ActionLink("退出", "LoginOut", "User", null, new { title = "Loginout" })%>
     <hr />
 </div>
 <%} %>

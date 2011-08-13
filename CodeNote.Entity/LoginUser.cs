@@ -29,12 +29,12 @@ namespace CodeNote.Entity
             get{ return this._passWord ; }
             set{ this._passWord = value ; }
         }
-        private string _eamil;
-        [Column(Name="Eamil",DbType = "nvarchar", CanBeNull = false)]
-        public string Eamil
+        private string _email;
+        [Column(Name="Email",DbType = "nvarchar", CanBeNull = false)]
+        public string Email
         {
-            get{ return this._eamil ; }
-            set{ this._eamil = value ; }
+            get{ return this._email ; }
+            set{ this._email = value ; }
         }
         private DateTime? _lastLoginDate;
         [Column(Name="LastLoginDate",DbType = "datetime", CanBeNull = true)]

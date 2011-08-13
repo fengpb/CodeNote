@@ -72,7 +72,12 @@ namespace CodeNote.Web.Controllers
         /// <returns></returns>
         public ActionResult Detail(int articleID)
         {
-            return View("Detail");
+            VwArticle model = this.ArtMg.Get(articleID);
+            if (model == null)
+            {
+                return View("Result", new ReturnMessage("错误", "对不起！您查看的文章信息不存在！"));
+            }
+            return View("Detail",model);
         }
 
         /// <summary>

@@ -17,7 +17,7 @@
                 <div class="tar">
                     <% if (IsLogin)
                        { %>
-                    <%= Html.ActionLink("退出", "LoginOut", "User", null, new { title = "Loginout" })%>
+                    
                     <%= Html.ActionLink(CurUser.LoginName,"Index","Account")%>
                     <%}
                        else

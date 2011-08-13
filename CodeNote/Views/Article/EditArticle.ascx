@@ -10,7 +10,7 @@
         <dt>
             <label for="articlebody">
                 正文</label>&nbsp;
-            <%: Html.ActionLink("?","Help","MarkDown") %>
+            <%= Html.ActionLink("?", "Help", "MarkDown", null, new { @class="help"})%>
         </dt>
         <dd>
             <textarea id="articlebody" name="body" cols="50" rows="10" class="abody"></textarea>
@@ -23,7 +23,7 @@
                 <input id="hidcategory" name="category" type="hidden" />
                 <select id="selcategory">
                 </select>
-            </span><a href="#" title="创建新的分类">创建分类</a>
+            </span>
         </dd>
         <dt>
             <label for="tag">

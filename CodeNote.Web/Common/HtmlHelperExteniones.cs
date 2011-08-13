@@ -10,6 +10,58 @@ namespace CodeNote.Web.Common
 {
     public static class HtmlHelperExteniones
     {
+        #region image
+        /// <summary>
+        /// Avatar Face
+        /// <br/>
+        /// http://www.gravatar.com
+        /// </summary>
+        /// <param name="hh"></param>
+        /// <param name="email"></param>
+        /// <returns></returns>
+        public static MvcHtmlString Avatar(this HtmlHelper hh, string email)
+        {
+            string irl = "http://www.gravatar.com/avatar/{0}?s={1}&d=identicon&r=pg";
+            TagBuilder avatar = new TagBuilder("img");
+            avatar.MergeAttribute("width", "60");
+            avatar.MergeAttribute("height", "60");
+            avatar.MergeAttribute("src", string.Format(irl, CodeNote.Common.Encryption.MD5(email), 60));
+            return MvcHtmlString.Create(avatar.ToString());
+        }
+
+        public static MvcHtmlString ImageLink(this HtmlHelper hh, string src, string actionName, string controllerName, RouteValueDictionary routeValues, RouteValueDictionary htmlAttributes)
+        {
+            string pageUrl = UrlHelper.GenerateUrl(null, actionName, controllerName, routeValues, hh.RouteCollection, hh.ViewContext.RequestContext, true);
+            TagBuilder link = new TagBuilder("a");
+            link.MergeAttribute("href", pageUrl);
+            link.MergeAttributes(htmlAttributes);
+            TagBuilder img = new TagBuilder("img");
+            img.MergeAttribute("src", src);
+            img.MergeAttribute("alt", "");
+            link.InnerHtml = img.ToString();
+            return MvcHtmlString.Create(link.ToString());
+        }
+
+        public static MvcHtmlString Image(this HtmlHelper hh, string actionName, string controllerName, Object routeValues)
+        {
+            return Image(hh, actionName, controllerName, new RouteValueDictionary(routeValues), new RouteValueDictionary());
+        }
+
+        public static MvcHtmlString Image(this HtmlHelper hh, string actionName, string controllerName, Object routeValues, Object htmlAttributes)
+        {
+            return Image(hh, actionName, controllerName, new RouteValueDictionary(routeValues), new RouteValueDictionary(htmlAttributes));
+        }
+
+        public static MvcHtmlString Image(this HtmlHelper hh, string actionName, string controllerName, RouteValueDictionary routeValues, RouteValueDictionary htmlAttributes)
+        {
+            string pageUrl = UrlHelper.GenerateUrl(null, actionName, controllerName, routeValues, hh.RouteCollection, hh.ViewContext.RequestContext, true);
+            TagBuilder img = new TagBuilder("img");
+            img.MergeAttribute("src", pageUrl);
+            img.MergeAttributes(htmlAttributes);
+            return MvcHtmlString.Create(img.ToString());
+        }
+        #endregion
+
         #region Paging
 
         #region AjaxPaging
@@ -37,19 +89,31 @@ namespace CodeNote.Web.Common
                 TagBuilder parent = new TagBuilder("a");
                 parent.InnerHtml = "&lt;";
                 parent.MergeAttribute("title", "上一页");
-                parent.MergeAttribute("href", pageUrl);
+                parent.MergeAttribute("href", option.Href);
+                parent.MergeAttribute("onclick", option.ToString(pageUrl));
                 sb.Append(parent.ToString());
             }
 
-            int showPage = 10;
+            int showPage = 5; //showPage*2
             int start = 1;
-            int end = (pager.Cur + (showPage / 2)) > pager.Pag ? pager.Pag : showPage;
-            start = (pager.Cur - (showPage / 2)) > 1 ? pager.Cur - (showPage / 2) : 1;
-            if ((pager.Pag - pager.Cur) <= showPage / 2 && pager.Pag > showPage)
+            int end = 5 * 2;
+            if ((pager.Cur - showPage) < 1)
+            {
+                start = 1;
+            }
+            else
+            {
+                start = pager.Cur - showPage;
+            }
+            if ((pager.Cur + showPage) >= pager.Pag)
             {
                 end = pager.Pag;
-                start = pager.Pag - showPage + 1;
             }
+            else
+            {
+                end = pager.Cur + showPage;
+            }
+
             //首页
             if (start > showPage)
             {

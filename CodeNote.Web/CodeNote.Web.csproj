@@ -63,6 +63,7 @@
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\ControlController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ImageController.cs" />
     <Compile Include="Controllers\MarkDownController.cs" />
     <Compile Include="Controllers\TagController.cs" />
     <Compile Include="Controllers\UserController.cs" />

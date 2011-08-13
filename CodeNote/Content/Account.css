@@ -27,10 +27,10 @@
 #navigation ul li.cur a { height: 32px; background-color: #FFF; color: #1B26A4; border-top: 2px solid #1B26A4; border-bottom: 1px solid #FFF; border-left: 1px solid #1B26A4; border-right: 1px solid #1B26A4; }
 
 #maincontent { clear: both; }
-#leftwrap { float:left; width:230px; height: 100%; border: none; background-color:#EDEEFF; }
+#leftwrap { float:left; width:230px; height: 100%; border: none; background-color:#FFF; }
 #rightwrap { margin-left:240px; height: 100%; }
 #leftwrap .leftbox { margin:15px; }
-#rightwrap .rightbox { margin:10px 2px; }
+#rightwrap .rightbox { margin:10px 0px; }
 #rightwrap .rightbox h4 { border-bottom: 1px dotted #EEE; }
 #rightwrap .rightbox h4 label { border-bottom: 1px solid #D01D18; }
 
@@ -39,7 +39,9 @@
 #footer p { font-size: 12px; }
 
 #poptitle { font-size: 14px; width: 100%; line-height: 25px; padding: 0px; border-bottom: 1px solid #1B26A4; margin-bottom: 5px; color: #0D188C; background-color: #EDEEFF; }
-#poptitle h4 { margin-left: 5px; }
+#poptitle h1 { margin-left: 5px; }
+h3.title {  padding-bottom:2px; margin-bottom:5px; font-size: 14px; width: 100%; color: #0D188C; }
+h3.title label { margin-left:5px; border-bottom: 2px solid #D01D18;}
 /* clear*/
 #maincontent:after, #footer:after { content: '\0020'; display: block; height: 0; clear: both; }
 

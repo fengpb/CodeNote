@@ -2,20 +2,17 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Configuration;
 using System.Data.Linq.Mapping;
 using System.Data.Linq;
 using System.Reflection;
+
 using CodeNote.Entity;
 
 namespace CodeNote.Dal.Proc
 {
-    public class ArticleProc : System.Data.Linq.DataContext
+    public class ArticleProc : CodeNote.Linq.IDal.DataContext
     {
-        public ArticleProc()
-            : base(ConfigurationManager.ConnectionStrings["CodeNoteBlog"].ConnectionString)
-        {
-        }
+       
 
         [Function(Name = "SP_Article_List")]
         public ISingleResult<Article> GetList(

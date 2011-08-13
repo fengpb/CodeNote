@@ -4,9 +4,9 @@
 #editarticle dl.edit dt { padding:0px; margin: 4px auto; }
 #editarticle dl.edit dt label { color: #1B26A4; font-size:14px; border-bottom: 0px solid #1B26A4; }
 #editarticle dl.edit dd { }
-#editarticle dl.edit .subject { width: 100%; }
+#editarticle dl.edit .subject { width: 99%; }
 #editarticle dl.edit .tag { width: 40%; }
-#editarticle dl.edit .abody { width: 100%; padding:0px; height: 450px; border: 1px solid #AEAEAE; overflow: visible; }
+#editarticle dl.edit .abody { width: 99%; padding:2px; height: 450px; border: 1px solid #AEAEAE; overflow: visible; }
 #editarticle dl.edit .note { margin: 2px 0px; padding: 1px 0px 1px 4px; width:100%; color: #D01D18; background-color: #F7FFD8; border-left: 2px solid #F2F55C; }
 #editarticle dl.edit .btndiv { margin: 10px auto; }
 

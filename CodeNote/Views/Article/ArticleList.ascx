@@ -10,8 +10,7 @@
 <div>
     <h3>
         <%= Html.ActionLink(item.Subject,"Detail","Article",new {articleID=item.ID},null) %>
-        <span>
-            <%: item.CategoryID %></span>
+        <span></span>
     </h3>
     <div>
         <%= item.Body %></div>

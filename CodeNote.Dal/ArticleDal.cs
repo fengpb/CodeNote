@@ -22,5 +22,18 @@ namespace CodeNote.Dal
                 return proc.GetList(page, pageSize, filter, ref rowCount).ToList();
             }
         }
+
+        public VwArticle Get(int articleID)
+        {
+            try
+            {
+                return this.GetTable<VwArticle>().Where(x => x.ID == articleID).SingleOrDefault();
+            }
+            catch (Exception ex)
+            {
+                log.Warn(ex.Message, ex);
+                return null;
+            }
+        }
     }
 }

@@ -11,8 +11,10 @@ using CodeNote.Entity;
 
 namespace CodeNote.Dal.Proc
 {
-    public class CategoryProc : CodeNote.Linq.IDal.DataContent<Category>
+    public class CategoryProc : CodeNote.Linq.IDal.DataContext
     {
+      
+
         [Function(Name="SP_Category_Like")]
         public ISingleResult<Category> GetLike([Parameter(Name = "Key")]string likeCategoryID)
         {

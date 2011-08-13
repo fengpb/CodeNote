@@ -52,6 +52,19 @@ namespace CodeNote.Manager
             return retValue;
         }
 
+
+        public VwArticle Get(int articleID)
+        {
+            if (articleID < 1)
+            {
+                return null;
+            }
+            using (ArticleDal dal = new ArticleDal())
+            {
+                return dal.Get(articleID);
+            }
+        }
+
         /// <summary>
         /// 获取文章列表分页
         /// </summary>

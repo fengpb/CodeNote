@@ -6,7 +6,7 @@ using log4net;
 
 namespace CodeNote.Linq.IDal
 {
-    public class BaseDalImpl<T> : DataContent<T>, IBaseDal<T> where T : class
+    public class BaseDalImpl<T> : DataContext<T>, IBaseDal<T> where T : class
     {
         public BaseDalImpl(string connectionStr)
             : base(connectionStr)
