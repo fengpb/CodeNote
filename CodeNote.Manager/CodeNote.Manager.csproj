@@ -49,6 +49,7 @@
     <Compile Include="CategoryManager.cs" />
     <Compile Include="LoginUserManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReplyManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CodeNote.Common\CodeNote.Common.csproj">

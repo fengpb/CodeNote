@@ -13,6 +13,31 @@ namespace CodeNote.Dal
     public class CategoryDal : CodeNote.Linq.IDal.BaseDalImpl<Category>
     {
 
+        public bool Modify(Category entity)
+        {
+            try
+            {
+                Category old = this.Get(entity.CategoryID);
+                if (old == null)
+                {
+                    return false;
+                }
+                old.Name = entity.Name;
+                old.Title = entity.Title;
+                old.ParentID = entity.ParentID;
+                old.Status = entity.Status;
+                old.IsHot = entity.IsHot;
+                old.Count = entity.Count;
+                this.SubmitChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                log.Warn(ex.Message, ex);
+                return false;
+            }
+        }
+
         public Category Get(string categoryID)
         {
             return this.DataTable.Where(e => e.CategoryID == categoryID).SingleOrDefault();

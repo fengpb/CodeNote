@@ -7,16 +7,16 @@
 <% foreach (Article item in Model.Data)
    {
 %>
-<div>
+<div class="artitem">
     <h3>
         <%= Html.ActionLink(item.Subject,"Detail","Article",new {articleID=item.ID},null) %>
         <span></span>
     </h3>
     <div>
-        <%= item.Body %></div>
+        <%= CodeNote.Common.StringFilter.HtmlFilter(item.Body) %></div>
 </div>
 <%
-   } %>
+    } %>
 <% if (Model.TotolPage > 1)
    { %>
 <%= Html.AjaxPaging(new Pager() { Cur = Model.CurPage, Count = Model.RecordCount, Size = Model.PageSize }, "ArticleList", "Article",new AjaxPagingOption ("articlelist"), new { })%>

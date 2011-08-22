@@ -8,31 +8,44 @@ h3 { font-size: 16px; }
 h4 { font-size: 14px; color: #0D188C; }
 h5, h6 { font-size: 12px; font-weight: normal; }
 ul, ol, lin { list-style: none; font-weight: normal; }
-a { text-decoration: none; color: #1B26A4; zoom:-1;}
-a:hover { color:#FFF; background-color: #1B26A4; }
+a { text-decoration: none; color: #1B26A4; zoom: -1; outline:none; }
+/*a:hover { color: #FFF; background-color: #1B26A4; }*/
+a:hover { color: #1B26A4; border-bottom: 1px dotted #1B26A4; }
 a.help { color: #F00; }
-a.help:hover { color:#1B26A4; background-color:#FFF;}
+a.help:hover { color: #1B26A4; background-color: #FFF; }
 
 input { vertical-align: middle; margin: 0px; padding: 0px; }
+textarea { margin: 0px; padding: 0px; }
 select { margin: 0px; padding: 0px; }
 input[type=button] { padding: 0px 4px; vertical-align: middle; height: 22px; line-height: 20px; font-size: 12px; color: #FFF; background-color: #1737A6; border-style: solid; border-width: 1px; border-color: #1737A6 #00001A #00001A #1737A6; }
 input[type=button]:hover { background-color: #1737A6; border-color: #1737A6 #010D3F #010D3F #1737A6; }
 
 /* Common
 ----------------------------------------------*/
+
 .button { margin: 0px; padding: 0px 4px; vertical-align: middle; height: 22px; line-height: 20px; font-size: 12px; color: #FFF; background-color: #1737A6; border-style: solid; border-width: 1px; border-color: #1737A6 #00001A #00001A #1737A6; }
 .button:hover { background-color: #1737A6; border-color: #1737A6 #00001A #00001A #1737A6; }
-.text { border: 1px solid #AEAEAE; line-height: 18px; height: 20px; padding: 0px 2px; }
+.text { border: 1px solid #AEAEAE; line-height: 18px; height: 20px; padding: 0px 2px; width: 180px; }
 .red { color: #D01D18; }
 .disinl { display: inline; }
 .tar { text-align: right; }
 .tal { text-align: left; }
 .tac { text-align: center; }
+.posrl { position: relative; }
+.posabstr { position: absolute; top: 0px; right: 0px; }
 .dlinput dd, .dlinput dt { margin: 3px 0px; }
-p.note { border-left: 2px solid #F00; padding-left: 4px; margin: 2px 0px; }
+p.note { border-left: 2px solid #F00; padding-left: 4px; margin: 2px 0px; font-size: 12px; }
+/* 清浮动
+------------------------------------------------*/
+.clearfix:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
+.clearfix { display: inline-block; }
+/* Hides from IE-mac \*/
+* html .clearfix { height: 1%; }
+.clearfix { display: block; }
+
 /* add edit form style*/
 dl.edit { }
 dl.edit dt { margin: 3px 0px; }
 dl.edit dt span.required { color: #F00; }
-dl.edit dd { }
+dl.edit dd { margin: 3px 0px; }
 dl.edit dd.btn { margin-top: 10px; }

@@ -19,7 +19,15 @@ namespace CodeNote.Dal
         {
             using (ArticleProc proc = new ArticleProc())
             {
-                return proc.GetList(page, pageSize, filter, ref rowCount).ToList();
+                return proc.SP_Article_List(page, pageSize, filter, ref rowCount).ToList();
+            }
+        }
+
+        public IList<Article> GetNewList(int topNum, string categoryID)
+        {
+            using (ArticleProc proc = new ArticleProc())
+            {
+                return proc.SP_Article_New(topNum, categoryID).ToList();
             }
         }
 

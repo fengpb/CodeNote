@@ -12,7 +12,7 @@ using CodeNote.Common;
 
 namespace CodeNote.Web.Controllers
 {
-    public class CategoryController : Controller
+    public class CategoryController : CodeNote.Web.BaseController
     {
         #region CategoryManager
         private CategoryManager _categoryMg;
@@ -50,9 +50,38 @@ namespace CodeNote.Web.Controllers
         /// Admin 修改/添加分类信息
         /// </summary>
         /// <returns></returns>
-        public ActionResult EditCategory()
+        public ActionResult Edit()
         {
-            return View("EditCategory");
+            string categoryID = Request["categoryID"];
+            Entity.Category model = CategoryMg.Get(categoryID);
+            return PartialView("EditCategory", model);
+        }
+        [Filter.CheckAdmin]
+        public JsonResult DoEdit()
+        {
+            Entity.Category entity = new Entity.Category();
+            entity.ParentID = Request["parentid"];
+            entity.CategoryID = Request["categoryID"];
+            if (entity.ParentID == entity.CategoryID)
+            {
+                entity.ParentID = "0";
+            }
+            if (entity.ParentID.Length == entity.CategoryID.Length)
+            {
+                entity.ParentID = entity.CategoryID.Substring(entity.CategoryID.IndexOf("-"));
+            }
+
+            entity.Name = Request["name"];
+            entity.Title = Request["title"];
+            entity.Count = 0;
+            entity.Status = 0;
+            entity.IsHot = false;
+            entity.CreateDate = DateTime.Now;
+            entity.CreateID = this.CurUser.ID;
+
+            ReturnValue retValue = new ReturnValue();
+            retValue = this.CategoryMg.AddOrEdit(entity);
+            return Json(retValue);
         }
         #endregion
 
@@ -61,7 +90,7 @@ namespace CodeNote.Web.Controllers
         /// 分类树
         /// </summary>
         /// <returns></returns>
-        public ActionResult CategoryTree()
+        public ActionResult Tree()
         {
             TreeWrap<CodeNote.Entity.Category> tree = this.CategoryMg.GetCategoryTree();
             return PartialView("CategoryTree", tree);

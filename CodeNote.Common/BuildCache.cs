@@ -6,9 +6,9 @@ using System.Runtime.Caching;
 
 namespace CodeNote.Common
 {
-    public class BuildCache<T> where T : class
+    public class BuildCache<T> : BuildCache where T : class
     {
-        private static log4net.ILog log;
+
         static BuildCache()
         {
             log = log4net.LogManager.GetLogger(typeof(BuildCache<T>));
@@ -58,7 +58,34 @@ namespace CodeNote.Common
             return this.CacheInstance.Get(key) as T;
         }
 
+
+    }
+
+    public class BuildCache
+    {
+        protected static log4net.ILog log;
+        /// <summary>
+        /// 移除缓存
+        /// <br/>
+        /// 改变缓存文件
+        /// </summary>
+        /// <param name="key"></param>
+        public static void CacheRemove(string key)
+        {
+            ChangeMonitorFileDateNow(key, true);
+        }
+
         protected static FileChangeMonitor SetFileChangeMonitor(string key)
+        {
+            string monitorFile = GetCacheMoniorFile(key);
+            ChangeMonitorFileDateNow(key, true);
+            IList<string> filePaths = new List<string>();
+            filePaths.Add(monitorFile);
+            FileChangeMonitor changeMonitor = new HostFileChangeMonitor(filePaths);
+            return changeMonitor;
+        }
+
+        protected static string GetCacheMoniorFile(string key)
         {
             string dir = System.Configuration.ConfigurationManager.AppSettings["FileChangeMonitor_Dir"];
             if (string.IsNullOrEmpty(dir))
@@ -74,14 +101,19 @@ namespace CodeNote.Common
             string monitorFile = dir + "/" + key + ".cachemonitor";
             if (!System.IO.File.Exists(monitorFile))
             {
-                System.IO.File.AppendAllText(monitorFile, DateTime.Now.ToString("yyyyMMddHHmmssfffff"), Encoding.UTF8);
+                System.IO.File.Create(monitorFile);
             }
-            IList<string> filePaths = new List<string>();
-            filePaths.Add(monitorFile);
-            FileChangeMonitor changeMonitor = new HostFileChangeMonitor(filePaths);
-            return changeMonitor;
+            return monitorFile;
         }
 
+        protected static void ChangeMonitorFileDateNow(string key, bool append)
+        {
+            using (System.IO.StreamWriter sw = new System.IO.StreamWriter(GetCacheMoniorFile(key), append))
+            {
+                sw.WriteLine(DateTime.Now.ToString("yyyyMMddHHmmssffffff"));
+            }
+
+        }
         protected void CacheRemoveCallBack(CacheEntryRemovedArguments args)
         {
             log.Info("Remove Cahce: " + args.CacheItem.Key);

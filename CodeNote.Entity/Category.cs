@@ -23,7 +23,7 @@ namespace CodeNote.Entity
             set{ this._title = value ; }
         }
         private string _name;
-        [Column(Name="Name",DbType = "nvarchar", IsPrimaryKey = true, CanBeNull = false)]
+        [Column(Name="Name",DbType = "nvarchar", IsPrimaryKey = false, CanBeNull = false)]
         public string Name
         {
             get{ return this._name ; }

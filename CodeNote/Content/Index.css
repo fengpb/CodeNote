@@ -1,23 +1,26 @@
 ﻿/* Layout
 ----------------------------------------------*/
-#page { }
-#content { min-width: 960px; margin: 15px; font-size: 14px; background: none; }
+#page { margin: 0px; padding: 0px; min-width: 960px; }
+#content { width: 100%; font-size: 14px; background: none; margin: 0px auto; }
 
-#header { height: 70px; margin-top: 10px; /*background-color: #EFF6FE;*/ position: relative; }
-#logo { position: absolute; top: 0px; left: 0px; width: 230px; }
-#logo h1 { font-size: 36px; }
-#logo h1 a { color: #1B26A4; border: none; }
-#logo .sitedesp { padding-left: 5px; color: #474747; }
-#logo .logoimg { height: 60px; width: 230px; border: none; }
-#hright { padding-left: 230px; position: relative; }
-#hright dl { float: right; height: 22px; }
-#hright dl dd { display: inline; float: left; line-height: 20px; margin: 0px 4px; }
-#hright dl dd .tar { line-height: 25px; }
-#hright .searchbox { width: 200px; }
-#hright .searchbox .text { width: 180px; vertical-align: middle; }
+#header { height: 105px; margin: 0px; /*background-color: #EFF6FE;*/ position: relative; }
+
+#topmenu { background-color: #EDEEFF; border-bottom: 1px solid #7FAEF2; text-align: right; font-size: 12px; }
+#topmenu dl { height: 25px; line-height: 25px; margin: 0px 10px; }
+#topmenu dl dd { display: inline; }
+
+#divlogo { height: 70px; margin: 5px 10px; position: relative; }
+#logo { float: left; top: 0px; left: 0px; width: 230px; height: 68px; overflow: hidden; }
+#logo h1 { font-size: 34px; height: 35px; }
+#logo h1 a { color: #1B26A4; border: none; background-color: #FFF; }
+#logo .sitedesp { padding-left: 5px; margin-top: 5px; color: #474747; }
+#hright { margin-left: 240px; height: 68px; }
+
+.searchbox { width: 205px; border: 1px solid #AAA; }
+.searchbox .text { width: 200px; border: none; vertical-align: middle; }
 
 #navigation { overflow: hidden; height: 32px; position: relative; }
-#navigation .navbg { position: absolute; left: 0px; bottom: 0px; height: 30px; width: 100%; border-bottom: 1px solid #1B26A4; background-color: #EDEEFF; z-index: 0; }
+#navigation .navbg { position: absolute; left: 0px; bottom: 0px; height: 28px; width: 100%; border-bottom: 2px solid #1B26A4; background-color: #7FAEF2; z-index: 0; }
 #navigation ul { padding-left: 5px; height: 32px; }
 #navigation ul li { float: left; position: relative; height: 29px; margin: 2px 4px 0px 4px; line-height: 30px; border: none; }
 #navigation ul li a { float: left; font-size: 14px; color: #0D188C; padding: 0px 12px; height: 100%; line-height: 30px; }
@@ -25,21 +28,61 @@
 #navigation ul li.cur { margin-top: 0px; }
 #navigation ul li.cur a { height: 32px; background-color: #FFF; color: #1B26A4; border-top: 2px solid #1B26A4; border-bottom: 1px solid #FFF; border-left: 1px solid #1B26A4; border-right: 1px solid #1B26A4; }
 
-#maincontent { clear: both; margin: 10px 0px; }
-#leftwrap { float: left; width: 79%; height: 100%; border-right: 0px solid #AEAEAE; }
-#rightwrap { margin-left: 80%; height: 100%; }
-#leftwrap .leftbox { width: 98%; }
-#rightwrap .rightbox { }
-#rightwrap .rightbox h4 { border-bottom: 1px dotted #EEE; }
-#rightwrap .rightbox h4 label { border-bottom: 1px solid #D01D18; }
+#maincontent { clear: both; margin: 10px 0px; position: relative; }
+#leftwrap { float: left; width: 82%; }
+#rightwrap { margin-left: 84%; }
+#minwrap { float: left; margin: 0px 210px 0px 170px; }
+#leftwrap .leftbox { margin-left: 10px; }
+#minwrap .minbox { }
+#rightwrap .rightbox { margin-right: 10px; }
+#rightwrap .rightbox h4 { border-bottom: 1px dotted #7FAEF2; }
+#rightwrap .rightbox h4 label { border-bottom: 2px solid #D01D18; }
 
 
-#footer { clear: both; margin-top: 10px; padding: 4px 8px; background-color: #EDEEFF; color: #474747; border-top: 1px solid #1B26A4; }
-#footer p { font-size: 12px; }
+#footer { clear: both; margin-top: 10px; padding: 4px 8px; background-color: #EDEEFF; color: #474747; border-top: 1px solid #7FAEF2; font-size: 12px; }
+#footer p { }
 
 #poptitle { font-size: 14px; width: 100%; color: #0D188C; line-height: 25px; padding: 0px; border-bottom: 1px solid #1B26A4; margin-bottom: 5px; background-color: #EDEEFF; }
 #poptitle h1 { margin-left: 5px; }
-h3.title { margin-left: 5px; padding-bottom:2px; font-size: 14px; width: 100%; color: #0D188C; }
-h3.title lable {border-bottom: 2px solid #D01D18;}
+h3.title { font-size: 14px; width: 100%; color: #0D188C; border-bottom: 1px dotted #7FAEF2; }
+h3.title label { border-bottom: 2px solid #D01D18; }
+
+
+
 /* clear*/
 #maincontent:after, #footer:after { content: '\0020'; display: block; height: 0; clear: both; }
+
+
+/*分类样式
+------------------------------------------------------*/
+ul.rightlist { margin: 10px auto; width:100%; }
+ul.rightlist li { margin: 5px 2px; font-size:12px; }
+
+/* 文章列表
+------------------------------------------------------*/
+.artitem { margin: 2px 0px; }
+.artitem h3 { font-size: 14px; font-weight: normal; }
+.artitem div { font-size: 14px; }
+
+/*评论回复
+------------------------------------------------------*/
+.replay { margin-top: 10px; }
+.replyList { margin-top: 5px; border-bottom: 1px dotted #7FAEF2; }
+.replyList dl { margin: 4px 0px; padding: 3px; border: 1px dotted #EDEEFF; }
+.replyList dl dt { float: left; width: 48px; }
+.replyList dl dd { margin-left: 55px; }
+.replyList dl dd .bcon { }
+.replay .edit textarea { width: 100%; }
+
+/* Other
+------------------------------------------------------*/
+.magtlf10 { margin: 0px 10px; }
+.mgt10 { margin-top: 10px; }
+.nick { font-size: 14px; color: #0D188C; }
+.date { font-size: 12px; color: #AAA; }
+.message { font-size: 12px; line-height: 20px; }
+.pager { margin-top: 5px; }
+
+/* test
+------------------------------------------------------*/
+.ad { border: 1px solid #F00; }

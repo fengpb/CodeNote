@@ -32,6 +32,7 @@
             <input id="tag" type="text" maxlength="50" name="artitag" class="text tag" />
             <a href="#" title="根据正文自动匹配">自动匹配</a>
         </dd>
+        <!--
         <dt>
             <label>
                 设置</label></dt>
@@ -51,6 +52,7 @@
                     <input type="checkbox" name="isreprint" />禁止转载</label>
             </div>
         </dd>
+        -->
         <dd class="btndiv">
             <input type="submit" id="savearticle" class="button" value="保存" />
         </dd>

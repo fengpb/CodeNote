@@ -4,12 +4,11 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
     <%: Model.Title %>
 </asp:Content>
+<asp:Content ID="Content5" ContentPlaceHolderID="PopTitle" runat="server">
+    <li class="cur"><a>
+        <%: Model.Title %></a></li></asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <div id="poptitle">
-        <h4>
-            <%: Model.Title %></h4>
-    </div>
-    <div>
+    <div class="magtlf10 mgt10">
         <p>
             <%: Model.Content %></p>
     </div>

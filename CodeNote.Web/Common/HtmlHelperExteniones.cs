@@ -10,6 +10,15 @@ namespace CodeNote.Web.Common
 {
     public static class HtmlHelperExteniones
     {
+
+        #region url
+        public static MvcHtmlString Url(this HtmlHelper hh, string actionName, string controllerName, Object routeValues)
+        {
+            string pageUrl = UrlHelper.GenerateUrl(null, actionName, controllerName, new RouteValueDictionary(routeValues), hh.RouteCollection, hh.ViewContext.RequestContext, true);
+            return MvcHtmlString.Create(pageUrl);
+        }
+        #endregion
+
         #region image
         /// <summary>
         /// Avatar Face
@@ -23,9 +32,9 @@ namespace CodeNote.Web.Common
         {
             string irl = "http://www.gravatar.com/avatar/{0}?s={1}&d=identicon&r=pg";
             TagBuilder avatar = new TagBuilder("img");
-            avatar.MergeAttribute("width", "60");
-            avatar.MergeAttribute("height", "60");
-            avatar.MergeAttribute("src", string.Format(irl, CodeNote.Common.Encryption.MD5(email), 60));
+            avatar.MergeAttribute("width", "48");
+            avatar.MergeAttribute("height", "48");
+            avatar.MergeAttribute("src", string.Format(irl, CodeNote.Common.Encryption.MD5(email), 48));
             return MvcHtmlString.Create(avatar.ToString());
         }
 
@@ -80,90 +89,97 @@ namespace CodeNote.Web.Common
                 routeValues = new RouteValueDictionary();
             }
             TagBuilder div = new TagBuilder("div");
+            div.MergeAttribute("class", "pager");
             StringBuilder sb = new StringBuilder();
-            if (pager.Cur > 1)
+            routeValues["page"] = pager.Cur;
+            string hidRefreshUrl = UrlHelper.GenerateUrl(null, actionName, controllerName, routeValues, hh.RouteCollection, hh.ViewContext.RequestContext, true);
+            sb.AppendLine(string.Format("<input type=\"hidden\" id=\"hid_RefreshUrl\" value=\"{0}\" >", hidRefreshUrl));
+            if (pager.Pag > 1)//显示页码
             {
-                routeValues["page"] = pager.Cur - 1;
+                if (pager.Cur > 1)
+                {
+                    routeValues["page"] = pager.Cur - 1;
 
-                string pageUrl = UrlHelper.GenerateUrl(null, actionName, controllerName, routeValues, hh.RouteCollection, hh.ViewContext.RequestContext, true);
-                TagBuilder parent = new TagBuilder("a");
-                parent.InnerHtml = "&lt;";
-                parent.MergeAttribute("title", "上一页");
-                parent.MergeAttribute("href", option.Href);
-                parent.MergeAttribute("onclick", option.ToString(pageUrl));
-                sb.Append(parent.ToString());
-            }
+                    string pageUrl = UrlHelper.GenerateUrl(null, actionName, controllerName, routeValues, hh.RouteCollection, hh.ViewContext.RequestContext, true);
+                    TagBuilder parent = new TagBuilder("a");
+                    parent.InnerHtml = "&lt;";
+                    parent.MergeAttribute("title", "上一页");
+                    parent.MergeAttribute("href", option.Href);
+                    parent.MergeAttribute("onclick", option.ToString(pageUrl));
+                    sb.AppendLine(parent.ToString());
+                }
 
-            int showPage = 5; //showPage*2
-            int start = 1;
-            int end = 5 * 2;
-            if ((pager.Cur - showPage) < 1)
-            {
-                start = 1;
-            }
-            else
-            {
-                start = pager.Cur - showPage;
-            }
-            if ((pager.Cur + showPage) >= pager.Pag)
-            {
-                end = pager.Pag;
-            }
-            else
-            {
-                end = pager.Cur + showPage;
-            }
-
-            //首页
-            if (start > showPage)
-            {
-                routeValues["page"] = 1;
-
-                string pageUrl = UrlHelper.GenerateUrl(null, actionName, controllerName, routeValues, hh.RouteCollection, hh.ViewContext.RequestContext, true);
-                TagBuilder parent = new TagBuilder("a");
-                parent.InnerHtml = string.Format("<span>{0}</span>", 1);
-                parent.MergeAttribute("title", "首页");
-                parent.MergeAttribute("href", option.Href);
-                parent.MergeAttribute("onclick", option.ToString(pageUrl));
-                sb.Append(parent.ToString());
-            }
-
-            for (int i = start; i <= end; i++)
-            {
-                routeValues["page"] = i;
-                string pageUrl = UrlHelper.GenerateUrl(null, actionName, controllerName, routeValues, hh.RouteCollection, hh.ViewContext.RequestContext, true);
-                TagBuilder aLink = new TagBuilder("a");
-                if (i == pager.Cur)
-                    aLink.InnerHtml = string.Format("&nbsp;<b>{0}</b>&nbsp;", i);
+                int showPage = 5; //showPage*2
+                int start = 1;
+                int end = 5 * 2;
+                if ((pager.Cur - showPage) < 1)
+                {
+                    start = 1;
+                }
                 else
-                    aLink.InnerHtml = string.Format("&nbsp;<span>{0}</span>&nbsp;", i);
-                aLink.MergeAttribute("href", option.Href);
-                aLink.MergeAttribute("onclick", option.ToString(pageUrl));
-                sb.Append(aLink.ToString());
-            }
-            if (end < pager.Pag - showPage)
-            {
-                routeValues["page"] = pager.Pag;
+                {
+                    start = pager.Cur - showPage;
+                }
+                if ((pager.Cur + showPage) >= pager.Pag)
+                {
+                    end = pager.Pag;
+                }
+                else
+                {
+                    end = pager.Cur + showPage;
+                }
 
-                string pageUrl = UrlHelper.GenerateUrl(null, actionName, controllerName, routeValues, hh.RouteCollection, hh.ViewContext.RequestContext, true);
-                TagBuilder next = new TagBuilder("a");
-                next.InnerHtml = string.Format("<span>{0}</span>", pager.Pag);
-                next.MergeAttribute("title", "尾页");
-                next.MergeAttribute("href", option.Href);
-                next.MergeAttribute("onclick", option.ToString(pageUrl));
-                sb.Append(next.ToString());
-            }
-            if (pager.Cur < pager.Pag)
-            {
-                routeValues["page"] = pager.Cur + 1;
+                //首页
+                if (start > showPage)
+                {
+                    routeValues["page"] = 1;
 
-                string pageUrl = UrlHelper.GenerateUrl(null, actionName, controllerName, routeValues, hh.RouteCollection, hh.ViewContext.RequestContext, true);
-                TagBuilder next = new TagBuilder("a");
-                next.InnerHtml = "&gt;";
-                next.MergeAttribute("title", "下一页");
-                next.MergeAttribute("href", option.Href);
-                next.MergeAttribute("onclick", option.ToString(pageUrl));
-                sb.Append(next.ToString());
+                    string pageUrl = UrlHelper.GenerateUrl(null, actionName, controllerName, routeValues, hh.RouteCollection, hh.ViewContext.RequestContext, true);
+                    TagBuilder parent = new TagBuilder("a");
+                    parent.InnerHtml = string.Format("<span>{0}</span>", 1);
+                    parent.MergeAttribute("title", "首页");
+                    parent.MergeAttribute("href", option.Href);
+                    parent.MergeAttribute("onclick", option.ToString(pageUrl));
+                    sb.AppendLine(parent.ToString());
+                }
+
+                for (int i = start; i <= end; i++)
+                {
+                    routeValues["page"] = i;
+                    string pageUrl = UrlHelper.GenerateUrl(null, actionName, controllerName, routeValues, hh.RouteCollection, hh.ViewContext.RequestContext, true);
+                    TagBuilder aLink = new TagBuilder("a");
+                    if (i == pager.Cur)
+                        aLink.InnerHtml = string.Format("&nbsp;<b>{0}</b>&nbsp;", i);
+                    else
+                        aLink.InnerHtml = string.Format("&nbsp;<span>{0}</span>&nbsp;", i);
+                    aLink.MergeAttribute("href", option.Href);
+                    aLink.MergeAttribute("onclick", option.ToString(pageUrl));
+                    sb.AppendLine(aLink.ToString());
+                }
+                if (end < pager.Pag - showPage)
+                {
+                    routeValues["page"] = pager.Pag;
+
+                    string pageUrl = UrlHelper.GenerateUrl(null, actionName, controllerName, routeValues, hh.RouteCollection, hh.ViewContext.RequestContext, true);
+                    TagBuilder next = new TagBuilder("a");
+                    next.InnerHtml = string.Format("<span>{0}</span>", pager.Pag);
+                    next.MergeAttribute("title", "尾页");
+                    next.MergeAttribute("href", option.Href);
+                    next.MergeAttribute("onclick", option.ToString(pageUrl));
+                    sb.AppendLine(next.ToString());
+                }
+                if (pager.Cur < pager.Pag)
+                {
+                    routeValues["page"] = pager.Cur + 1;
+
+                    string pageUrl = UrlHelper.GenerateUrl(null, actionName, controllerName, routeValues, hh.RouteCollection, hh.ViewContext.RequestContext, true);
+                    TagBuilder next = new TagBuilder("a");
+                    next.InnerHtml = "&gt;";
+                    next.MergeAttribute("title", "下一页");
+                    next.MergeAttribute("href", option.Href);
+                    next.MergeAttribute("onclick", option.ToString(pageUrl));
+                    sb.AppendLine(next.ToString());
+                }
             }
             div.InnerHtml = sb.ToString();
             return MvcHtmlString.Create(div.ToString());
@@ -291,6 +307,7 @@ namespace CodeNote.Web.Common
         public static MvcHtmlString Tree(this HtmlHelper hh, TreeWrap<CodeNote.Entity.Category> tree)
         {
             TagBuilder div = new TagBuilder("div");
+            div.MergeAttribute("class", "tree");
             div.InnerHtml = InitTree(hh, tree);
             return MvcHtmlString.Create(div.ToString());
         }
@@ -304,8 +321,9 @@ namespace CodeNote.Web.Common
                 {
                     TagBuilder li = new TagBuilder("li");
                     TagBuilder label = new TagBuilder("label");
+                    string hid = string.Format("<input type=\"checkbox\" name=\"chkCategory\" value=\"{0}\" onchange=\"ChkCategoryChange(this)\" />", item.CurNode.CategoryID);
                     label.MergeAttribute("title", item.CurNode.Title);
-                    label.InnerHtml = item.CurNode.Title;
+                    label.InnerHtml = hid + "&nbsp;" + item.CurNode.Name + "(" + item.CurNode.Title + ")";
                     li.InnerHtml = label.ToString() + InitTree(hh, item);
                     sb.Append(li.ToString());
                 }

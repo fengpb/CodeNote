@@ -39,7 +39,16 @@ namespace CodeNote.Web.Controllers
             return PartialView("EditArticle");
         }
 
-
+        /// <summary>
+        /// 获取分类中最近更新的Top 10 条信息
+        /// </summary>
+        /// <param name="categoryID"></param>
+        /// <returns></returns>
+        public ActionResult ArticleNew(string categoryID)
+        {
+            IList<Article> model = ArtMg.GetNewList(10, categoryID);
+            return PartialView("ArticleNew", model);
+        }
 
         /// <summary>
         /// 添加文章信息
@@ -77,7 +86,7 @@ namespace CodeNote.Web.Controllers
             {
                 return View("Result", new ReturnMessage("错误", "对不起！您查看的文章信息不存在！"));
             }
-            return View("Detail",model);
+            return View("Detail", model);
         }
 
         /// <summary>

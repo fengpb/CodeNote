@@ -77,7 +77,6 @@
   <ItemGroup>
     <Content Include="Content\Account.css" />
     <Content Include="Content\Article.css" />
-    <Content Include="Content\Categroy.css" />
     <Content Include="Content\Html\CodeNote.html" />
     <Content Include="Content\Html\Index.html" />
     <Content Include="Content\Images\soc-rss.gif" />
@@ -101,10 +100,12 @@
     <Content Include="Views\Category\EditCategory.ascx" />
     <Content Include="Views\Control\AccountLeft.ascx" />
     <Content Include="Views\Control\AccountNav.ascx" />
+    <Content Include="Views\Article\ArticleNew.ascx" />
     <Content Include="Views\Control\Footer.ascx" />
     <Content Include="Views\Control\Header.ascx" />
     <Content Include="Views\Control\Navigation.ascx" />
     <Content Include="Views\Home\Index.aspx" />
+    <Content Include="Views\Reply\ReplyList.ascx" />
     <Content Include="Views\User\NoPower.aspx" />
     <Content Include="Views\MarkDown\Help.aspx" />
     <Content Include="Views\Shared\Result.aspx" />

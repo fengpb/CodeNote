@@ -16,7 +16,14 @@
     <div id="page">
         <div id="content">
             <% Html.RenderAction("Header", "Control"); %>
-           
+            <div id="navigation">
+                <div class="navbg">
+                </div>
+                <ul>
+                    <asp:ContentPlaceHolder ID="PopTitle" runat="server">
+                    </asp:ContentPlaceHolder>
+                </ul>
+            </div>
             <div id="maincontent">
                 <asp:ContentPlaceHolder ID="MainContent" runat="server">
                 </asp:ContentPlaceHolder>

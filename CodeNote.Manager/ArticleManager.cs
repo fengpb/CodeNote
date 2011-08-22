@@ -87,6 +87,25 @@ namespace CodeNote.Manager
         }
 
         /// <summary>
+        /// 获取最新的文章信息
+        /// </summary>
+        /// <param name="topNum"></param>
+        /// <param name="categoryID"></param>
+        /// <returns></returns>
+        public IList<Article> GetNewList(int topNum, string categoryID)
+        {
+            if (topNum < 0)
+            {
+                return null;
+            }
+
+            using (ArticleDal dal = new ArticleDal())
+            {
+                return dal.GetNewList(topNum, categoryID);
+            }
+        }
+
+        /// <summary>
         /// 通过文章分类获取文章信息
         /// </summary>
         /// <param name="page"></param>

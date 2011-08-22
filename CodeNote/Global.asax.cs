@@ -18,16 +18,32 @@ namespace CodeNote
 
             #region category
             routes.MapRoute(
+               "CategoryTree", // 路由名称
+               "CategoryTree", // 带有参数的 URL
+               new { controller = "Category", action = "Tree" } // 参数默认值
+           );
+            routes.MapRoute(
+                "CategoryEdit", // 路由名称
+                "Edit/Category", // 带有参数的 URL
+                new { controller = "Category", action = "Edit" } // 参数默认值
+            );
+            routes.MapRoute(
+               "CategoryDoEdit", // 路由名称
+               "DoEdit/Category", // 带有参数的 URL
+               new { controller = "Category", action = "DoEdit" } // 参数默认值
+           );
+            routes.MapRoute(
                "CategoryIndex", // 路由名称
                "Category/{categoryName}", // 带有参数的 URL
                new { controller = "Category", action = "Category", categoryName = "" } // 参数默认值
            );
+
             routes.MapRoute(
                "CategoryJson", // 路由名称
                "CgJson/{categoryID}", // 带有参数的 URL
                new { controller = "Category", action = "CategoryJson", categoryID = "" } // 参数默认值
            );
-            
+
             #endregion
 
             routes.MapRoute(

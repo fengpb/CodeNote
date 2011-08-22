@@ -54,7 +54,9 @@
     <Compile Include="Proc\ArticleProc.cs" />
     <Compile Include="Proc\CategoryProc.cs" />
     <Compile Include="Proc\LoginUserProc.cs" />
+    <Compile Include="Proc\ReplyProc.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReplyDal.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CodeNote.Entity\CodeNote.Entity.csproj">

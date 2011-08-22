@@ -3,4 +3,7 @@
 <%@ Import Namespace="CodeNote.Common" %>
 <%@ Import Namespace="CodeNote.Web.Common" %>
 <!-- 分类树 -->
+<div>
+    <input type="button" value="删除" class="button" />
+</div>
 <%= Html.Tree(Model) %>

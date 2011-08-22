@@ -24,6 +24,85 @@ namespace CodeNote.Manager
         {
             log = LogManager.GetLogger(typeof(CategoryManager));
         }
+
+        /// <summary>
+        /// 添加或修改分类信息
+        /// <br/>
+        /// 清除分类缓存
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <returns></returns>
+        public ReturnValue AddOrEdit(Category entity)
+        {
+            ReturnValue retValue = new ReturnValue();
+
+            if (string.IsNullOrEmpty(entity.Name))
+            {
+                retValue.IsExists = false;
+                retValue.Message = "分类名称";
+                return retValue;
+            }
+            if (string.IsNullOrEmpty(entity.Title))
+            {
+                retValue.IsExists = false;
+                retValue.Message = "分类显示名称";
+                return retValue;
+            }
+
+            using (CategoryDal dal = new CategoryDal())
+            {
+                Category old = dal.Get(entity.CategoryID);
+                if (old == null)//添加
+                {
+                    old = dal.GetByName(entity.Name);
+                    if (old != null)
+                    {
+                        retValue.IsExists = false;
+                        retValue.Message = "分类已存在";
+                        return retValue;
+                    }
+                    if (dal.Add(entity))
+                    {
+                        retValue.IsExists = true;
+                        retValue.Message = "分类添加成功";
+                    }
+                    else
+                    {
+                        retValue.IsExists = false;
+                        retValue.Message = "分类添加失败";
+                    }
+                }
+                else
+                {
+                    if (entity.Name != old.Name)
+                    {
+                        old = dal.GetByName(entity.Name);
+                        if (old != null)
+                        {
+                            retValue.IsExists = false;
+                            retValue.Message = "分类已存在";
+                            return retValue;
+                        }
+                    }
+                    if (dal.Modify(entity))
+                    {
+                        retValue.IsExists = true;
+                        retValue.Message = "分类修改成功";
+                    }
+                    else
+                    {
+                        retValue.IsExists = false;
+                        retValue.Message = "分类修改失败";
+                    }
+                }
+            }
+            if (retValue.IsExists)
+            {
+                ClearCache();
+            }
+            return retValue;
+        }
+
         #region Get
         /// <summary>
         /// 根据分类ID获取分类信息
@@ -32,6 +111,10 @@ namespace CodeNote.Manager
         /// <returns></returns>
         public Category Get(string categoryID)
         {
+            if (string.IsNullOrEmpty(categoryID))
+            {
+                return null;
+            }
             using (CategoryDal dal = new CategoryDal())
             {
                 return dal.Get(categoryID);
@@ -181,6 +264,13 @@ namespace CodeNote.Manager
                 }
             }
             return cache;
+        }
+        /// <summary>
+        /// 清除缓存
+        /// </summary>
+        protected void ClearCache()
+        {
+            Common.BuildCache.CacheRemove(this.CategoryAllCacheKey);
         }
         #endregion
     }

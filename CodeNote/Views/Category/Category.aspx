@@ -5,29 +5,16 @@
     Category
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="HeadContent" runat="server">
-    <link href="/Content/Categroy.css" rel="stylesheet" type="text/css" />
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Navigation" runat="server">
-    <% Html.RenderAction("Navigation", "Control",new { categoryID = Model.CategoryID }); %>
+    <% Html.RenderAction("Navigation", "Control", new { categoryID = Model.CategoryID }); %>
 </asp:Content>
-<asp:Content ID="Conten4" ContentPlaceHolderID="MainContent" runat="server">
-    <div id="leftwrap">
-        <div class="leftbox">
-            <div id="articlelist">
-            <% Html.RenderAction("ArticleList", "Article", new { categoryID = Model.CategoryID }); %>
-            </div>
-        </div>
-    </div>
-    <div id="rightwrap">
-        <div class="rightbox">
-            <% Html.RenderAction("CategoryList", "Category", new { categoryID = Model.CategoryID }); %>
-            <div>
-                <h4>
-                    <label>
-                        最近更新</label></h4>
-            </div>
-        </div>
-    </div>
+<asp:Content ID="LeftBox" ContentPlaceHolderID="LeftBox" runat="server">
+    <% Html.RenderAction("ArticleList", "Article", new { categoryID = Model.CategoryID }); %>
+</asp:Content>
+<asp:Content ID="RightBox" ContentPlaceHolderID="RightBox" runat="server">
+    <% Html.RenderAction("CategoryList", "Category", new { categoryID = Model.CategoryID }); %>
+    <% Html.RenderAction("ArticleNew", "Article", new { categoryID = Model.CategoryID });%>
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="BodyBottomContent" runat="server">
 </asp:Content>

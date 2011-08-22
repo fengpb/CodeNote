@@ -20,8 +20,18 @@
             <asp:ContentPlaceHolder ID="Navigation" runat="server">
             </asp:ContentPlaceHolder>
             <div id="maincontent">
-                <asp:ContentPlaceHolder ID="MainContent" runat="server">
-                </asp:ContentPlaceHolder>
+                <div id="leftwrap">
+                    <div class="leftbox">
+                        <asp:ContentPlaceHolder ID="LeftBox" runat="server">
+                        </asp:ContentPlaceHolder>
+                    </div>
+                </div>
+                <div id="rightwrap">
+                    <div class="rightbox">
+                        <asp:ContentPlaceHolder ID="RightBox" runat="server">
+                        </asp:ContentPlaceHolder>
+                    </div>
+                </div>
             </div>
             <% Html.RenderAction("Footer", "Control"); %>
         </div>

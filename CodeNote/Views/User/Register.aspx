@@ -5,19 +5,41 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
+<asp:Content ID="PopTitle" ContentPlaceHolderID="PopTitle" runat="server">
+    <li class="cur"><a>注册</a></li>
+    <li>
+        <%= Html.ActionLink("登陆","Login","User") %></li>
+</asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContent" runat="server">
-    <div id="poptitle">
-        <h4>
-            <span title="Register">注册</span></h4>
-    </div>
-    <div>
+    <div class="magtlf10 mgt10">
         <dl class="dlinput">
-            <dt><label title="Email" for="regemail">电子邮件</label></dt>
+            <dt>
+                <label for="loginname">
+                    登陆名</label></dt>
+            <dd>
+                <input id="loginname" type="text" class="text" maxlength="20" />
+            </dd>
+            <dt>
+                <label title="Email" for="regemail">
+                    电子邮件</label></dt>
             <dd>
                 <input id="regemail" type="text" class="text" name="email" /></dd>
+            <dt>
+                <label for="loginpasswod">
+                    密码</label>
+            </dt>
             <dd>
-                <input type="submit" value="提交" title="submit" class="button" />
-            </dd>
+                <input id="loginpasswod" type="password" class="text" /></dd>
+            <dd>
+                <dt>
+                    <label for="loginpasswod2">
+                        确认密码</label>
+                </dt>
+                <dd>
+                    <input id="loginpasswod2" type="password" class="text" /></dd>
+                <dd>
+                    <input type="submit" value="提交" title="submit" class="button" />
+                </dd>
         </dl>
     </div>
 </asp:Content>
