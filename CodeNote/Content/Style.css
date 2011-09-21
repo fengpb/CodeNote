@@ -2,18 +2,20 @@
 ----------------------------------------------*/
 body, form, div, p, ol, ul, li, h1, h2, h3, h4, h5, h6, dl, dt, dd { margin: 0px; padding: 0px; }
 body { font-family: "Lucida Grande" , "Lucida Sans Unicode" , Verdana, Tahoma, Arial, sans-serif; }
-h1 { font-size: 20px; }
-h2 { font-size: 16px; }
+h1 { font-size: 24px; }
+h2 { font-size: 20px; }
 h3 { font-size: 16px; }
 h4 { font-size: 14px; color: #0D188C; }
 h5, h6 { font-size: 12px; font-weight: normal; }
 ul, ol, lin { list-style: none; font-weight: normal; }
-a { text-decoration: none; color: #1B26A4; zoom: -1; outline:none; }
+a { text-decoration: none; color: #1B26A4; zoom: -1; outline: none; }
 /*a:hover { color: #FFF; background-color: #1B26A4; }*/
-a:hover { color: #1B26A4; border-bottom: 1px dotted #1B26A4; }
+a:hover { color: #D01D18; }
 a.help { color: #F00; }
 a.help:hover { color: #1B26A4; background-color: #FFF; }
-
+p a { border-bottom: 1px dotted #1B26A4; }
+.code { font-size: 12px; padding: 4px; border: 1px dotted #AAA; margin: 5px 0px; }
+.output { font-size: 12px; padding: 4px; border: 1px dotted #7FAEF2; margin: 5px 0px; }
 input { vertical-align: middle; margin: 0px; padding: 0px; }
 textarea { margin: 0px; padding: 0px; }
 select { margin: 0px; padding: 0px; }
@@ -26,6 +28,10 @@ input[type=button]:hover { background-color: #1737A6; border-color: #1737A6 #010
 .button { margin: 0px; padding: 0px 4px; vertical-align: middle; height: 22px; line-height: 20px; font-size: 12px; color: #FFF; background-color: #1737A6; border-style: solid; border-width: 1px; border-color: #1737A6 #00001A #00001A #1737A6; }
 .button:hover { background-color: #1737A6; border-color: #1737A6 #00001A #00001A #1737A6; }
 .text { border: 1px solid #AEAEAE; line-height: 18px; height: 20px; padding: 0px 2px; width: 180px; }
+.area { border: 1px solid #AEAEAE; padding: 2px; }
+.hide { display: none; }
+.hidd { visibility: hidden; }
+.show { display: block; }
 .red { color: #D01D18; }
 .disinl { display: inline; }
 .tar { text-align: right; }
@@ -33,7 +39,9 @@ input[type=button]:hover { background-color: #1737A6; border-color: #1737A6 #010
 .tac { text-align: center; }
 .posrl { position: relative; }
 .posabstr { position: absolute; top: 0px; right: 0px; }
-.dlinput dd, .dlinput dt { margin: 3px 0px; }
+.posabsbr { position: absolute; bottom: 0px; right: 0px; }
+.dlinput { margin: 5px 0px; }
+.dlinput dd, .dlinput dt { margin: 4px 0px; }
 p.note { border-left: 2px solid #F00; padding-left: 4px; margin: 2px 0px; font-size: 12px; }
 /* 清浮动
 ------------------------------------------------*/
@@ -42,10 +50,10 @@ p.note { border-left: 2px solid #F00; padding-left: 4px; margin: 2px 0px; font-s
 /* Hides from IE-mac \*/
 * html .clearfix { height: 1%; }
 .clearfix { display: block; }
-
+span.required { color: #F00; }
+p.null { margin: 10px 0px; }
 /* add edit form style*/
 dl.edit { }
 dl.edit dt { margin: 3px 0px; }
-dl.edit dt span.required { color: #F00; }
 dl.edit dd { margin: 3px 0px; }
-dl.edit dd.btn { margin-top: 10px; }
+dd.btn { margin-top: 10px; }

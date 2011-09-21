@@ -79,6 +79,7 @@
     <Content Include="Content\Article.css" />
     <Content Include="Content\Html\CodeNote.html" />
     <Content Include="Content\Html\Index.html" />
+    <Content Include="Content\Images\container_bg.gif" />
     <Content Include="Content\Images\soc-rss.gif" />
     <Content Include="Content\Index.css" />
     <Content Include="Content\Style.css" />
@@ -90,10 +91,13 @@
     <Content Include="Views\Account\Category.aspx" />
     <Content Include="Views\Account\Navigation.ascx" />
     <Content Include="Views\Account\Index.aspx" />
+    <Content Include="Views\Account\Tag.aspx" />
     <Content Include="Views\Article\AddArticle.aspx" />
     <Content Include="Views\Article\ArticleList.ascx" />
+    <Content Include="Views\Article\ArticleRec.ascx" />
     <Content Include="Views\Article\Detail.aspx" />
-    <Content Include="Views\Article\EditArticle.ascx" />
+    <Content Include="Views\Article\AddOrEditArticle.ascx" />
+    <Content Include="Views\Article\EditArticle.aspx" />
     <Content Include="Views\Category\Category.aspx" />
     <Content Include="Views\Category\CategoryList.ascx" />
     <Content Include="Views\Category\CategoryTree.ascx" />
@@ -104,8 +108,14 @@
     <Content Include="Views\Control\Footer.ascx" />
     <Content Include="Views\Control\Header.ascx" />
     <Content Include="Views\Control\Navigation.ascx" />
+    <Content Include="Views\Home\About.aspx" />
+    <Content Include="Views\Home\Avatar.aspx" />
     <Content Include="Views\Home\Index.aspx" />
     <Content Include="Views\Reply\ReplyList.ascx" />
+    <Content Include="Views\Tag\PartTag.ascx" />
+    <Content Include="Views\Tag\Tag.aspx" />
+    <Content Include="Views\User\DoReg.aspx" />
+    <Content Include="Views\User\EditUser.aspx" />
     <Content Include="Views\User\NoPower.aspx" />
     <Content Include="Views\MarkDown\Help.aspx" />
     <Content Include="Views\Shared\Result.aspx" />
@@ -150,9 +160,7 @@
   <ItemGroup>
     <Content Include="Views\Shared\Site.Master" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\Tag\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="Views\Account\Account.Master" />
   </ItemGroup>

@@ -16,12 +16,15 @@ function AddArticle() {
         }
     });
 };
-function GetCategory(cgParentID,targetSel) {
+function GetCategory(cgParentID, targetSel, callBack) {
     $.ajax({
         url: "/CgJson/" + cgParentID,
         type: 'post',
         success: function (data) {
             _createOption(data, targetSel);
+            if (callBack) {
+                callBack(targetSel);
+            }
         },
         error: function () {
         }
@@ -30,26 +33,23 @@ function GetCategory(cgParentID,targetSel) {
 
 function _createOption(data, targetSel) {
     if ($(data).length > 0) {
-        if ($('#' + targetSel).length < 1) {//
 
-            var parSelID = targetSel;
+        var parSelID = targetSel;
 
-            if (targetSel.lastIndexOf('_') > 0) {
-                parSelID = targetSel.substring(0, targetSel.lastIndexOf('_'));
-            }
-            //alert(parSelID);
-            //alert($('#' + parSelID).parent());
-            $('#' + parSelID).parent().append('<select id="' + targetSel + '">请选择</select>');
+        if (targetSel.lastIndexOf('_') > 0) {
+            parSelID = targetSel.substring(0, targetSel.lastIndexOf('_'));
+            $('#' + targetSel).remove();
+            $('#' + parSelID).parent().append('<select id="' + targetSel + '"></select>');
         }
-        $('#' + targetSel).append('<option value="-1">请选择</option>');
+
+        $('#' + targetSel).append('<option value="">请选择</option>');
         $(data).each(function (i, d) {
             $('#' + targetSel).append('<option value="' + d.cid + '">' + d.cname + '</option>');
             //$().append().empty();
         });
         _selOnChange(targetSel);
-        $('#' + targetSel).change();
     } else {
-    _delCgSel(targetSel);
+        _delCgSel(targetSel);
     }
 }
 function _delCgSel(targetSel) {
@@ -61,7 +61,20 @@ function _selOnChange(targetSel) {
     $('#' + targetSel).change(function () {
         //alert();
         var subSelID = targetSel + "_sub";
-        $('#hidcategory').val($(this).val());
+
         GetCategory($(this).val(), subSelID);
+
+        $('#hidcategory').val($(this).val());
+    });
+}
+
+function SelDefaultValue(target) {
+    var value = $('#hidcategory').val();
+    //alert(value);
+    $('#' + target + ' option').each(function (i, v) {
+        if (value.indexOf($(this).val()) != -1) {
+            $(this).attr('selected', 'selected');
+            GetCategory($(this).val(), target + '_sub', SelDefaultValue);
+        }
     });
 }

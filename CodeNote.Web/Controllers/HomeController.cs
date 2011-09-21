@@ -17,6 +17,23 @@ namespace CodeNote.Web.Controllers
             return View("Index");
         }
 
-       
+        /// <summary>
+        /// 关于我们
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult About()
+        {
+            return View("About");
+        }
+
+        /// <summary>
+        /// 关于gravatar头像
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult Avatar()
+        {
+            return View("Avatar");
+        }
+
     }
 }

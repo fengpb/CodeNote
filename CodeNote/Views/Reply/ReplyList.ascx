@@ -1,4 +1,4 @@
-﻿<%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl<PageList<Reply>>" %>
+﻿<%@ Control Language="C#" Inherits="CodeNote.Web.ViewUserControl<PageList<Reply>>" %>
 <%@ Import Namespace="CodeNote.Entity" %>
 <%@ Import Namespace="CodeNote.Common" %>
 <%@ Import Namespace="CodeNote.Web.Common" %>
@@ -19,7 +19,7 @@
                 <%:item.CreateDate %></div>
         </div>
         <div class="bcon">
-            <%=item.Body %></div>
+            <%= HtmlEncode(item.Body) %></div>
     </dd>
 </dl>
 <%
@@ -28,6 +28,6 @@
 <%}%>
 <%        else
     { %>
-<p>
+<p class="null">
     暂无评论！</p>
 <%} %>

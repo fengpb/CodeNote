@@ -26,15 +26,16 @@
 #navigation ul li a { float: left; font-size: 14px; color: #0D188C; padding: 0px 12px; height: 100%; line-height: 30px; }
 #navigation ul li a:hover { background-color: #1B26A4; color: #FFF; border-bottom: 1px solid #1B26A4; }
 #navigation ul li.cur { margin-top: 0px; }
-#navigation ul li.cur a { height: 32px; background-color: #FFF; color: #1B26A4; border-top: 2px solid #1B26A4; border-bottom: 1px solid #FFF; border-left: 1px solid #1B26A4; border-right: 1px solid #1B26A4; }
+#navigation ul li.cur a { height: 32px; background-color: #FFF; color: #1B26A4; border-top: 3px solid #1B26A4; border-bottom: 1px solid #FFF; border-left: 1px solid #1B26A4; border-right: 1px solid #1B26A4; }
 
-#maincontent { clear: both; margin: 10px 0px; position: relative; }
-#leftwrap { float: left; width: 82%; }
-#rightwrap { margin-left: 84%; }
+#maincontent { clear: both; margin: 10px 0px; min-height:430px; }
+
+#leftwrap { float: left; width: 81%; height: 100%; }
+#rightwrap { position: relative; margin-left: 82%; height: 100%; background-image: url(/Content/Images/container_bg.gif); background-position: left; background-repeat: repeat-y; }
 #minwrap { float: left; margin: 0px 210px 0px 170px; }
 #leftwrap .leftbox { margin-left: 10px; }
 #minwrap .minbox { }
-#rightwrap .rightbox { margin-right: 10px; }
+#rightwrap .rightbox { margin: 0px 10px 0px 12px; }
 #rightwrap .rightbox h4 { border-bottom: 1px dotted #7FAEF2; }
 #rightwrap .rightbox h4 label { border-bottom: 2px solid #D01D18; }
 
@@ -52,18 +53,26 @@ h3.title label { border-bottom: 2px solid #D01D18; }
 /* clear*/
 #maincontent:after, #footer:after { content: '\0020'; display: block; height: 0; clear: both; }
 
-
-/*分类样式
+/* 右边相关样式
 ------------------------------------------------------*/
-ul.rightlist { margin: 10px auto; width:100%; }
-ul.rightlist li { margin: 5px 2px; font-size:12px; }
+.search { margin-bottom: 10px; }
+.itembox { margin: 8px 0px; }
+.itembox a:hover { text-decoration: underline; }
+ul.rightlist { margin: 10px auto; width: 100%; }
+ul.rightlist li { margin: 5px 2px; font-size: 12px; }
 
 /* 文章列表
 ------------------------------------------------------*/
 .artitem { margin: 2px 0px; }
-.artitem h3 { font-size: 14px; font-weight: normal; }
 .artitem div { font-size: 14px; }
-
+.subject a:hover,.artitem a:hover { text-decoration: underline; }
+.subject h2 { color: #1B26A4; }
+.subject label.common { font-size: 12px; font-weight: normal; }
+.subject dl { margin: 0px; height: 20px; }
+.subject dd { margin-top: 3px; margin-right: 10px; font-size: 12px; line-height: 12px; color: #AAA; float: left; }
+.subject dd label { line-height: 12px; }
+.subject dd.end { border-right: none; }
+.content { margin: 6px 0px; }
 /*评论回复
 ------------------------------------------------------*/
 .replay { margin-top: 10px; }
@@ -78,11 +87,16 @@ ul.rightlist li { margin: 5px 2px; font-size:12px; }
 ------------------------------------------------------*/
 .magtlf10 { margin: 0px 10px; }
 .mgt10 { margin-top: 10px; }
+.mgb10 { margin-bottom: 10px; }
+.mgtb10 { margin: 10px 0px; }
 .nick { font-size: 14px; color: #0D188C; }
 .date { font-size: 12px; color: #AAA; }
 .message { font-size: 12px; line-height: 20px; }
 .pager { margin-top: 5px; }
+.pager a { text-decoration: none; }
+.pager a:hover { text-decoration: none; }
+.pager .cur { border-bottom: 2px solid #1B26A4; }
 
 /* test
 ------------------------------------------------------*/
-.ad { border: 1px solid #F00; }
+.ad { border: 0px solid #F00; }

@@ -1,5 +1,6 @@
-﻿<%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl<IList<Article>>" %>
+﻿<%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl<IList<VwArticle>>" %>
 <%@ Import Namespace="CodeNote.Entity" %>
+<!-- Begin:最近更新 -->
 <% if (Model != null && Model.Count > 0)
    { %>
 <div class="itembox">
@@ -7,7 +8,7 @@
         <label>
             最近更新</label></h4>
     <ul class="rightlist">
-        <%foreach (Article item in Model)
+        <%foreach (VwArticle item in Model)
           {
         %>
         <li>
@@ -17,3 +18,4 @@
     </ul>
 </div>
 <%} %>
+<!-- End:最近更新 -->

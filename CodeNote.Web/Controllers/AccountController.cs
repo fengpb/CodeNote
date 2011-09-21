@@ -38,5 +38,17 @@ namespace CodeNote.Web.Controllers
             return View("Category");
         }
         #endregion
+
+        #region Tag
+        /// <summary>
+        /// 标签管理
+        /// </summary>
+        /// <returns></returns>
+        [CheckAdmin]
+        public ActionResult Tag()
+        {
+            return View("Tag");
+        }
+        #endregion
     }
 }

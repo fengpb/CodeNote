@@ -51,7 +51,7 @@ namespace CodeNote.Common.Net.Mail
             }
         }
 
-        public void Send(string email, string subject, string body)
+        public bool Send(string email, string subject, string body, bool isHtml = true)
         {
             SmtpClient client = new SmtpClient(this.Smtp.Smtp, this.Smtp.Port);
             NetworkCredential nc = new NetworkCredential(this.Smtp.UserName, this.Smtp.PassWord);
@@ -65,15 +65,18 @@ namespace CodeNote.Common.Net.Mail
             mail.Subject = subject;
             mail.SubjectEncoding = Encoding.UTF8;
             mail.Body = body;
+            mail.IsBodyHtml = isHtml;
             mail.BodyEncoding = Encoding.UTF8;
 
             try
             {
                 client.Send(mail);
+                return true;
             }
             catch (Exception ex)
             {
-                log.Error(string.Format("{0}=>{3} :{4}", this.Smtp, email, ex.Message));
+                log.Error(string.Format("{0}=>{1} :{2}", this.Smtp, email, ex.Message));
+                return false;
             }
         }
     }

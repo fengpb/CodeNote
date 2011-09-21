@@ -1,19 +1,41 @@
-﻿<%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl<PageList<Article>>" %>
+﻿<%@ Control Language="C#" Inherits="CodeNote.Web.ViewUserControl<PageList<VwArticle>>" %>
 <%@ Import Namespace="CodeNote.Entity" %>
 <%@ Import Namespace="CodeNote.Common" %>
 <%@ Import Namespace="CodeNote.Web.Common" %>
+<!-- Begin:日志列表 -->
 <% if (Model != null && Model.RecordCount > 0)
    { %>
-<% foreach (Article item in Model.Data)
+<% foreach (VwArticle item in Model.Data)
    {
 %>
 <div class="artitem">
-    <h3>
-        <%= Html.ActionLink(item.Subject,"Detail","Article",new {articleID=item.ID},null) %>
-        <span></span>
-    </h3>
-    <div>
-        <%= CodeNote.Common.StringFilter.HtmlFilter(item.Body) %></div>
+    <div class="subject">
+        <h3>
+            <%= Html.ActionLink(item.Subject,"Detail","Article",new {articleID=item.ID},null) %>
+            <span></span>
+        </h3>
+        <dl>
+            <dd class="end">
+                <label title="日期">
+                    <%: item.CreateDate%></label></dd>
+            <dd>
+                <label title="作者">
+                    <%:item.CreateName%></label></dd>
+            <dd>
+                <label title="分类">
+                    <%= Html.ActionLink(item.CategoryTitle, "Category", "Category", new { categoryName = item.CategoryName }, new { title = item.CategoryTitle })%></label></dd>
+            <% if (!string.IsNullOrEmpty(item.Tag))
+               { %>
+            <dd>
+                <label title="标签">Tag:
+                    <%= Html.TagLink(item.Tag, "Tag", "Tag")%>
+                </label>
+            </dd>
+            <%} %>
+        </dl>
+    </div>
+    <div class="content">
+        <%= ClearHtml(item.Body) %></div>
 </div>
 <%
     } %>
@@ -21,4 +43,12 @@
    { %>
 <%= Html.AjaxPaging(new Pager() { Cur = Model.CurPage, Count = Model.RecordCount, Size = Model.PageSize }, "ArticleList", "Article",new AjaxPagingOption ("articlelist"), new { })%>
 <%} %>
+<%}
+   else
+   { %>
+<div>
+    <p class="null">
+        好不幸！ 这里什么都没有啊！</p>
+</div>
 <%} %>
+<!-- End:日志列表 -->

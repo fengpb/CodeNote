@@ -2,7 +2,7 @@
 
 <%@ Import Namespace="CodeNote.Web.Common" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
-    Index
+    CodeNote
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>

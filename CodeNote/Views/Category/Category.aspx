@@ -2,7 +2,7 @@
 
 <%@ Import Namespace="CodeNote.Entity" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
-    Category
+    Note：<%=Model.Title %>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>

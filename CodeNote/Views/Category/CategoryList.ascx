@@ -1,6 +1,7 @@
 ﻿<%@ Control Language="C#" Inherits="CodeNote.Web.ViewUserControl<IList<Category>>" %>
 <%@ Import Namespace="CodeNote.Entity" %>
 <%@ Import Namespace="CodeNote.Web.Common" %>
+<!-- Begin:搜索 -->
 <div class="search">
     <form action="" method="post">
     <dl class="edit">
@@ -14,6 +15,8 @@
     </dl>
     </form>
 </div>
+<!-- End:搜索 -->
+<!-- Begin:相关分类 -->
 <%if (Model != null && Model.Count > 0)
   { %>
 <div class="itembox">
@@ -33,3 +36,4 @@
     </ul>
 </div>
 <%} %>
+<!-- End:相关分类 -->

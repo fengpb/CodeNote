@@ -1,0 +1,7 @@
+F:\github\CodeNote\CodeNote.Luc\bin\Debug\CodeNote.Luc.dll
+F:\github\CodeNote\CodeNote.Luc\bin\Debug\CodeNote.Luc.pdb
+F:\github\CodeNote\CodeNote.Luc\bin\Debug\log4net.dll
+F:\github\CodeNote\CodeNote.Luc\bin\Debug\log4net.xml
+F:\github\CodeNote\CodeNote.Luc\obj\Debug\ResolveAssemblyReference.cache
+F:\github\CodeNote\CodeNote.Luc\obj\Debug\CodeNote.Luc.dll
+F:\github\CodeNote\CodeNote.Luc\obj\Debug\CodeNote.Luc.pdb

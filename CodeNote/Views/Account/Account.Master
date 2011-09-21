@@ -26,11 +26,15 @@
                         <asp:ContentPlaceHolder ID="MainContent" runat="server">
                         </asp:ContentPlaceHolder>
                     </div>
+                    <div class="clearfix">
+                    </div>
                 </div>
                 <div id="rightwrap">
                     <div class="rightbox">
                         <% Html.RenderAction("AccountLeft", "Control"); %>
                         <% Html.RenderAction("AccountNav", "Control"); %>
+                    </div>
+                    <div class="clearfix">
                     </div>
                 </div>
             </div>

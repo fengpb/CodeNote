@@ -14,8 +14,15 @@ namespace CodeNote.Web.Models
 
         public enum UserType
         {
+            NoReg = -2,
             Administrators = -1,
             User = 0
+        }
+
+        public enum TagType
+        {
+            SysTag = -1,
+            UserTag = 0
         }
     }
 }

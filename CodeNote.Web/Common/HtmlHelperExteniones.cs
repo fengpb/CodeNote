@@ -11,6 +11,24 @@ namespace CodeNote.Web.Common
     public static class HtmlHelperExteniones
     {
 
+        public static MvcHtmlString TagLink(this HtmlHelper hh, string tags, string actionName, string controllerName)
+        {
+
+            StringBuilder sb = new StringBuilder();
+
+            string[] arr = tags.Split(new Char[] { ',', ' ', '-', ';' });
+            foreach (string item in arr)
+            {
+                TagBuilder alink = new TagBuilder("a");
+                string url = Url(hh, actionName, controllerName, new { tag = item }).ToHtmlString();
+                alink.MergeAttribute("href", url);
+                alink.InnerHtml = item;
+                sb.Append(alink.ToString() + "&nbsp;");
+            }
+
+            return MvcHtmlString.Create(sb.ToString());
+        }
+
         #region url
         public static MvcHtmlString Url(this HtmlHelper hh, string actionName, string controllerName, Object routeValues)
         {
@@ -102,7 +120,7 @@ namespace CodeNote.Web.Common
 
                     string pageUrl = UrlHelper.GenerateUrl(null, actionName, controllerName, routeValues, hh.RouteCollection, hh.ViewContext.RequestContext, true);
                     TagBuilder parent = new TagBuilder("a");
-                    parent.InnerHtml = "&lt;";
+                    parent.InnerHtml = "&lt;&lt;";
                     parent.MergeAttribute("title", "上一页");
                     parent.MergeAttribute("href", option.Href);
                     parent.MergeAttribute("onclick", option.ToString(pageUrl));
@@ -149,9 +167,14 @@ namespace CodeNote.Web.Common
                     string pageUrl = UrlHelper.GenerateUrl(null, actionName, controllerName, routeValues, hh.RouteCollection, hh.ViewContext.RequestContext, true);
                     TagBuilder aLink = new TagBuilder("a");
                     if (i == pager.Cur)
+                    {
+                        aLink.MergeAttribute("class", "cur");
                         aLink.InnerHtml = string.Format("&nbsp;<b>{0}</b>&nbsp;", i);
+                    }
                     else
+                    {
                         aLink.InnerHtml = string.Format("&nbsp;<span>{0}</span>&nbsp;", i);
+                    }
                     aLink.MergeAttribute("href", option.Href);
                     aLink.MergeAttribute("onclick", option.ToString(pageUrl));
                     sb.AppendLine(aLink.ToString());
@@ -174,7 +197,7 @@ namespace CodeNote.Web.Common
 
                     string pageUrl = UrlHelper.GenerateUrl(null, actionName, controllerName, routeValues, hh.RouteCollection, hh.ViewContext.RequestContext, true);
                     TagBuilder next = new TagBuilder("a");
-                    next.InnerHtml = "&gt;";
+                    next.InnerHtml = "&gt;&gt;";
                     next.MergeAttribute("title", "下一页");
                     next.MergeAttribute("href", option.Href);
                     next.MergeAttribute("onclick", option.ToString(pageUrl));
@@ -233,21 +256,32 @@ namespace CodeNote.Web.Common
 
                 string pageUrl = UrlHelper.GenerateUrl(null, actionName, controllerName, routeValues, hh.RouteCollection, hh.ViewContext.RequestContext, true);
                 TagBuilder parent = new TagBuilder("a");
-                parent.InnerHtml = "&lt;";
+                parent.InnerHtml = "&lt;&lt;";
                 parent.MergeAttribute("title", "上一页");
                 parent.MergeAttribute("href", pageUrl);
                 sb.Append(parent.ToString());
             }
 
-            int showPage = 10;
+            int showPage = 5; //showPage*2
             int start = 1;
-            int end = (pager.Cur + (showPage / 2)) > pager.Pag ? pager.Pag : showPage;
-            start = (pager.Cur - (showPage / 2)) > 1 ? pager.Cur - (showPage / 2) : 1;
-            if ((pager.Pag - pager.Cur) <= showPage / 2 && pager.Pag > showPage)
+            int end = 5 * 2;
+            if ((pager.Cur - showPage) < 1)
+            {
+                start = 1;
+            }
+            else
+            {
+                start = pager.Cur - showPage;
+            }
+            if ((pager.Cur + showPage) >= pager.Pag)
             {
                 end = pager.Pag;
-                start = pager.Pag - showPage + 1;
             }
+            else
+            {
+                end = pager.Cur + showPage;
+            }
+
             //首页
             if (start > showPage)
             {
@@ -290,7 +324,7 @@ namespace CodeNote.Web.Common
 
                 string pageUrl = UrlHelper.GenerateUrl(null, actionName, controllerName, routeValues, hh.RouteCollection, hh.ViewContext.RequestContext, true);
                 TagBuilder next = new TagBuilder("a");
-                next.InnerHtml = "&gt;";
+                next.InnerHtml = "&gt;&gt;";
                 next.MergeAttribute("title", "下一页");
                 next.MergeAttribute("href", pageUrl);
                 sb.Append(next.ToString());

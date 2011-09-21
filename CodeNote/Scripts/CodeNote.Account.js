@@ -10,3 +10,4 @@ function InitCurMenu() {
 jQuery(function () {
     InitCurMenu();
 });
+

@@ -13,14 +13,17 @@ namespace CodeNote.Dal.Proc
     public class ArticleProc : CodeNote.Linq.IDal.DataContext
     {
         [Function(Name = "SP_Article_New")]
-        public ISingleResult<Article> SP_Article_New([Parameter(Name = "TopNum")]int topNum, [Parameter(Name = "CategoryID")]string categoryID)
+        public ISingleResult<VwArticle> SP_Article_New(
+            [Parameter(Name = "TopNum")]int topNum, 
+            [Parameter(Name = "CategoryID")]string categoryID,
+            [Parameter(Name = "Filter")]string filter)
         {
-            IExecuteResult result = this.ExecuteMethodCall(this, (MethodInfo)MethodInfo.GetCurrentMethod(), topNum, categoryID);
-            return (ISingleResult<Article>)result.ReturnValue;
+            IExecuteResult result = this.ExecuteMethodCall(this, (MethodInfo)MethodInfo.GetCurrentMethod(), topNum, categoryID,filter);
+            return (ISingleResult<VwArticle>)result.ReturnValue;
         }
 
         [Function(Name = "SP_Article_List")]
-        public ISingleResult<Article> SP_Article_List(
+        public ISingleResult<VwArticle> SP_Article_List(
             [Parameter(Name = "PageIndex")]int page,
             [Parameter(Name = "PageSize")]int pageSize,
             [Parameter(Name = "Filter")]string filter,
@@ -28,7 +31,7 @@ namespace CodeNote.Dal.Proc
         {
             IExecuteResult result = this.ExecuteMethodCall(this, (MethodInfo)MethodInfo.GetCurrentMethod(), page, pageSize, filter, rowCount);
             rowCount = (int)result.GetParameterValue(3);
-            return (ISingleResult<Article>)result.ReturnValue;
+            return (ISingleResult<VwArticle>)result.ReturnValue;
         }
     }
 }

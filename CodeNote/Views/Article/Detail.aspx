@@ -1,42 +1,54 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<VwArticle>" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="CodeNote.Web.ViewPage<VwArticle>" %>
 
 <%@ Import Namespace="CodeNote.Entity" %>
 <%@ Import Namespace="CodeNote.Web.Common" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
-    <%:Model.Subject %>
+    Article：<%:Model.Subject %>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="HeadContent" runat="server">
-    <style type="text/css">
-        .subject h2 { color: #1B26A4; }
-        .desinfo dd { font-size: 12px; color: #AAA; }
-        .content { margin: 10px 2px; }
-    </style>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Navigation" runat="server">
     <% Html.RenderAction("Navigation", "Control", new { categoryID = Model.CategoryID }); %>
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="LeftBox" runat="server">
     <div class="subject">
-        <h2>
-            <%: Model.Subject %></h2>
-    </div>
-    <div class="content">
-        <%= Model.Body %>
-    </div>
-    <div class="desinfo">
-        <input id="hidArtilceID" type="hidden" value="<%= Model.ID %>" />
+        <h2 class="posrl">
+            <%: Model.Subject %>
+            <% if (IsLogin && CurUser.ID == Model.CreateID)
+               { %>
+            <label class="posabsbr common">
+                [<%= Html.ActionLink("编辑", "EditArticle", "Article", new { id = Model.ID }, null)%>]
+            </label>
+            <%} %>
+        </h2>
         <dl>
+            <dd class="end">
+                <label title="日期">
+                    <%: Model.CreateDate %></label></dd>
             <dd>
-                所属分类：<label><%: Model.CategoryName%></label></dd>
+                <label title="作者">
+                    <%:Model.CreateName %></label></dd>
             <dd>
-                关联标签：<label><%: Model.Tag %></label></dd>
+                <label>
+                    <%= Html.ActionLink(Model.CategoryTitle, "Category", "Category", new { categoryName = Model.CategoryName}, new { title=Model.CategoryTitle}) %>
+                </label>
+            </dd>
+            <% if (!string.IsNullOrEmpty(Model.Tag))
+               { %>
             <dd>
-                生产工人：<label><%:Model.CreateName %></label></dd>
-            <dd>
-                生产日期：<label><%: Model.CreateDate %></label></dd>
+                <label title="标签">
+                    Tag:
+                    <%= Html.TagLink(Model.Tag, "Tag", "Tag")%>
+                </label>
+            </dd>
+            <%} %>
         </dl>
     </div>
+    <div class="content">
+        <%=HtmlEncode(Model.Body) %>
+    </div>
     <h3 class="title mgt10">
+        <input id="hidArtilceID" type="hidden" value="<%= Model.ID %>" />
         <label title="Reply">
             评论</label></h3>
     <div id="replyList" class="replyList">
@@ -46,26 +58,29 @@
         <dl class="edit">
             <dd>
                 <label>
-                    <input id="replayNick" type="text" name="nick" />&nbsp; 昵称<b title="必填">*</b></label>
+                    <input id="replayNick" type="text" name="nick" value="<%=(CurUser!=null&&CurUser.ID!=Model.CreateID)?CurUser.LoginName:"" %>" />&nbsp;
+                    昵称<b title="必填">*</b></label>
                 <input id="articleId" type="hidden" value="<%= Model.ID %>" />
             </dd>
             <dd>
                 <label>
-                    <input id="replayEmail" type="text" name="email" />&nbsp; 邮件(不公开)<b title="必填">*</b></label>
+                    <input id="replayEmail" type="text" name="email" value="<%=(CurUser!=null&&CurUser.ID!=Model.CreateID)?CurUser.Email:"" %>" />&nbsp;
+                    邮件(不公开)<b title="必填">*</b></label>
             </dd>
             <dd>
                 <label>
                     <textarea id="replayBody" name="body" cols="50" rows="5"></textarea>
                 </label>
             </dd>
-            <dt>
+            <dd class="btn">
                 <input type="button" onclick="Replay()" value="提交评论" />&nbsp;<span id="replayMessage"
-                    class="message"></span></dt>
+                    class="message"><!--Ctrl+Enter--></span></dd>
         </dl>
     </div>
 </asp:Content>
 <asp:Content ID="RightBox" ContentPlaceHolderID="RightBox" runat="server">
     <% Html.RenderAction("CategoryList", "Category", new { categoryID = Model.CategoryID }); %>
+    <% Html.RenderAction("ArticleRec", "Article", new { articleID = Model.ID }); %>
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="BodyBottomContent" runat="server">
     <script type="text/javascript">

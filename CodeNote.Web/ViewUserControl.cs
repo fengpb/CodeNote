@@ -19,16 +19,28 @@ namespace CodeNote.Web
         public bool IsLogin { get { return CurUser != null; } }
 
         /// <summary>
-        /// 支持 gravatar.com face
+        /// 编码成html
+        /// <br/>
+        /// 白名单中的不转化并支持markdown语法
         /// </summary>
-        /// <param name="email"></param>
-        /// <param name="s"></param>
+        /// <param name="text"></param>
         /// <returns></returns>
-        public string FaceImgUrl(string email,int s)
+        public string HtmlEncode(string text)
         {
-            string irl = "http://www.gravatar.com/avatar/{0}?s={1}&d=identicon&r=pg";
-
-            return string.Format(irl, CodeNote.Common.Encryption.MD5(email),s);
+            string str = Markdown.Default.Transform(text);
+            str = CodeNote.Common.HtmlFilter.Filter(str);
+            return str;
+        }
+        /// <summary>
+        /// 清除html标签
+        /// </summary>
+        /// <param name="text"></param>
+        /// <returns></returns>
+        public string ClearHtml(string text)
+        {
+            string str = Markdown.Default.Transform(text);
+            str = CodeNote.Common.StringFilter.HtmlFilter(str);
+            return str;
         }
     }
     public class ViewUserControl<T> : System.Web.Mvc.ViewUserControl<T>
@@ -44,16 +56,28 @@ namespace CodeNote.Web
         public bool IsLogin { get { return CurUser != null; } }
 
         /// <summary>
-        /// 支持 gravatar.com face
+        /// 编码成html
+        /// <br/>
+        /// 白名单中的不转化并支持markdown语法
         /// </summary>
-        /// <param name="email"></param>
-        /// <param name="s"></param>
+        /// <param name="text"></param>
         /// <returns></returns>
-        public string FaceImgUrl(string email,int s)
+        public string HtmlEncode(string text)
         {
-            string irl = "http://www.gravatar.com/avatar/{0}?s={1}&d=identicon&r=pg";
-
-            return string.Format(irl, CodeNote.Common.Encryption.MD5(email),s);
+            string str = Markdown.Default.Transform(text);
+            str = CodeNote.Common.HtmlFilter.Filter(str);
+            return str;
+        }
+        /// <summary>
+        /// 清除html标签
+        /// </summary>
+        /// <param name="text"></param>
+        /// <returns></returns>
+        public string ClearHtml(string text)
+        {
+            string str = Markdown.Default.Transform(text);
+            str = CodeNote.Common.StringFilter.HtmlFilter(str);
+            return str;
         }
     }
 }

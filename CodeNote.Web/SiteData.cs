@@ -59,5 +59,22 @@ namespace CodeNote.Web
                 return false;
             }
         }
+
+        private string _domain;
+        /// <summary>
+        /// 网站域名
+        /// </summary>
+        public string Domain
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(_domain))
+                {
+                    _domain = System.Configuration.ConfigurationManager.AppSettings["Domain"];
+                }
+                return _domain;
+            }
+        }
+
     }
 }

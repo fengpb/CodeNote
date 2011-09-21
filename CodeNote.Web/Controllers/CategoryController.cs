@@ -29,6 +29,7 @@ namespace CodeNote.Web.Controllers
         }
         #endregion
 
+        #region Category
         /// <summary>
         /// 不同分类的页面
         /// </summary>
@@ -39,11 +40,26 @@ namespace CodeNote.Web.Controllers
             Entity.Category model = this.CategoryMg.GetName(categoryName);
             if (model == null)
             {
-                //暂无次分类信息
+                //暂无此分类信息
                 return RedirectToAction("Index", "Home");
             }
             return View("Category", model);
         }
+        #endregion
+
+        #region DelCategory
+        /// <summary>
+        /// 删除分类信息
+        /// </summary>
+        /// <param name="ids"></param>
+        /// <returns></returns>
+        public JsonResult DelCategory(string ids)
+        {
+            ReturnValue retValue = new ReturnValue();
+            retValue = CategoryMg.Delete(ids);
+            return Json(retValue);
+        }
+        #endregion
 
         #region EditCategory
         /// <summary>

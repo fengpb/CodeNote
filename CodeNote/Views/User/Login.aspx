@@ -20,13 +20,15 @@
                 <label title="Password" for="loginPassword">
                     密码</label></dt>
             <dd>
-                <input id="loginPassword" type="password" class="text" name="password" /></dd>
-            <dd>
+                <input id="loginPassword" type="password" class="text" name="password" />
+            </dd>
+            <dd class="btn">
                 <input type="submit" value="登录" title="Login" class="button" /></dd>
         </dl>
         <div>
             <p class="note">
                 还没有帐号，请<%= Html.ActionLink("注册","Register","User",null,new {title="Register"}) %>。
+                或你已经<a>忘记密码</a>。
             </p>
         </div>
         <% Html.EndForm(); %>

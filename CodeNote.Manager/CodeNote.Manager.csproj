@@ -50,6 +50,7 @@
     <Compile Include="LoginUserManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReplyManager.cs" />
+    <Compile Include="TagInfoManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CodeNote.Common\CodeNote.Common.csproj">

@@ -10,7 +10,13 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div class="magtlf10 mgt10">
         <p>
-            <%: Model.Content %></p>
+            <%= Model.Content %></p>
+        <% if (!string.IsNullOrEmpty(Model.BackUrl))
+           { %>
+        <div class="mgt10">
+            <a href="<%=Model.BackUrl %>" title="Back">返回继续</a>
+        </div>
+        <%} %>
     </div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="HeadContent" runat="server">

@@ -25,6 +25,42 @@ namespace CodeNote.Manager
             log = LogManager.GetLogger(typeof(CategoryManager));
         }
 
+        #region Delete
+        public ReturnValue Delete(string ids)
+        {
+            ReturnValue retValue = new ReturnValue();
+
+            string[] categoryIdArr = ids.Split(new Char[] { ',' });
+            using (CategoryDal dal = new CategoryDal())
+            {
+                foreach (string item in categoryIdArr)
+                {
+                    if (dal.Delete(item))
+                    {
+                        retValue.PutValue("ok", retValue.GetInt("ok"));
+                    }
+                    else
+                    {
+                        retValue.PutValue("error", retValue.GetInt("error"));
+                    }
+                }
+            }
+            if (retValue.GetInt("error") != 0)
+            {
+                retValue.IsExists = false;
+                retValue.Message = string.Format("删除分类失败，成功{0},失败{1}!", retValue.GetInt("ok"), retValue.GetInt("error"));
+            }
+            else
+            {
+                retValue.IsExists = true;
+                retValue.Message = "删除分类成功!";
+                ClearCache();//清除缓存
+            }
+            return retValue;
+        }
+        #endregion
+
+        #region AddOrEdit
         /// <summary>
         /// 添加或修改分类信息
         /// <br/>
@@ -102,6 +138,7 @@ namespace CodeNote.Manager
             }
             return retValue;
         }
+        #endregion
 
         #region Get
         /// <summary>
@@ -143,7 +180,7 @@ namespace CodeNote.Manager
         }
         #endregion
 
-        #region GetList
+        #region GetMenu
         /// <summary>
         /// 获取顶级分类信息/即:导航菜单
         /// </summary>
@@ -160,6 +197,9 @@ namespace CodeNote.Manager
             }
             return list;
         }
+        #endregion
+
+        #region GetByParentID
         /// <summary>
         /// 通过父辈ID获取分类信息
         /// </summary>
@@ -196,7 +236,7 @@ namespace CodeNote.Manager
                 return null;
             }
 
-            IList<Category> list = GetAllCache().Where(x => x.ParentID == parentID).ToList();
+            IList<Category> list = GetAllCache().Where(x => x.ParentID == parentID).Where(e=>e.Status>-1).ToList();
 
             if (list == null || list.Count < 1)
             {
@@ -208,8 +248,9 @@ namespace CodeNote.Manager
             return list;
 
         }
+        #endregion
 
-
+        #region GetLike
         /// <summary>
         /// 获取相似的分类信息
         /// </summary>
@@ -222,7 +263,9 @@ namespace CodeNote.Manager
                 return dal.GetLike(likeCategoryID);
             }
         }
+        #endregion
 
+        #region GetCategoryTree
         /// <summary>
         /// 获取分类的树状列表
         /// </summary>
@@ -245,7 +288,9 @@ namespace CodeNote.Manager
             }
             return root;
         }
+        #endregion
 
+        #region cache
         public IList<Category> GetAllCache()
         {
             IList<Category> cache = Common.BuildCache<IList<Category>>.Default.Get(this.CategoryAllCacheKey);

@@ -92,6 +92,15 @@ using System.Text.RegularExpressions;
 namespace CodeNote.Markdown
 {
 
+    public class Default
+    {
+        public static string Transform(string text)
+        {
+            Markdown markdown = new Markdown();
+            return markdown.Transform(text);
+        }
+    }
+
     public class MarkdownOptions
     {
         /// <summary>

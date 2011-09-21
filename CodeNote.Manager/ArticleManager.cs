@@ -20,22 +20,30 @@ namespace CodeNote.Manager
             log = LogManager.GetLogger(typeof(ArticleManager));
         }
 
-        public ReturnValue Add(Article entity)
+        public ReturnValue AddOrEdit(Article entity)
         {
             ReturnValue retValue = new ReturnValue();
             if (string.IsNullOrEmpty(entity.Subject))
             {
                 retValue.IsExists = false;
                 retValue.Message = "标题不能为空";
+                return retValue;
             }
             if (string.IsNullOrEmpty(entity.Body))
             {
                 retValue.IsExists = false;
                 retValue.Message = "正文不能为空";
+                return retValue;
             }
-            if (retValue.IsExists)
+
+            using (ArticleDal dal = new ArticleDal())
             {
-                using (ArticleDal dal = new ArticleDal())
+                VwArticle old = null;
+                if (entity.ID > 1)
+                {
+                    old = dal.GetVw(entity.ID);
+                }
+                if (old == null)
                 {
                     if (dal.Add(entity))
                     {
@@ -48,10 +56,25 @@ namespace CodeNote.Manager
                         retValue.Message = "保存失败";
                     }
                 }
+                else //修改
+                {
+                    if (dal.Modify(entity))
+                    {
+                        retValue.IsExists = true;
+                        retValue.Message = "修改成功";
+                    }
+                    else
+                    {
+                        retValue.IsExists = false;
+                        retValue.Message = "修改失败";
+                    }
+                }
             }
+
+
+
             return retValue;
         }
-
 
         public VwArticle Get(int articleID)
         {
@@ -61,7 +84,7 @@ namespace CodeNote.Manager
             }
             using (ArticleDal dal = new ArticleDal())
             {
-                return dal.Get(articleID);
+                return dal.GetVw(articleID);
             }
         }
 
@@ -72,9 +95,9 @@ namespace CodeNote.Manager
         /// <param name="pageSize"></param>
         /// <param name="filter"></param>
         /// <returns></returns>
-        public PageList<Article> GetList(int page, int pageSize, string filter)
+        public PageList<VwArticle> GetList(int page, int pageSize, string filter)
         {
-            PageList<Article> pa = new PageList<Article>();
+            PageList<VwArticle> pa = new PageList<VwArticle>();
             using (ArticleDal dal = new ArticleDal())
             {
                 int rowCount = 0;
@@ -86,13 +109,14 @@ namespace CodeNote.Manager
             return pa;
         }
 
+        #region GetNewList 获取最新日志信息
         /// <summary>
         /// 获取最新的文章信息
         /// </summary>
         /// <param name="topNum"></param>
         /// <param name="categoryID"></param>
         /// <returns></returns>
-        public IList<Article> GetNewList(int topNum, string categoryID)
+        public IList<VwArticle> GetNewList(int topNum, string categoryID, string filter)
         {
             if (topNum < 0)
             {
@@ -101,10 +125,17 @@ namespace CodeNote.Manager
 
             using (ArticleDal dal = new ArticleDal())
             {
-                return dal.GetNewList(topNum, categoryID);
+                return dal.GetNewList(topNum, categoryID, filter);
             }
         }
+        #endregion
 
+        public IList<VwArticle> GetRecList(int topNum, VwArticle article, string filter)
+        {
+            return null;
+        }
+
+        #region GetListByCategory 根据分类获取日志信息
         /// <summary>
         /// 通过文章分类获取文章信息
         /// </summary>
@@ -112,7 +143,7 @@ namespace CodeNote.Manager
         /// <param name="pageSize"></param>
         /// <param name="categoryID"></param>
         /// <returns></returns>
-        public PageList<Article> GetListByCategory(int page, int pageSize, string categoryID)
+        public PageList<VwArticle> GetListByCategory(int page, int pageSize, string categoryID)
         {
             string filter = string.Empty;
             if (!string.IsNullOrEmpty(categoryID))
@@ -125,6 +156,6 @@ namespace CodeNote.Manager
             }
             return this.GetList(page, pageSize, filter);
         }
-
+        #endregion
     }
 }

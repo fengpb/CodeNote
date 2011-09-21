@@ -14,7 +14,7 @@ namespace CodeNote.Web.Filter
         protected override bool AuthorizeCore(HttpContextBase httpContext)
         {
 
-            if (SiteData.Instance.IsLogin && SiteData.Instance.CurUser.Type == (int)Constans.UserType.Administrators)
+            if (SiteData.Instance.IsLogin && SiteData.Instance.CurUser.Type > (int)Constans.UserType.NoReg)
             {
                 return true;
             }

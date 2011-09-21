@@ -42,6 +42,34 @@
             });
         }
 
+        function DelCategory() {
+            var selectedCategory = $(':checkbox[name="chkCategory"][checked]');
+            var arrCategory = new Array();
+            selectedCategory.each(function (i, v) {
+                arrCategory.push($(v).val());
+            });
+
+            if (arrCategory.length < 1) {
+                return;
+            }
+            if (confirm("确定删除选择的分类信息?")) {
+                var strCategory = arrCategory.join(',');
+                jQuery.ajax({
+                    url: '<%= Html.Url("DelCategory","Category",null) %>',
+                    type: 'post',
+                    data: { 'ids': strCategory },
+                    success: function (data) {
+                        $('#delMessage').html(data.Message);
+                        TimerHide('delMessage', 2000);
+                        RefreshTree();
+                    }
+                , error: function () {
+                    alert("Ajax error!");
+                }
+                });
+            }
+        }
+
         function RefreshTree() {
             AjaxLoad('<%= Html.Url("Tree","Category",null) %>', 'treecategory', null);
         }

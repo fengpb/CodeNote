@@ -62,7 +62,14 @@ namespace CodeNote.Common
 
         public void PutValue(object key, object value)
         {
-            DataTable.Add(key, value);
+            if (DataTable.ContainsKey(key))
+            {
+                DataTable[key] = value;
+            }
+            else
+            {
+                DataTable.Add(key, value);
+            }
         }
 
         public object GetVal(object key)

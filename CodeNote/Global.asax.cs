@@ -33,17 +33,37 @@ namespace CodeNote
                new { controller = "Category", action = "DoEdit" } // 参数默认值
            );
             routes.MapRoute(
-               "CategoryIndex", // 路由名称
-               "Category/{categoryName}", // 带有参数的 URL
-               new { controller = "Category", action = "Category", categoryName = "" } // 参数默认值
-           );
-
+              "CategoryDoDel", // 路由名称
+              "DoDel/Category", // 带有参数的 URL
+              new { controller = "Category", action = "DelCategory" } // 参数默认值
+          );
             routes.MapRoute(
                "CategoryJson", // 路由名称
                "CgJson/{categoryID}", // 带有参数的 URL
                new { controller = "Category", action = "CategoryJson", categoryID = "" } // 参数默认值
-           );
+            );
+            routes.MapRoute(
+             "CategoryIndex", // 路由名称
+             "Note/{categoryName}", // 带有参数的 URL
+             new { controller = "Category", action = "Category", categoryName = "" } // 参数默认值
+            );
+            #endregion
 
+            #region Article 日志
+            routes.MapRoute(
+            "ArticleDetail", // 路由名称
+            "Detail/{articleID}", // 带有参数的 URL
+            new { controller = "Article", action = "Detail", articleID = (int?)null }, // 参数默认值
+            new { articleID = "[0-9]+" }
+            );
+            #endregion
+
+            #region Tag
+            routes.MapRoute(
+            "TagArticle", // 路由名称
+            "Tag/{Tag}", // 带有参数的 URL
+            new { controller = "Tag", action = "Tag", Tag = (string)null } // 参数默认值
+            );
             #endregion
 
             routes.MapRoute(
@@ -51,7 +71,6 @@ namespace CodeNote
                 "{controller}/{action}/{id}", // 带有参数的 URL
                 new { controller = "Home", action = "Index", id = UrlParameter.Optional } // 参数默认值
             );
-
         }
 
         protected void Application_Start()

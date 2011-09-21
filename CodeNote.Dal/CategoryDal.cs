@@ -12,6 +12,13 @@ namespace CodeNote.Dal
 {
     public class CategoryDal : CodeNote.Linq.IDal.BaseDalImpl<Category>
     {
+        public bool Delete(string categoryID)
+        {
+            using (CategoryProc proc = new CategoryProc())
+            {
+                return (proc.SP_Category_Del(categoryID) == 0);
+            }
+        }
 
         public bool Modify(Category entity)
         {
@@ -55,7 +62,7 @@ namespace CodeNote.Dal
 
         public IList<Category> GetByParentID(string parentID)
         {
-            return this.DataTable.Where(e => e.ParentID == parentID).ToList();
+            return this.DataTable.Where(e => e.ParentID == parentID).Where(e=>e.Status>-1).ToList();
         }
 
         /// <summary>

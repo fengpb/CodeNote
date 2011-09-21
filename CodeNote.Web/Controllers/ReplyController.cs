@@ -36,7 +36,7 @@ namespace CodeNote.Web.Controllers
         {
             Reply entity = new Reply();
             entity.ArticleID = articleID;
-            entity.Body = Common.MarkDown.Transform(body);
+            entity.Body = body;
             entity.Nick = nick;
             entity.Email = email;
             entity.CreateDate = DateTime.Now;

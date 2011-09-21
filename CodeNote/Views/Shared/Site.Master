@@ -25,11 +25,15 @@
                         <asp:ContentPlaceHolder ID="LeftBox" runat="server">
                         </asp:ContentPlaceHolder>
                     </div>
+                    <div class="clearfix">
+                    </div>
                 </div>
                 <div id="rightwrap">
                     <div class="rightbox">
                         <asp:ContentPlaceHolder ID="RightBox" runat="server">
                         </asp:ContentPlaceHolder>
+                    </div>
+                    <div class="clearfix">
                     </div>
                 </div>
             </div>
