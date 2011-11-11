@@ -1,0 +1,14 @@
+﻿
+/* 编辑分类
+----------------------------------------------*/
+#editcategory { float: left; width: 250px; }
+#treecategory { margin-left: 265px; }
+#treecategory li ul { margin-left: 15px; }
+
+/* 用户信息
+----------------------------------------------*/
+#account { border-bottom: 1px solid #7FAEF2; margin-bottom: 10px; }
+#account .info { margin: 5px 0px; font-size: 12px; }
+
+.navrightmenu dl dt { margin: 4px 0px; }
+.navrightmenu dl dd { margin-left: 15px; }

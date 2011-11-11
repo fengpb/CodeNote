@@ -71,6 +71,7 @@ namespace CodeNote.Common.Net.Mail
             try
             {
                 client.Send(mail);
+                log.Debug(email + " : " + subject + " => " + body);
                 return true;
             }
             catch (Exception ex)
@@ -79,11 +80,31 @@ namespace CodeNote.Common.Net.Mail
                 return false;
             }
         }
+
+        /// <summary>
+        /// 根据email地址获取email服务商地址
+        /// </summary>
+        /// <param name="email"></param>
+        /// <returns></returns>
+        public static string EmailServer(string email)
+        {
+            string tmp = string.Empty;
+            if (!string.IsNullOrEmpty(email))
+            {
+                string e = email.Substring(email.IndexOf("@") + 1);
+                switch (e)
+                {
+                    case "gmail.com":
+                        tmp = "gmail.com";
+                        break;
+                    default:
+                        tmp = e;
+                        break;
+                }
+            }
+            return "http://www." + tmp;
+        }
     }
-
-
-
-
 }
 
 namespace CodeNote.Common.Net.MailConfig

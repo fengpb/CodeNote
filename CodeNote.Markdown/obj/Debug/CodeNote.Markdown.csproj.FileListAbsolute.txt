@@ -3,13 +3,13 @@ F:\Fpbin Project\CodeNote\CodeNote.Markdown\bin\Debug\CodeNote.Markdown.pdb
 F:\Fpbin Project\CodeNote\CodeNote.Markdown\obj\Debug\ResolveAssemblyReference.cache
 F:\Fpbin Project\CodeNote\CodeNote.Markdown\obj\Debug\CodeNote.Markdown.dll
 F:\Fpbin Project\CodeNote\CodeNote.Markdown\obj\Debug\CodeNote.Markdown.pdb
-E:\github\CodeNote\CodeNote.Markdown\bin\Debug\CodeNote.Markdown.dll
-E:\github\CodeNote\CodeNote.Markdown\bin\Debug\CodeNote.Markdown.pdb
-E:\github\CodeNote\CodeNote.Markdown\obj\Debug\ResolveAssemblyReference.cache
-E:\github\CodeNote\CodeNote.Markdown\obj\Debug\CodeNote.Markdown.dll
-E:\github\CodeNote\CodeNote.Markdown\obj\Debug\CodeNote.Markdown.pdb
 F:\github\CodeNote\CodeNote.Markdown\bin\Debug\CodeNote.Markdown.dll
 F:\github\CodeNote\CodeNote.Markdown\bin\Debug\CodeNote.Markdown.pdb
 F:\github\CodeNote\CodeNote.Markdown\obj\Debug\ResolveAssemblyReference.cache
 F:\github\CodeNote\CodeNote.Markdown\obj\Debug\CodeNote.Markdown.dll
 F:\github\CodeNote\CodeNote.Markdown\obj\Debug\CodeNote.Markdown.pdb
+E:\github\CodeNote\CodeNote.Markdown\bin\Debug\CodeNote.Markdown.dll
+E:\github\CodeNote\CodeNote.Markdown\bin\Debug\CodeNote.Markdown.pdb
+E:\github\CodeNote\CodeNote.Markdown\obj\Debug\ResolveAssemblyReference.cache
+E:\github\CodeNote\CodeNote.Markdown\obj\Debug\CodeNote.Markdown.dll
+E:\github\CodeNote\CodeNote.Markdown\obj\Debug\CodeNote.Markdown.pdb

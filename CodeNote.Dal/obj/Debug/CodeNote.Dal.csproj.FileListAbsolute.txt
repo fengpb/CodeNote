@@ -5,13 +5,6 @@ F:\Fpbin Project\CodeNote\CodeNote.Dal\obj\Debug\CodeNote.Dal.dll
 F:\Fpbin Project\CodeNote\CodeNote.Dal\obj\Debug\CodeNote.Dal.pdb
 F:\Fpbin Project\CodeNote\CodeNote.Dal\bin\Debug\CodeNote.Entity.dll
 F:\Fpbin Project\CodeNote\CodeNote.Dal\bin\Debug\CodeNote.Entity.pdb
-E:\github\CodeNote\CodeNote.Dal\bin\Debug\CodeNote.Dal.dll
-E:\github\CodeNote\CodeNote.Dal\bin\Debug\CodeNote.Dal.pdb
-E:\github\CodeNote\CodeNote.Dal\bin\Debug\CodeNote.Entity.dll
-E:\github\CodeNote\CodeNote.Dal\bin\Debug\CodeNote.Entity.pdb
-E:\github\CodeNote\CodeNote.Dal\obj\Debug\ResolveAssemblyReference.cache
-E:\github\CodeNote\CodeNote.Dal\obj\Debug\CodeNote.Dal.dll
-E:\github\CodeNote\CodeNote.Dal\obj\Debug\CodeNote.Dal.pdb
 F:\github\CodeNote\CodeNote.Dal\bin\Debug\CodeNote.Dal.dll
 F:\github\CodeNote\CodeNote.Dal\bin\Debug\CodeNote.Dal.pdb
 F:\github\CodeNote\CodeNote.Dal\bin\Debug\CodeNote.Entity.dll
@@ -21,3 +14,12 @@ F:\github\CodeNote\CodeNote.Dal\bin\Debug\log4net.xml
 F:\github\CodeNote\CodeNote.Dal\obj\Debug\ResolveAssemblyReference.cache
 F:\github\CodeNote\CodeNote.Dal\obj\Debug\CodeNote.Dal.dll
 F:\github\CodeNote\CodeNote.Dal\obj\Debug\CodeNote.Dal.pdb
+E:\github\CodeNote\CodeNote.Dal\bin\Debug\CodeNote.Dal.dll
+E:\github\CodeNote\CodeNote.Dal\bin\Debug\CodeNote.Dal.pdb
+E:\github\CodeNote\CodeNote.Dal\bin\Debug\CodeNote.Entity.dll
+E:\github\CodeNote\CodeNote.Dal\bin\Debug\log4net.dll
+E:\github\CodeNote\CodeNote.Dal\bin\Debug\CodeNote.Entity.pdb
+E:\github\CodeNote\CodeNote.Dal\bin\Debug\log4net.xml
+E:\github\CodeNote\CodeNote.Dal\obj\Debug\ResolveAssemblyReference.cache
+E:\github\CodeNote\CodeNote.Dal\obj\Debug\CodeNote.Dal.dll
+E:\github\CodeNote\CodeNote.Dal\obj\Debug\CodeNote.Dal.pdb

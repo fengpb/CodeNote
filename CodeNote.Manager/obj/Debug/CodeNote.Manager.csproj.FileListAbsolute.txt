@@ -9,19 +9,6 @@ F:\Fpbin Project\CodeNote\CodeNote.Manager\bin\Debug\CodeNote.Dal.pdb
 F:\Fpbin Project\CodeNote\CodeNote.Manager\bin\Debug\CodeNote.Entity.pdb
 F:\Fpbin Project\CodeNote\CodeNote.Manager\obj\Debug\CodeNote.Manager.dll
 F:\Fpbin Project\CodeNote\CodeNote.Manager\obj\Debug\CodeNote.Manager.pdb
-E:\github\CodeNote\CodeNote.Manager\obj\Debug\ResolveAssemblyReference.cache
-E:\github\CodeNote\CodeNote.Manager\bin\Debug\CodeNote.Manager.dll
-E:\github\CodeNote\CodeNote.Manager\bin\Debug\CodeNote.Manager.pdb
-E:\github\CodeNote\CodeNote.Manager\bin\Debug\CodeNote.Common.dll
-E:\github\CodeNote\CodeNote.Manager\bin\Debug\CodeNote.Dal.dll
-E:\github\CodeNote\CodeNote.Manager\bin\Debug\CodeNote.Entity.dll
-E:\github\CodeNote\CodeNote.Manager\bin\Debug\log4net.dll
-E:\github\CodeNote\CodeNote.Manager\bin\Debug\CodeNote.Common.pdb
-E:\github\CodeNote\CodeNote.Manager\bin\Debug\CodeNote.Dal.pdb
-E:\github\CodeNote\CodeNote.Manager\bin\Debug\CodeNote.Entity.pdb
-E:\github\CodeNote\CodeNote.Manager\bin\Debug\log4net.xml
-E:\github\CodeNote\CodeNote.Manager\obj\Debug\CodeNote.Manager.dll
-E:\github\CodeNote\CodeNote.Manager\obj\Debug\CodeNote.Manager.pdb
 F:\github\CodeNote\CodeNote.Manager\bin\Debug\CodeNote.Manager.dll
 F:\github\CodeNote\CodeNote.Manager\bin\Debug\CodeNote.Manager.pdb
 F:\github\CodeNote\CodeNote.Manager\bin\Debug\CodeNote.Common.dll
@@ -35,3 +22,16 @@ F:\github\CodeNote\CodeNote.Manager\bin\Debug\log4net.xml
 F:\github\CodeNote\CodeNote.Manager\obj\Debug\ResolveAssemblyReference.cache
 F:\github\CodeNote\CodeNote.Manager\obj\Debug\CodeNote.Manager.dll
 F:\github\CodeNote\CodeNote.Manager\obj\Debug\CodeNote.Manager.pdb
+E:\github\CodeNote\CodeNote.Manager\bin\Debug\CodeNote.Manager.dll
+E:\github\CodeNote\CodeNote.Manager\bin\Debug\CodeNote.Manager.pdb
+E:\github\CodeNote\CodeNote.Manager\bin\Debug\CodeNote.Common.dll
+E:\github\CodeNote\CodeNote.Manager\bin\Debug\CodeNote.Dal.dll
+E:\github\CodeNote\CodeNote.Manager\bin\Debug\CodeNote.Entity.dll
+E:\github\CodeNote\CodeNote.Manager\bin\Debug\log4net.dll
+E:\github\CodeNote\CodeNote.Manager\bin\Debug\CodeNote.Common.pdb
+E:\github\CodeNote\CodeNote.Manager\bin\Debug\CodeNote.Dal.pdb
+E:\github\CodeNote\CodeNote.Manager\bin\Debug\CodeNote.Entity.pdb
+E:\github\CodeNote\CodeNote.Manager\bin\Debug\log4net.xml
+E:\github\CodeNote\CodeNote.Manager\obj\Debug\ResolveAssemblyReference.cache
+E:\github\CodeNote\CodeNote.Manager\obj\Debug\CodeNote.Manager.dll
+E:\github\CodeNote\CodeNote.Manager\obj\Debug\CodeNote.Manager.pdb

@@ -1,0 +1,99 @@
+﻿@import url(/css/sub.css);
+a { text-decoration: none; color: #789c33; zoom: -1; outline: none; text-decoration: none; }
+/*a:hover { color: #FFF; background-color: #1B26A4; text-decoration:none; }*/
+a:hover { text-decoration: none; color: #000; background-color: #f0f0f0; border-bottom: 1px solid #336600; }
+/* Layout
+----------------------------------------------*/
+
+ul#navbar { height: 41px; border-top: 5px solid #336600; }
+ul#navbar li { float: left; position: relative; height: 40px; margin: 1px 4px 0px 4px; line-height: 30px; border: none; }
+ul#navbar li a { float: left; font-size: 16px; font-weight: bold; color: #323232; background-color: #fff; margin-top: 7px; padding-left: 15px; padding-right: 15px; height: 32px; line-height: 30px; }
+ul#navbar li a:hover { color: #789c33; border: none; border-top: 1px solid #d9d9d9; background-color: #fff; }
+ul#navbar li.cur, ul#navbar li:hover { background-color: #f0f0f0; }
+ul#navbar li.cur a { height: 32px; color: #789c33; border-top: 1px solid #d9d9d9; }
+ul#navbar { border-bottom: 1px solid #333; }
+#content { width: 100%; font-size: 14px; background: none; margin: 0px auto; }
+
+ul#navbar { padding-left: 175px; }
+#maincontent { margin-left: 175px; }
+
+
+#maincontent { position: relative; clear: both; min-height: 430px; width: 1000px; }
+
+.colwrap { float: left; }
+.left { width: 730px; height: 100%; padding-top: 10px; padding-bottom: 10px; padding-right: 10px; border-right: 1px solid #d9d9d9; }
+.right { height: 100%; padding-left: 10px; padding-top: 10px; padding-bottom: 10px; }
+
+#footer { clear: both; padding: 4px 8px; border-top: 4px solid #339900; font-size: 12px; }
+#footer p { color: #474747; }
+
+/* clear*/
+#maincontent:after, #footer:after { content: '\0020'; display: block; height: 0; clear: both; }
+
+/* 右边相关样式
+------------------------------------------------------*/
+.search { margin-bottom: 10px; }
+.searchbox { border: 1px solid #000; }
+.searchbox .text { width: 200px; border: none; vertical-align: middle; }
+.itembox { margin: 8px 0px; }
+.itembox h4 { margin: 0px 0px 4px 0px; }
+ul.rightlist { margin: 3px auto; width: 100%; }
+ul.rightlist li { margin: 5px 2px; font-size: 12px; }
+
+/* 文章列表
+------------------------------------------------------*/
+.artitem { border-bottom: 1px dashed #d9d9d9; }
+.end { border-bottom: none; }
+.artitem div { font-size: 14px; }
+.subject { margin-top: 10px; }
+.subject h2 { color: #323232; }
+.subject label.common { font-size: 12px; font-weight: normal; }
+.subject dl { margin: 0px; height: 20px; }
+.subject dd { margin-top: 3px; margin-right: 10px; font-size: 12px; line-height: 12px; color: #AAA; float: left; }
+.subject dd label { line-height: 12px; }
+.subject dd.end { border-right: none; }
+
+.content { margin-top: 5px; line-height: 20px; }
+
+/*评论回复
+------------------------------------------------------*/
+.replay { margin-top: 10px; }
+.replyList { margin-top: 5px; border-bottom: 1px dashed #d9d9d9; }
+.replyList dl { margin: 4px 0px; padding: 3px; border: 1px dotted #EDEEFF; }
+.replyList dl dt { float: left; width: 48px; }
+.replyList dl dd { margin-left: 55px; }
+.replyList dl dd .bcon { }
+.replay .edit textarea { width: 100%; }
+
+/* Other
+------------------------------------------------------*/
+.magtlf10 { margin: 0px 10px; }
+.mgt10 { margin-top: 10px; }
+.mgb10 { margin-bottom: 10px; }
+.mgtb10 { margin: 10px 0px; }
+.nick { font-size: 14px; color: #0D188C; }
+.date { font-size: 12px; color: #AAA; }
+.message { font-size: 12px; line-height: 20px; }
+.pager { margin-top: 5px; }
+.pager a { text-decoration: none; }
+.pager a:hover { text-decoration: none; }
+.pager .cur { border-bottom: 2px solid #323232; }
+
+
+/* edit form style
+-----------------------------------------------------*/
+dl.edit { }
+dl.edit dt { margin: 3px 0px; }
+dl.edit dd { margin: 3px 0px; }
+dd.btn { margin-top: 10px; }
+.abody { height: 520px; }
+/* test
+------------------------------------------------------*/
+.debug { border: 0px solid #F00; }
+
+
+/* 黄色Link
+------------------------------------------------------*/
+.subject dd a { color: #e59312; font-weight: bold; }
+.subject dd a:hover, #footer a:hover { color: #323232; }
+#footer a { color: #789c33; }

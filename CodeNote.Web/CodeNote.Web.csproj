@@ -92,6 +92,10 @@
       <Project>{085F9F54-3A74-4629-9E43-EEBDF094FE8B}</Project>
       <Name>CodeNote.Entity</Name>
     </ProjectReference>
+    <ProjectReference Include="..\CodeNote.Luc\CodeNote.Luc.csproj">
+      <Project>{001B48D7-61A3-4CE6-B7D3-B4B8EE20A24B}</Project>
+      <Name>CodeNote.Luc</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CodeNote.Manager\CodeNote.Manager.csproj">
       <Project>{585F4C93-2770-484F-B1DF-C8DBC76B1F19}</Project>
       <Name>CodeNote.Manager</Name>

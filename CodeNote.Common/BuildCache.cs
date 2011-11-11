@@ -87,7 +87,7 @@ namespace CodeNote.Common
 
         protected static string GetCacheMoniorFile(string key)
         {
-            string dir = System.Configuration.ConfigurationManager.AppSettings["FileChangeMonitor_Dir"];
+            string dir = ConfigWrap.FiePath("FileChangeMonitor_Dir");
             if (string.IsNullOrEmpty(dir))
             {
                 log.Warn("You mast set appsetings FileChangeMonitor_Dir");
@@ -108,9 +108,16 @@ namespace CodeNote.Common
 
         protected static void ChangeMonitorFileDateNow(string key, bool append)
         {
-            using (System.IO.StreamWriter sw = new System.IO.StreamWriter(GetCacheMoniorFile(key), append))
+            try
             {
-                sw.WriteLine(DateTime.Now.ToString("yyyyMMddHHmmssffffff"));
+                using (System.IO.StreamWriter sw = new System.IO.StreamWriter(GetCacheMoniorFile(key), append))
+                {
+                    sw.WriteLine(DateTime.Now.ToString("yyyyMMddHHmmssffffff"));
+                }
+            }
+            catch (Exception e)
+            {
+                log.Error(e.Message, e);
             }
 
         }

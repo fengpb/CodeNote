@@ -38,6 +38,8 @@ namespace CodeNote.Common
         /// <returns></returns>
         public static string MD5(string md5str)
         {
+            if (string.IsNullOrEmpty(md5str))
+                return string.Empty;
             return FormsAuthentication.HashPasswordForStoringInConfigFile(md5str, "md5").ToLower();
         }
 

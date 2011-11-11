@@ -14,6 +14,7 @@
     <AssemblyName>CodeNote</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>false</UseIISExpress>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -75,21 +76,27 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\Account.css" />
-    <Content Include="Content\Article.css" />
-    <Content Include="Content\Html\CodeNote.html" />
-    <Content Include="Content\Html\Index.html" />
-    <Content Include="Content\Images\container_bg.gif" />
-    <Content Include="Content\Images\soc-rss.gif" />
-    <Content Include="Content\Index.css" />
-    <Content Include="Content\Style.css" />
-    <Content Include="Content\Html\Style.html" />
+    <Content Include="img\Account.css" />
+    <Content Include="img\Article.css" />
+    <Content Include="img\Html\CodeNote.html" />
+    <Content Include="img\Html\Index.html" />
+    <Content Include="img\Images\container_bg.gif" />
+    <Content Include="img\Images\soc-rss.gif" />
+    <Content Include="css\base.css" />
+    <Content Include="css\sub.css" />
+    <Content Include="img\Html\Style.html" />
+    <Content Include="css\wmd.css" />
+    <Content Include="js\Markdown.Converter.js" />
+    <Content Include="js\Markdown.Editor.js" />
+    <Content Include="js\Markdown.Sanitizer.js" />
+    <Content Include="img\wmd-buttons.png" />
     <Content Include="Global.asax" />
-    <Content Include="Scripts\CodeNote.Account.js" />
-    <Content Include="Scripts\CodeNote.Article.js" />
-    <Content Include="Scripts\CodeNote.Script.js" />
+    <Content Include="js\CodeNote.Account.js" />
+    <Content Include="js\CodeNote.Article.js" />
+    <Content Include="js\CodeNote.Script.js" />
+    <Content Include="js\wmd.init.js" />
+    <Content Include="Views\Control\AccountNav.ascx" />
     <Content Include="Views\Account\Category.aspx" />
-    <Content Include="Views\Account\Navigation.ascx" />
     <Content Include="Views\Account\Index.aspx" />
     <Content Include="Views\Account\Tag.aspx" />
     <Content Include="Views\Article\AddArticle.aspx" />
@@ -103,7 +110,6 @@
     <Content Include="Views\Category\CategoryTree.ascx" />
     <Content Include="Views\Category\EditCategory.ascx" />
     <Content Include="Views\Control\AccountLeft.ascx" />
-    <Content Include="Views\Control\AccountNav.ascx" />
     <Content Include="Views\Article\ArticleNew.ascx" />
     <Content Include="Views\Control\Footer.ascx" />
     <Content Include="Views\Control\Header.ascx" />
@@ -112,6 +118,7 @@
     <Content Include="Views\Home\Avatar.aspx" />
     <Content Include="Views\Home\Index.aspx" />
     <Content Include="Views\Reply\ReplyList.ascx" />
+    <Content Include="Views\Shared\Error.aspx" />
     <Content Include="Views\Tag\PartTag.ascx" />
     <Content Include="Views\Tag\Tag.aspx" />
     <Content Include="Views\User\DoReg.aspx" />
@@ -130,18 +137,18 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="Scripts\jquery-1.4.1.js" />
-    <Content Include="Scripts\jquery-1.4.1.min.js" />
-    <Content Include="Scripts\jquery-1.4.1-vsdoc.js" />
-    <Content Include="Scripts\jquery.validate.js" />
-    <Content Include="Scripts\jquery.validate.min.js" />
-    <Content Include="Scripts\jquery.validate-vsdoc.js" />
-    <Content Include="Scripts\MicrosoftAjax.js" />
-    <Content Include="Scripts\MicrosoftAjax.debug.js" />
-    <Content Include="Scripts\MicrosoftMvcAjax.js" />
-    <Content Include="Scripts\MicrosoftMvcAjax.debug.js" />
-    <Content Include="Scripts\MicrosoftMvcValidation.js" />
-    <Content Include="Scripts\MicrosoftMvcValidation.debug.js" />
+    <Content Include="js\jquery-1.4.1.js" />
+    <Content Include="js\jquery-1.4.1.min.js" />
+    <Content Include="js\jquery-1.4.1-vsdoc.js" />
+    <Content Include="js\jquery.validate.js" />
+    <Content Include="js\jquery.validate.min.js" />
+    <Content Include="js\jquery.validate-vsdoc.js" />
+    <Content Include="js\MicrosoftAjax.js" />
+    <Content Include="js\MicrosoftAjax.debug.js" />
+    <Content Include="js\MicrosoftMvcAjax.js" />
+    <Content Include="js\MicrosoftMvcAjax.debug.js" />
+    <Content Include="js\MicrosoftMvcValidation.js" />
+    <Content Include="js\MicrosoftMvcValidation.debug.js" />
     <Content Include="Views\Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -160,9 +167,8 @@
   <ItemGroup>
     <Content Include="Views\Shared\Site.Master" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <Content Include="Views\Account\Account.Master" />
+    <Folder Include="wmd\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

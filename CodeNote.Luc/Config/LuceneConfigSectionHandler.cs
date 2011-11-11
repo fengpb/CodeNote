@@ -30,7 +30,22 @@ namespace CodeNote.Luc.Config
         /// <summary>
         /// 索引位置
         /// </summary>
-        public string IndexDir { get; set; }
+        private string _indexDir;
+        public string IndexDir
+        {
+            get { return _indexDir; }
+            set
+            {
+                if (!string.IsNullOrEmpty(value) && value.StartsWith("/"))
+                {
+                    _indexDir = System.AppDomain.CurrentDomain.BaseDirectory + value.Substring(1);
+                }
+                else
+                {
+                    _indexDir = value;
+                }
+            }
+        }
 
         /// <summary>
         /// 索引是否计划任务生成

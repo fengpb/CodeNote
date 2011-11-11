@@ -56,7 +56,7 @@ namespace CodeNote.Web.Controllers
                 retValue.Message = "请输入密码";
                 return View("Result", new ReturnMessage(Request, "登录消息", retValue));
             }
-            retValue = LoginUserMg.Login(name, password);
+            retValue = LoginUserMg.Login(name, CodeNote.Common.Encryption.MD5(password));
             if (retValue.IsExists)
             {
                 Common.SessionWrap.Add(Web.Models.Constans.USER_SESSION_KEY, retValue.RetObjec);
@@ -80,17 +80,26 @@ namespace CodeNote.Web.Controllers
                 retValue.Message = "不能为空";
                 return Json(retValue);
             }
-            if (key != CurUser.LoginName)
+
+            if (this.LoginUserMg.Get(key) != null)
             {
-                if (this.LoginUserMg.Get(key) != null)
+                if (CurUser != null)
+                {
+                    if (key != CurUser.LoginName)
+                    {
+                        retValue.IsExists = false;
+                        retValue.Message = "对不起，此信息已经注册!";
+                    }
+                }
+                else
                 {
                     retValue.IsExists = false;
                     retValue.Message = "对不起，此信息已经注册!";
                 }
-                else
-                {
-                    retValue.IsExists = true;
-                }
+            }
+            else
+            {
+                retValue.IsExists = true;
             }
             return Json(retValue);
         }
@@ -124,18 +133,20 @@ namespace CodeNote.Web.Controllers
             }
             if (entity != null && entity.Type == (int)Constans.UserType.NoReg)
             {
-                //暂不做处理
+                entity.PassWord = CodeNote.Common.Encryption.MD5(CodeNote.Common.IDentity.CreateNew().AddStr(10).StrID());
             }
             else
             {
                 entity = new LoginUser();
                 entity.LoginName = email;
                 entity.Email = email;
-                entity.PassWord = CodeNote.Common.IDentity.CreateNew().AddStr(10).StrID();
-                entity.Type = (int)Constans.UserType.NoReg;//为完成注册的用户
+                entity.PassWord = CodeNote.Common.Encryption.MD5(CodeNote.Common.IDentity.CreateNew().AddStr(10).StrID());
+                entity.Type = (int)Constans.UserType.NoReg;//未完成注册的用户
                 entity.CreateDate = DateTime.Now;
-                retValue = this.LoginUserMg.AddOrEdit(entity);
             }
+
+            retValue = this.LoginUserMg.AddOrEdit(entity);//保存和修改信息
+
             if (retValue.IsExists)
             {
                 StringBuilder content = new StringBuilder("请点击下面连接完成注册或将下面连接复制到浏览器地址栏直接访问！<br/>");
@@ -146,6 +157,7 @@ namespace CodeNote.Web.Controllers
                 {
                     retValue.IsExists = true;
                     retValue.Message = "电子邮件发送成功";
+                    retValue.PutValue("emailserver", CodeNote.Common.Net.Mail.EmailWrap.EmailServer(email));
                     return View("DoReg", retValue);
                 }
                 else
@@ -204,8 +216,16 @@ namespace CodeNote.Web.Controllers
         {
             LoginUser login = new LoginUser();
             login.ID = CodeNote.Common.ConvertWrap.ToInt(Request["userid"]);
+            login.Email = Request["email"];
             login.LoginName = Request["loginname"];
-            login.PassWord = Request["oldpassword"];
+            if (string.IsNullOrEmpty(Request["oldpassword"]))
+            {
+                login.PassWord = Request["oneoldpassword"];
+            }
+            else
+            {
+                login.PassWord = CodeNote.Common.Encryption.MD5(Request["oldpassword"]);
+            }
             login.Type = CodeNote.Common.ConvertWrap.ToInt(Request["usertype"]);
             login.CreateDate = DateTime.Now;
             if (login.Type == (int)Constans.UserType.NoReg)
@@ -237,7 +257,7 @@ namespace CodeNote.Web.Controllers
             {
                 if (!string.IsNullOrEmpty(newPassWord) && newPassWord != login.PassWord)
                 {
-                    login.PassWord = newPassWord;
+                    login.PassWord = CodeNote.Common.Encryption.MD5(newPassWord);
                     isChangePwd = true;
                 }
             }
@@ -249,7 +269,7 @@ namespace CodeNote.Web.Controllers
             if (retValue.IsExists && isChangePwd)
             {
                 StringBuilder content = new StringBuilder();
-                content.Append(string.Format("Dear {0}:<br/> 你的登录密码已经成功修改为: {1}<hr/>{2}", login.LoginName, login.PassWord, SiteData.Instance.Domain));
+                content.Append(string.Format("Dear {0}:<br/> 你的登录密码已经成功修改为: {1}<hr/>{2}", login.LoginName, newPassWord, SiteData.Instance.Domain));
                 CodeNote.Common.Net.Mail.EmailWrap.Default.Send(login.Email, login.LoginName + "修改密码", content.ToString(), true);
             }
 

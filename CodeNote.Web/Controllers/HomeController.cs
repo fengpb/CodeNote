@@ -35,5 +35,14 @@ namespace CodeNote.Web.Controllers
             return View("Avatar");
         }
 
+        /// <summary>
+        /// 错误信息页面
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult Error()
+        {
+            return View("Error");
+        }
+
     }
 }

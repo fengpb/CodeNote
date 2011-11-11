@@ -23,6 +23,20 @@ namespace CodeNote.Common
         }
     }
 
+    public class StringUtil
+    {
+        /// <summary>
+        /// 截取字符
+        /// </summary>
+        /// <param name="sourceStr"></param>
+        /// <param name="length"></param>
+        /// <returns></returns>
+        public static string Cut(string sourceStr, int length)
+        {
+            return sourceStr != null && sourceStr.Length > length ? sourceStr.Substring(0, length) : sourceStr;
+        }
+    }
+
     /// <summary>
     /// desp:  html 转换
     /// author:fengpengbin@live.cn
@@ -32,9 +46,12 @@ namespace CodeNote.Common
         public HtmlFilter()
         {
         }
+
+
+
         private static string[] WhiteList = new string[] { 
-            "code", "span", "h1","ul","li","ol", "h2", "h3", "h4","h5","h6", "strong", "b", "em", "i", "u", "p", "pre", "br", 
-            "CODE", "SPAN", "H1","UL","LI","OL", "H2", "H3", "H4","H5","H6", "STRONG", "B", "EM", "I", "U", "P", "PRE", "BR" 
+            "code", "span", "h1","ul","li","ol", "h2", "h3", "h4","h5","h6", "strong", "b", "em", "i", "u", "p", "pre", "br","blockquote", 
+            "CODE", "SPAN", "H1","UL","LI","OL", "H2", "H3", "H4","H5","H6", "STRONG", "B", "EM", "I", "U", "P", "PRE", "BR","BLOCKQUOTE" 
         };
         public static string Filter(string sourceStr)
         {
@@ -43,6 +60,8 @@ namespace CodeNote.Common
 
         public static string Filter(string sourceStr, bool isStyle)
         {
+            //处理换行
+            sourceStr = sourceStr.Replace("\r\n", "<br/>").Replace("\n\n", "<br/>").Replace("\n", "<br/>");
             StringBuilder sb = new StringBuilder(Encode(sourceStr));
             for (int i = 0; i < WhiteList.Length; i++)
             {

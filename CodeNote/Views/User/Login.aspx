@@ -1,12 +1,11 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Pop.Master" Inherits="System.Web.Mvc.ViewPage<dynamic>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
-    登录 - Login
+    A Pure Boy: Login
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="PopTitle" runat="server">
-    <li class="cur"><a>登陆</a></li></asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContent" runat="server">
     <div class="magtlf10 mgt10">
         <% Html.BeginForm("DoLogin", "User", FormMethod.Post); %>

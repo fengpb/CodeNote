@@ -47,9 +47,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BuildCache.cs" />
+    <Compile Include="ConfigWrap.cs" />
     <Compile Include="ConvertWrap.cs" />
     <Compile Include="Encryption.cs" />
     <Compile Include="IDentity.cs" />
+    <Compile Include="ImageWrap.cs" />
     <Compile Include="Net\EmailWrap.cs" />
     <Compile Include="PageList.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
