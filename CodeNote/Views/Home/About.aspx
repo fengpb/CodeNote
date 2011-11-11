@@ -8,7 +8,7 @@
 <asp:Content ID="Content8" ContentPlaceHolderID="PopTitle" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <div class="magtlf10">
+    <div class="mgt10 mgb10">
         <h4 class="mgb10">
             关于</h4>
         <p>

@@ -6,7 +6,7 @@ a:hover { text-decoration: none; color: #000; background-color: #f0f0f0; border-
 ----------------------------------------------*/
 
 ul#navbar { height: 41px; border-top: 5px solid #336600; }
-ul#navbar li { float: left; position: relative; height: 40px; margin: 1px 4px 0px 4px; line-height: 30px; border: none; }
+ul#navbar li { float: left; position: relative; height: 40px; margin: 1px 5px 0px 0px; line-height: 30px; border: none; }
 ul#navbar li a { float: left; font-size: 16px; font-weight: bold; color: #323232; background-color: #fff; margin-top: 7px; padding-left: 15px; padding-right: 15px; height: 32px; line-height: 30px; }
 ul#navbar li a:hover { color: #789c33; border: none; border-top: 1px solid #d9d9d9; background-color: #fff; }
 ul#navbar li.cur, ul#navbar li:hover { background-color: #f0f0f0; }
@@ -45,13 +45,13 @@ ul.rightlist li { margin: 5px 2px; font-size: 12px; }
 .artitem { border-bottom: 1px dashed #d9d9d9; }
 .end { border-bottom: none; }
 .artitem div { font-size: 14px; }
-.subject { margin-top: 10px; }
-.subject h2 { color: #323232; }
-.subject label.common { font-size: 12px; font-weight: normal; }
-.subject dl { margin: 0px; height: 20px; }
-.subject dd { margin-top: 3px; margin-right: 10px; font-size: 12px; line-height: 12px; color: #AAA; float: left; }
-.subject dd label { line-height: 12px; }
-.subject dd.end { border-right: none; }
+.com { margin-top: 10px; }
+.com h2 { color: #323232; }
+.com label.common { font-size: 12px; font-weight: normal; }
+.com dl { margin: 0px; height: 20px; }
+.com dd { margin-top: 3px; margin-right: 10px; font-size: 12px; line-height: 12px; color: #AAA; float: left; }
+.com dd label { line-height: 12px; }
+.com dd.end { border-right: none; }
 
 .content { margin-top: 5px; line-height: 20px; }
 
@@ -83,17 +83,18 @@ ul.rightlist li { margin: 5px 2px; font-size: 12px; }
 /* edit form style
 -----------------------------------------------------*/
 dl.edit { }
-dl.edit dt { margin: 3px 0px; }
-dl.edit dd { margin: 3px 0px; }
-dd.btn { margin-top: 10px; }
-.abody { height: 520px; }
-/* test
-------------------------------------------------------*/
-.debug { border: 0px solid #F00; }
+dl.edit dt { }
+dl.edit dd { margin-top:2px; margin-bottom:2px; }
+dl.edit dd .abody { height: 520px; }
+dl.edit dd .subject { width: 100%; }
+dd.btndiv { margin-top: 10px; }
+
+#editarticle dl.edit { margin-right: 10px; }
+/* test ------------------------------------------------------*/.debug { border: 0px solid #F00; }
 
 
 /* 黄色Link
 ------------------------------------------------------*/
 .subject dd a { color: #e59312; font-weight: bold; }
-.subject dd a:hover, #footer a:hover { color: #323232; }
+.subject dd a:hover, #footer a:hover { color: #000; }
 #footer a { color: #789c33; }

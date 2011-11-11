@@ -3,7 +3,8 @@
 <%@ Import Namespace="CodeNote.Entity" %>
 <%@ Import Namespace="CodeNote.Web.Common" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
-    A Pure Boy: <%:Model.Subject %>
+    A Pure Boy:
+    <%:Model.Subject %>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="HeadContent" runat="server">
     <link href="/css/wmd.css" rel="stylesheet" type="text/css" />
@@ -16,7 +17,7 @@
     <% Html.RenderAction("Navigation", "Control", new { categoryID = Model.CategoryID }); %>
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="LeftBox" runat="server">
-    <div class="subject">
+    <div class="com">
         <h2 class="posrl">
             <%: Model.Subject %>
             <% if (IsLogin && CurUser.ID == Model.CreateID)
@@ -32,19 +33,16 @@
                     <%: Model.CreateDate %></label></dd>
             <dd>
                 <label title="作者">
-                    <%:Model.CreateName %></label></dd>
+                    By：<%= Html.ActionLink(Model.CreateName,"","") %></label></dd>
             <dd>
                 <label>
-                    <%= Html.ActionLink(Model.CategoryTitle, "Category", "Category", new { categoryName = Model.CategoryName}, new { title=Model.CategoryTitle}) %>
-                </label>
+                    Notic：<%= Html.ActionLink(Model.CategoryTitle, "Category", "Category", new { categoryName = Model.CategoryName}, new { title=Model.CategoryTitle}) %></label>
             </dd>
             <% if (!string.IsNullOrEmpty(Model.Tag))
                { %>
             <dd>
                 <label title="标签">
-                    Tag:
-                    <%= Html.TagLink(Model.Tag, "Tag", "Tag")%>
-                </label>
+                    Tag：<%= Html.TagLink(Model.Tag, "Tag", "Tag")%></label>
             </dd>
             <%} %>
         </dl>
@@ -93,13 +91,15 @@
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="BodyBottomContent" runat="server">
     <script type="text/javascript">
-        jQuery(function () {
+        jQuery(function ()
+        {
 
             var converter = Markdown.getSanitizingConverter();
             var editor = new Markdown.Editor(converter);
             editor.run();
         });
-        function Replay() {
+        function Replay()
+        {
             var nick = $('#replayNick').val();
             var email = $('#replayEmail').val();
             var body = $('#wmd-input').val();
@@ -108,16 +108,20 @@
                 url: '/Reply/Add',
                 type: 'post',
                 data: { 'articleID': articleID, 'nick': nick, 'email': email, 'body': body },
-                success: function (data) {
+                success: function (data)
+                {
                     $('#replayMessage').html(data.Message);
                     TimerHide('replayMessage', 2000);
                     var refreshUrl = $('#hid_RefreshUrl').val();
-                    if (refreshUrl) {
+                    if (refreshUrl)
+                    {
                         AjaxLoad(refreshUrl, 'replyList', null);
-                    } else {
+                    } else
+                    {
                         AjaxLoad('<%= Html.Url("ReplyList", "Reply",null)%>', 'replyList', { 'articleID': $('#hidArtilceID').val() });
                     }
-                }, error: function () {
+                }, error: function ()
+                {
                     alert("replay");
                 }
             });

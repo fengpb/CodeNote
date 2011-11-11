@@ -43,7 +43,7 @@ namespace CodeNote.Common
             }
             else
             {
-                cip.AbsoluteExpiration = DateTimeOffset.Now.AddHours(2);
+                cip.AbsoluteExpiration = DateTimeOffset.Now.AddHours(10);
                 cip.Priority = CacheItemPriority.Default;
             }
             this.CacheInstance.Add(key, data, cip);

@@ -29,10 +29,16 @@ namespace CodeNote.Web.Controllers
         }
         #endregion
 
+        #region LogOn
+        public ActionResult LogOn()
+        {
+            return Login();
+        }
         public ActionResult Login()
         {
             return View("Login");
         }
+        #endregion
 
         public ActionResult LoginOut()
         {
@@ -66,6 +72,8 @@ namespace CodeNote.Web.Controllers
         }
 
         /// <summary>
+        /// eg. Check email or longname
+        /// <br/>
         /// 判断电子邮件或登陆名是否存在
         /// </summary>
         /// <param name="key"></param>
@@ -104,6 +112,7 @@ namespace CodeNote.Web.Controllers
             return Json(retValue);
         }
 
+        #region Register
         public ActionResult Register()
         {
             return View("Register");
@@ -153,7 +162,7 @@ namespace CodeNote.Web.Controllers
                 string url = this.UrlPath("Valid", "User", new { email = email, valid = entity.PassWord });
                 content.Append(string.Format("<a href=\"{0}\" target=\"_back\">{1}</a>", url, url));
 
-                if (CodeNote.Common.Net.Mail.EmailWrap.Default.Send(email, "注册验证邮件 - troublecode", content.ToString(), true))
+                if (CodeNote.Common.Net.Mail.EmailWrap.Default.Send(email, "Register validation email.", content.ToString(), true))
                 {
                     retValue.IsExists = true;
                     retValue.Message = "电子邮件发送成功";
@@ -172,6 +181,7 @@ namespace CodeNote.Web.Controllers
                 return View("Result", new ReturnMessage("服务器错误", retValue.Message));
             }
         }
+        #endregion
 
         /// <summary>
         /// 通过验证用户点击过来的连接继续注册步骤
@@ -201,17 +211,18 @@ namespace CodeNote.Web.Controllers
             }
         }
 
+        #region EditUser
         [Filter.CheckLogin]
         public ActionResult EditUser()
         {
             return View("EditUser", CurUser);
         }
 
-
         /// <summary>
         /// 修改用户信息
         /// </summary>
         /// <returns></returns>
+        [Filter.CheckLogin]
         public ActionResult DoModify()
         {
             LoginUser login = new LoginUser();
@@ -270,7 +281,7 @@ namespace CodeNote.Web.Controllers
             {
                 StringBuilder content = new StringBuilder();
                 content.Append(string.Format("Dear {0}:<br/> 你的登录密码已经成功修改为: {1}<hr/>{2}", login.LoginName, newPassWord, SiteData.Instance.Domain));
-                CodeNote.Common.Net.Mail.EmailWrap.Default.Send(login.Email, login.LoginName + "修改密码", content.ToString(), true);
+                CodeNote.Common.Net.Mail.EmailWrap.Default.Send(login.Email, login.LoginName + " Change Password.", content.ToString(), true);
             }
 
             Account account = new Account();
@@ -290,6 +301,7 @@ namespace CodeNote.Web.Controllers
                 return View("Result", new ReturnMessage("修改信息", "呵呵，这么莫名其妙，居然修改失败了!你好悲剧阿! 赶快祈求上帝把!"));
             }
         }
+        #endregion
 
         /// <summary>
         /// 没有权限

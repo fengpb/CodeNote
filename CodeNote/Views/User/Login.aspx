@@ -6,6 +6,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="PopTitle" runat="server">
+</asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContent" runat="server">
     <div class="magtlf10 mgt10">
         <% Html.BeginForm("DoLogin", "User", FormMethod.Post); %>

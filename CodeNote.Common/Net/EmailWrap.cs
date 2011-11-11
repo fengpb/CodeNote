@@ -61,7 +61,7 @@ namespace CodeNote.Common.Net.Mail
             mail.From = new MailAddress(this.Smtp.UserName, this.Smtp.DisplyName, Encoding.UTF8);
 
             mail.To.Add(email);
-            mail.Priority = MailPriority.High;
+            mail.Priority = MailPriority.Normal;
             mail.Subject = subject;
             mail.SubjectEncoding = Encoding.UTF8;
             mail.Body = body;

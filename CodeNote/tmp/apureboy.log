@@ -1,0 +1,35 @@
+2011-11-11 17:01:39,648 [10] DEBUG CodeNote.Common.ConfigWrap [(null)] - FileChangeMonitor_Dir = tmp/cache/
+2011-11-11 17:01:39,698 [10] INFO  CodeNote.Common.BuildCache`1[[System.Collections.Generic.IList`1[[CodeNote.Entity.Category, CodeNote.Entity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]] [(null)] - Create cache monitor dir! tmp/cache/
+2011-11-11 17:01:39,699 [10] DEBUG CodeNote.Common.ConfigWrap [(null)] - FileChangeMonitor_Dir = tmp/cache/
+2011-11-11 17:01:39,752 [10] ERROR CodeNote.Common.BuildCache`1[[System.Collections.Generic.IList`1[[CodeNote.Entity.Category, CodeNote.Entity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]] [(null)] - The process cannot access the file 'C:\Program Files\Common Files\Microsoft Shared\DevServer\10.0\tmp\cache\CATEGORY_ALL_CACHE_KEY.cachemonitor' because it is being used by another process.
+System.IO.IOException: The process cannot access the file 'C:\Program Files\Common Files\Microsoft Shared\DevServer\10.0\tmp\cache\CATEGORY_ALL_CACHE_KEY.cachemonitor' because it is being used by another process.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options)
+   at System.IO.StreamWriter.CreateFile(String path, Boolean append)
+   at System.IO.StreamWriter..ctor(String path, Boolean append, Encoding encoding, Int32 bufferSize)
+   at System.IO.StreamWriter..ctor(String path, Boolean append)
+   at CodeNote.Common.BuildCache.ChangeMonitorFileDateNow(String key, Boolean append) in E:\github\CodeNote\CodeNote.Common\BuildCache.cs:line 113
+2011-11-11 17:02:42,508 [10] DEBUG CodeNote.Common.ConfigWrap [(null)] - FileChangeMonitor_Dir = E:\github\CodeNote\CodeNote\tmp/cache/
+2011-11-11 17:02:42,521 [10] DEBUG CodeNote.Common.ConfigWrap [(null)] - FileChangeMonitor_Dir = E:\github\CodeNote\CodeNote\tmp/cache/
+2011-11-11 17:05:49,061 [13] DEBUG CodeNote.Common.ConfigWrap [(null)] - FileChangeMonitor_Dir = E:\github\CodeNote\CodeNote\tmp/cache/
+2011-11-11 17:05:49,073 [13] DEBUG CodeNote.Common.ConfigWrap [(null)] - FileChangeMonitor_Dir = E:\github\CodeNote\CodeNote\tmp/cache/
+2011-11-11 17:12:00,936 [12] DEBUG CodeNote.Common.ConfigWrap [(null)] - FileChangeMonitor_Dir = E:\github\CodeNote\CodeNote\tmp/cache/
+2011-11-11 17:12:00,948 [12] DEBUG CodeNote.Common.ConfigWrap [(null)] - FileChangeMonitor_Dir = E:\github\CodeNote\CodeNote\tmp/cache/
+2011-11-11 17:12:32,821 [11] DEBUG CodeNote.Common.ConfigWrap [(null)] - FileChangeMonitor_Dir = E:\github\CodeNote\CodeNote\tmp/cache/
+2011-11-11 17:12:32,833 [11] DEBUG CodeNote.Common.ConfigWrap [(null)] - FileChangeMonitor_Dir = E:\github\CodeNote\CodeNote\tmp/cache/
+2011-11-11 17:12:59,649 [12] DEBUG CodeNote.Common.ConfigWrap [(null)] - FileChangeMonitor_Dir = E:\github\CodeNote\CodeNote\tmp/cache/
+2011-11-11 17:12:59,661 [12] DEBUG CodeNote.Common.ConfigWrap [(null)] - FileChangeMonitor_Dir = E:\github\CodeNote\CodeNote\tmp/cache/
+2011-11-11 17:13:02,903 [12] DEBUG CodeNote.Manager.ArticleManager [(null)] - GetArticleList: filter =>  CategoryID LIKE '100%'
+2011-11-11 17:14:47,884 [12] DEBUG CodeNote.Common.ConfigWrap [(null)] - FileChangeMonitor_Dir = E:\github\CodeNote\CodeNote\tmp/cache/
+2011-11-11 17:14:47,895 [12] DEBUG CodeNote.Common.ConfigWrap [(null)] - FileChangeMonitor_Dir = E:\github\CodeNote\CodeNote\tmp/cache/
+2011-11-11 17:14:47,962 [12] DEBUG CodeNote.Manager.ArticleManager [(null)] - GetArticleList: filter =>  CategoryID LIKE '100%'
+2011-11-11 17:14:51,412 [12] DEBUG CodeNote.Manager.ArticleManager [(null)] - GetArticleList: filter =>  CategoryID LIKE '100%'
+2011-11-11 17:19:12,372 [12] INFO  CodeNote.Manager.TagInfoManager [(null)] - Add Tags : ok 0 ,error 0
+2011-11-11 17:19:24,526 [14] DEBUG CodeNote.Manager.ArticleManager [(null)] - GetArticleList: filter =>  CategoryID LIKE '100%'
+2011-11-11 17:49:49,513 [5] DEBUG CodeNote.Manager.ArticleManager [(null)] - GetArticleList: filter =>  CategoryID LIKE '100%'
+2011-11-11 17:52:00,590 [17] DEBUG CodeNote.Manager.ArticleManager [(null)] - GetArticleList: filter =>  CategoryID LIKE '100%'
+2011-11-11 17:52:05,670 [11] DEBUG CodeNote.Manager.ArticleManager [(null)] - GetArticleList: filter =>  CategoryID LIKE '100%'
+2011-11-11 18:09:05,973 [19] DEBUG CodeNote.Manager.ArticleManager [(null)] - GetArticleList: filter =>  CategoryID LIKE '100%'
+2011-11-11 18:16:00,058 [21] DEBUG CodeNote.Common.ConfigWrap [(null)] - FileChangeMonitor_Dir = E:\github\CodeNote\CodeNote\tmp/cache/
+2011-11-11 18:16:00,071 [21] DEBUG CodeNote.Common.ConfigWrap [(null)] - FileChangeMonitor_Dir = E:\github\CodeNote\CodeNote\tmp/cache/
