@@ -44,5 +44,13 @@ namespace CodeNote.Web.Controllers
             return View("Error");
         }
 
+        /// <summary>
+        /// 帮助页面
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult Help()
+        {
+            return View("Help");
+        }
     }
 }

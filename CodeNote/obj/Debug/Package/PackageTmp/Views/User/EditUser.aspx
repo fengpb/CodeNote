@@ -18,7 +18,7 @@
         <dl>
             <dt>
                 <%= Html.Avatar(Model!=null? Model.Email:"nobody") %>
-                <%= Html.ActionLink("关于头像", "Avatar", "Home", null, new { })%>
+                <%= Html.ActionLink("关于头像", "Avatar", "Home", null, new {title="About avatar",@class="help" })%>
             </dt>
         </dl>
         <dl class="dlinput">

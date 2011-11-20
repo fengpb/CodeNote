@@ -11,11 +11,9 @@
             <input id="articleid" name="articleid" type="hidden" value="<%=Model!=null? Model.ID:0 %>" />
             <input id="articlesubject" type="text" name="subject" class="text subject" value="<%= Model!=null?Model.Subject:"" %>"
                 maxlength="200" /></dd>
-        <dt class="posrl">
+        <dt>
             <label for="articlebody">
-                正文</label>&nbsp; <span class="posabsbr">
-                    <%= Html.ActionLink("?", "Help", "MarkDown", null, new { @class="help"})%>
-                </span></dt>
+                正文</label></dt>
         <dd>
             <div class="wmd-panel">
                 <div id="wmd-button-bar">

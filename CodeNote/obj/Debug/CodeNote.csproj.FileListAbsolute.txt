@@ -15,25 +15,6 @@ F:\Fpbin Project\CodeNote\CodeNote\bin\CodeNote.Dal.dll
 F:\Fpbin Project\CodeNote\CodeNote\bin\CodeNote.Common.pdb
 F:\Fpbin Project\CodeNote\CodeNote\bin\CodeNote.Manager.pdb
 F:\Fpbin Project\CodeNote\CodeNote\bin\CodeNote.Dal.pdb
-F:\github\CodeNote\CodeNote\bin\CodeNote.dll
-F:\github\CodeNote\CodeNote\bin\CodeNote.pdb
-F:\github\CodeNote\CodeNote\bin\CodeNote.Entity.dll
-F:\github\CodeNote\CodeNote\bin\CodeNote.Web.dll
-F:\github\CodeNote\CodeNote\bin\log4net.dll
-F:\github\CodeNote\CodeNote\bin\CodeNote.Manager.dll
-F:\github\CodeNote\CodeNote\bin\CodeNote.Common.dll
-F:\github\CodeNote\CodeNote\bin\CodeNote.Markdown.dll
-F:\github\CodeNote\CodeNote\bin\CodeNote.Dal.dll
-F:\github\CodeNote\CodeNote\bin\CodeNote.Entity.pdb
-F:\github\CodeNote\CodeNote\bin\CodeNote.Web.pdb
-F:\github\CodeNote\CodeNote\bin\log4net.xml
-F:\github\CodeNote\CodeNote\bin\CodeNote.Manager.pdb
-F:\github\CodeNote\CodeNote\bin\CodeNote.Common.pdb
-F:\github\CodeNote\CodeNote\bin\CodeNote.Markdown.pdb
-F:\github\CodeNote\CodeNote\bin\CodeNote.Dal.pdb
-F:\github\CodeNote\CodeNote\obj\Debug\ResolveAssemblyReference.cache
-F:\github\CodeNote\CodeNote\obj\Debug\CodeNote.dll
-F:\github\CodeNote\CodeNote\obj\Debug\CodeNote.pdb
 E:\github\CodeNote\CodeNote\bin\CodeNote.dll
 E:\github\CodeNote\CodeNote\bin\CodeNote.pdb
 E:\github\CodeNote\CodeNote\bin\CodeNote.Entity.dll
@@ -53,3 +34,23 @@ E:\github\CodeNote\CodeNote\bin\CodeNote.Dal.pdb
 E:\github\CodeNote\CodeNote\obj\Debug\ResolveAssemblyReference.cache
 E:\github\CodeNote\CodeNote\obj\Debug\CodeNote.dll
 E:\github\CodeNote\CodeNote\obj\Debug\CodeNote.pdb
+F:\github\CodeNote\CodeNote\bin\CodeNote.dll
+F:\github\CodeNote\CodeNote\bin\CodeNote.pdb
+F:\github\CodeNote\CodeNote\bin\CodeNote.Entity.dll
+F:\github\CodeNote\CodeNote\bin\CodeNote.Web.dll
+F:\github\CodeNote\CodeNote\bin\log4net.dll
+F:\github\CodeNote\CodeNote\bin\CodeNote.Manager.dll
+F:\github\CodeNote\CodeNote\bin\CodeNote.Common.dll
+F:\github\CodeNote\CodeNote\bin\CodeNote.Markdown.dll
+F:\github\CodeNote\CodeNote\bin\StringTemplate.dll
+F:\github\CodeNote\CodeNote\bin\CodeNote.Dal.dll
+F:\github\CodeNote\CodeNote\bin\antlr.runtime.dll
+F:\github\CodeNote\CodeNote\bin\CodeNote.Entity.pdb
+F:\github\CodeNote\CodeNote\bin\CodeNote.Web.pdb
+F:\github\CodeNote\CodeNote\bin\CodeNote.Manager.pdb
+F:\github\CodeNote\CodeNote\bin\CodeNote.Common.pdb
+F:\github\CodeNote\CodeNote\bin\CodeNote.Markdown.pdb
+F:\github\CodeNote\CodeNote\bin\CodeNote.Dal.pdb
+F:\github\CodeNote\CodeNote\obj\Debug\ResolveAssemblyReference.cache
+F:\github\CodeNote\CodeNote\obj\Debug\CodeNote.dll
+F:\github\CodeNote\CodeNote\obj\Debug\CodeNote.pdb

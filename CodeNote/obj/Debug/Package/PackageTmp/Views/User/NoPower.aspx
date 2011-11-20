@@ -4,7 +4,6 @@
     A Pure Boy: NoPower
 </asp:Content>
 <asp:Content ID="PopTitle" ContentPlaceHolderID="PopTitle" runat="server">
-    <li class="cur"><a title="无权访问">NoPower</a></li>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div class=" magtlf10">

@@ -5,31 +5,31 @@
 <!-- Begin:日志列表 -->
 <% if (Model != null && Model.RecordCount > 0)
    { %>
-<% foreach (VwArticle item in Model.Data)
+<% for (int i = 0; i < Model.Data.Count; i++)
    {
+       VwArticle item = Model.Data[i];
 %>
-<div class="artitem">
-    <div class="subject">
+<div class="artitem <%= i+1==Model.Data.Count?"end":"" %>">
+    <div class="com">
         <h3>
             <%= Html.ActionLink(item.Subject,"Detail","Article",new {articleID=item.ID},null) %>
             <span></span>
         </h3>
         <dl>
-            <dd class="end">
-                <label title="日期">
-                    <%: item.CreateDate%></label></dd>
             <dd>
                 <label title="作者">
-                    <%:item.CreateName%></label></dd>
+                    By：<%= Html.ActionLink(item.CreateName, "", "") %></label></dd>
+            <% if (!string.IsNullOrEmpty(item.CategoryName))
+               { %>
             <dd>
-                <label title="分类">
-                    <%= Html.ActionLink(item.CategoryTitle, "Category", "Category", new { categoryName = item.CategoryName }, new { title = item.CategoryTitle })%></label></dd>
+                <label title="主题">
+                    Topic：<%= Html.ActionLink(item.CategoryTitle, "Category", "Category", new { categoryName = item.CategoryName }, new { title = item.CategoryTitle })%></label></dd>
+            <%} %>
             <% if (!string.IsNullOrEmpty(item.Tag))
                { %>
             <dd>
                 <label title="标签">
-                    Tag:
-                    <%= Html.TagLink(item.Tag, "Tag", "Tag")%>
+                    Tag：<%= Html.TagLink(item.Tag, "Tag", "Tag")%>
                 </label>
             </dd>
             <%} %>
@@ -39,7 +39,7 @@
         <%= HtmlEncode (item.Body) %></div>
 </div>
 <%
-    } %>
+   } %>
 <% if (Model.TotolPage > 1)
    { %>
 <%= Html.AjaxPaging(new Pager() { Cur = Model.CurPage, Count = Model.RecordCount, Size = Model.PageSize }, "ArticleList", "Article",new AjaxPagingOption ("articlelist"), new { })%>

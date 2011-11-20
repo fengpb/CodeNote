@@ -10,7 +10,11 @@
     <% Html.RenderAction("Navigation", "Control", new { categoryID = Model.CategoryID }); %>
 </asp:Content>
 <asp:Content ID="LeftBox" ContentPlaceHolderID="LeftBox" runat="server">
-    <% Html.RenderAction("ArticleList", "Article", new { categoryID = Model.CategoryID }); %>
+    <h2>
+        Topic：<%=Model.Title %></h2>
+    <div id="articlelist">
+        <% Html.RenderAction("ArticleList", "Article", new { categoryID = Model.CategoryID }); %>
+    </div>
 </asp:Content>
 <asp:Content ID="RightBox" ContentPlaceHolderID="RightBox" runat="server">
     <% Html.RenderAction("CategoryList", "Category", new { categoryID = Model.CategoryID }); %>

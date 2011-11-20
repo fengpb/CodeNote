@@ -34,10 +34,14 @@
             <dd>
                 <label title="作者">
                     By：<%= Html.ActionLink(Model.CreateName,"","") %></label></dd>
+            <% if (!string.IsNullOrEmpty(Model.CategoryName))
+               { %>
             <dd>
                 <label>
-                    Notic：<%= Html.ActionLink(Model.CategoryTitle, "Category", "Category", new { categoryName = Model.CategoryName}, new { title=Model.CategoryTitle}) %></label>
+                    Notic：<%= Html.ActionLink(Model.CategoryTitle, "Category", "Category", new { categoryName = Model.CategoryName }, new { title = Model.CategoryTitle })%></label>
             </dd>
+            <%} %>
+
             <% if (!string.IsNullOrEmpty(Model.Tag))
                { %>
             <dd>
@@ -91,15 +95,13 @@
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="BodyBottomContent" runat="server">
     <script type="text/javascript">
-        jQuery(function ()
-        {
+        jQuery(function () {
 
             var converter = Markdown.getSanitizingConverter();
             var editor = new Markdown.Editor(converter);
             editor.run();
         });
-        function Replay()
-        {
+        function Replay() {
             var nick = $('#replayNick').val();
             var email = $('#replayEmail').val();
             var body = $('#wmd-input').val();
@@ -108,20 +110,16 @@
                 url: '/Reply/Add',
                 type: 'post',
                 data: { 'articleID': articleID, 'nick': nick, 'email': email, 'body': body },
-                success: function (data)
-                {
+                success: function (data) {
                     $('#replayMessage').html(data.Message);
                     TimerHide('replayMessage', 2000);
                     var refreshUrl = $('#hid_RefreshUrl').val();
-                    if (refreshUrl)
-                    {
+                    if (refreshUrl) {
                         AjaxLoad(refreshUrl, 'replyList', null);
-                    } else
-                    {
+                    } else {
                         AjaxLoad('<%= Html.Url("ReplyList", "Reply",null)%>', 'replyList', { 'articleID': $('#hidArtilceID').val() });
                     }
-                }, error: function ()
-                {
+                }, error: function () {
                     alert("replay");
                 }
             });

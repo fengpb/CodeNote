@@ -80,7 +80,7 @@ namespace CodeNote.Web.Controllers
         /// <returns></returns>
         public JsonResult IsNull(string key)
         {
-            ReturnValue retValue = new ReturnValue();
+            ReturnValue retValue = new ReturnValue(true, "此用户未注册");
 
             if (string.IsNullOrEmpty(key))
             {
@@ -158,11 +158,11 @@ namespace CodeNote.Web.Controllers
 
             if (retValue.IsExists)
             {
-                StringBuilder content = new StringBuilder("请点击下面连接完成注册或将下面连接复制到浏览器地址栏直接访问！<br/>");
-                string url = this.UrlPath("Valid", "User", new { email = email, valid = entity.PassWord });
-                content.Append(string.Format("<a href=\"{0}\" target=\"_back\">{1}</a>", url, url));
+                string url = this.UrlPath("Valid", "User", new { email = email, valid = entity.PassWord,type="reg" });
+                Antlr.StringTemplate.StringTemplate st= CodeNote.Common.TemplateWrap.GetSt("register_email");
+                st.SetAttribute("url",url);
 
-                if (CodeNote.Common.Net.Mail.EmailWrap.Default.Send(email, "Register validation email.", content.ToString(), true))
+                if (CodeNote.Common.Net.Mail.EmailWrap.Default.Send(email, "注册验证 - Register validation", st.ToString(), true))
                 {
                     retValue.IsExists = true;
                     retValue.Message = "电子邮件发送成功";
@@ -193,6 +193,7 @@ namespace CodeNote.Web.Controllers
         {
             string email = Request["email"];//email地址
             string valid = Request["valid"];//验证信息
+            string type = Request["type"];//验证类型
 
             ReturnValue retValue = new ReturnValue();
             retValue = this.LoginUserMg.Login(email, valid);
@@ -201,6 +202,17 @@ namespace CodeNote.Web.Controllers
                 retValue.IsExists = true;
                 retValue.Message = "验证成功,继续完成注册!";
                 Common.SessionWrap.Add(Web.Models.Constans.USER_SESSION_KEY, retValue.RetObjec);//保存用户信息
+                if (!string.IsNullOrEmpty(type))
+                {
+                    switch (type.Trim().ToLower())
+                    {
+                        case "fpwd":
+                            LoginUser ret = retValue.RetObjec as LoginUser;
+                            ret.Type = (int)Constans.UserType.NoReg;
+                            retValue.RetObjec = ret;
+                            break;
+                    }
+                }
                 return View("EditUser", retValue.RetObjec);
             }
             else
@@ -310,6 +322,61 @@ namespace CodeNote.Web.Controllers
         public ActionResult NoPower()
         {
             return View("NoPower");
+        }
+
+        /// <summary>
+        /// 忘记秘密/找回密码
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult Fpwd()
+        {
+            return View("Fpwd");
+        }
+
+        /// <summary>
+        /// 用于重置密码
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult ResetPwd()
+        {
+            ReturnValue retValue = new ReturnValue(true, "重置密码成功");
+            string email = Request["email"];
+            if (string.IsNullOrEmpty(email))
+            {
+                retValue.IsExists = false;
+                retValue.Message = "请输入电子邮件地址";
+            }
+            if (retValue.IsExists)
+            {
+                LoginUser entity = this.LoginUserMg.Get(email);//获取用户信息
+                if (entity != null)
+                {
+                    string url = this.UrlPath("Valid", "User", new { email = email, valid = entity.PassWord, type = "fpwd" });
+                    //发送重置密码的电子邮件通知
+                    Antlr.StringTemplate.StringTemplate st = CodeNote.Common.TemplateWrap.GetSt("find_pwd_email");
+
+                    st.SetAttribute("account", entity.LoginName);
+                    st.SetAttribute("url", url);
+
+                    if (CodeNote.Common.Net.Mail.EmailWrap.Default.Send(email, "找回密码 - Find password", st.ToString(), true))
+                    {
+                        retValue.IsExists = true;
+                        retValue.Message = "请登陆您的邮箱,进行密码找回";
+                    }
+                    else
+                    {
+                        retValue.IsExists = false;
+                        retValue.Message = "对不起,发送找回密码邮件时失败！";
+                    }
+
+                }
+                else
+                {
+                    retValue.Message = "对不起,您输入的电子邮件不是本站的注册用户。";
+                }
+            }
+
+            return View("Result", new ReturnMessage(Request, "操作信息", retValue));
         }
     }
 }

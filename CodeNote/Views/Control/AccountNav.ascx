@@ -1,7 +1,7 @@
 ﻿<%@ Control Language="C#" Inherits="CodeNote.Web.ViewUserControl<dynamic>" %>
 <ul id="navbar">
     <li>
-        <%=Html.ActionLink("首页", "Index", "Account")%></li>
+        <%=Html.ActionLink("首页", "Index", "Home")%></li>
     <li>
         <%=Html.ActionLink("帐户信息", "EditUser", "User")%></li>
     <% if (SiteData.IsAdmin)

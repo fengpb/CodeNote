@@ -34,9 +34,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Common.DLL\log\log4net.dll</HintPath>
+    <Reference Include="log4net">
+      <HintPath>..\CodeNote.Lib\log4net.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
@@ -116,6 +115,7 @@
     <Content Include="Views\Control\Navigation.ascx" />
     <Content Include="Views\Home\About.aspx" />
     <Content Include="Views\Home\Avatar.aspx" />
+    <Content Include="Views\Home\Help.aspx" />
     <Content Include="Views\Home\Index.aspx" />
     <Content Include="Views\Reply\ReplyList.ascx" />
     <Content Include="Views\Shared\Error.aspx" />
@@ -123,6 +123,7 @@
     <Content Include="Views\Tag\Tag.aspx" />
     <Content Include="Views\User\DoReg.aspx" />
     <Content Include="Views\User\EditUser.aspx" />
+    <Content Include="Views\User\Fpwd.aspx" />
     <Content Include="Views\User\NoPower.aspx" />
     <Content Include="Views\MarkDown\Help.aspx" />
     <Content Include="Views\Shared\Result.aspx" />
@@ -167,8 +168,10 @@
   <ItemGroup>
     <Content Include="Views\Shared\Site.Master" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="wmd\" />
+    <None Include="st\find_pwd_email.st" />
+    <None Include="st\register_email.st" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

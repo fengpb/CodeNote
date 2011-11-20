@@ -39,7 +39,7 @@ namespace CodeNote.Manager
             using (ArticleDal dal = new ArticleDal())
             {
                 VwArticle old = null;
-                if (entity.ID > 1)
+                if (entity.ID > 0)
                 {
                     old = dal.GetVw(entity.ID);
                 }

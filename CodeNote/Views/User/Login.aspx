@@ -28,7 +28,7 @@
         <div>
             <p class="note">
                 还没有帐号，请<%= Html.ActionLink("注册","Register","User",null,new {title="Register"}) %>。
-                或你已经<a>忘记密码</a>。
+                或你已经<%=Html.ActionLink("忘记密码","Fpwd","User",null,null)%>。
             </p>
         </div>
         <% Html.EndForm(); %>

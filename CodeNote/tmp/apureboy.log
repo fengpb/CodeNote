@@ -1,35 +1,65 @@
-2011-11-11 17:01:39,648 [10] DEBUG CodeNote.Common.ConfigWrap [(null)] - FileChangeMonitor_Dir = tmp/cache/
-2011-11-11 17:01:39,698 [10] INFO  CodeNote.Common.BuildCache`1[[System.Collections.Generic.IList`1[[CodeNote.Entity.Category, CodeNote.Entity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]] [(null)] - Create cache monitor dir! tmp/cache/
-2011-11-11 17:01:39,699 [10] DEBUG CodeNote.Common.ConfigWrap [(null)] - FileChangeMonitor_Dir = tmp/cache/
-2011-11-11 17:01:39,752 [10] ERROR CodeNote.Common.BuildCache`1[[System.Collections.Generic.IList`1[[CodeNote.Entity.Category, CodeNote.Entity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]] [(null)] - The process cannot access the file 'C:\Program Files\Common Files\Microsoft Shared\DevServer\10.0\tmp\cache\CATEGORY_ALL_CACHE_KEY.cachemonitor' because it is being used by another process.
-System.IO.IOException: The process cannot access the file 'C:\Program Files\Common Files\Microsoft Shared\DevServer\10.0\tmp\cache\CATEGORY_ALL_CACHE_KEY.cachemonitor' because it is being used by another process.
-   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
-   at System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath)
-   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options)
-   at System.IO.StreamWriter.CreateFile(String path, Boolean append)
-   at System.IO.StreamWriter..ctor(String path, Boolean append, Encoding encoding, Int32 bufferSize)
-   at System.IO.StreamWriter..ctor(String path, Boolean append)
-   at CodeNote.Common.BuildCache.ChangeMonitorFileDateNow(String key, Boolean append) in E:\github\CodeNote\CodeNote.Common\BuildCache.cs:line 113
-2011-11-11 17:02:42,508 [10] DEBUG CodeNote.Common.ConfigWrap [(null)] - FileChangeMonitor_Dir = E:\github\CodeNote\CodeNote\tmp/cache/
-2011-11-11 17:02:42,521 [10] DEBUG CodeNote.Common.ConfigWrap [(null)] - FileChangeMonitor_Dir = E:\github\CodeNote\CodeNote\tmp/cache/
-2011-11-11 17:05:49,061 [13] DEBUG CodeNote.Common.ConfigWrap [(null)] - FileChangeMonitor_Dir = E:\github\CodeNote\CodeNote\tmp/cache/
-2011-11-11 17:05:49,073 [13] DEBUG CodeNote.Common.ConfigWrap [(null)] - FileChangeMonitor_Dir = E:\github\CodeNote\CodeNote\tmp/cache/
-2011-11-11 17:12:00,936 [12] DEBUG CodeNote.Common.ConfigWrap [(null)] - FileChangeMonitor_Dir = E:\github\CodeNote\CodeNote\tmp/cache/
-2011-11-11 17:12:00,948 [12] DEBUG CodeNote.Common.ConfigWrap [(null)] - FileChangeMonitor_Dir = E:\github\CodeNote\CodeNote\tmp/cache/
-2011-11-11 17:12:32,821 [11] DEBUG CodeNote.Common.ConfigWrap [(null)] - FileChangeMonitor_Dir = E:\github\CodeNote\CodeNote\tmp/cache/
-2011-11-11 17:12:32,833 [11] DEBUG CodeNote.Common.ConfigWrap [(null)] - FileChangeMonitor_Dir = E:\github\CodeNote\CodeNote\tmp/cache/
-2011-11-11 17:12:59,649 [12] DEBUG CodeNote.Common.ConfigWrap [(null)] - FileChangeMonitor_Dir = E:\github\CodeNote\CodeNote\tmp/cache/
-2011-11-11 17:12:59,661 [12] DEBUG CodeNote.Common.ConfigWrap [(null)] - FileChangeMonitor_Dir = E:\github\CodeNote\CodeNote\tmp/cache/
-2011-11-11 17:13:02,903 [12] DEBUG CodeNote.Manager.ArticleManager [(null)] - GetArticleList: filter =>  CategoryID LIKE '100%'
-2011-11-11 17:14:47,884 [12] DEBUG CodeNote.Common.ConfigWrap [(null)] - FileChangeMonitor_Dir = E:\github\CodeNote\CodeNote\tmp/cache/
-2011-11-11 17:14:47,895 [12] DEBUG CodeNote.Common.ConfigWrap [(null)] - FileChangeMonitor_Dir = E:\github\CodeNote\CodeNote\tmp/cache/
-2011-11-11 17:14:47,962 [12] DEBUG CodeNote.Manager.ArticleManager [(null)] - GetArticleList: filter =>  CategoryID LIKE '100%'
-2011-11-11 17:14:51,412 [12] DEBUG CodeNote.Manager.ArticleManager [(null)] - GetArticleList: filter =>  CategoryID LIKE '100%'
-2011-11-11 17:19:12,372 [12] INFO  CodeNote.Manager.TagInfoManager [(null)] - Add Tags : ok 0 ,error 0
-2011-11-11 17:19:24,526 [14] DEBUG CodeNote.Manager.ArticleManager [(null)] - GetArticleList: filter =>  CategoryID LIKE '100%'
-2011-11-11 17:49:49,513 [5] DEBUG CodeNote.Manager.ArticleManager [(null)] - GetArticleList: filter =>  CategoryID LIKE '100%'
-2011-11-11 17:52:00,590 [17] DEBUG CodeNote.Manager.ArticleManager [(null)] - GetArticleList: filter =>  CategoryID LIKE '100%'
-2011-11-11 17:52:05,670 [11] DEBUG CodeNote.Manager.ArticleManager [(null)] - GetArticleList: filter =>  CategoryID LIKE '100%'
-2011-11-11 18:09:05,973 [19] DEBUG CodeNote.Manager.ArticleManager [(null)] - GetArticleList: filter =>  CategoryID LIKE '100%'
-2011-11-11 18:16:00,058 [21] DEBUG CodeNote.Common.ConfigWrap [(null)] - FileChangeMonitor_Dir = E:\github\CodeNote\CodeNote\tmp/cache/
-2011-11-11 18:16:00,071 [21] DEBUG CodeNote.Common.ConfigWrap [(null)] - FileChangeMonitor_Dir = E:\github\CodeNote\CodeNote\tmp/cache/
+2011-11-12 01:09:54,922 [6] DEBUG CodeNote.Common.ConfigWrap [(null)] - FileChangeMonitor_Dir = F:\github\CodeNote\CodeNote\tmp/cache/
+2011-11-12 01:09:54,961 [6] INFO  CodeNote.Common.BuildCache`1[[System.Collections.Generic.IList`1[[CodeNote.Entity.Category, CodeNote.Entity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]] [(null)] - Create cache monitor dir! F:\github\CodeNote\CodeNote\tmp/cache/
+2011-11-12 01:09:54,962 [6] DEBUG CodeNote.Common.ConfigWrap [(null)] - FileChangeMonitor_Dir = F:\github\CodeNote\CodeNote\tmp/cache/
+2011-11-12 01:09:55,272 [6] ERROR CodeNote.Common.BuildCache`1[[System.Collections.Generic.IList`1[[CodeNote.Entity.Category, CodeNote.Entity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]] [(null)] - 文件“F:\github\CodeNote\CodeNote\tmp\cache\CATEGORY_ALL_CACHE_KEY.cachemonitor”正由另一进程使用，因此该进程无法访问此文件。
+System.IO.IOException: 文件“F:\github\CodeNote\CodeNote\tmp\cache\CATEGORY_ALL_CACHE_KEY.cachemonitor”正由另一进程使用，因此该进程无法访问此文件。
+   在 System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   在 System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath)
+   在 System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options)
+   在 System.IO.StreamWriter.CreateFile(String path, Boolean append)
+   在 System.IO.StreamWriter..ctor(String path, Boolean append, Encoding encoding, Int32 bufferSize)
+   在 System.IO.StreamWriter..ctor(String path, Boolean append)
+   在 CodeNote.Common.BuildCache.ChangeMonitorFileDateNow(String key, Boolean append) 位置 F:\github\CodeNote\CodeNote.Common\BuildCache.cs:行号 113
+2011-11-12 01:19:23,336 [16] DEBUG CodeNote.Common.ConfigWrap [(null)] - FileChangeMonitor_Dir = F:\github\CodeNote\CodeNote\tmp/cache/
+2011-11-12 01:19:23,360 [16] DEBUG CodeNote.Common.ConfigWrap [(null)] - FileChangeMonitor_Dir = F:\github\CodeNote\CodeNote\tmp/cache/
+2011-11-12 01:40:28,881 [25] DEBUG CodeNote.Common.ConfigWrap [(null)] - FileChangeMonitor_Dir = F:\github\CodeNote\CodeNote\tmp/cache/
+2011-11-12 01:40:28,895 [25] DEBUG CodeNote.Common.ConfigWrap [(null)] - FileChangeMonitor_Dir = F:\github\CodeNote\CodeNote\tmp/cache/
+2011-11-19 19:33:09,806 [6] DEBUG CodeNote.Common.ConfigWrap [(null)] - FileChangeMonitor_Dir = F:\github\CodeNote\CodeNote\tmp/cache/
+2011-11-19 19:33:09,861 [6] DEBUG CodeNote.Common.ConfigWrap [(null)] - FileChangeMonitor_Dir = F:\github\CodeNote\CodeNote\tmp/cache/
+2011-11-19 21:34:34,685 [16] DEBUG CodeNote.Common.ConfigWrap [(null)] - FileChangeMonitor_Dir = F:\github\CodeNote\CodeNote\tmp/cache/
+2011-11-19 21:34:34,849 [16] DEBUG CodeNote.Common.ConfigWrap [(null)] - FileChangeMonitor_Dir = F:\github\CodeNote\CodeNote\tmp/cache/
+2011-11-20 16:24:35,496 [36] DEBUG CodeNote.Common.ConfigWrap [(null)] - FileChangeMonitor_Dir = F:\github\CodeNote\CodeNote\tmp/cache/
+2011-11-20 16:24:35,662 [36] DEBUG CodeNote.Common.ConfigWrap [(null)] - FileChangeMonitor_Dir = F:\github\CodeNote\CodeNote\tmp/cache/
+2011-11-20 16:26:30,256 [36] DEBUG CodeNote.Common.TemplateWrap [(null)] - TemplateDir: F:\github\CodeNote\CodeNote\/st
+2011-11-20 16:27:38,741 [36] DEBUG CodeNote.Common.Net.Mail.EmailWrap [(null)] - 673208900@qq.com : 找回密码 - Find password => 您好！<br/> 请点击连接重置您的秘密<br><a href=\"http://localhost:2010/User/Valid?email=673208900%40qq.com&valid=robin\">http://localhost:2010/User/Valid?email=673208900%40qq.com&valid=robin</a>
+2011-11-20 16:28:00,604 [94] DEBUG CodeNote.Common.ConfigWrap [(null)] - FileChangeMonitor_Dir = F:\github\CodeNote\CodeNote\tmp/cache/
+2011-11-20 16:28:00,618 [94] DEBUG CodeNote.Common.ConfigWrap [(null)] - FileChangeMonitor_Dir = F:\github\CodeNote\CodeNote\tmp/cache/
+2011-11-20 16:28:44,243 [33] DEBUG CodeNote.Common.TemplateWrap [(null)] - TemplateDir: F:\github\CodeNote\CodeNote\/st
+2011-11-20 16:28:50,366 [33] DEBUG CodeNote.Common.Net.Mail.EmailWrap [(null)] - 673208900@qq.com : 找回密码 - Find password => 673208900@qq.com您好！<br/> 请点击连接重置您的秘密<br><a href=\"http://localhost:2010/User/Valid?email=673208900%40qq.com&valid=robin\">http://localhost:2010/User/Valid?email=673208900%40qq.com&valid=robin</a>
+2011-11-20 17:03:39,638 [99] DEBUG CodeNote.Common.ConfigWrap [(null)] - FileChangeMonitor_Dir = F:\github\CodeNote\CodeNote\tmp/cache/
+2011-11-20 17:03:39,665 [99] DEBUG CodeNote.Common.ConfigWrap [(null)] - FileChangeMonitor_Dir = F:\github\CodeNote\CodeNote\tmp/cache/
+2011-11-20 17:04:46,955 [100] DEBUG CodeNote.Common.TemplateWrap [(null)] - TemplateDir: F:\github\CodeNote\CodeNote\/st
+2011-11-20 17:05:04,928 [100] DEBUG CodeNote.Common.Net.Mail.EmailWrap [(null)] - 673208900@qq.com : 注册验证 - Register validation => 欢迎您注册纯真男孩，请点击以下连接完成注册.
+<a href=\"http://localhost:2010/User/Valid?email=673208900%40qq.com&valid=e9330e4eaaedf88a1a42b703c7727f73&type=reg\" target=\"_back\">http://localhost:2010/User/Valid?email=673208900%40qq.com&valid=e9330e4eaaedf88a1a42b703c7727f73&type=reg</a>
+<br/>
+------------------------------------------
+<br/>
+Thanks you register A Pure Boy, Place click link.
+<a href=\"http://localhost:2010/User/Valid?email=673208900%40qq.com&valid=e9330e4eaaedf88a1a42b703c7727f73&type=reg\" target=\"_back\">http://localhost:2010/User/Valid?email=673208900%40qq.com&valid=e9330e4eaaedf88a1a42b703c7727f73&type=reg</a>
+
+2011-11-20 17:07:26,455 [100] DEBUG CodeNote.Common.Net.Mail.EmailWrap [(null)] - 673208900@qq.com : 673208900@qq.com Change Password. => Dear 673208900@qq.com:<br/> 你的登录密码已经成功修改为: robin<hr/>http://localhost:2010
+2011-11-20 17:11:14,330 [97] INFO  CodeNote.Manager.TagInfoManager [(null)] - Add Tags : ok 0 ,error 0
+2011-11-20 17:12:12,448 [96] DEBUG CodeNote.Common.ConfigWrap [(null)] - FileChangeMonitor_Dir = F:\github\CodeNote\CodeNote\tmp/cache/
+2011-11-20 17:12:12,466 [100] INFO  CodeNote.Common.BuildCache`1[[System.Collections.Generic.IList`1[[CodeNote.Entity.Category, CodeNote.Entity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]] [(null)] - Remove Cahce: CATEGORY_ALL_CACHE_KEY
+2011-11-20 17:12:12,483 [97] DEBUG CodeNote.Common.ConfigWrap [(null)] - FileChangeMonitor_Dir = F:\github\CodeNote\CodeNote\tmp/cache/
+2011-11-20 17:12:12,484 [97] DEBUG CodeNote.Common.ConfigWrap [(null)] - FileChangeMonitor_Dir = F:\github\CodeNote\CodeNote\tmp/cache/
+2011-11-20 17:15:49,980 [100] INFO  CodeNote.Manager.TagInfoManager [(null)] - Add Tags : ok 0 ,error 0
+2011-11-20 17:16:11,249 [98] INFO  CodeNote.Manager.TagInfoManager [(null)] - Add Tags : ok 0 ,error 0
+2011-11-20 17:16:38,385 [33] INFO  CodeNote.Manager.TagInfoManager [(null)] - Add Tags : ok 0 ,error 0
+2011-11-20 17:19:30,091 [94] INFO  CodeNote.Manager.TagInfoManager [(null)] - Add Tags : ok 0 ,error 0
+2011-11-20 17:19:53,319 [100] DEBUG CodeNote.Common.ConfigWrap [(null)] - FileChangeMonitor_Dir = F:\github\CodeNote\CodeNote\tmp/cache/
+2011-11-20 17:19:53,364 [100] DEBUG CodeNote.Common.ConfigWrap [(null)] - FileChangeMonitor_Dir = F:\github\CodeNote\CodeNote\tmp/cache/
+2011-11-20 17:21:32,686 [94] INFO  CodeNote.Manager.TagInfoManager [(null)] - Add Tags : ok 0 ,error 0
+2011-11-20 17:21:52,539 [99] INFO  CodeNote.Manager.TagInfoManager [(null)] - Add Tags : ok 0 ,error 0
+2011-11-20 17:22:25,985 [6] DEBUG CodeNote.Manager.ArticleManager [(null)] - GetArticleList: filter =>  CategoryID LIKE '100%'
+2011-11-20 17:30:14,186 [99] DEBUG CodeNote.Manager.ArticleManager [(null)] - GetArticleList: filter =>  CategoryID LIKE '100%'
+2011-11-20 17:31:14,043 [99] DEBUG CodeNote.Manager.ArticleManager [(null)] - GetArticleList: filter =>  CategoryID LIKE '100%'
+2011-11-20 17:31:29,732 [96] DEBUG CodeNote.Manager.ArticleManager [(null)] - GetArticleList: filter =>  CategoryID LIKE '100%'
+2011-11-20 17:32:14,781 [10] DEBUG CodeNote.Manager.ArticleManager [(null)] - GetArticleList: filter =>  CategoryID LIKE '100%'
+2011-11-20 17:33:32,946 [96] DEBUG CodeNote.Manager.ArticleManager [(null)] - GetArticleList: filter =>  CategoryID LIKE '100%'
+2011-11-20 17:35:17,096 [37] DEBUG CodeNote.Manager.ArticleManager [(null)] - GetArticleList: filter =>  CategoryID LIKE '100%'
+2011-11-20 17:39:14,953 [96] DEBUG CodeNote.Common.ConfigWrap [(null)] - FileChangeMonitor_Dir = F:\github\CodeNote\CodeNote\tmp/cache/
+2011-11-20 17:39:14,981 [96] DEBUG CodeNote.Common.ConfigWrap [(null)] - FileChangeMonitor_Dir = F:\github\CodeNote\CodeNote\tmp/cache/
+2011-11-20 17:39:48,112 [14] DEBUG CodeNote.Manager.ArticleManager [(null)] - GetArticleList: filter =>  CategoryID LIKE '100%'
+2011-11-20 17:41:13,660 [101] DEBUG CodeNote.Common.ConfigWrap [(null)] - FileChangeMonitor_Dir = F:\github\CodeNote\CodeNote\tmp/cache/
+2011-11-20 17:41:13,684 [101] DEBUG CodeNote.Common.ConfigWrap [(null)] - FileChangeMonitor_Dir = F:\github\CodeNote\CodeNote\tmp/cache/

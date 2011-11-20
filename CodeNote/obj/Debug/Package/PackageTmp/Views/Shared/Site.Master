@@ -16,7 +16,7 @@
     <asp:ContentPlaceHolder ID="Navigation" runat="server">
     </asp:ContentPlaceHolder>
     <div id="content">
-        <div id="maincontent">
+        <div id="maincontent" class="clearfix">
             <div class="left colwrap">
                 <asp:ContentPlaceHolder ID="LeftBox" runat="server">
                 </asp:ContentPlaceHolder>
@@ -24,8 +24,6 @@
             <div class="right colwrap">
                 <asp:ContentPlaceHolder ID="RightBox" runat="server">
                 </asp:ContentPlaceHolder>
-            </div>
-            <div class="clearfix">
             </div>
         </div>
         <% Html.RenderAction("Footer", "Control"); %>

@@ -19,9 +19,12 @@
             <dd>
                 <label title="作者">
                     By：<%= Html.ActionLink(item.CreateName, "", "") %></label></dd>
+            <% if (!string.IsNullOrEmpty(item.CategoryName))
+               { %>
             <dd>
                 <label title="主题">
                     Topic：<%= Html.ActionLink(item.CategoryTitle, "Category", "Category", new { categoryName = item.CategoryName }, new { title = item.CategoryTitle })%></label></dd>
+            <%} %>
             <% if (!string.IsNullOrEmpty(item.Tag))
                { %>
             <dd>
