@@ -94,6 +94,7 @@
     <Content Include="js\CodeNote.Article.js" />
     <Content Include="js\CodeNote.Script.js" />
     <Content Include="js\wmd.init.js" />
+    <Content Include="Views\Article\SimArticleList.ascx" />
     <Content Include="Views\Control\AccountNav.ascx" />
     <Content Include="Views\Account\Category.aspx" />
     <Content Include="Views\Account\Index.aspx" />
@@ -119,8 +120,10 @@
     <Content Include="Views\Home\Index.aspx" />
     <Content Include="Views\Reply\ReplyList.ascx" />
     <Content Include="Views\Shared\Error.aspx" />
+    <Content Include="Views\Tag\Index.aspx" />
     <Content Include="Views\Tag\PartTag.ascx" />
     <Content Include="Views\Tag\Tag.aspx" />
+    <Content Include="Views\Tag\TagList.ascx" />
     <Content Include="Views\User\DoReg.aspx" />
     <Content Include="Views\User\EditUser.aspx" />
     <Content Include="Views\User\Fpwd.aspx" />
@@ -172,6 +175,7 @@
   <ItemGroup>
     <None Include="st\find_pwd_email.st" />
     <None Include="st\register_email.st" />
+    <None Include="st\modify_pwd_email.st" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

@@ -6,7 +6,6 @@ F:\Fpbin Project\CodeNote\CodeNote.Common\obj\Debug\CodeNote.Common.pdb
 E:\github\CodeNote\CodeNote.Common\bin\Debug\CodeNote.Common.dll
 E:\github\CodeNote\CodeNote.Common\bin\Debug\CodeNote.Common.pdb
 E:\github\CodeNote\CodeNote.Common\bin\Debug\log4net.dll
-E:\github\CodeNote\CodeNote.Common\bin\Debug\log4net.xml
 E:\github\CodeNote\CodeNote.Common\obj\Debug\ResolveAssemblyReference.cache
 E:\github\CodeNote\CodeNote.Common\obj\Debug\CodeNote.Common.dll
 E:\github\CodeNote\CodeNote.Common\obj\Debug\CodeNote.Common.pdb
@@ -18,3 +17,5 @@ F:\github\CodeNote\CodeNote.Common\bin\Debug\StringTemplate.dll
 F:\github\CodeNote\CodeNote.Common\obj\Debug\ResolveAssemblyReference.cache
 F:\github\CodeNote\CodeNote.Common\obj\Debug\CodeNote.Common.dll
 F:\github\CodeNote\CodeNote.Common\obj\Debug\CodeNote.Common.pdb
+E:\github\CodeNote\CodeNote.Common\bin\Debug\antlr.runtime.dll
+E:\github\CodeNote\CodeNote.Common\bin\Debug\StringTemplate.dll

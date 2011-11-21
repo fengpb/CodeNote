@@ -1,0 +1,8 @@
+E:\github\CodeNote\CodeNote.Common\bin\Release\CodeNote.Common.dll
+E:\github\CodeNote\CodeNote.Common\bin\Release\CodeNote.Common.pdb
+E:\github\CodeNote\CodeNote.Common\bin\Release\antlr.runtime.dll
+E:\github\CodeNote\CodeNote.Common\bin\Release\log4net.dll
+E:\github\CodeNote\CodeNote.Common\bin\Release\StringTemplate.dll
+E:\github\CodeNote\CodeNote.Common\obj\Release\ResolveAssemblyReference.cache
+E:\github\CodeNote\CodeNote.Common\obj\Release\CodeNote.Common.dll
+E:\github\CodeNote\CodeNote.Common\obj\Release\CodeNote.Common.pdb

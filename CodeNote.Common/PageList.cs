@@ -6,12 +6,20 @@ using System.Collections;
 
 namespace CodeNote.Common
 {
-    public class PageList<T>  where T:class
+    public class PageList<T> where T : class
     {
         private IList<T> _data;
         private int _recordCount = -1;
         public int PageSize { set; get; }
         public int CurPage { set; get; }
+        /// <summary>
+        /// 当前请求的 action
+        /// </summary>
+        public string CurAction { set; get; }
+        /// <summary>
+        /// 当前请求的 Controller
+        /// </summary>
+        public string CurController { set; get; }
         public int TotolPage
         {
             get { return (int)Math.Ceiling(RecordCount / (double)PageSize); }

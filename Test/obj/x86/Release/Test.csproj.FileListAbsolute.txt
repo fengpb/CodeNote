@@ -1,0 +1,7 @@
+E:\github\CodeNote\Test\bin\Release\Test.exe
+E:\github\CodeNote\Test\bin\Release\Test.pdb
+E:\github\CodeNote\Test\bin\Release\antlr.runtime.dll
+E:\github\CodeNote\Test\bin\Release\StringTemplate.dll
+E:\github\CodeNote\Test\obj\x86\Release\ResolveAssemblyReference.cache
+E:\github\CodeNote\Test\obj\x86\Release\Test.exe
+E:\github\CodeNote\Test\obj\x86\Release\Test.pdb

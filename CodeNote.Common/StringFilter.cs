@@ -37,57 +37,6 @@ namespace CodeNote.Common
         }
     }
 
-    /// <summary>
-    /// desp:  html 转换
-    /// author:fengpengbin@live.cn
-    /// </summary>
-    public sealed class HtmlFilter
-    {
-        public HtmlFilter()
-        {
-        }
-
-
-
-        private static string[] WhiteList = new string[] { 
-            "code", "span", "h1","ul","li","ol", "h2", "h3", "h4","h5","h6", "strong", "b", "em", "i", "u", "p", "pre", "br","blockquote", 
-            "CODE", "SPAN", "H1","UL","LI","OL", "H2", "H3", "H4","H5","H6", "STRONG", "B", "EM", "I", "U", "P", "PRE", "BR","BLOCKQUOTE" 
-        };
-        public static string Filter(string sourceStr)
-        {
-            return Filter(sourceStr, true);
-        }
-
-        public static string Filter(string sourceStr, bool isStyle)
-        {
-            //处理换行
-            sourceStr = sourceStr.Replace("\r\n", "<br/>").Replace("\n\n", "<br/>").Replace("\n", "<br/>");
-            StringBuilder sb = new StringBuilder(Encode(sourceStr));
-            for (int i = 0; i < WhiteList.Length; i++)
-            {
-                string tag = WhiteList[i];
-                if (isStyle)//
-                {
-                    string reg = "&lt;(" + tag + "(?:.+?)style=)&quot;(.+?)&quot;&gt;";
-                    System.Text.RegularExpressions.Regex regex = new System.Text.RegularExpressions.Regex(reg);
-                    sb = new StringBuilder(regex.Replace(sb.ToString(), "<$1\"$2\">"));
-                }
-                //空格&
-                sb = sb.Replace("&amp;", "&");
-                sb = sb.Replace("&lt;" + tag + "/&gt;", "<" + tag + "/>");
-                sb = sb.Replace("&lt;" + tag + " /&gt;", "<" + tag + "/>");
-                sb = sb.Replace("&lt;" + tag + "&gt;", "<" + tag + ">");
-                sb = sb.Replace("&lt;/" + tag + "&gt;", "</" + tag + ">");
-            }
-            return sb.ToString();
-        }
-
-        public static string Encode(string sourceStr)
-        {
-            return System.Web.HttpUtility.HtmlEncode(sourceStr);
-        }
-    }
-
     public sealed class Validation
     {
         public static bool Email(string text)

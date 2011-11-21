@@ -150,5 +150,20 @@ namespace CodeNote.Web.Controllers
             return View("Detail", model);
         }
         #endregion
+
+        #region Account Article
+        /// <summary>
+        /// 用户文章列表
+        /// </summary>
+        /// <returns></returns>
+        [CheckLogin]
+        public ActionResult AccArtList(int page = 1)
+        {
+            PageList<VwArticle> model = ArtMg.GetListByAccount(page, 20, CurUser.ID);
+            model.CurController = "Article";
+            model.CurAction = "AccArtList";
+            return PartialView("SimArticleList", model);
+        }
+        #endregion
     }
 }

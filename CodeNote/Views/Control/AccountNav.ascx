@@ -3,7 +3,7 @@
     <li>
         <%=Html.ActionLink("首页", "Index", "Home")%></li>
     <li>
-        <%=Html.ActionLink("帐户信息", "EditUser", "User")%></li>
+        <%=Html.ActionLink("个人中心", "Index", "Account", null, new { id="accindex"})%></li>
     <% if (SiteData.IsAdmin)
        { %>
     <li>

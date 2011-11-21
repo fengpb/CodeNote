@@ -1,1 +1,1 @@
-﻿$account$您好！<br/> 请点击连接重置您的秘密<br><a href=\"$url$\" target=\"_back\">$url$</a>
+﻿$account$您好！<br/> 请点击连接重置您的秘密<br><a href="$url$" target="_black">$url$</a>

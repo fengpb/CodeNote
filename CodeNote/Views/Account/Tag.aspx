@@ -13,6 +13,7 @@
     <% Html.RenderAction("AccountNav", "Control"); %>
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="RightBox" runat="server">
+    <% Html.RenderAction("AccountLeft", "Control"); %>
 </asp:Content>
 <asp:Content ID="Content6" ContentPlaceHolderID="BodyBottomContent" runat="server">
 </asp:Content>

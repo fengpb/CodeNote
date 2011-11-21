@@ -157,5 +157,28 @@ namespace CodeNote.Manager
             return this.GetList(page, pageSize, filter);
         }
         #endregion
+
+        #region GetListByAccount
+        /// <summary>
+        /// 获取某个用户的文章信息
+        /// </summary>
+        /// <param name="page"></param>
+        /// <param name="pagesize"></param>
+        /// <param name="accountID"></param>
+        /// <returns></returns>
+        public PageList<VwArticle> GetListByAccount(int page, int pagesize, int accountID)
+        {
+            string filter = string.Empty;
+            if (accountID > 0)
+            {
+                filter = " CreateID =" + accountID;
+                if (log.IsDebugEnabled)
+                {
+                    log.Debug(string.Format("GetListByAccount: filter => {0}", filter));
+                }
+            }
+            return this.GetList(page, pagesize, filter);
+        }
+        #endregion
     }
 }

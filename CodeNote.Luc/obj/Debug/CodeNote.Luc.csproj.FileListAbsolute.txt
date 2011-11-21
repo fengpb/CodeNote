@@ -1,7 +1,6 @@
 E:\github\CodeNote\CodeNote.Luc\bin\Debug\CodeNote.Luc.dll
 E:\github\CodeNote\CodeNote.Luc\bin\Debug\CodeNote.Luc.pdb
 E:\github\CodeNote\CodeNote.Luc\bin\Debug\log4net.dll
-E:\github\CodeNote\CodeNote.Luc\bin\Debug\log4net.xml
 E:\github\CodeNote\CodeNote.Luc\obj\Debug\ResolveAssemblyReference.cache
 E:\github\CodeNote\CodeNote.Luc\obj\Debug\CodeNote.Luc.dll
 E:\github\CodeNote\CodeNote.Luc\obj\Debug\CodeNote.Luc.pdb

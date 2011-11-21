@@ -18,16 +18,14 @@ namespace CodeNote.Web
         public bool IsLogin { get { return CurUser != null; } }
 
         /// <summary>
-        /// 编码成html
+        /// Markdown编码成html
         /// <br/>
-        /// 白名单中的不转化并支持markdown语法
         /// </summary>
         /// <param name="text"></param>
         /// <returns></returns>
         public string HtmlEncode(string text)
         {
             string str = Markdown.Default.Transform(text);
-            str = CodeNote.Common.HtmlFilter.Filter(str);
             return str;
         }
         /// <summary>
@@ -55,16 +53,13 @@ namespace CodeNote.Web
         public bool IsLogin { get { return CurUser != null; } }
 
         /// <summary>
-        /// 编码成html
-        /// <br/>
-        /// 白名单中的不转化并支持markdown语法
+        /// markdown编码成html
         /// </summary>
         /// <param name="text"></param>
         /// <returns></returns>
         public string HtmlEncode(string text)
         {
             string str = Markdown.Default.Transform(text);
-            str = CodeNote.Common.HtmlFilter.Filter(str);
             return str;
         }
         /// <summary>

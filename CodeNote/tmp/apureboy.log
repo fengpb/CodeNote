@@ -63,3 +63,27 @@ Thanks you register A Pure Boy, Place click link.
 2011-11-20 17:39:48,112 [14] DEBUG CodeNote.Manager.ArticleManager [(null)] - GetArticleList: filter =>  CategoryID LIKE '100%'
 2011-11-20 17:41:13,660 [101] DEBUG CodeNote.Common.ConfigWrap [(null)] - FileChangeMonitor_Dir = F:\github\CodeNote\CodeNote\tmp/cache/
 2011-11-20 17:41:13,684 [101] DEBUG CodeNote.Common.ConfigWrap [(null)] - FileChangeMonitor_Dir = F:\github\CodeNote\CodeNote\tmp/cache/
+2011-11-21 12:31:51,751 [6] DEBUG CodeNote.Common.ConfigWrap [(null)] - FileChangeMonitor_Dir = E:\github\CodeNote\CodeNote\tmp/cache/
+2011-11-21 12:31:51,799 [6] DEBUG CodeNote.Common.ConfigWrap [(null)] - FileChangeMonitor_Dir = E:\github\CodeNote\CodeNote\tmp/cache/
+2011-11-21 12:35:12,494 [5] INFO  CodeNote.Manager.TagInfoManager [(null)] - Add Tags : ok 0 ,error 0
+2011-11-21 12:44:56,484 [15] DEBUG CodeNote.Common.ConfigWrap [(null)] - FileChangeMonitor_Dir = E:\github\CodeNote\CodeNote\tmp/cache/
+2011-11-21 12:44:56,496 [15] DEBUG CodeNote.Common.ConfigWrap [(null)] - FileChangeMonitor_Dir = E:\github\CodeNote\CodeNote\tmp/cache/
+2011-11-21 12:54:29,719 [12] DEBUG CodeNote.Common.ConfigWrap [(null)] - FileChangeMonitor_Dir = E:\github\CodeNote\CodeNote\tmp/cache/
+2011-11-21 12:54:29,742 [12] DEBUG CodeNote.Common.ConfigWrap [(null)] - FileChangeMonitor_Dir = E:\github\CodeNote\CodeNote\tmp/cache/
+2011-11-21 12:59:02,122 [15] DEBUG CodeNote.Common.ConfigWrap [(null)] - FileChangeMonitor_Dir = E:\github\CodeNote\CodeNote\tmp/cache/
+2011-11-21 12:59:02,135 [15] DEBUG CodeNote.Common.ConfigWrap [(null)] - FileChangeMonitor_Dir = E:\github\CodeNote\CodeNote\tmp/cache/
+2011-11-21 13:00:12,979 [12] DEBUG CodeNote.Common.ConfigWrap [(null)] - FileChangeMonitor_Dir = E:\github\CodeNote\CodeNote\tmp/cache/
+2011-11-21 13:00:12,990 [12] DEBUG CodeNote.Common.ConfigWrap [(null)] - FileChangeMonitor_Dir = E:\github\CodeNote\CodeNote\tmp/cache/
+2011-11-21 13:02:45,035 [11] DEBUG CodeNote.Common.ConfigWrap [(null)] - FileChangeMonitor_Dir = E:\github\CodeNote\CodeNote\tmp/cache/
+2011-11-21 13:02:45,050 [11] DEBUG CodeNote.Common.ConfigWrap [(null)] - FileChangeMonitor_Dir = E:\github\CodeNote\CodeNote\tmp/cache/
+2011-11-21 16:41:33,398 [5] DEBUG CodeNote.Common.ConfigWrap [(null)] - FileChangeMonitor_Dir = E:\github\CodeNote\CodeNote\tmp/cache/
+2011-11-21 16:41:33,593 [5] DEBUG CodeNote.Common.ConfigWrap [(null)] - FileChangeMonitor_Dir = E:\github\CodeNote\CodeNote\tmp/cache/
+2011-11-21 16:41:47,923 [10] DEBUG CodeNote.Manager.ArticleManager [(null)] - GetListByAccount: filter =>  CreateID =1
+2011-11-21 16:44:25,566 [9] DEBUG CodeNote.Manager.ArticleManager [(null)] - GetListByAccount: filter =>  CreateID =1
+2011-11-21 16:46:09,289 [11] DEBUG CodeNote.Manager.ArticleManager [(null)] - GetListByAccount: filter =>  CreateID =1
+2011-11-21 16:46:12,804 [12] DEBUG CodeNote.Manager.ArticleManager [(null)] - GetListByAccount: filter =>  CreateID =1
+2011-11-21 16:54:27,247 [13] DEBUG CodeNote.Manager.ArticleManager [(null)] - GetListByAccount: filter =>  CreateID =1
+2011-11-21 16:56:04,331 [16] DEBUG CodeNote.Manager.ArticleManager [(null)] - GetListByAccount: filter =>  CreateID =1
+2011-11-21 16:56:09,121 [17] DEBUG CodeNote.Manager.ArticleManager [(null)] - GetListByAccount: filter =>  CreateID =1
+2011-11-21 16:56:44,422 [16] DEBUG CodeNote.Manager.ArticleManager [(null)] - GetListByAccount: filter =>  CreateID =1
+2011-11-21 16:58:00,705 [16] DEBUG CodeNote.Manager.ArticleManager [(null)] - GetListByAccount: filter =>  CreateID =1

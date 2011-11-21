@@ -5,3 +5,10 @@ F:\github\CodeNote\Test\bin\Debug\StringTemplate.dll
 F:\github\CodeNote\Test\obj\x86\Debug\ResolveAssemblyReference.cache
 F:\github\CodeNote\Test\obj\x86\Debug\Test.exe
 F:\github\CodeNote\Test\obj\x86\Debug\Test.pdb
+E:\github\CodeNote\Test\obj\x86\Debug\Test.exe
+E:\github\CodeNote\Test\obj\x86\Debug\Test.pdb
+E:\github\CodeNote\Test\bin\Debug\Test.exe
+E:\github\CodeNote\Test\bin\Debug\Test.pdb
+E:\github\CodeNote\Test\bin\Debug\antlr.runtime.dll
+E:\github\CodeNote\Test\bin\Debug\StringTemplate.dll
+E:\github\CodeNote\Test\obj\x86\Debug\ResolveAssemblyReference.cache

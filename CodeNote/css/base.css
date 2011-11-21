@@ -53,7 +53,7 @@ ul.rightlist li { margin: 5px 2px; font-size: 12px; }
 .com dd label { line-height: 12px; }
 .com dd.end { border-right: none; }
 
-.content { margin-top: 5px; line-height: 20px; }
+.content { margin-top: 5px; line-height: 24px; margin-bottom: 12px; color: #232323; }
 
 /*评论回复
 ------------------------------------------------------*/

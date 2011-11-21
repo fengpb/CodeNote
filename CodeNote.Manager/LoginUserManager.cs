@@ -57,7 +57,7 @@ namespace CodeNote.Manager
         }
 
 
-        public ReturnValue Login(string userNameOrEmail, string password)
+        public ReturnValue Login(string userNameOrEmail, string password, string ip)
         {
             ReturnValue retValue = new ReturnValue();
             using (LoginUserDal dal = new LoginUserDal())
@@ -75,6 +75,10 @@ namespace CodeNote.Manager
                     retValue.IsExists = true;
                     retValue.Message = "登录成功";
                     retValue.RetObjec = user;
+                    //修改用登陆信息
+                    user.LastLoginDate = DateTime.Now;
+                    user.LastLoginIP = ip;
+                    dal.Modify(user);
                 }
                 else
                 {

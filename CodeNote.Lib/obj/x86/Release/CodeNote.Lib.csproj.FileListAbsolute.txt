@@ -1,0 +1,5 @@
+E:\github\CodeNote\CodeNote.Lib\bin\Release\CodeNote.Lib.dll
+E:\github\CodeNote\CodeNote.Lib\bin\Release\CodeNote.Lib.pdb
+E:\github\CodeNote\CodeNote.Lib\obj\x86\Release\ResolveAssemblyReference.cache
+E:\github\CodeNote\CodeNote.Lib\obj\x86\Release\CodeNote.Lib.dll
+E:\github\CodeNote\CodeNote.Lib\obj\x86\Release\CodeNote.Lib.pdb

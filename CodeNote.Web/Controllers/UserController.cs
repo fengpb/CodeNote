@@ -62,7 +62,7 @@ namespace CodeNote.Web.Controllers
                 retValue.Message = "请输入密码";
                 return View("Result", new ReturnMessage(Request, "登录消息", retValue));
             }
-            retValue = LoginUserMg.Login(name, CodeNote.Common.Encryption.MD5(password));
+            retValue = LoginUserMg.Login(name, CodeNote.Common.Encryption.MD5(password), Request.UserHostAddress);
             if (retValue.IsExists)
             {
                 Common.SessionWrap.Add(Web.Models.Constans.USER_SESSION_KEY, retValue.RetObjec);
@@ -158,22 +158,31 @@ namespace CodeNote.Web.Controllers
 
             if (retValue.IsExists)
             {
-                string url = this.UrlPath("Valid", "User", new { email = email, valid = entity.PassWord,type="reg" });
-                Antlr.StringTemplate.StringTemplate st= CodeNote.Common.TemplateWrap.GetSt("register_email");
-                st.SetAttribute("url",url);
-
-                if (CodeNote.Common.Net.Mail.EmailWrap.Default.Send(email, "注册验证 - Register validation", st.ToString(), true))
+                string url = this.UrlPath("Valid", "User", new { email = email, valid = entity.PassWord, type = "reg" });
+                Antlr.StringTemplate.StringTemplate st = CodeNote.Common.TemplateWrap.GetSt("register_email");
+                if (st != null)
                 {
-                    retValue.IsExists = true;
-                    retValue.Message = "电子邮件发送成功";
-                    retValue.PutValue("emailserver", CodeNote.Common.Net.Mail.EmailWrap.EmailServer(email));
-                    return View("DoReg", retValue);
+                    st.SetAttribute("url", url);
+
+                    if (CodeNote.Common.Net.Mail.EmailWrap.Default.Send(email, "注册验证 - Register validation", st.ToString(), true))
+                    {
+                        retValue.IsExists = true;
+                        retValue.Message = "电子邮件发送成功";
+                        retValue.PutValue("emailserver", CodeNote.Common.Net.Mail.EmailWrap.EmailServer(email));
+                        return View("DoReg", retValue);
+                    }
+                    else
+                    {
+                        retValue.IsExists = false;
+                        retValue.Message = "电子邮件发送错误,请重新发送";
+                        return View("Result", new ReturnMessage("参数错误", retValue.Message));
+                    }
                 }
                 else
                 {
                     retValue.IsExists = false;
-                    retValue.Message = "电子邮件发送错误,请重新发送";
-                    return View("Result", new ReturnMessage("参数错误", retValue.Message));
+                    retValue.Message = "注册电子邮件未发送";
+                    return View("Result", new ReturnMessage("服务器错误", retValue.Message));
                 }
             }
             else
@@ -196,7 +205,7 @@ namespace CodeNote.Web.Controllers
             string type = Request["type"];//验证类型
 
             ReturnValue retValue = new ReturnValue();
-            retValue = this.LoginUserMg.Login(email, valid);
+            retValue = this.LoginUserMg.Login(email, valid, Request.UserHostAddress);
             if (retValue.IsExists)
             {
                 retValue.IsExists = true;
@@ -287,13 +296,19 @@ namespace CodeNote.Web.Controllers
 
             ReturnValue retValue = new ReturnValue();
 
-            retValue = this.LoginUserMg.AddOrEdit(login);
+            retValue = this.LoginUserMg.AddOrEdit(login);//修改用户信息
 
             if (retValue.IsExists && isChangePwd)
             {
-                StringBuilder content = new StringBuilder();
-                content.Append(string.Format("Dear {0}:<br/> 你的登录密码已经成功修改为: {1}<hr/>{2}", login.LoginName, newPassWord, SiteData.Instance.Domain));
-                CodeNote.Common.Net.Mail.EmailWrap.Default.Send(login.Email, login.LoginName + " Change Password.", content.ToString(), true);
+                Antlr.StringTemplate.StringTemplate st = CodeNote.Common.TemplateWrap.GetSt("modify_pwd_email");
+
+                if (st != null)
+                {
+                    st.SetAttribute("account", login.LoginName);
+                    st.SetAttribute("newpwd", newPassWord);
+
+                    CodeNote.Common.Net.Mail.EmailWrap.Default.Send(login.Email, login.LoginName + "修改密码提示 - Change Password.", st.ToString(), true);
+                }
             }
 
             Account account = new Account();
@@ -354,21 +369,27 @@ namespace CodeNote.Web.Controllers
                     string url = this.UrlPath("Valid", "User", new { email = email, valid = entity.PassWord, type = "fpwd" });
                     //发送重置密码的电子邮件通知
                     Antlr.StringTemplate.StringTemplate st = CodeNote.Common.TemplateWrap.GetSt("find_pwd_email");
-
-                    st.SetAttribute("account", entity.LoginName);
-                    st.SetAttribute("url", url);
-
-                    if (CodeNote.Common.Net.Mail.EmailWrap.Default.Send(email, "找回密码 - Find password", st.ToString(), true))
+                    if (st != null)
                     {
-                        retValue.IsExists = true;
-                        retValue.Message = "请登陆您的邮箱,进行密码找回";
+                        st.SetAttribute("account", entity.LoginName);
+                        st.SetAttribute("url", url);
+
+                        if (CodeNote.Common.Net.Mail.EmailWrap.Default.Send(email, "找回密码 - Find password", st.ToString(), true))
+                        {
+                            retValue.IsExists = true;
+                            retValue.Message = "请登陆您的邮箱,进行密码找回";
+                        }
+                        else
+                        {
+                            retValue.IsExists = false;
+                            retValue.Message = "对不起,发送找回密码邮件时失败！";
+                        }
                     }
                     else
                     {
                         retValue.IsExists = false;
-                        retValue.Message = "对不起,发送找回密码邮件时失败！";
+                        retValue.Message = "找回密码邮件未发送";
                     }
-
                 }
                 else
                 {

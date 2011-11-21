@@ -1,0 +1,5 @@
+E:\github\CodeNote\CodeNote.Markdown\bin\Release\CodeNote.Markdown.dll
+E:\github\CodeNote\CodeNote.Markdown\bin\Release\CodeNote.Markdown.pdb
+E:\github\CodeNote\CodeNote.Markdown\obj\Release\ResolveAssemblyReference.cache
+E:\github\CodeNote\CodeNote.Markdown\obj\Release\CodeNote.Markdown.dll
+E:\github\CodeNote\CodeNote.Markdown\obj\Release\CodeNote.Markdown.pdb

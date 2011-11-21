@@ -34,28 +34,43 @@ namespace CodeNote.Common
 
         public void Cache(string key, T data)
         {
-            CacheItemPolicy cip = new CacheItemPolicy();
-            FileChangeMonitor fileCM = SetFileChangeMonitor(key);
-            cip.RemovedCallback = CacheRemoveCallBack;
-            if (fileCM != null)
+            try
             {
-                cip.ChangeMonitors.Add(fileCM);
+                CacheItemPolicy cip = new CacheItemPolicy();
+                FileChangeMonitor fileCM = SetFileChangeMonitor(key);
+                cip.RemovedCallback = CacheRemoveCallBack;
+                if (fileCM != null)
+                {
+                    cip.ChangeMonitors.Add(fileCM);
+                }
+                else
+                {
+                    cip.AbsoluteExpiration = DateTimeOffset.Now.AddHours(10);
+                    cip.Priority = CacheItemPriority.Default;
+                }
+                this.CacheInstance.Add(key, data, cip);
             }
-            else
+            catch (Exception ex)
             {
-                cip.AbsoluteExpiration = DateTimeOffset.Now.AddHours(10);
-                cip.Priority = CacheItemPriority.Default;
+                log.Error(ex.Message, ex);
             }
-            this.CacheInstance.Add(key, data, cip);
         }
 
         public T Get(string key)
         {
-            if (this.CacheInstance.Get(key) == null)
+            try
             {
+                if (this.CacheInstance.Get(key) == null)
+                {
+                    return null;
+                }
+                return this.CacheInstance.Get(key) as T;
+            }
+            catch (Exception ex)
+            {
+                log.Error(ex.Message, ex);
                 return null;
             }
-            return this.CacheInstance.Get(key) as T;
         }
 
 

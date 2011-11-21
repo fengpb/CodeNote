@@ -1,0 +1,8 @@
+E:\github\CodeNote\CodeNote.Dal\bin\Release\CodeNote.Dal.dll
+E:\github\CodeNote\CodeNote.Dal\bin\Release\CodeNote.Dal.pdb
+E:\github\CodeNote\CodeNote.Dal\bin\Release\CodeNote.Entity.dll
+E:\github\CodeNote\CodeNote.Dal\bin\Release\log4net.dll
+E:\github\CodeNote\CodeNote.Dal\bin\Release\CodeNote.Entity.pdb
+E:\github\CodeNote\CodeNote.Dal\obj\Release\ResolveAssemblyReference.cache
+E:\github\CodeNote\CodeNote.Dal\obj\Release\CodeNote.Dal.dll
+E:\github\CodeNote\CodeNote.Dal\obj\Release\CodeNote.Dal.pdb

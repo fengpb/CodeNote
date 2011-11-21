@@ -19,7 +19,7 @@ namespace CodeNote.Common
         {
             get
             {
-                string tem = System.AppDomain.CurrentDomain.BaseDirectory + "/st";
+                string tem = System.AppDomain.CurrentDomain.BaseDirectory + "st";
                 log.Debug("TemplateDir: " + tem);
                 return tem;
             }

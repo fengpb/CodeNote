@@ -97,7 +97,9 @@ namespace CodeNote.Markdown
         public static string Transform(string text)
         {
             Markdown markdown = new Markdown();
-            return markdown.Transform(text);
+            string temp = markdown.Transform(text);
+            //temp = temp.Replace("\n", "<br/>");
+            return temp;
         }
     }
 
