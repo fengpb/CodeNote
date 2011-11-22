@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="ArticleDal.cs" />
     <Compile Include="CategoryDal.cs" />
+    <Compile Include="HtmlDal.cs" />
     <Compile Include="ILinqDal\BaseDalImpl.cs" />
     <Compile Include="ILinqDal\DataContent.cs" />
     <Compile Include="ILinqDal\IBaseDal.cs" />

@@ -12,7 +12,7 @@
 <div class="artitem <%= i+1==Model.Data.Count?"end":"" %>">
     <div class="com">
         <h3>
-            <%= Html.ActionLink(item.Subject,"Detail","Article",new {articleID=item.ID},null) %>
+            <%= Html.DetialLink(item.Subject, "Detail", "Article",item.ID)%>
             <span></span>
         </h3>
         <dl>

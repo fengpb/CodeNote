@@ -1,5 +1,6 @@
 ﻿<%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl<IList<VwArticle>>" %>
 <%@ Import Namespace="CodeNote.Entity" %>
+<%@ Import Namespace="CodeNote.Web.Common" %>
 <!-- Begin:最近更新 -->
 <% if (Model != null && Model.Count > 0)
    { %>
@@ -12,9 +13,9 @@
           {
         %>
         <li>
-            <%= Html.ActionLink(item.Subject, "Detail", "Article", new { articleID = item.ID }, null)%></li>
+            <%= Html.DetialLink(item.Subject, "Detail", "Article",item.ID )%></li>
         <%
-            } %>
+          } %>
     </ul>
 </div>
 <%} %>

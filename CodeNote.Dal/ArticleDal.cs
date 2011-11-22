@@ -41,7 +41,7 @@ namespace CodeNote.Dal
             }
             catch (Exception ex)
             {
-                log.Warn(ex.Message, ex);
+                log.Error(ex.Message, ex);
                 return false;
             }
         }
@@ -76,7 +76,7 @@ namespace CodeNote.Dal
             }
             catch (Exception ex)
             {
-                log.Warn(ex.Message, ex);
+                log.Error(ex.Message, ex);
                 return null;
             }
         }

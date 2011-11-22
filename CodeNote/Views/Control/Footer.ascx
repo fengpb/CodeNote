@@ -4,6 +4,8 @@
     <div>
         <%=Html.ActionLink("关于", "About", "Home", null, new { target="_blank",title="About" })%>
         -
+        <%=Html.ActionLink("标签", "Index", "Tag", null, new { target="_blank",title="Tag"})%>
+        -
         <%=Html.ActionLink("帮助", "Help", "Home", null, new { target="_blank",title="Help",@class="help" })%>
         -
         <% if (IsLogin)
@@ -16,7 +18,7 @@
         <%} %>
     </div>
     <p>
-        &copy; Copy right <b>A pure boy</b> <span class="date">2011</span>
+        &copy; Copy right <strong>A pure boy</strong> <span class="date">2011</span>
     </p>
 </div>
 <!-- end footer  -->

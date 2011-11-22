@@ -1,0 +1,123 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Sitemaps XML format </title>
+    <meta name="keywords" content="sitemap" />
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+    <link href="/css/base.css" rel="stylesheet" type="text/css" />
+    <script src="/js/jquery-1.4.1.min.js" type="text/javascript"></script>
+    <script src="/js/CodeNote.Script.js" type="text/javascript"></script>
+    <link href="/css/wmd.css" rel="stylesheet" type="text/css" />
+    <script src="/js/CodeNote.Article.js" type="text/javascript"></script>
+    <script src="/js/Markdown.Converter.js" type="text/javascript"></script>
+    <script src="/js/Markdown.Sanitizer.js" type="text/javascript"></script>
+    <script src="/js/Markdown.Editor.js" type="text/javascript"></script>
+    <script src="/js/write.js" type="text/javascript"></script>
+</head>
+<body>
+    <script type="text/javascript">
+        write.navbar('100');
+    </script>
+    <!--start content -->
+    <div id="content">
+        <div id="maincontent" class="clearfix">
+            <!--start left-->
+            <div class="left colwrap">
+                <div class="com">
+                    <h2 class="posrl">
+                        Sitemaps XML format 
+                    </h2>
+                    <dl>
+                        <dd class="end">
+                            <label title="日期">
+                                2011/11/11 17:19:12</label></dd>
+                        <dd>
+                            <label title="作者">
+                                By：<a href="/">robin</a></label></dd>
+                        <dd>
+                            <label>
+                                Notic：<a href="/Topic/CodeNote" title="文字">文字</a></label>
+                        </dd>
+                        <dd>
+                            <label title="标签">
+                                Tag：<a href="/Tag/sitemap">sitemap</a>&nbsp;</label>
+                        </dd>
+                    </dl>
+                </div>
+                <div class="content">
+                    <p>
+                        <p><img src="http://s5.sinaimg.cn/middle/53080857tac7d05448544&amp;690" alt="haha" />This document describes the XML schema for the Sitemap protocol.</p>
+
+                        <p>The Sitemap protocol format consists of XML tags. All data values in a Sitemap must be entity-escaped. The file itself must be UTF-8 encoded.</p>
+
+                        <p>The Sitemap must:</p>
+
+                        <pre><code>Begin with an opening &lt;urlset&gt; tag and end with a closing &lt;/urlset&gt; tag.
+                        Specify the namespace (protocol standard) within the &lt;urlset&gt; tag.
+                        Include a &lt;url&gt; entry for each URL, as a parent XML tag.
+                        Include a &lt;loc&gt; child entry for each &lt;url&gt; parent tag.
+                        </code></pre>
+
+                        <p>All other tags are optional. Support for these optional tags may vary among search engines. Refer to each search engine's documentation for details.</p>
+
+                        <p>Also, all URLs in a Sitemap must be from a single host, such as www.example.com or store.example.com. For further details, refer the Sitemap file location</p>
+</p>
+                </div>
+                <!--start reply-->
+                <h3 class="title mgt10">
+                    <input id="hidArtilceID" type="hidden" value="1" />
+                    <label title="Reply">
+                        评论</label></h3>
+                <div id="replyList" class="replyList">
+                </div>
+                <script type="text/javascript">
+                    write.reply(1);
+                </script>
+                <div class="replay">
+                    <dl class="edit">
+                        <dd>
+                            <label>
+                                <input id="replayNick" type="text" class="text" name="nick" value="" />&nbsp; 昵称<b
+                                    title="必填">*</b></label>
+                        </dd>
+                        <dd>
+                            <label>
+                                <input id="replayEmail" type="text" class="text" name="email" value="" />&nbsp;
+                                邮件(不公开)<b title="必填">*</b></label>
+                        </dd>
+                        <dd>
+                            <div class="wmd-panel">
+                                <div id="wmd-button-bar">
+                                </div>
+                                <textarea id="wmd-input" class="wmd-input" name="body" cols="50" rows="5"></textarea>
+                            </div>
+                            <div id="wmd-preview" class="wmd-panel wmd-preview">
+                            </div>
+                        </dd>
+                        <dd class="btn">
+                            <input type="button" onclick="Replay()" value="提交评论" />&nbsp;<span id="replayMessage"
+                                class="message"><!--Ctrl+Enter--></span></dd>
+                    </dl>
+                </div>
+                <!--end reply-->
+            </div>
+            <!--end left-->
+            <!--start right-->
+            <div class="right colwrap">
+                <script type="text/javascript">
+                    write.categorylist('100');
+                    write.articlerec(1);
+                </script>
+            </div>
+            <!--end right-->
+        </div>
+    </div>
+    <!--end content-->
+    <script type="text/javascript">
+        write.footer();
+    </script>
+    <script src="/js/detail.js" type="text/javascript"></script>
+</body>
+</html>
+<!-- up date: 2011/11/22 17:55:26 -->
+

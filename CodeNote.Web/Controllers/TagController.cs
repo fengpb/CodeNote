@@ -27,6 +27,22 @@ namespace CodeNote.Web.Controllers
         }
         #endregion
 
+        #region TagInfoManager
+        private TagInfoManager _tagMg;
+        protected TagInfoManager TagMg
+        {
+
+            get
+            {
+                if (_tagMg == null)
+                {
+                    _tagMg = new TagInfoManager();
+                }
+                return _tagMg;
+            }
+        }
+        #endregion
+
         #region Tag 获取Tag文章列表
         /// <summary>
         /// 根据Tag获取文章列表信息
@@ -39,7 +55,7 @@ namespace CodeNote.Web.Controllers
             return View("Tag");
         }
 
-        public ActionResult PartTag(string tag, int page=1, int size=25)
+        public ActionResult PartTag(string tag, int page = 1, int size = 25)
         {
             string filter = string.Empty;
             if (!string.IsNullOrEmpty(tag))
@@ -50,5 +66,16 @@ namespace CodeNote.Web.Controllers
             return PartialView("PartTag", model);
         }
         #endregion
+
+        public ActionResult Index()
+        {
+            return View("Index");
+        }
+
+        public ActionResult TagList(int page = 1)
+        {
+            PageList<TagInfo> model = TagMg.GetList(page, 100, "");
+            return PartialView("TagList", model);
+        }
     }
 }

@@ -28,7 +28,7 @@ ul#navbar { padding-left: 175px; }
 #footer p { color: #474747; }
 
 /* clear*/
-#maincontent:after, #footer:after { content: '\0020'; display: block; height: 0; clear: both; }
+#maincontent:after, #footer:after, .taglist { content: '\0020'; display: block; height: 0; clear: both; }
 
 /* 右边相关样式
 ------------------------------------------------------*/
@@ -90,8 +90,15 @@ dl.edit dd .subject { width: 100%; }
 dd.btndiv { margin-top: 10px; }
 
 #editarticle dl.edit { margin-right: 10px; }
-/* test ------------------------------------------------------*/.debug { border: 0px solid #F00; }
+/* test 
+------------------------------------------------------*/
+.debug { border: 0px solid #F00; }
 
+/* 标签列表
+------------------------------------------------------*/
+.taglist li { width: 130px; float: left; margin: 5px;  border-right: 1px solid #cccccc; border-bottom:1px solid #aaaaaa; }
+.taglist li a { float: left; width: 120px; padding: 0px 5px; }
+.taglist li a small{ position:relative; margin-left:5px; color:#232323;}
 
 /* 黄色Link
 ------------------------------------------------------*/

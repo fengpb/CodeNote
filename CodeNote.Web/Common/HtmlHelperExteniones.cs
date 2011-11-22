@@ -11,6 +11,11 @@ namespace CodeNote.Web.Common
     public static class HtmlHelperExteniones
     {
 
+        private static CodeNote.Manager.HtmlManager HtmlManager;
+        static HtmlHelperExteniones()
+        {
+            HtmlManager = new CodeNote.Manager.HtmlManager();
+        }
         public static MvcHtmlString TagLink(this HtmlHelper hh, string tags, string actionName, string controllerName)
         {
 
@@ -27,6 +32,24 @@ namespace CodeNote.Web.Common
             }
 
             return MvcHtmlString.Create(sb.ToString());
+        }
+
+        public static MvcHtmlString DetialLink(this HtmlHelper hh, string text, string actionName, string controllerName, int artID)
+        {
+            CodeNote.Entity.Html htm = HtmlManager.GetOrAdd(artID);
+            string url = string.Empty;
+            if (htm == null)
+            {
+                url = UrlHelper.GenerateUrl(null, actionName, controllerName, null, null, null, new RouteValueDictionary(new { articleID = artID }), hh.RouteCollection, hh.ViewContext.RequestContext, true);
+            }
+            else
+            {
+                url = CodeNote.Common.ConfigWrap.FileUrl("Statis_Html_Dir") + htm.Url;
+            }
+            TagBuilder link = new TagBuilder("a");
+            link.InnerHtml = text;
+            link.MergeAttribute("href", url);
+            return MvcHtmlString.Create(link.ToString());
         }
 
         #region url

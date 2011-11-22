@@ -52,5 +52,14 @@ namespace CodeNote.Web.Controllers
         {
             return View("Help");
         }
+
+        /// <summary>
+        /// 测试
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult Test()
+        {
+            return PartialView("Test");
+        }
     }
 }

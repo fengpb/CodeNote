@@ -1,4 +1,4 @@
-Ôªø<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="CodeNote.Web.ViewPage<VwArticle>" %>
+<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="CodeNote.Web.ViewPage<VwArticle>" %>
 
 <%@ Import Namespace="CodeNote.Entity" %>
 <%@ Import Namespace="CodeNote.Web.Common" %>
@@ -8,6 +8,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="HeadContent" runat="server">
     <link href="/css/wmd.css" rel="stylesheet" type="text/css" />
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
     <script src="/js/CodeNote.Article.js" type="text/javascript"></script>
     <script src="/js/Markdown.Converter.js" type="text/javascript"></script>
     <script src="/js/Markdown.Sanitizer.js" type="text/javascript"></script>
@@ -23,30 +24,29 @@
             <% if (IsLogin && CurUser.ID == Model.CreateID)
                { %>
             <label class="posabsbr common">
-                [<%= Html.ActionLink("ÁºñËæë", "EditArticle", "Article", new { id = Model.ID }, null)%>]
+                [<%= Html.ActionLink("±‡º≠", "EditArticle", "Article", new { id = Model.ID }, null)%>]
             </label>
             <%} %>
         </h2>
         <dl>
             <dd class="end">
-                <label title="Êó•Êúü">
+                <label title="»’∆⁄">
                     <%: Model.CreateDate %></label></dd>
             <dd>
-                <label title="‰ΩúËÄÖ">
-                    ByÔºö<%= Html.ActionLink(Model.CreateName,"","") %></label></dd>
+                <label title="◊˜’ﬂ">
+                    By£∫<%= Html.ActionLink(Model.CreateName,"","") %></label></dd>
             <% if (!string.IsNullOrEmpty(Model.CategoryName))
                { %>
             <dd>
                 <label>
-                    NoticÔºö<%= Html.ActionLink(Model.CategoryTitle, "Category", "Category", new { categoryName = Model.CategoryName }, new { title = Model.CategoryTitle })%></label>
+                    Notic£∫<%= Html.ActionLink(Model.CategoryTitle, "Category", "Category", new { categoryName = Model.CategoryName }, new { title = Model.CategoryTitle })%></label>
             </dd>
             <%} %>
-
             <% if (!string.IsNullOrEmpty(Model.Tag))
                { %>
             <dd>
-                <label title="Ê†áÁ≠æ">
-                    TagÔºö<%= Html.TagLink(Model.Tag, "Tag", "Tag")%></label>
+                <label title="±Í«©">
+                    Tag£∫<%= Html.TagLink(Model.Tag, "Tag", "Tag")%></label>
             </dd>
             <%} %>
         </dl>
@@ -57,7 +57,7 @@
     <h3 class="title mgt10">
         <input id="hidArtilceID" type="hidden" value="<%= Model.ID %>" />
         <label title="Reply">
-            ËØÑËÆ∫</label></h3>
+            ∆¿¬€</label></h3>
     <div id="replyList" class="replyList">
         <% Html.RenderAction("ReplyList", "Reply", new { articleID = Model.ID }); %>
     </div>
@@ -66,13 +66,12 @@
             <dd>
                 <label>
                     <input id="replayNick" type="text" class="text" name="nick" value="<%=(CurUser!=null&&CurUser.ID!=Model.CreateID)?CurUser.LoginName:"" %>" />&nbsp;
-                    ÊòµÁß∞<b title="ÂøÖÂ°´">*</b></label>
-                <input id="articleId" type="hidden" value="<%= Model.ID %>" />
+                    Í«≥∆<b title="±ÿÃÓ">*</b></label>
             </dd>
             <dd>
                 <label>
                     <input id="replayEmail" type="text" class="text" name="email" value="<%=(CurUser!=null&&CurUser.ID!=Model.CreateID)?CurUser.Email:"" %>" />&nbsp;
-                    ÈÇÆ‰ª∂(‰∏çÂÖ¨ÂºÄ)<b title="ÂøÖÂ°´">*</b></label>
+                    ” º˛(≤ªπ´ø™)<b title="±ÿÃÓ">*</b></label>
             </dd>
             <dd>
                 <div class="wmd-panel">
@@ -84,7 +83,7 @@
                 </div>
             </dd>
             <dd class="btn">
-                <input type="button" onclick="Replay()" value="Êèê‰∫§ËØÑËÆ∫" />&nbsp;<span id="replayMessage"
+                <input type="button" onclick="Replay()" value="Ã·Ωª∆¿¬€" />&nbsp;<span id="replayMessage"
                     class="message"><!--Ctrl+Enter--></span></dd>
         </dl>
     </div>
@@ -94,35 +93,5 @@
     <% Html.RenderAction("ArticleRec", "Article", new { articleID = Model.ID }); %>
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="BodyBottomContent" runat="server">
-    <script type="text/javascript">
-        jQuery(function () {
-
-            var converter = Markdown.getSanitizingConverter();
-            var editor = new Markdown.Editor(converter);
-            editor.run();
-        });
-        function Replay() {
-            var nick = $('#replayNick').val();
-            var email = $('#replayEmail').val();
-            var body = $('#wmd-input').val();
-            var articleID = $('#articleId').val();
-            jQuery.ajax({
-                url: '/Reply/Add',
-                type: 'post',
-                data: { 'articleID': articleID, 'nick': nick, 'email': email, 'body': body },
-                success: function (data) {
-                    $('#replayMessage').html(data.Message);
-                    TimerHide('replayMessage', 2000);
-                    var refreshUrl = $('#hid_RefreshUrl').val();
-                    if (refreshUrl) {
-                        AjaxLoad(refreshUrl, 'replyList', null);
-                    } else {
-                        AjaxLoad('<%= Html.Url("ReplyList", "Reply",null)%>', 'replyList', { 'articleID': $('#hidArtilceID').val() });
-                    }
-                }, error: function () {
-                    alert("replay");
-                }
-            });
-        }
-    </script>
+    <script src="/js/detail.js" type="text/javascript"></script>
 </asp:Content>

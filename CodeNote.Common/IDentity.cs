@@ -10,7 +10,7 @@ namespace CodeNote.Common
     /// </summary>
     public class IDentity
     {
-        private string range = "ABCDEFJHIJKLMNOPQRSTUVWXYZ1234567890!@#$%^&*()_+[]:?><{}|";
+        private string range = "ABCDEFJHIJKLMNOPQRSTUVWXYZ1234567890";
 
         protected Random random = new Random();
 
@@ -19,7 +19,16 @@ namespace CodeNote.Common
         {
             return new IDentity();
         }
-
+        public IDentity AddDate(string dateExpress)
+        {
+            this.output.Append(DateTime.Now.ToString(dateExpress));
+            return this;
+        }
+        public IDentity AddStr(string str)
+        {
+            this.output.Append(str);
+            return this;
+        }
         public IDentity AddStr(int length = 10)
         {
             for (int i = 0; i < length; i++)

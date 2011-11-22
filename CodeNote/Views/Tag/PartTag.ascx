@@ -5,13 +5,14 @@
 <!-- Begin:日志列表 -->
 <% if (Model != null && Model.RecordCount > 0)
    { %>
-<% foreach (VwArticle item in Model.Data)
+<% for (int i = 0; i < Model.Data.Count; i++)
    {
+       VwArticle item = Model.Data[i];
 %>
-<div class="artitem">
-    <div class="subject">
+<div class="artitem  <%= i+1==Model.Data.Count?"end":"" %>">
+    <div class="com">
         <h3>
-            <%= Html.ActionLink(item.Subject,"Detail","Article",new {articleID=item.ID},null) %>
+            <%= Html.DetialLink(item.Subject, "Detail", "Article",item.ID)%>
             <span></span>
         </h3>
         <dl>

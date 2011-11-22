@@ -5,7 +5,11 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Leftbox" runat="server">
     <h2>
-        Tag</h2>
+        Tag List
+    </h2>
+    <div id="taglist">
+        <% Html.RenderAction("TagList", "Tag"); %>
+    </div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>

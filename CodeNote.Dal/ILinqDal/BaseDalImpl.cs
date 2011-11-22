@@ -29,7 +29,7 @@ namespace CodeNote.Linq.IDal
             }
             catch (Exception ex)
             {
-                log.Warn(ex.Message,ex);
+                log.Warn(ex.Message, ex);
                 return false;
             }
         }
@@ -42,7 +42,7 @@ namespace CodeNote.Linq.IDal
                 this.SubmitChanges();
                 return true;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 log.Warn(ex.Message, ex);
                 return false;
@@ -52,6 +52,11 @@ namespace CodeNote.Linq.IDal
         public IList<T> GetAllList()
         {
             return DataTable.ToList<T>();
+        }
+
+        public IList<T> GetList(Func<T, bool> f)
+        {
+            return DataTable.Where(f).ToList<T>();
         }
     }
 }
