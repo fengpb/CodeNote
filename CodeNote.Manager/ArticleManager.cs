@@ -35,10 +35,10 @@ namespace CodeNote.Manager
                 retValue.Message = "正文不能为空";
                 return retValue;
             }
-
+            VwArticle old = null;
             using (ArticleDal dal = new ArticleDal())
             {
-                VwArticle old = null;
+
                 if (entity.ID > 0)
                 {
                     old = dal.GetVw(entity.ID);
@@ -49,6 +49,7 @@ namespace CodeNote.Manager
                     {
                         retValue.IsExists = true;
                         retValue.Message = "保存成功";
+                        old = dal.GetVw(entity.ID);
                     }
                     else
                     {
@@ -62,6 +63,7 @@ namespace CodeNote.Manager
                     {
                         retValue.IsExists = true;
                         retValue.Message = "修改成功";
+                        old = dal.GetVw(entity.ID);
                     }
                     else
                     {
@@ -71,7 +73,13 @@ namespace CodeNote.Manager
                 }
             }
 
-
+            if (retValue.IsExists)
+            {
+                //TODO: 修改Html
+                HtmlManager htmMg = new HtmlManager();
+                htmMg.CreateHtml(old);
+            }
+            retValue.PutValue("vw", old);
 
             return retValue;
         }
@@ -133,6 +141,13 @@ namespace CodeNote.Manager
         public IList<VwArticle> GetRecList(int topNum, VwArticle article, string filter)
         {
             return null;
+        }
+        public IList<VwArticle> GetAllList()
+        {
+            using (ArticleDal dal = new ArticleDal())
+            {
+                return dal.GetAllVwList();
+            }
         }
 
         #region GetListByCategory 根据分类获取日志信息

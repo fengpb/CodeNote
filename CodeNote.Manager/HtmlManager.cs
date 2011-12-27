@@ -24,10 +24,16 @@ namespace CodeNote.Manager
         }
 
         #region STATIC_HTML_DIR
-        private readonly string STATIC_HTML_DIR = "Statis_Html_Dir";
-
+        private readonly string STATIC_HTML_DIR = "static_html_dir";
+        private readonly string SITE_MAP_FILE = "site_map_file";
         #endregion
 
+        #region CreateHtml
+        /// <summary>
+        /// 创建文章的静态html页面
+        /// </summary>
+        /// <param name="artID">文章ID</param>
+        /// <returns></returns>
         public ReturnValue CreateHtml(int artID)
         {
             ArticleManager artMg = new ArticleManager();
@@ -39,6 +45,11 @@ namespace CodeNote.Manager
             return new ReturnValue(false, "文章为空");
         }
 
+        /// <summary>
+        /// 创建文章的静态html页面
+        /// </summary>
+        /// <param name="article">文章实体</param>
+        /// <returns></returns>
         public ReturnValue CreateHtml(VwArticle article)
         {
             ReturnValue retValue = new ReturnValue(false, "生成失败");
@@ -54,11 +65,13 @@ namespace CodeNote.Manager
                 htm = new Html();
                 htm.ArtID = article.ID;
                 htm.Url = CodeNote.Common.IDentity.CreateNew().AddStr("/").AddDate("yyyy").AddStr("/").AddDate("MM").AddStr("/").AddDate("ddHHmmssff").AddStr(5).StrID() + ".html";
-                htm.Upda = DateTime.Now;
+                article.HtmlUrl = htm.Url;
+                htm.Upda = article.ModDate;
             }
             else
             {
-                htm.Upda = DateTime.Now;
+                htm.Upda = article.ModDate;
+                log.Info("Modify: " + article.Subject + " => " + htm.Url);
             }
             if (CreateHtml(article, htm))
             {
@@ -70,8 +83,8 @@ namespace CodeNote.Manager
         /// <summary>
         /// 生成静态页面信息
         /// </summary>
-        /// <param name="article"></param>
-        /// <param name="html"></param>
+        /// <param name="article">文章信息</param>
+        /// <param name="html">html页面信息</param>
         /// <returns></returns>
         protected bool CreateHtml(VwArticle article, Html html)
         {
@@ -92,6 +105,41 @@ namespace CodeNote.Manager
                 log.Warn("Not find 'article_detail.st' template !");
             }
             return false;
+        }
+        #endregion
+
+        public ReturnValue RefreshSiteMap()
+        {
+            ReturnValue retValue = new ReturnValue();
+            IList<Html> list = null;
+            using (HtmlDal dal = new HtmlDal())
+            {
+                list = dal.SiteMapList();
+            }
+            if (list != null)
+            {
+                StringTemplate st = CodeNote.Common.TemplateWrap.GetSt("sitemap_xml");
+                st.SetAttribute("list", list);
+                st.SetAttribute("date", DateTime.Now);
+                st.SetAttribute("domain", CodeNote.Common.ConfigWrap.FileUrl("domain"));
+                st.SetAttribute("baseurl", CodeNote.Common.ConfigWrap.FileUrl(STATIC_HTML_DIR, true));
+                if (CodeNote.Common.IoWrap.WriteFile(CodeNote.Common.ConfigWrap.FiePath(SITE_MAP_FILE), st.ToString()))
+                {
+                    retValue.IsExists = true;
+                    retValue.Message = "Refresh stiemap suuuessful!";
+                }
+                else
+                {
+                    retValue.IsExists = false;
+                    retValue.Message = "Refresh stiemap error!";
+                }
+            }
+            else
+            {
+                retValue.IsExists = false;
+                retValue.Message = "无数据";
+            }
+            return retValue;
         }
 
         public Html Get(int artID)
@@ -126,7 +174,12 @@ namespace CodeNote.Manager
                 }
                 else
                 {
-                    //比较时间进行同步
+                    ArticleManager artMg = new ArticleManager();
+                    VwArticle art = artMg.Get(artID);
+                    if (art != null && art.ModDate != html.Upda)
+                    {
+                        CreateHtml(art);
+                    }
                 }
             }
             return html;
@@ -160,7 +213,7 @@ namespace CodeNote.Manager
                 }
                 else//修改
                 {
-                    if (dal.UpDate(html.ArtID))
+                    if (dal.Modify(html))
                     {
                         retValue.IsExists = true;
                         retValue.Message = "页面信息修改成功";

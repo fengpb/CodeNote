@@ -1,3 +1,4 @@
+E:\github\CodeNote\CodeNote\bin\PanGu.xml
 E:\github\CodeNote\CodeNote\bin\CodeNote.dll
 E:\github\CodeNote\CodeNote\bin\CodeNote.pdb
 E:\github\CodeNote\CodeNote\bin\CodeNote.Entity.dll
@@ -5,15 +6,22 @@ E:\github\CodeNote\CodeNote\bin\CodeNote.Web.dll
 E:\github\CodeNote\CodeNote\bin\log4net.dll
 E:\github\CodeNote\CodeNote\bin\CodeNote.Manager.dll
 E:\github\CodeNote\CodeNote\bin\CodeNote.Common.dll
+E:\github\CodeNote\CodeNote\bin\FlickrNet.dll
 E:\github\CodeNote\CodeNote\bin\StringTemplate.dll
 E:\github\CodeNote\CodeNote\bin\CodeNote.Markdown.dll
+E:\github\CodeNote\CodeNote\bin\CodeNote.Luc.dll
 E:\github\CodeNote\CodeNote\bin\CodeNote.Dal.dll
 E:\github\CodeNote\CodeNote\bin\antlr.runtime.dll
+E:\github\CodeNote\CodeNote\bin\Lucene.Net.dll
+E:\github\CodeNote\CodeNote\bin\PanGu.Lucene.Analyzer.dll
+E:\github\CodeNote\CodeNote\bin\Highlighter.Net.dll
+E:\github\CodeNote\CodeNote\bin\PanGu.dll
 E:\github\CodeNote\CodeNote\bin\CodeNote.Entity.pdb
 E:\github\CodeNote\CodeNote\bin\CodeNote.Web.pdb
 E:\github\CodeNote\CodeNote\bin\CodeNote.Manager.pdb
 E:\github\CodeNote\CodeNote\bin\CodeNote.Common.pdb
 E:\github\CodeNote\CodeNote\bin\CodeNote.Markdown.pdb
+E:\github\CodeNote\CodeNote\bin\CodeNote.Luc.pdb
 E:\github\CodeNote\CodeNote\bin\CodeNote.Dal.pdb
 E:\github\CodeNote\CodeNote\obj\Release\ResolveAssemblyReference.cache
 E:\github\CodeNote\CodeNote\obj\Release\CodeNote.dll

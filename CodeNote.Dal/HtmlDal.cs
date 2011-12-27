@@ -17,14 +17,19 @@ namespace CodeNote.Dal
             return this.DataTable.Where(x => x.ArtID == artID).SingleOrDefault();
         }
 
-        public bool UpDate(int artID)
+        public IList<Html> SiteMapList()
+        {
+            return this.DataTable.OrderByDescending(x => x.Upda).Take(10000).ToList();
+        }
+
+        public bool Modify(Html entity)
         {
             try
             {
-                Html old = this.DataTable.Where(x => x.ArtID == artID).SingleOrDefault();
+                Html old = this.DataTable.Where(x => x.ArtID == entity.ArtID).SingleOrDefault();
                 if (old != null)
                 {
-                    old.Upda = DateTime.Now;
+                    old.Upda = entity.Upda;
                 }
                 this.SubmitChanges();
                 return true;

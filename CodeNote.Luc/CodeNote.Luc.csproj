@@ -31,9 +31,25 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Highlighter.Net, Version=2.0.0.1, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\CodeNote.Lib\Highlighter.Net.dll</HintPath>
+    </Reference>
     <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\CodeNote.Lib\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Lucene.Net">
+      <HintPath>..\CodeNote.Lib\Lucene.Net.dll</HintPath>
+    </Reference>
+    <Reference Include="PanGu">
+      <HintPath>..\CodeNote.Lib\PanGu.dll</HintPath>
+    </Reference>
+    <Reference Include="PanGu.HighLight">
+      <HintPath>..\CodeNote.Lib\PanGu.HighLight.dll</HintPath>
+    </Reference>
+    <Reference Include="PanGu.Lucene.Analyzer">
+      <HintPath>..\CodeNote.Lib\PanGu.Lucene.Analyzer.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
@@ -45,12 +61,31 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ArtilceLuc.cs" />
     <Compile Include="Config\LuceneConfigSectionHandler.cs" />
-    <Compile Include="IndexCreater.cs" />
+    <Compile Include="BaseLuc.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="LucConfig.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CodeNote.Common\CodeNote.Common.csproj">
+      <Project>{3C372DE7-4940-48A3-8DA1-45FC26DAF500}</Project>
+      <Name>CodeNote.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CodeNote.Entity\CodeNote.Entity.csproj">
+      <Project>{085F9F54-3A74-4629-9E43-EEBDF094FE8B}</Project>
+      <Name>CodeNote.Entity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CodeNote.Manager\CodeNote.Manager.csproj">
+      <Project>{585F4C93-2770-484F-B1DF-C8DBC76B1F19}</Project>
+      <Name>CodeNote.Manager</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CodeNote.Markdown\CodeNote.Markdown.csproj">
+      <Project>{892AC602-4809-42F2-A539-C62CDF5F1776}</Project>
+      <Name>CodeNote.Markdown</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

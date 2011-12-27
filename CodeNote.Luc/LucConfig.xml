@@ -1,4 +1,4 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <lucene>
-  <index dir="" cron="false"></index>
+  <index dir="" cron="false" autosci="true"></index>
 </lucene>

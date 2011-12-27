@@ -60,6 +60,13 @@ namespace CodeNote.Common
             Message = message;
         }
 
+        public ReturnValue(bool isexists, string message, object retObjec)
+        {
+            IsExists = isexists;
+            Message = message;
+            RetObjec = retObjec;
+        }
+
         public void PutValue(object key, object value)
         {
             if (DataTable.ContainsKey(key))
@@ -84,6 +91,11 @@ namespace CodeNote.Common
         public int GetInt(string key)
         {
             return 0;
+        }
+
+        public T Get<T>(string key) where T : class
+        {
+            return this.GetVal(key) as T;
         }
 
         public string GetStrVal(string key)

@@ -13,12 +13,16 @@ namespace CodeNote.Common
     {
         public static string HtmlFilter(string str)
         {
+            return HtmlFilter(str, true);
+        }
+        public static string HtmlFilter(string str, bool blankspace)
+        {
             string temp = string.Empty;
             System.Text.RegularExpressions.Regex reg = new System.Text.RegularExpressions.Regex("<.+?>");
             temp = reg.Replace(str, "");
             temp = temp.Replace(" ", "");
-            temp = temp.Replace("&nbsp;", "");
-            temp = temp.Replace("\r\n", "");
+            if (blankspace)
+                temp = temp.Replace("&nbsp;", "");
             return temp;
         }
     }

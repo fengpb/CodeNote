@@ -1,0 +1,133 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>word-break</title>
+    <meta name="keywords" content="word-break " />
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+    <link href="/css/base.css" rel="stylesheet" type="text/css" />
+    <script src="/js/jquery-1.4.1.min.js" type="text/javascript"></script>
+    <script src="/js/CodeNote.Script.js" type="text/javascript"></script>
+    <link href="/css/wmd.css" rel="stylesheet" type="text/css" />
+    <script src="/js/CodeNote.Article.js" type="text/javascript"></script>
+    <script src="/js/Markdown.Converter.js" type="text/javascript"></script>
+    <script src="/js/Markdown.Sanitizer.js" type="text/javascript"></script>
+    <script src="/js/Markdown.Editor.js" type="text/javascript"></script>
+    <script src="/js/write.js" type="text/javascript"></script>
+</head>
+<body>
+    <script type="text/javascript">
+        write.navbar('100');
+    </script>
+    <!--start content -->
+    <div id="content">
+        <div id="maincontent" class="clearfix">
+            <!--start left-->
+            <div class="left colwrap">
+                <div class="com">
+                    <h2 class="posrl">
+                        word-break
+                    </h2>
+                    <dl>
+                        <dd class="end">
+                            <label title="日期">
+                                2011/11/25 15:41:27</label></dd>
+                        <dd>
+                            <label title="作者">
+                                By：<a href="/">robin</a></label></dd>
+                        <dd>
+                            <label>
+                                Notic：<a href="/Topic/CodeNote" title="文字">文字</a></label>
+                        </dd>
+                        <dd>
+                            <label title="标签">
+                                Tag：<a href="/Tag/"></a>&nbsp;</label>
+                        </dd>
+                    </dl>
+                </div>
+                <div class="content">
+                    <p>
+                        <h3>word-break</h3>
+
+                        <h4>语法：</h4>
+
+                        <p>　　
+                            word-break : normal |break-all |keep-all</p>
+
+                        <h4>参数：</h4>
+
+                        <p>　　normal : 依照亚洲语言和非亚洲语言的文本规则，允许在字内换行。  </p>
+
+                        <p>　　break-all : 该行为与亚洲语言的normal相同。也允许非亚洲语言文本行的任意字内断开。该值适合包含一些非亚洲文本的亚洲文本。  </p>
+
+                        <p>　　keep-all : 与所有非亚洲语言的normal相同。对于中文，韩文，日文，不允许字断开。适合包含少量亚洲文本的非亚洲文本。  </p>
+
+                        <h4>说明：</h4>
+
+                        <p>　　设置或检索对象内文本的字内换行行为。尤其在出现多种语言时。<br />
+                        　　对于中文，应该使用break-all 。<br />
+                        　　对应的脚本特性为wordBreak。  </p>
+
+                        <h4>示例：</h4>
+
+                        <pre><code>div {word-break : break-all; }
+                        </code></pre>
+</p>
+                </div>
+                <!--start reply-->
+                <h3 class="title mgt10">
+                    <input id="hidArtilceID" type="hidden" value="6" />
+                    <label title="Reply">
+                        评论</label></h3>
+                <div id="replyList" class="replyList">
+                </div>
+                <script type="text/javascript">
+                    write.reply(6);
+                </script>
+                <div class="replay">
+                    <dl class="edit">
+                        <dd>
+                            <label>
+                                <input id="replayNick" type="text" class="text" name="nick" value="" />&nbsp; 昵称<b
+                                    title="必填">*</b></label>
+                        </dd>
+                        <dd>
+                            <label>
+                                <input id="replayEmail" type="text" class="text" name="email" value="" />&nbsp;
+                                邮件(不公开)<b title="必填">*</b></label>
+                        </dd>
+                        <dd>
+                            <div class="wmd-panel">
+                                <div id="wmd-button-bar">
+                                </div>
+                                <textarea id="wmd-input" class="wmd-input" name="body" cols="50" rows="5"></textarea>
+                            </div>
+                            <div id="wmd-preview" class="wmd-panel wmd-preview">
+                            </div>
+                        </dd>
+                        <dd class="btn">
+                            <input type="button" onclick="Replay()" value="提交评论" />&nbsp;<span id="replayMessage"
+                                class="message"><!--Ctrl+Enter--></span></dd>
+                    </dl>
+                </div>
+                <!--end reply-->
+            </div>
+            <!--end left-->
+            <!--start right-->
+            <div class="right colwrap">
+                <script type="text/javascript">
+                    write.categorylist('100');
+                    write.articlerec(6);
+                </script>
+            </div>
+            <!--end right-->
+        </div>
+    </div>
+    <!--end content-->
+    <script type="text/javascript">
+        write.footer();
+    </script>
+    <script src="/js/detail.js" type="text/javascript"></script>
+</body>
+</html>
+<!-- up date: 2011/11/25 7:41:27 -->
+

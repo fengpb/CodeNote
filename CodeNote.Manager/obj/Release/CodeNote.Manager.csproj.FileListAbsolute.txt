@@ -1,14 +1,16 @@
 E:\github\CodeNote\CodeNote.Manager\bin\Release\CodeNote.Manager.dll
 E:\github\CodeNote\CodeNote.Manager\bin\Release\CodeNote.Manager.pdb
+E:\github\CodeNote\CodeNote.Manager\bin\Release\antlr.runtime.dll
 E:\github\CodeNote\CodeNote.Manager\bin\Release\CodeNote.Common.dll
 E:\github\CodeNote\CodeNote.Manager\bin\Release\CodeNote.Dal.dll
 E:\github\CodeNote\CodeNote.Manager\bin\Release\CodeNote.Entity.dll
+E:\github\CodeNote\CodeNote.Manager\bin\Release\CodeNote.Markdown.dll
 E:\github\CodeNote\CodeNote.Manager\bin\Release\log4net.dll
 E:\github\CodeNote\CodeNote.Manager\bin\Release\StringTemplate.dll
-E:\github\CodeNote\CodeNote.Manager\bin\Release\antlr.runtime.dll
 E:\github\CodeNote\CodeNote.Manager\bin\Release\CodeNote.Common.pdb
 E:\github\CodeNote\CodeNote.Manager\bin\Release\CodeNote.Dal.pdb
 E:\github\CodeNote\CodeNote.Manager\bin\Release\CodeNote.Entity.pdb
+E:\github\CodeNote\CodeNote.Manager\bin\Release\CodeNote.Markdown.pdb
 E:\github\CodeNote\CodeNote.Manager\obj\Release\ResolveAssemblyReference.cache
 E:\github\CodeNote\CodeNote.Manager\obj\Release\CodeNote.Manager.dll
 E:\github\CodeNote\CodeNote.Manager\obj\Release\CodeNote.Manager.pdb

@@ -114,10 +114,6 @@ namespace CodeNote.Common
                 log.Info("Create cache monitor dir! " + dir);
             }
             string monitorFile = dir + "/" + key + ".cachemonitor";
-            if (!System.IO.File.Exists(monitorFile))
-            {
-                System.IO.File.Create(monitorFile);
-            }
             return monitorFile;
         }
 
@@ -125,7 +121,7 @@ namespace CodeNote.Common
         {
             try
             {
-                using (System.IO.StreamWriter sw = new System.IO.StreamWriter(GetCacheMoniorFile(key), append))
+                using (System.IO.StreamWriter sw = new System.IO.StreamWriter(GetCacheMoniorFile(key), append, Encoding.UTF8, 1024))
                 {
                     sw.WriteLine(DateTime.Now.ToString("yyyyMMddHHmmssffffff"));
                 }

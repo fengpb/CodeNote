@@ -78,6 +78,14 @@ namespace CodeNote.Entity
             get { return this._createDate; }
             set { this._createDate = value; }
         }
+
+        private DateTime _modDate;
+        [Column(Name = "ModDate", DbType = "datetime", UpdateCheck = UpdateCheck.Never, CanBeNull = false)]
+        public DateTime ModDate
+        {
+            get { return this._modDate; }
+            set { this._modDate = value; }
+        }
     }
 }
 

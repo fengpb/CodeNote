@@ -43,7 +43,7 @@ namespace CodeNote.Common
             string tmp = System.Configuration.ConfigurationManager.AppSettings[key];
             if (!string.IsNullOrEmpty(tmp) && tmp.StartsWith("/") && isdomain)
             {
-                tmp = System.Configuration.ConfigurationManager.AppSettings["Domain"] + tmp;
+                tmp = System.Configuration.ConfigurationManager.AppSettings["domain"] + tmp;
             }
             log.Debug("FileUrl: " + key + " = " + tmp);
             return tmp;

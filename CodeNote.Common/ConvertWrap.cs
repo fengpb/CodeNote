@@ -24,6 +24,62 @@ namespace CodeNote.Common
         }
         #endregion
 
+        #region ToDateStr
+        public static string ToDateStr(DateTime? date)
+        {
+            try
+            {
+                if (date != null)
+                {
+                    DateTime newDa = (DateTime)date;
+                    return newDa.ToString("yyyy-MM-dd HH:mm");
+                }
+                return "00-00-00 00:00";
+            }
+            catch { return "00-00-00 00:00"; }
+        }
+        public static string ToDateStr(DateTime? date, bool isChain)
+        {
+            try
+            {
+                if (date != null)
+                {
+                    DateTime newDa = (DateTime)date;
+                    if (isChain)
+                        return newDa.ToString("yyyy年MM月dd日 HH:mm");
+                    else
+                        return newDa.ToString("yyyy/MM/dd HH:mm");
+
+                }
+                return "00/00/00 00:00";
+            }
+            catch { return "00/00/00 00:00"; }
+        }
+        public static DateTime ToDate(DateTime? date)
+        {
+            if (date == null)
+            {
+                return DateTime.Now;
+            }
+            return Convert.ToDateTime(date);
+        }
+        public static DateTime ToDate(string dateStr)
+        {
+            if (string.IsNullOrEmpty(dateStr))
+            {
+                return DateTime.Now;
+            }
+            try
+            {
+                return Convert.ToDateTime(dateStr);
+            }
+            catch
+            {
+                return DateTime.Now;
+            }
+        }
+        #endregion
+
         public static decimal ToDecimal(object obj, decimal def)
         {
             decimal temp = 0;

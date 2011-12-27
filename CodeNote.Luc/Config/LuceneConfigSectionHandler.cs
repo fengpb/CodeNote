@@ -19,6 +19,7 @@ namespace CodeNote.Luc.Config
                 {
                     lc.IndexDir = item.Attributes["dir"].Value;
                     lc.Cron = Convert.ToBoolean(item.Attributes["cron"].Value);
+                    lc.AutoSCI = Convert.ToBoolean(item.Attributes["autosci"].Value);
                 }
             }
             return lc;
@@ -53,5 +54,10 @@ namespace CodeNote.Luc.Config
         /// 暂时不使用
         /// </summary>
         public bool Cron { get; set; }
+
+        /// <summary>
+        /// 搜索时自动创建索引
+        /// </summary>
+        public bool AutoSCI { get; set; }
     }
 }

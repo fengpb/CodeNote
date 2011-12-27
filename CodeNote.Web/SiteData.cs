@@ -75,6 +75,20 @@ namespace CodeNote.Web
                 return _domain;
             }
         }
-
+        private string _htmlDir;
+        /// <summary>
+        /// 静态文件目录
+        /// </summary>
+        public string HtmlDir
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(_htmlDir))
+                {
+                    _htmlDir = CodeNote.Common.ConfigWrap.FileUrl("Statis_Html_Dir",true);
+                }
+                return _htmlDir;
+            }
+        }
     }
 }

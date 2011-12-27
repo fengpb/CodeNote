@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/sitemap.xsl"?>
+<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>http://localhost:2010/</loc>
+    <lastmod>2011/12/27 17:36:17</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+    <url>
+      <loc>http://localhost:2010/detail/2011/12/2714574302VJ2FX.html</loc>
+      <lastmod>2011/12/27 14:57:42</lastmod>
+      <changefreq>monthly</changefreq>
+      <priority>0.3</priority>
+    </url>
+    
+    <url>
+      <loc>http://localhost:2010/detail/2011/12/2714500768THN79.html</loc>
+      <lastmod>2011/12/27 14:50:07</lastmod>
+      <changefreq>monthly</changefreq>
+      <priority>0.3</priority>
+    </url>
+    
+    <url>
+      <loc>http://localhost:2010/detail/2011/11/2515412800JDHUN.html</loc>
+      <lastmod>2011/11/25 15:41:27</lastmod>
+      <changefreq>monthly</changefreq>
+      <priority>0.3</priority>
+    </url>
+    
+    <url>
+      <loc>http://localhost:2010/detail/2011/11/2513522321ZFJJF.html</loc>
+      <lastmod>2011/11/25 13:52:11</lastmod>
+      <changefreq>monthly</changefreq>
+      <priority>0.3</priority>
+    </url>
+    
+    <url>
+      <loc>http://localhost:2010/detail/2011/11/2513453515JYJIZ.html</loc>
+      <lastmod>2011/11/25 13:47:26</lastmod>
+      <changefreq>monthly</changefreq>
+      <priority>0.3</priority>
+    </url>
+    
+    <url>
+      <loc>http://localhost:2010/detail/2011/11/2510454782PT5ER.html</loc>
+      <lastmod>2011/11/25 10:50:31</lastmod>
+      <changefreq>monthly</changefreq>
+      <priority>0.3</priority>
+    </url>
+    
+    <url>
+      <loc>http://localhost:2010/detail/2011/11/2217286S2AL.html</loc>
+      <lastmod>2011/11/23 10:34:00</lastmod>
+      <changefreq>monthly</changefreq>
+      <priority>0.3</priority>
+    </url>
+    
+    <url>
+      <loc>http://localhost:2010/detail/2011/11/221728596YX.html</loc>
+      <lastmod>2011/11/23 10:34:00</lastmod>
+      <changefreq>monthly</changefreq>
+      <priority>0.3</priority>
+    </url>
+    
+</urlset>
+<!-- Refresh: 2011/12/27 17:36:17 -->

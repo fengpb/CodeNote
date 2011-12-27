@@ -44,7 +44,7 @@ namespace CodeNote.Web.Common
             }
             else
             {
-                url = CodeNote.Common.ConfigWrap.FileUrl("Statis_Html_Dir") + htm.Url;
+                url = CodeNote.Common.ConfigWrap.FileUrl("statis_html_dir") + htm.Url;
             }
             TagBuilder link = new TagBuilder("a");
             link.InnerHtml = text;

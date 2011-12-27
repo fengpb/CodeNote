@@ -20,6 +20,11 @@ namespace CodeNote.Common
         /// 当前请求的 Controller
         /// </summary>
         public string CurController { set; get; }
+        /// <summary>
+        /// 用时
+        /// </summary>
+        public double Msecond { set; get; }
+
         public int TotolPage
         {
             get { return (int)Math.Ceiling(RecordCount / (double)PageSize); }

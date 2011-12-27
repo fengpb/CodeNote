@@ -106,6 +106,22 @@ namespace CodeNote.Entity
             get { return this._createDate; }
             set { this._createDate = value; }
         }
+
+        private DateTime _modDate;
+        [Column(Name = "ModDate", DbType = "datetime")]
+        public DateTime ModDate
+        {
+            get { return this._modDate; }
+            set { this._modDate = value; }
+        }
+
+        private string _htmlUrl;
+        [Column(Name = "Url", DbType = "nvarchar")]
+        public string HtmlUrl
+        {
+            get { return this._htmlUrl; }
+            set { this._htmlUrl = value; }
+        }
     }
 }
 

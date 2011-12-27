@@ -57,12 +57,12 @@ namespace CodeNote.Dal
 
         public IList<Category> GetMenu()
         {
-            return this.DataTable.Where(e => e.ParentID == "0").ToList();
+            return this.DataTable.Where(e => (e.ParentID == "0" && e.Status >0)).OrderBy(x => x.Status).ToList();
         }
 
         public IList<Category> GetByParentID(string parentID)
         {
-            return this.DataTable.Where(e => e.ParentID == parentID).Where(e=>e.Status>-1).ToList();
+            return this.DataTable.Where(e => e.ParentID == parentID).Where(e => e.Status > -1).ToList();
         }
 
         /// <summary>

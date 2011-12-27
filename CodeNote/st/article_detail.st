@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>$entity.Subject$</title>
-    <meta name="keywords" content="$keywords$" />
+    <meta name="keywords" content="$entity.Subject$ $keywords$" />
     <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
     <link href="/css/base.css" rel="stylesheet" type="text/css" />
     <script src="/js/jquery-1.4.1.min.js" type="text/javascript"></script>

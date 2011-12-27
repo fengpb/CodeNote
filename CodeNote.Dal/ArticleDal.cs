@@ -35,6 +35,7 @@ namespace CodeNote.Dal
                 {
                     old.Tag = entity.Tag;
                 }
+                old.ModDate = DateTime.Now;
 
                 this.SubmitChanges();
                 return true;
@@ -54,11 +55,11 @@ namespace CodeNote.Dal
             }
         }
 
-        public IList<VwArticle> GetNewList(int topNum, string categoryID,string filter)
+        public IList<VwArticle> GetNewList(int topNum, string categoryID, string filter)
         {
             using (ArticleProc proc = new ArticleProc())
             {
-                return proc.SP_Article_New(topNum, categoryID,filter).ToList();
+                return proc.SP_Article_New(topNum, categoryID, filter).ToList();
             }
         }
 
@@ -79,6 +80,11 @@ namespace CodeNote.Dal
                 log.Error(ex.Message, ex);
                 return null;
             }
+        }
+
+        public IList<VwArticle> GetAllVwList()
+        {
+            return this.GetTable<VwArticle>().ToList();
         }
     }
 }

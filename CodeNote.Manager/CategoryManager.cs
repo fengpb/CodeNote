@@ -187,13 +187,17 @@ namespace CodeNote.Manager
         /// <returns></returns>
         public IList<Category> GetMenu()
         {
-            IList<Category> list = this.GetAllCache().Where(e => e.ParentID == "0").ToList();
+            IList<Category> list = this.GetAllCache().Where(e => (e.ParentID == "0" && e.Status > 0)).OrderBy(e => e.Status).ToList();
             if (list == null || list.Count < 1)
             {
                 using (CategoryDal dal = new CategoryDal())
                 {
                     list = dal.GetMenu();
                 }
+            }
+            else
+            {
+                log.Debug("Get navigation from cache !");
             }
             return list;
         }
@@ -236,7 +240,7 @@ namespace CodeNote.Manager
                 return null;
             }
 
-            IList<Category> list = GetAllCache().Where(x => x.ParentID == parentID).Where(e=>e.Status>-1).ToList();
+            IList<Category> list = GetAllCache().Where(x => x.ParentID == parentID).Where(e => e.Status > -1).ToList();
 
             if (list == null || list.Count < 1)
             {

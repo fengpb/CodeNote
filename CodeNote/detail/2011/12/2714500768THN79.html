@@ -1,0 +1,503 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>从概念理解Lucene的Index（索引）文档模型</title>
+    <meta name="keywords" content="从概念理解Lucene的Index（索引）文档模型 " />
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+    <link href="/css/base.css" rel="stylesheet" type="text/css" />
+    <script src="/js/jquery-1.4.1.min.js" type="text/javascript"></script>
+    <script src="/js/CodeNote.Script.js" type="text/javascript"></script>
+    <link href="/css/wmd.css" rel="stylesheet" type="text/css" />
+    <script src="/js/CodeNote.Article.js" type="text/javascript"></script>
+    <script src="/js/Markdown.Converter.js" type="text/javascript"></script>
+    <script src="/js/Markdown.Sanitizer.js" type="text/javascript"></script>
+    <script src="/js/Markdown.Editor.js" type="text/javascript"></script>
+    <script src="/js/write.js" type="text/javascript"></script>
+</head>
+<body>
+    <script type="text/javascript">
+        write.navbar('100');
+    </script>
+    <!--start content -->
+    <div id="content">
+        <div id="maincontent" class="clearfix">
+            <!--start left-->
+            <div class="left colwrap">
+                <div class="com">
+                    <h2 class="posrl">
+                        从概念理解Lucene的Index（索引）文档模型
+                    </h2>
+                    <dl>
+                        <dd class="end">
+                            <label title="日期">
+                                2011/12/27 14:50:07</label></dd>
+                        <dd>
+                            <label title="作者">
+                                By：<a href="/">robin</a></label></dd>
+                        <dd>
+                            <label>
+                                Notic：<a href="/Topic/CodeNote" title="文字">文字</a></label>
+                        </dd>
+                        <dd>
+                            <label title="标签">
+                                Tag：<a href="/Tag/"></a>&nbsp;</label>
+                        </dd>
+                    </dl>
+                </div>
+                <div class="content">
+                    <p>
+                        <p>Lucene主要有两种文档模型：Document和Field，一个Document可能包含若干个Field。</p>
+
+                        <p>每一个Field有不同的策略：</p>
+
+                        <p>1.被索引 or not，将该字段（Field）经过分析（Analyisi）后，加入索引中，并不是原文 。</p>
+
+                        <p>2.如果被索引，可选择是否保存“term vector”(向量)，用于相似检索。</p>
+
+                        <p>3.可选择是否存储(store)，将原文直接拷贝 ，不做索引，用于检索后的取出。</p>
+
+                        <p>Lucene中的文档模型类似于数据库，但是又不完全相同，体现在如下几方面：</p>
+
+                        <p>1.无规范格式，即无需固定的Schema，无列等预先设计，同一个索引中加入的Document可包含不同的Field 。</p>
+
+                        <p>2.非正规化，Lucene中的文档模型是一个平面化 的结构，没有递归定义，自然连接等等复杂的结构。</p>
+
+                        <p>2.2  理解索引过程</p>
+
+                        <p>总体来说，索引过程为：</p>
+
+                        <p>1.提取摘要：从原文提取，并创建Document和Field对象。Tika 提供了PDF、Word等非文本的文本提取。</p>
+
+                        <p>2.分析：Analysis，首先对Document的Field进行分解，产生token流，然后经过一系列Filter（如小写化）等。</p>
+
+                        <p>3.建立索引：通过IndexWriter的addDocument写入到索引中。Lunece使用了反向索引 ，即“那个Document包含单词X”，而不是“Document包含哪些Word”</p>
+
+                        <p>索引文件组成</p>
+
+                        <p>为了保证效率，每个索引由若干segments组成：</p>
+
+                        <p>_X.cfs  每个segments由若干个cfs组成，X为0,1,2….如果开启了useCompoundFile，则只有一个.cfs文件。</p>
+
+                        <p>segments_<N>：记载每个分区对应的cfs文件。</p>
+
+                        <p>每个一段时间后，在调用IndexWriter时，会自动合并这些segment</p>
+
+                        <p>2.3  索引的基本操作</p>
+
+                        <p>首先创建IndexWriter</p>
+
+                        <p>IndexWriter(dir,new WhiteSpaceAnalyser(),IndexWriter.MaxField.UNLIMITED);</p>
+
+                        <p>dir是索引的保存路径，WhiteSpaceAnalyser是基于空白的分词 ，最后部限定Field的数量。</p>
+
+                        <p>依次创建文档Document和Field</p>
+
+                        <p>Document doc = new Document();</p>
+
+                        <p>doc.add(new Filed(key,value,STORE?,INDEX?)</p>
+
+                        <p>key就是field的检索字段名，value就是待写入/分析的文本。</p>
+
+                        <p>STORE ，与索引无关，是否额外存储原文 ，可以在搜索结果后调用出来，NO不额外存储；YES，额外存储。</p>
+
+                        <p>INDEX ，NO，不索引；ANALYZED，分词后索引；NOT<em>ANALYZED，不分词索引；ANALYZED</em>NO<em>NORMS，分词索引，不存储NORMS；NOT</em>ANALYZED<em>NO</em>NORMS，不分词，索引，不存储NORMS。除了NO外都算索引，可以搜索 。NORMS存储了boost所需信息，包含了NORM可能会占用更多内存？</p>
+
+                        <p>删除索引</p>
+
+                        <p>IndexWriter提供了删除Document的功能：</p>
+
+                        <p>deleteDocumen(Term) </p>
+
+                        <p>deleteDocumen(Term[])</p>
+
+                        <p>deleteDocumen(Query)</p>
+
+                        <p>deleteDocumen(Query [])</p>
+
+                        <p>特别注意Term不一定是唯一的，所以有可能误删除多个 。另外最好选择唯一的、非索引的Term 以防混乱（比如唯一ID）。</p>
+
+                        <p>删除后commit()然后close才能真正写入索引文件中。</p>
+
+                        <p>删除后只是标记为删除，maxDoc()返回所有文档（含已经删除，但未清理的）；numDocs：未删除的文档数量</p>
+
+                        <p>使用delete后，再optimize()：压缩删除的空间、再commit才真正的删除释放空间。</p>
+
+                        <p>更新索引</p>
+
+                        <p>updateDocument(Term,Document)，Lunce只支持全部替换，即整个Docuemnt要被替换掉，没法更新单独的Field。</p>
+
+                        <p>2.4  Field的选项</p>
+
+                        <p>选项分为三类：index、storing和term vector。</p>
+
+                        <p>Index选项</p>
+
+                        <p>Index.ANALYZED ：分词后索引</p>
+
+                        <p>Index.NOT_ANALYZED ： 不分词直接索引，例如URL、系统路径等，用于精确检索 。</p>
+
+                        <p>Index.ANALYZED<em>NO</em>NORMS ： 类似Index.ANALYZED，但不存储NORM TERMS，节约内存但不支持Boost。</p>
+
+                        <p>Index.NOT<em>ANALYZED</em>NO<em>NORMS ： 类似Index.NOT</em>ANALYZED，但不存储NORM TERMS，节约内存但不支持Boost，非常常用 。</p>
+
+                        <p>Index.NO ： 根本不索引，所以不会被检索到</p>
+
+                        <p>默认情况，Luncene会存储所有单词的出现位置，可以用Field.setOmitTermFreqAndPositions(true)关闭，但是会影响PhraseQuery和SpanQuery。</p>
+
+                        <p>Store选项</p>
+
+                        <p>Store.YES ：存储原始value数值，可在检索后被提取 。</p>
+
+                        <p>Store.NO ：不存储原始数值，检索后无法重新提取。</p>
+
+                        <p>CompressionTools 可用于压缩、解压缩byte数组。</p>
+
+                        <p>Term Vector选项</p>
+
+                        <p>Term Vector主要用于为相似搜索 提供支持 ，例如搜索cat，返回cat。</p>
+
+                        <p>TermVector.YES ：记录Term Vector</p>
+
+                        <p>TermVector.WITH_POSITIONS ：记录Term Vector以及每个Term出现的位置</p>
+
+                        <p>TermVector.WITH_OFFSETS ：记录Term Vector以及每个Term出现的偏移</p>
+
+                        <p>TermVector.WITH<em>POSITIONS</em>OFFSETS ：记录Term Vector以及出现的位置+偏移</p>
+
+                        <p>TermVector.NO ：不存储TermVector</p>
+
+                        <p>如果Index选择了No，则TermVector必须选择No</p>
+
+                        <p>将String外的类型作为Field的数据源</p>
+
+                        <p>Reader：无法被STORE，默认TokenStream始终被分词和索引。</p>
+
+                        <p>TokenStream：分词之后的结果作为源，无法被Store，始终analyzed并索引。</p>
+
+                        <p>byte[] ：无法被索引，没有TermVector，必须被Store.YES</p>
+
+                        <p>与排序相关选项</p>
+
+                        <p>数字Field可以用NumericField，如果是文本Field必须Field.Index.NOT_ANALYZED，才能排序，即保证这个Field只含有一个Token才能排序 。</p>
+
+                        <p>多值Field（Multi-valued Fields）</p>
+
+                        <p>比如一本书有多个作者，怎么办呢？</p>
+
+                        <p>一种方法是，添加多个同一key，不同value的Field</p>
+
+                        <p>Document doc = new Document();
+                            for (int i = 0; i &lt; authors.length; i++) {
+                              doc.add(new Field(“author”, authors[i],
+                                                Field.Store.YES,
+                                                Field.Index.ANALYZED));
+                            }</p>
+
+                        <p>还有一种方法在第4章中提出。</p>
+
+                        <p>2.5  Boost（提升）</p>
+
+                        <p>boost可以对影响搜索返回结果的排序 。</p>
+
+                        <p>boost可以在index或者搜索时候完成，后者更具有灵活性可独立制定但耗费更多CPU。</p>
+
+                        <p>Booost Doument</p>
+
+                        <p>index时候boost将存储在NORMS TERM中。默认情况下，所有Document有相等的Boost，即1.0，可以手动提升一个Docuemnt的Boost数值。</p>
+
+                        <p>Document.settBoost(float bei)，bei是1.0的倍数。</p>
+
+                        <p>Boost Field</p>
+
+                        <p>也可以对Field进行索引，使用Document的Boost，对下属的Field都执行相同的Field。</p>
+
+                        <p>单独对Field进行Boost</p>
+
+                        <p>Field.boost(float)</p>
+
+                        <p>注意：Lucene的Rank算法由多种因素组成，Boost只是一个因素之一，不是决定性因素 。</p>
+
+                        <p>Norms</p>
+
+                        <p>boost的数值存储在Norms中，可能会导致Search时占用大量内存。因此可将其关闭：</p>
+
+                        <p>设置NO_NORMS，或者再Field中指定Field.setOmitNorms(true)。</p>
+
+                        <p>2.6  对数字、日期、时间等进行索引</p>
+
+                        <p>索引数字</p>
+
+                        <p>有两种场景：</p>
+
+                        <p>1.数字嵌入在Text中，例如“Be sure to include Form 1099 in your tax return”，而你想要搜索1099这个词。此时需要选择不分解数字的Analyzer ，例如WhitespaceAnalyzer或者StandardAnalyzer。而SimpleAnalyzer和StopAnalyzer会忽略数字，无法通过1099检出。</p>
+
+                        <p>2.数字式单独的Field，2.9之后，Lucene支持了数字类型，使用NumericField即可：doc.add(new NumericField(“price”).setDoubleValue(19.99));此时，对数字Field使用字典树存储，</p>
+
+                        <p>可向document中添加一样的NumericField数值，在NumericRangeQuery、NumericRangeFilter中以or的方式支持，但是排序中不支持。因此如果要排序，必须添加唯一的NumericField。</p>
+
+                        <p>precisionStep控制了扫描精度，越小越精确但速度越慢。</p>
+
+                        <p>索引日期和时间</p>
+
+                        <p>方法是：将日期转化为时间戳（长整数） ，然后按照NumericField进行处理。</p>
+
+                        <p>或者，如果不需要精确到毫秒，可以转化成秒处理</p>
+
+                        <p>doc.add(new NumericField(“day”) .setIntValue((int) (new Date().getTime()/24/3600)));</p>
+
+                        <p>甚至对某一天进行索引而不是具体时间。</p>
+
+                        <pre><code>Calendar cal = Calendar.getInstance();
+                        cal.setTime(date);
+                        doc.add(new NumericField(“dayOfMonth”)
+                                .setIntValue(cal.get(Calendar.DAY_OF_MONTH)));
+                        </code></pre>
+
+                        <p>2.7  Field截断</p>
+
+                        <p>Lucene支持对字段的截断。IndexWriter.MaxFieldLength表示字段的最大长度，默认为MaxFieldLength.UNLIMITED，无限。</p>
+
+                        <p>而MaxFieldLength.LIMITED表示有限制，可以通过setMaxFieldLength（int n）进行指定。</p>
+
+                        <p>上述设定之后，只保留前n个字符。</p>
+
+                        <p>可以通过setInfoStream(System.out)获得详细日志信息。</p>
+
+                        <p>2.8  实时搜索</p>
+
+                        <p>2.9后支持实时搜索，或者说很快的入索引–检索过程 。</p>
+
+                        <p>IndexReader  IndexWriter.getReader()</p>
+
+                        <p>本方法将立即刷新Index的缓存，生效后立即返回IndexReader用于搜索。</p>
+
+                        <p>2.9  优化索引</p>
+
+                        <p>索引优化可以提升搜索速度 ，而非索引速度。它指的是将小索引文件合并成几个。</p>
+
+                        <p>IndexWriter提供了几个优化方法：</p>
+
+                        <p>optimize()：将索引合并为一个段，完成前不会返回。但是太耗费资源。</p>
+
+                        <p>optimize(int maxNumSegments)：部分优化，优化到最多maxNumSegments个段？是优化于上述极端情况的这种，例如5个。</p>
+
+                        <p>optimize(boolean doWait)：通optimize()，但是它将立即返回。</p>
+
+                        <p>optimize(int maxNumSegments, boolean doWait)：同optimize(int maxNumSegments)，但是将立即返回。</p>
+
+                        <p>另外：在优化中会耗费大量的额外空间 。即旧的废弃段直到IndexWriter.commit()之后才能被移除 。</p>
+
+                        <p>2.10  Directory</p>
+
+                        <p>Directory封装了存储的API，向上提供了抽象的接口，有以下几类：</p>
+
+                        <p>SimpleFSDirectory：存储于本地磁盘使用java.io，不支持多线程，要自己加锁 。</p>
+
+                        <p>NIOFSDirectory：多线程可拓展，使用java.nio，支持多线程安全，但是Windows下有Bug 。</p>
+
+                        <p>MMapDirectory：内存映射存储（将文件映射到内存中进行操作，类似nmap）。</p>
+
+                        <p>RAMDirectory：全部在内存中存储。</p>
+
+                        <p>FileSwitchDirectory：使用两个目录，切换交替使用。</p>
+
+                        <p>使用FSDirectory.open将自动挑选合适的Directory。也可以自己指定：</p>
+
+                        <p>Directory ramDir = new RAMDirectory();
+                        IndexWriter writer = new IndexWriter(ramDir, analyzer,  IndexWriter.MaxFieldLength.UNLIMITED);</p>
+
+                        <p>RAMDirectory适用于内存比较小的情况。</p>
+
+                        <p>可以拷贝索引以用于加速：</p>
+
+                        <p>Directory ramDir = new RAMDirectory(otherDir);</p>
+
+                        <p>或者</p>
+
+                        <p>Directory.copy(Directory sourceDir,
+                                       Directory destDir,
+                                       boolean closeDirSrc);</p>
+
+                        <p>2.11  线程安全、锁</p>
+
+                        <p>线程、多JVM安全</p>
+
+                        <p>任意多个IndexReaders可同时打开，可以跨JVM。</p>
+
+                        <p>同一时间 ，只能打开一个 IndexWriter，独占写锁 。内建线程安全机制。</p>
+
+                        <p>IndexReaders可以在IndexWriter打开的时候打开。</p>
+
+                        <p>多线程间可共享IndexReader或者IndexWriter，他们是线程安全的，内建同步机制且性能较高。</p>
+
+                        <p>通过远程文件系统共享IndexWriter</p>
+
+                        <p>注意不要反复打开、关闭，否则会影响性能。</p>
+
+                        <p>Index的锁</p>
+
+                        <p>以文件锁的形式，名为write.lock。</p>
+
+                        <p>如果在已经被锁定的情况下再创建一个IndexWriter，会遇到LockObtainFailedException。</p>
+
+                        <p>也支持其他锁定方式，但是一般情况下无需改变它们。</p>
+
+                        <p>IndexWriter.isLocked(Directory)：检查某目录是否被锁。</p>
+
+                        <p>IndexWriter.unlock(Directory)：对某目录解锁，危险！。</p>
+
+                        <p>注意！每次IndexWriter无论执行了什么操作，都要显示的close ！不会自动释放锁的！</p>
+
+                        <p>2.12  调试索引</p>
+
+                        <p>2.14  高级的索引选项</p>
+
+                        <p>IndexReader可以用来彻底删除已经去除的Index，优点如下：</p>
+
+                        <p>1.通过Document的具体Number来删除，更精确而IndexWriter不行。</p>
+
+                        <p>2.IndexReader可以在删除后立即显示出来，而IndexWriter必须重新打开才能显示出来。</p>
+
+                        <p>3.IndexReader拥有undeleteAll，可以撤销所有删除的索引（只对尚未merged的有效 ）。</p>
+
+                        <p>释放删除索引后的空间</p>
+
+                        <p>可以调用expungeDeletes显示的释放空间，它将执行merge从而释放删除但仅仅做了标记，尚未释放的空间。</p>
+
+                        <p>缓存和刷新</p>
+
+                        <p>当添加索引、删除索引时候，在内存中建立了一个缓存以减少磁盘I/O，Lucene会定期把这些缓存中的改动放入Directory中便形成了一个segment （段）。</p>
+
+                        <p>IndexWriter刷新缓存的条件是：</p>
+
+                        <p>当内存中数据已经大于setRAMBufferSizeMB的指定。</p>
+
+                        <p>当索引中的Document数量多于setMaxBufferedDocs的指定。</p>
+
+                        <p>当索引被删除的数量多于setMaxBufferedDeleteTerms的指定。</p>
+
+                        <p>上述条件之一发生时，即触发缓存刷进，它将建立新的Segment但不存入磁盘，只有当commit后才写入磁盘的index。</p>
+
+                        <p>索引的commit</p>
+
+                        <p>commit将改动持久化到本次索引中。只有调用commit后，再打开的IndexReader或者IndexSearcher才能看到最近一次commit之后的结果。</p>
+
+                        <p>关闭close也将间接调用commit。</p>
+
+                        <p>与commit相对的是rollback方法，它将撤销上次commit之后的所有改动。</p>
+
+                        <p>commit非常耗时，不能经常调用。</p>
+
+                        <p>“双缓冲”的commit</p>
+
+                        <p>在图形界面开发中，经常有双缓冲技术，即一个用于被刷新，一个用于显示，两个之间互换使用。Lucene也支持这样的机制。</p>
+
+                        <p>Lucene暴露了两个接口：</p>
+
+                        <p>prepareCommit</p>
+
+                        <p>Commit</p>
+
+                        <p>prepareCommit比较慢，而调用prepareCommit后再调用Commit则会非常快。</p>
+
+                        <p>删除策略</p>
+
+                        <p>IndexDeletionPolicy决定了删除策略。可以决定是否保留之前的commit版本。</p>
+
+                        <p>Lucene对ACID的事务支持</p>
+
+                        <p>这主要是通过“同时只能打开一个IndexWriter”来实现的。</p>
+
+                        <p>如果JVM、OS或者机器挂了，Lucene会自动恢复到上一个commit版本。</p>
+
+                        <p>合并Merge</p>
+
+                        <p>当索引有过多的Segnmnet的时候，需要进行合并Merge。优点：</p>
+
+                        <p>1.减少了Segnment的文件数量</p>
+
+                        <p>2.减少索引文件占用的空间大小。</p>
+
+                        <p>MERGEPOLICY决定何时需要执行合并Merge</p>
+
+                        <p>MERGEPOLICY</p>
+
+                        <p>选择那些文件需要被合并，默认有两种策略：</p>
+
+                        <p>LogByteSizeMergePolicy ：根据Index大小决定是否需要合并</p>
+
+                        <p>LogDocMergePolicy ：根据Document的数量决定是否需要合并</p>
+
+                        <p>分别通过</p>
+
+                        <p>setMergeFactor</p>
+
+                        <p>和setMaxMergeDocs来指定，具体参数见API。</p>
+
+                        <p>MERGESCHEDULER</p>
+
+                        <p>决定如何进行合并：</p>
+
+                        <p>ConcurrentMergeScheduler，后台额外线程进行合并，可通过waitForMerges得知合并完成。</p>
+
+                        <p>SerialMergeScheduler，在addDocument时候串行合并，使用统一线程。</p>
+</p>
+                </div>
+                <!--start reply-->
+                <h3 class="title mgt10">
+                    <input id="hidArtilceID" type="hidden" value="7" />
+                    <label title="Reply">
+                        评论</label></h3>
+                <div id="replyList" class="replyList">
+                </div>
+                <script type="text/javascript">
+                    write.reply(7);
+                </script>
+                <div class="replay">
+                    <dl class="edit">
+                        <dd>
+                            <label>
+                                <input id="replayNick" type="text" class="text" name="nick" value="" />&nbsp; 昵称<b
+                                    title="必填">*</b></label>
+                        </dd>
+                        <dd>
+                            <label>
+                                <input id="replayEmail" type="text" class="text" name="email" value="" />&nbsp;
+                                邮件(不公开)<b title="必填">*</b></label>
+                        </dd>
+                        <dd>
+                            <div class="wmd-panel">
+                                <div id="wmd-button-bar">
+                                </div>
+                                <textarea id="wmd-input" class="wmd-input" name="body" cols="50" rows="5"></textarea>
+                            </div>
+                            <div id="wmd-preview" class="wmd-panel wmd-preview">
+                            </div>
+                        </dd>
+                        <dd class="btn">
+                            <input type="button" onclick="Replay()" value="提交评论" />&nbsp;<span id="replayMessage"
+                                class="message"><!--Ctrl+Enter--></span></dd>
+                    </dl>
+                </div>
+                <!--end reply-->
+            </div>
+            <!--end left-->
+            <!--start right-->
+            <div class="right colwrap">
+                <script type="text/javascript">
+                    write.categorylist('100');
+                    write.articlerec(7);
+                </script>
+            </div>
+            <!--end right-->
+        </div>
+    </div>
+    <!--end content-->
+    <script type="text/javascript">
+        write.footer();
+    </script>
+    <script src="/js/detail.js" type="text/javascript"></script>
+</body>
+</html>
+<!-- up date: 2011/12/27 6:50:07 -->
+

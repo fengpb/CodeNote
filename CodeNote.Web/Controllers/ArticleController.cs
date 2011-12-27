@@ -65,7 +65,7 @@ namespace CodeNote.Web.Controllers
             entity.Tag = Request["artitag"];
             entity.CreateID = CurUser.ID;
             entity.CreateDate = DateTime.Now;
-
+            entity.ModDate = entity.CreateDate;
 
             retValue = ArtMg.AddOrEdit(entity);
 
@@ -78,6 +78,8 @@ namespace CodeNote.Web.Controllers
                     tagType = Constans.TagType.SysTag;
                 }
                 tagMg.AddTag(entity.Tag, (int)tagType);
+                CodeNote.Luc.ArtilceLuc artLuc = new Luc.ArtilceLuc();
+                artLuc.ModifyIndex(retValue.Get<VwArticle>("vw"));
             }
 
             return View("Result", new ReturnMessage(Request, "提示消息", retValue));
