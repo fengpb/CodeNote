@@ -27,11 +27,9 @@ function Replay()
         }
     });
 }
-
+var _converter = Markdown.getSanitizingConverter();
 jQuery(function ()
 {
-
-    var converter = Markdown.getSanitizingConverter();
-    var editor = new Markdown.Editor(converter);
+    var editor = new Markdown.Editor(_converter);
     editor.run();
 });

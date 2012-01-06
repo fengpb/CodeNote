@@ -96,7 +96,7 @@ namespace CodeNote.Manager
 
                 st.SetAttribute("entity", article);
                 st.SetAttribute("update", html.Upda);
-                st.SetAttribute("keywords", article.Tag);
+                st.SetAttribute("keywords", article.Tag);//搜索关键字
                 st.SetAttribute("taglinks", TagInfoManager.TagLinks(article.Tag));
                 return CodeNote.Common.IoWrap.WriteFile(CodeNote.Common.ConfigWrap.FiePath(STATIC_HTML_DIR) + html.Url, st.ToString());
             }
@@ -108,6 +108,11 @@ namespace CodeNote.Manager
         }
         #endregion
 
+        #region RefreshSiteMap 刷新站点地图
+        /// <summary>
+        /// 用于更新sitemap.xml
+        /// </summary>
+        /// <returns></returns>
         public ReturnValue RefreshSiteMap()
         {
             ReturnValue retValue = new ReturnValue();
@@ -119,19 +124,26 @@ namespace CodeNote.Manager
             if (list != null)
             {
                 StringTemplate st = CodeNote.Common.TemplateWrap.GetSt("sitemap_xml");
-                st.SetAttribute("list", list);
-                st.SetAttribute("date", DateTime.Now);
-                st.SetAttribute("domain", CodeNote.Common.ConfigWrap.FileUrl("domain"));
-                st.SetAttribute("baseurl", CodeNote.Common.ConfigWrap.FileUrl(STATIC_HTML_DIR, true));
-                if (CodeNote.Common.IoWrap.WriteFile(CodeNote.Common.ConfigWrap.FiePath(SITE_MAP_FILE), st.ToString()))
+                if (st != null)
                 {
-                    retValue.IsExists = true;
-                    retValue.Message = "Refresh stiemap suuuessful!";
+                    st.SetAttribute("list", list);
+                    st.SetAttribute("date", DateTime.Now.ToString("yyyy-MM-ddTHH:mm:sszd"));
+                    st.SetAttribute("domain", CodeNote.Common.ConfigWrap.FileUrl("domain"));
+                    st.SetAttribute("baseurl", CodeNote.Common.ConfigWrap.FileUrl(STATIC_HTML_DIR, true));
+                    if (CodeNote.Common.IoWrap.WriteFile(CodeNote.Common.ConfigWrap.FiePath(SITE_MAP_FILE), st.ToString()))
+                    {
+                        retValue.IsExists = true;
+                        retValue.Message = "Refresh stiemap suuuessful!";
+                    }
+                    else
+                    {
+                        retValue.IsExists = false;
+                        retValue.Message = "Refresh stiemap error!";
+                    }
                 }
                 else
                 {
-                    retValue.IsExists = false;
-                    retValue.Message = "Refresh stiemap error!";
+                    log.Warn("Not find 'sitemap_xml.st' template !");
                 }
             }
             else
@@ -141,6 +153,7 @@ namespace CodeNote.Manager
             }
             return retValue;
         }
+        #endregion
 
         public Html Get(int artID)
         {

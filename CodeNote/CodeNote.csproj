@@ -71,8 +71,8 @@
     <Content Include="img\Article.css" />
     <Content Include="img\Html\CodeNote.html" />
     <Content Include="img\Html\Index.html" />
-    <Content Include="img\Images\container_bg.gif" />
-    <Content Include="img\Images\soc-rss.gif" />
+    <Content Include="img\container_bg.gif" />
+    <Content Include="img\soc-rss.gif" />
     <Content Include="css\base.css" />
     <Content Include="css\sub.css" />
     <Content Include="img\Html\Style.html" />
@@ -125,7 +125,9 @@
     <Content Include="Views\Reply\ReplyList.ascx" />
     <Content Include="Views\Shared\Error.aspx" />
     <Content Include="sitemap.xml" />
-    <Content Include="sitemap.xsl" />
+    <Content Include="sitemap.xsl">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Views\Tag\Index.aspx" />
     <Content Include="Views\Tag\PartTag.ascx" />
     <Content Include="Views\Tag\Tag.aspx" />
@@ -179,11 +181,22 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <None Include="st\find_pwd_email.st" />
-    <None Include="st\register_email.st" />
-    <None Include="st\modify_pwd_email.st" />
-    <None Include="st\article_detail.st" />
-    <None Include="st\sitemap_xml.st" />
+    <None Include="st\find_pwd_email.st">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="st\register_email.st">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="st\modify_pwd_email.st">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="st\article_detail.st">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="st\sitemap_xml.st">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

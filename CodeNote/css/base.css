@@ -1,18 +1,19 @@
 ﻿@import url(/css/sub.css);
 a { text-decoration: none; color: #789c33; zoom: -1; outline: none; text-decoration: none; }
 /*a:hover { color: #FFF; background-color: #1B26A4; text-decoration:none; }*/
-a:hover { text-decoration: none; color: #000; background-color: #f0f0f0; border-bottom: 1px solid #336600; }
+a:hover { text-decoration: underline; color: #000; color: #323232; }
+h2 a, h3 a { color: #323232; }
 /* Layout
 ----------------------------------------------*/
 
 ul#navbar { height: 41px; border-top: 5px solid #336600; }
 ul#navbar li { float: left; position: relative; height: 40px; margin: 1px 5px 0px 0px; line-height: 30px; border: none; }
-ul#navbar li a { float: left; font-size: 16px; overflow:hidden; font-weight: bold; color: #474747; background-color: #fff; border-top:1px solid #fff; margin-top: 7px; padding-left: 15px; padding-right: 15px; height: 32px; line-height: 35px; }
+ul#navbar li a { float: left; font-size: 16px; overflow: hidden; font-weight: bold; color: #474747; background-color: #fff; border-top: 1px solid #fff; margin-top: 7px; padding-left: 15px; padding-right: 15px; height: 32px; line-height: 35px; }
 ul#navbar li a:hover { color: #789c33; border: none; border-top: 1px solid #d9d9d9; background-color: #fff; }
 ul#navbar li.cur, ul#navbar li:hover { background-color: #f0f0f0; }
 ul#navbar li.cur a { height: 32px; color: #789c33; border-top: 1px solid #d9d9d9; }
-ul#navbar { border-bottom: 1px solid #333; }
-#content { width: 100%; font-size: 14px; background: none; margin: 0px auto; }
+ul#navbar { border-bottom: 1px solid #323232; }
+#content { width: 100%; background: none; margin: 0px auto; }
 
 ul#navbar { padding-left: 175px; }
 #maincontent { margin-left: 175px; }
@@ -23,7 +24,6 @@ ul#navbar { padding-left: 175px; }
 .colwrap { float: left; }
 .left { width: 730px; height: 100%; padding-top: 10px; padding-bottom: 10px; padding-right: 15px; }
 .right { width: 230px; height: 100%; padding-left: 15px; padding-top: 10px; padding-bottom: 10px; }
-.left h2 { font-size: 14px; line-height: 20px; border-bottom: 1px dashed #d9d9d9; padding-bottom: 5px; margin-bottom: 10px; color: #232323; }
 #footer { clear: both; padding: 4px 8px; border-top: 4px solid #339900; font-size: 12px; }
 #footer p { color: #474747; }
 
@@ -36,40 +36,33 @@ ul#navbar { padding-left: 175px; }
 .searchbox { border: 1px solid #000; }
 .searchbox .text { width: 200px; border: none; vertical-align: middle; }
 .itembox { margin: 8px 0px; }
-.itembox h4 { margin: 0px 0px 4px 0px; }
-ul.rightlist { margin: 3px auto; width: 100%; }
-ul.rightlist li { margin: 5px 2px; font-size: 12px; }
+ul.rightlist li { margin: 2px; font-size: 0.8em; }
 
 /* 文章列表
 ------------------------------------------------------*/
-.artitem { border-bottom: 1px dashed #d9d9d9; }
+.artitem { border-bottom: 1px dashed #d9d9d9; margin-bottom: 10px; }
 .end { border-bottom: none; }
-.artitem div { font-size: 14px; }
-.com { margin-top: 10px;}
-.com h3 { color: #323232; }
 .com label.common { font-size: 12px; font-weight: normal; }
 .com dl { margin: 0px; height: 20px; }
 .com dd { margin-top: 3px; margin-right: 10px; font-size: 12px; line-height: 12px; color: #AAA; float: left; }
 .com dd label { line-height: 12px; }
+.com dd label span { color: #789c33; }
 .com dd.end { border-right: none; }
 
-.content { margin-top: 5px; line-height: 24px; margin-bottom: 12px;color: #40413f;  word-break: break-all; }
-.content h1,.content h2,.content h3,.content h4,.content h5,.content h6 { border: 1px; margin: 5px 0px; color: #6f706e; }
-.content h1,.content h2 { font-size: 14px; color:#232323; }
-.content h3,.content h4,.content h5,.content h6 { font-size: 12px; }
-.content pre { padding-left:10px; border-left:1px solid #d9d9d9;}
-.content code { font-family: "Courier New"; color:#0033cc; }
-.content p { margin:10px 0px; font-size:12px; line-height:18px;}
-.content blockquote { border-left:2px solid #789c33; margin:0px;}
-.content blockquote p { margin-left:10px;}
+.content { line-height: 150%; font-size: 0.8em; margin-bottom: 12px; color: #323232; word-break: break-all; }
+.content pre { padding: 10px; border: 1px dashed #d9d9d9; }
+.content code { font-family: "Courier New"; color: #0033cc; }
+.content p { margin: 10px 0px 10px 0px; }
+.content blockquote { border-left: 2px solid #789c33; margin: 0px; }
+.content blockquote p { margin-left: 10px; }
 /*评论回复
 ------------------------------------------------------*/
 .replay { margin-top: 10px; }
 .replyList { margin-top: 5px; border-bottom: 1px dashed #d9d9d9; }
-.replyList dl { margin: 4px 0px; padding: 3px; border: 1px dotted #EDEEFF; }
+.replyList dl { margin: 4px 0px; padding: 3px; border: 1px dashed #EDEEFF; }
 .replyList dl dt { float: left; width: 48px; }
 .replyList dl dd { margin-left: 55px; }
-.replyList dl dd .bcon { }
+.replyList dl dd .bcon { font-size:0.8em; line-height:130%; }
 .replay .edit textarea { width: 100%; }
 
 /* Other
@@ -78,8 +71,8 @@ ul.rightlist li { margin: 5px 2px; font-size: 12px; }
 .mgt10 { margin-top: 10px; }
 .mgb10 { margin-bottom: 10px; }
 .mgtb10 { margin: 10px 0px; }
-.nick { font-size: 14px; color: #0D188C; }
-.date { font-size: 12px; color: #AAA; }
+.nick { font-size: 0.9em; color: #0D188C; }
+.date { font-size: 0.8em; color: #AAA; }
 .message { font-size: 12px; line-height: 20px; }
 .pager { margin-top: 5px; }
 .pager a { text-decoration: none; }
@@ -104,7 +97,7 @@ dd.btndiv { margin-top: 10px; }
 /* 标签列表
 ------------------------------------------------------*/
 .taglist li { width: 130px; float: left; margin: 5px; border-right: 1px solid #cccccc; border-bottom: 1px solid #aaaaaa; }
-.taglist li a { float: left; width: 120px; padding: 0px 5px; }
+.taglist li a { float: left; width: 118px; padding: 0px 5px; }
 .taglist li a small { position: relative; margin-left: 5px; color: #232323; }
 
 /* 黄色Link
@@ -112,3 +105,11 @@ dd.btndiv { margin-top: 10px; }
 .subject dd a { color: #e59312; font-weight: bold; }
 .subject dd a:hover, #footer a:hover { color: #000; }
 #footer a { color: #789c33; }
+
+/* gotop 返回顶部
+------------------------------------------------------*/
+.gotop { position: fixed; left: 1175px; bottom: 55px; display: block; width: 20px; height: 90px; visibility: hidden; text-align: center; font-size: 12px; line-height: 14px; background-color: #f0f0f0; padding-left: 2px; padding-right: 2px; }
+.gotop em { font-style: normal; font-weight: normal; font-family: Arial; }
+.gotop span { padding: 9px 0px 0px 1px; display: block; }
+.gotop span em.sj { text-align: left; margin: 0px 0px 0px 3px; display: block; height: 8px; font-size: 26px; overflow: hidden; }
+.gotop span em.fk { text-align: left; margin: -2px 0px 4px 4px; display: block; height: 5px; font-size: 11px; overflow: hidden; }

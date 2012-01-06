@@ -14,13 +14,13 @@
         /* 搜索结果*/
         .shritem { margin-bottom: 13px; }
         .end { margin-bottom: 5px; }
-        .shritem h3 { font-size: 14px; margin: 2px 0; padding: 0px; line-height: 14px; font-weight: normal; }
-        .shritem h3 a,.shritem h3 a:hover { background: none; color: #261cdc; text-decoration: underline; border: none; }
+        .shritem h5 { margin: 2px 0; }
+        .shritem h5 a,.shritem h3 a:hover { background: none; color: #261cdc; text-decoration: underline; border: none; }
         .shritem em { color: #CC0000; text-decoration: underline; font-style: normal; }
-        .shritem div { font-size: 12px; color: #232323; line-height: 15px; }
+        .shritem div { font-size: 0.8em; line-height:150%; color: #333; word-break: break-all;}
         .shritem div em { text-decoration: none; }
         .shritem div p { color: #008000; }
-        .shritem div p span { color: #232323; }
+        .shritem div p span { color: #ccc; }
     </style>
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="Navigation" runat="server">

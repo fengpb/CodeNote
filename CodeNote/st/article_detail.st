@@ -3,7 +3,6 @@
 <head>
     <title>$entity.Subject$</title>
     <meta name="keywords" content="$entity.Subject$ $keywords$" />
-    <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
     <link href="/css/base.css" rel="stylesheet" type="text/css" />
     <script src="/js/jquery-1.4.1.min.js" type="text/javascript"></script>
     <script src="/js/CodeNote.Script.js" type="text/javascript"></script>
@@ -29,8 +28,8 @@
                     </h2>
                     <dl>
                         <dd class="end">
-                            <label title="日期">
-                                $entity.CreateDate$</label></dd>
+                            <label title="发布时间">
+                                Date：<span>$entity.CreateDate$</span></label></dd>
                         <dd>
                             <label title="作者">
                                 By：<a href="/">$entity.CreateName$</a></label></dd>
@@ -45,8 +44,7 @@
                     </dl>
                 </div>
                 <div class="content">
-                    <p>
-                        $entity.Body$</p>
+$entity.Body$
                 </div>
                 <!--start reply-->
                 <h3 class="title mgt10">
@@ -95,6 +93,8 @@
                 </script>
             </div>
             <!--end right-->
+			 <a class="gotop" href="#top"><span><em class="sj">&diams;</em><em class="fk">▐</em>返回顶部</span>
+            </a>
         </div>
     </div>
     <!--end content-->

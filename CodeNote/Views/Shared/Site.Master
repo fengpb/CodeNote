@@ -25,6 +25,8 @@
                 <asp:ContentPlaceHolder ID="RightBox" runat="server">
                 </asp:ContentPlaceHolder>
             </div>
+            <a class="gotop" href="#top"><span><em class="sj">&diams;</em><em class="fk">▐</em>返回顶部</span>
+            </a>
         </div>
         <% Html.RenderAction("Footer", "Control"); %>
     </div>

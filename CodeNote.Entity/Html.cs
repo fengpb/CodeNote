@@ -31,6 +31,11 @@ namespace CodeNote.Entity
             get { return _upDa; }
             set { this._upDa = value; }
         }
+
+        public string W3CDTF
+        {
+            get { return Upda.ToString("yyyy-MM-ddTHH:mm:sszd"); }
+        }
     }
 }
 

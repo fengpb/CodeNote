@@ -44,7 +44,7 @@ namespace CodeNote
             );
             routes.MapRoute(
              "CategoryIndex", // 路由名称
-             "Topic/{categoryName}", // 带有参数的 URL
+             "topic/{categoryName}", // 带有参数的 URL
              new { controller = "Category", action = "Category", categoryName = "" } // 参数默认值
             );
             #endregion
@@ -72,7 +72,7 @@ namespace CodeNote
 
             routes.MapRoute(
             "TagArticle", // 路由名称
-            "Tag/{Tag}", // 带有参数的 URL
+            "tag/{Tag}", // 带有参数的 URL
             new { controller = "Tag", action = "Tag", Tag = (string)null } // 参数默认值
             );
             #endregion

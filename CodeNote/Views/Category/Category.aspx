@@ -10,8 +10,8 @@
     <% Html.RenderAction("Navigation", "Control", new { categoryID = Model.CategoryID }); %>
 </asp:Content>
 <asp:Content ID="LeftBox" ContentPlaceHolderID="LeftBox" runat="server">
-    <h2>
-        Topic：<%=Model.Title %></h2>
+    <h1 class="title">
+        Topic：<%=Model.Title %></h1>
     <div id="articlelist">
         <% Html.RenderAction("ArticleList", "Article", new { categoryID = Model.CategoryID }); %>
     </div>

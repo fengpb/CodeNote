@@ -9,8 +9,8 @@
     <% Html.RenderAction("Navigation", "Control"); %>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="LeftBox" runat="server">
-    <h2>
-        Tag List</h2>
+    <h1 class="title">
+        Tag List</h1>
     <div id="taglist">
         <% Html.RenderAction("TagList", "Tag"); %>
     </div>

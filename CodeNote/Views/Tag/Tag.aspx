@@ -10,8 +10,8 @@
     <% Html.RenderAction("Navigation", "Control", new { }); %>
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="LeftBox" runat="server">
-    <h2>
-        Tag：<%=ViewData["tag"] %></h2>
+    <h1 class="title">
+        Tag：<%=ViewData["tag"] %></h1>
     <div id="articlelist">
         <% Html.RenderAction("PartTag", "Tag", new { tag = ViewData["tag"] }); %>
     </div>

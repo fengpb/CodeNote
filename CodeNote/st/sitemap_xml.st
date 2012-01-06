@@ -9,13 +9,7 @@
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
-  $list:{
-  <url>
-    <loc>$baseurl$$it.Url$</loc>
-    <lastmod>$it.Upda$</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  }$
+  
+  $list:{<url><loc>$baseurl$$it.Url$</loc><lastmod>$it.W3CDTF$</lastmod><changefreq>monthly</changefreq><priority>0.2</priority></url>}$
+  
 </urlset>
-<!-- Refresh: $date$ -->

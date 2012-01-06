@@ -37,7 +37,8 @@
         </dl>
     </div>
     <div class="content">
-        <%= HtmlEncode(item.Body) %></div>
+<%= HtmlEncode(item.Body) %>
+    </div>
 </div>
 <%
     } %>

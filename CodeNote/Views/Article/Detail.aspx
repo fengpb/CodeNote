@@ -30,8 +30,8 @@
         </h2>
         <dl>
             <dd class="end">
-                <label title="日期">
-                    <%: Model.CreateDate %></label></dd>
+                <label title="发布时间">
+                    Date：<span><%: Model.CreateDate %></span></label></dd>
             <dd>
                 <label title="作者">
                     By：<%= Html.ActionLink(Model.CreateName,"","") %></label></dd>

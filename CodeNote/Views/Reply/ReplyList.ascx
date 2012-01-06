@@ -19,15 +19,16 @@
                 <%:item.CreateDate %></div>
         </div>
         <div class="bcon">
-            <%= HtmlEncode(item.Body) %></div>
+<%= HtmlEncode(item.Body) %>
+        </div>
     </dd>
 </dl>
 <%
-    } %>
+  } %>
 <%= Html.AjaxPaging(new Pager() { Cur = Model.CurPage, Count = Model.RecordCount, Size = Model.PageSize }, "ReplyList", "Reply", new AjaxPagingOption("replyList"), new { articleID = ViewData["articleID"] })%>
 <%}%>
 <%        else
-    { %>
+   { %>
 <p class="null">
     暂无评论！</p>
 <%} %>

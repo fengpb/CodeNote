@@ -34,14 +34,18 @@ namespace CodeNote.Common
                 {
                     Directory.CreateDirectory(pathName);
                 }
-                using (StreamWriter sw = new StreamWriter(filePath, isAppend, Encoding.UTF8))
+                using (FileStream fs = new FileStream(filePath, FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.ReadWrite))
                 {
-                    sw.WriteLine(fileContent);
+                    using (StreamWriter sw = new StreamWriter(fs, Encoding.UTF8))
+                    {
+                        sw.WriteLine(fileContent);
+                    }
                 }
                 return true;
             }
             catch (Exception ex)
             {
+                log.Error("WriteFile: " + filePath);
                 log.Error(ex.Message, ex);
                 return false;
             }

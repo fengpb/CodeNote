@@ -10,15 +10,15 @@
        VwArticle item = Model.Data[i];
 %>
 <div class="shritem <%= i+1==Model.Data.Count?"end":"" %>">
-    <h3>
+    <h5>
         <%= Html.DetialLink(item.Subject, "Detail", "Article",item.ID)%>
-    </h3>
+    </h5>
     <div>
         <%= item.Body %>
         <p>
             <%= SiteData.HtmlDir+item.HtmlUrl %>
             - <span>
-                <%=item.ModDate.ToString("yyyy-MM-dd") %></span>
+                <%=item.ModDate %></span>
         </p>
     </div>
 </div>

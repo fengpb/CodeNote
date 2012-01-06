@@ -11,11 +11,14 @@
 %>
 <div class="artitem <%= i+1==Model.Data.Count?"end":"" %>">
     <div class="com">
-        <h3>
+        <h2>
             <%= Html.ActionLink(item.Subject,"Detail","Article",new {articleID=item.ID},null) %>
             <span></span>
-        </h3>
+        </h2>
         <dl>
+            <dd>
+                <label title="发布时间">
+                    Date：<span><%=item.CreateDate %></span></label></dd>
             <dd>
                 <label title="作者">
                     By：<%= Html.ActionLink(item.CreateName, "", "") %></label></dd>

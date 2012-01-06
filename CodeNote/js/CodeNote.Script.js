@@ -82,3 +82,27 @@ function setAccountNavCur()
     if (currenMenu != "null") { $("#" + currenMenu).parent("li").addClass("cur"); }
     ///alert(currenMenu);
 }
+
+function _rzgotop()
+{
+    if ($(window).scrollTop() - 200 > 0)
+    {
+        $('.gotop').css("visibility", "visible");
+    } else
+    {
+        $('.gotop').css("visibility", "hidden");
+    }
+}
+
+function setGoTop()
+{
+    _rzgotop();
+    window.onresize = _rzgotop;
+    window.onscroll = _rzgotop;
+}
+
+
+jQuery(function ()
+{
+    setGoTop();
+});
