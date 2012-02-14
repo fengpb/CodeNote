@@ -3,6 +3,183 @@
 <head>
     <title>window 下 nginx 配置</title>
     <meta name="keywords" content="window 下 nginx 配置 nginx" />
+	<meta name="description" content="Nginx 简介
+
+Nginx（发音同 engine x）是一款轻量级的Web 服务器／反向代理服务器及电子邮件（IMAP/POP3）代理服务器，并在一个BSD-like 协议下发行。由俄罗斯的程序设计师Igor Sysoev所开发，最初供俄国大型的入口网站及搜寻引擎Rambler（俄文：Рамблер）使用。 其特点是占有内存少，并发能力强，事实上nginx的并发能力确实在同类型的网页伺服器中表现较好。
+
+官方网站
+
+到http://nginx.org下载nginx-1.0.11.zip，此为windows稳定版本。
+
+启动
+
+将压缩包解压到 D:/wnmp/nginx 目录下，并运行下列命令启动nginx服务，命令如下：
+D:\wnmp\nginx> start nginx 
+
+注意： nginx 默认启动端口号为80端口，如若80端口占用，导致启动失败，可修改配置文件conf/nginx.conf 中
+ server {
+        #监听端口
+        listen       8090;
+        #服务器名称
+        server_name  localhost;
+        #其它配置
+ }
+
+浏览：http://localhost:8090/ 若看到 Welcome to nginx! 页面则nginx启动成功。
+
+命令
+D:\wnmp\nginx> nginx -h
+nginx version: nginx/1.0.11
+Usage: nginx [-?hvVtq] [-s signal] [-c filename] [-p prefix] [-g directives]
+
+Options:
+  -?,-h         : this help --显示帮助
+  -v            : show version and exit --显示版本
+  -V            : show version and configure options then exit --显示版本和选项
+  -t            : test configuration and exit --测试配置文件
+  -q            : suppress non-error messages during configuration testing
+  -s signal     : send signal to a master process: stop, quit, reopen, reload
+  -p prefix     : set prefix path (default: NONE)
+  -c filename   : set configuration file (default: conf/nginx.conf)--指定配置文件代替缺省值
+  -g directives : set global directives out of configuration file
+
+停止nginx
+D:\wnmp\nginx> nginx -s stop
+
+配置
+
+Nginx的配置集中在conf文件夹中，其中nginx.conf为主要的配置文件。看如下nginx.conf 配置结构：
+
+user  nobody;
+
+worker_processes  1;
+
+error_log  logs/error.log;
+
+error_log  logs/error.log  notice;
+
+error_log  logs/error.log  info;
+
+pid        logs/nginx.pid;
+
+events {
+    worker_connections  1024;
+}
+
+http {
+    include       mime.types;
+    default_type  application/octet-stream;
+
+#log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
+#                  '$status $body_bytes_sent "$http_referer" '
+#                  '"$http_user_agent" "$http_x_forwarded_for"';
+
+#access_log  logs/access.log  main;
+
+sendfile        on;
+#tcp_nopush     on;
+
+#keepalive_timeout  0;
+keepalive_timeout  65;
+
+#gzip  on;
+#服务
+server {
+    #监听端口
+    listen       8090;
+    #服务名称
+    server_name  localhost;
+
+    #编码
+    #charset koi8-r;
+
+    #日志
+    #access_log  logs/host.access.log  main;
+
+    #本地资源/不同资源请求处理  
+    location / {
+        #目录
+        root   html;
+        #默认主页文件
+        index  index.html index.htm;
+    }
+
+    #404错误页面
+    #error_page  404              /404.html;
+
+    # redirect server error pages to the static page /50x.html
+    # 服务器其他错误页面
+    error_page   500 502 503 504  /50x.html;
+    location = /50x.html {
+        root   html;
+    }
+
+    # proxy the PHP scripts to Apache listening on 127.0.0.1:80
+    #
+    #location ~ \.php$ {
+    #    proxy_pass   http://127.0.0.1;
+    #}
+
+    # pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000
+    #
+    #location ~ \.php$ {
+    #    root           html;
+    #    fastcgi_pass   127.0.0.1:9000;
+    #    fastcgi_index  index.php;
+    #    fastcgi_param  SCRIPT_FILENAME  /scripts$fastcgi_script_name;
+    #    include        fastcgi_params;
+    #}
+
+    # deny access to .htaccess files, if Apache's document root
+    # concurs with nginx's one
+    #
+    #location ~ /\.ht {
+    #    deny  all;
+    #}
+}
+
+
+# another virtual host using mix of IP-, name-, and port-based configuration
+#
+#server {
+#    listen       8000;
+#    listen       somename:8080;
+#    server_name  somename  alias  another.alias;
+
+#    location / {
+#        root   html;
+#        index  index.html index.htm;
+#    }
+#}
+
+
+# HTTPS server
+#
+#server {
+#    listen       443;
+#    server_name  localhost;
+
+#    ssl                  on;
+#    ssl_certificate      cert.pem;
+#    ssl_certificate_key  cert.key;
+
+#    ssl_session_timeout  5m;
+
+#    ssl_protocols  SSLv2 SSLv3 TLSv1;
+#    ssl_ciphers  HIGH:!aNULL:!MD5;
+#    ssl_prefer_server_ciphers   on;
+
+#    location / {
+#        root   html;
+#        index  index.html index.htm;
+#    }
+#}
+
+
+}
+
+关于nginx的配置的说明在下面补充。
+"/>
     <link href="/css/base.css" rel="stylesheet" type="text/css" />
     <script src="/js/jquery-1.4.1.min.js" type="text/javascript"></script>
     <script src="/js/CodeNote.Script.js" type="text/javascript"></script>
@@ -15,7 +192,7 @@
 </head>
 <body>
     <script type="text/javascript">
-        write.navbar('100');
+        write.header();
     </script>
     <!--start content -->
     <div id="content">
@@ -35,7 +212,7 @@
                                 By：<a href="/">robin</a></label></dd>
                         <dd>
                             <label>
-                                Notic：<a href="/Topic/CodeNote" title="文字">文字</a></label>
+                                Topic：<a href="/Topic/CodeNote" title="文字">文字</a></label>
                         </dd>
                         <dd>
                             <label title="标签">
@@ -254,7 +431,7 @@ server {
                             </div>
                         </dd>
                         <dd class="btn">
-                            <input type="button" onclick="Replay()" value="提交评论" />&nbsp;<span id="replayMessage"
+                            <input type="button" onclick="Replay()" class="button" value="提交评论" />&nbsp;<span id="replayMessage"
                                 class="message"><!--Ctrl+Enter--></span></dd>
                     </dl>
                 </div>
@@ -278,6 +455,20 @@ server {
         write.footer();
     </script>
     <script src="/js/detail.js" type="text/javascript"></script>
+	<script type="text/javascript">
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-29148337-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function ()
+        {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+
+   </script>
 </body>
 </html>
 <!-- up date: 2012/1/6 17:01:14 -->

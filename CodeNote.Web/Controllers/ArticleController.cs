@@ -60,7 +60,7 @@ namespace CodeNote.Web.Controllers
             Article entity = new Article();
             entity.ID = CodeNote.Common.ConvertWrap.ToInt(Request["articleid"]);
             entity.Subject = Request["subject"];
-            entity.Body = Request["body"];
+            entity.Body = CodeNote.Common.StringFilter.ClearHtml(Request["body"],true);
             entity.CategoryID = Request["category"];
             entity.Tag = Request["artitag"];
             entity.CreateID = CurUser.ID;

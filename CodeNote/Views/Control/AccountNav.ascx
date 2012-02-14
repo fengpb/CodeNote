@@ -1,5 +1,5 @@
 ﻿<%@ Control Language="C#" Inherits="CodeNote.Web.ViewUserControl<dynamic>" %>
-<ul id="navbar">
+<ul>
     <li>
         <%=Html.ActionLink("首页", "Index", "Home")%></li>
     <li>

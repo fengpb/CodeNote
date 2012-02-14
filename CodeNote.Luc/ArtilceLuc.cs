@@ -59,7 +59,7 @@ namespace CodeNote.Luc
             Lucene.Net.Documents.Document doc = new Lucene.Net.Documents.Document();
             doc.Add(new Lucene.Net.Documents.Field("ID", entity.ID.ToString(), Lucene.Net.Documents.Field.Store.YES, Lucene.Net.Documents.Field.Index.NOT_ANALYZED));
             doc.Add(new Lucene.Net.Documents.Field("Subject", entity.Subject, Lucene.Net.Documents.Field.Store.YES, Lucene.Net.Documents.Field.Index.ANALYZED));
-            doc.Add(new Lucene.Net.Documents.Field("Body", CodeNote.Common.StringFilter.HtmlFilter(CodeNote.Markdown.Default.Transform(entity.Body), false), Lucene.Net.Documents.Field.Store.YES, Lucene.Net.Documents.Field.Index.ANALYZED));
+            doc.Add(new Lucene.Net.Documents.Field("Body", CodeNote.Common.StringFilter.ClearHtml(CodeNote.Markdown.Default.Transform(entity.Body), true), Lucene.Net.Documents.Field.Store.YES, Lucene.Net.Documents.Field.Index.ANALYZED));
             doc.Add(new Lucene.Net.Documents.Field("HtmlUrl", entity.HtmlUrl, Lucene.Net.Documents.Field.Store.YES, Lucene.Net.Documents.Field.Index.NOT_ANALYZED));
             doc.Add(new Lucene.Net.Documents.Field("ModDate", CodeNote.Common.ConvertWrap.ToDateStr(entity.ModDate), Lucene.Net.Documents.Field.Store.YES, Lucene.Net.Documents.Field.Index.NOT_ANALYZED));
             return doc;

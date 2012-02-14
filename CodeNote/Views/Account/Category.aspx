@@ -6,9 +6,6 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
-<asp:Content ID="nav" ContentPlaceHolderID="Navigation" runat="server">
-    <% Html.RenderAction("AccountNav", "Control"); %>
-</asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="LeftBox" runat="server">
     <div id="editcategory">
         <% Html.RenderAction("Edit", "Category"); %>

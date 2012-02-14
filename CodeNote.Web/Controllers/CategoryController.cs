@@ -126,6 +126,7 @@ namespace CodeNote.Web.Controllers
             {
                 ViewData["partitle"] = this.CategoryMg.Get(categoryID).Title;
             }
+            ViewData["categoryID"] = categoryID;
             return PartialView("CategoryList", model);
         }
 

@@ -14,9 +14,6 @@
     <script src="/js/Markdown.Sanitizer.js" type="text/javascript"></script>
     <script src="/js/Markdown.Editor.js" type="text/javascript"></script>
 </asp:Content>
-<asp:Content ID="Content3" ContentPlaceHolderID="Navigation" runat="server">
-    <% Html.RenderAction("Navigation", "Control", new { categoryID = Model.CategoryID }); %>
-</asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="LeftBox" runat="server">
     <div class="com">
         <h2 class="posrl">
@@ -83,7 +80,7 @@
                 </div>
             </dd>
             <dd class="btn">
-                <input type="button" onclick="Replay()" value="提交评论" />&nbsp;<span id="replayMessage"
+                <input type="button" onclick="Replay()" class="button" value="提交评论" />&nbsp;<span id="replayMessage"
                     class="message"><!--Ctrl+Enter--></span></dd>
         </dl>
     </div>

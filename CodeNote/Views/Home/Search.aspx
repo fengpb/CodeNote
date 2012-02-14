@@ -9,7 +9,7 @@
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="HeadContent" runat="server">
     <style type="text/css">
-        .shret { text-align: right; font-size: 12px; margin-bottom: 15px; }
+        .shret { text-align: right; font-size: 12px; line-height:23px; margin-bottom: 10px; border-bottom:1px dashed #323232; }
         #searchresult { max-width: 650px; }
         /* 搜索结果*/
         .shritem { margin-bottom: 13px; }
@@ -22,9 +22,6 @@
         .shritem div p { color: #008000; }
         .shritem div p span { color: #ccc; }
     </style>
-</asp:Content>
-<asp:Content ID="Content4" ContentPlaceHolderID="Navigation" runat="server">
-    <% Html.RenderAction("Navigation", "Control"); %>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="LeftBox" runat="server">
     <div class="shret">

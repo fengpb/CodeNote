@@ -1,9 +1,15 @@
 ﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title>$entity.Subject$</title>
-    <meta name="keywords" content="$entity.Subject$ $keywords$" />
-	<meta name="description" content="$description$"/>
+    <title>南方姑娘</title>
+    <meta name="keywords" content="南方姑娘 s" />
+	<meta name="description" content="
+  正因为时世艰辛 你要等着我 让我们怀着希望去生活…正因为岁月漫长，你要等着我 让我们去攀登和经受；带上一只篮子和你的铁锨，你的衣履。 ——
+  聂鲁达《和她在一起》
+
+
+
+"/>
     <link href="/css/base.css" rel="stylesheet" type="text/css" />
     <script src="/js/jquery-1.4.1.min.js" type="text/javascript"></script>
     <script src="/js/CodeNote.Script.js" type="text/javascript"></script>
@@ -25,37 +31,43 @@
             <div class="left colwrap">
                 <div class="com">
                     <h2 class="posrl">
-                        $entity.Subject$
+                        南方姑娘
                     </h2>
                     <dl>
                         <dd class="end">
                             <label title="发布时间">
-                                Date：<span>$entity.CreateDate$</span></label></dd>
+                                Date：<span>2012/1/12 15:33:27</span></label></dd>
                         <dd>
                             <label title="作者">
-                                By：<a href="/">$entity.CreateName$</a></label></dd>
+                                By：<a href="/">robin</a></label></dd>
                         <dd>
                             <label>
-                                Topic：<a href="/Topic/$entity.CategoryName$" title="$entity.CategoryTitle$">$entity.CategoryTitle$</a></label>
+                                Topic：<a href="/Topic/CodeNote" title="文字">文字</a></label>
                         </dd>
                         <dd>
                             <label title="标签">
-                                Tag：$taglinks$</label>
+                                Tag：<a href="/Tag/s">s</a>&nbsp;</label>
                         </dd>
                     </dl>
                 </div>
                 <div class="content">
-$entity.Body$
+<blockquote>
+  <p>正因为时世艰辛 你要等着我 让我们怀着希望去生活…正因为岁月漫长，你要等着我 让我们去攀登和经受；带上一只篮子和你的铁锨，你的衣履。 ——
+  聂鲁达《和她在一起》</p>
+</blockquote>
+
+<p><p style="color:red;"></p>
+
                 </div>
                 <!--start reply-->
                 <h3 class="title mgt10">
-                    <input id="hidArtilceID" type="hidden" value="$entity.ID$" />
+                    <input id="hidArtilceID" type="hidden" value="12" />
                     <label title="Reply">
                         评论</label></h3>
                 <div id="replyList" class="replyList">
                 </div>
                 <script type="text/javascript">
-                    write.reply($entity.ID$);
+                    write.reply(12);
                 </script>
                 <div class="replay">
                     <dl class="edit">
@@ -89,8 +101,8 @@ $entity.Body$
             <!--start right-->
             <div class="right colwrap">
                 <script type="text/javascript">
-                    write.categorylist('$entity.CategoryID$');
-                    write.articlerec($entity.ID$);
+                    write.categorylist('100');
+                    write.articlerec(12);
                 </script>
             </div>
             <!--end right-->
@@ -119,4 +131,5 @@ $entity.Body$
    </script>
 </body>
 </html>
-<!-- up date: $update$ -->
+<!-- up date: 2012/1/12 15:35:55 -->
+

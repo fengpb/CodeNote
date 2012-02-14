@@ -6,9 +6,6 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
-<asp:Content ID="Content3" ContentPlaceHolderID="Navigation" runat="server">
-    <% Html.RenderAction("Navigation", "Control", new { categoryID = Model.CategoryID }); %>
-</asp:Content>
 <asp:Content ID="LeftBox" ContentPlaceHolderID="LeftBox" runat="server">
     <h1 class="title">
         Topic：<%=Model.Title %></h1>

@@ -91,13 +91,14 @@ namespace CodeNote.Manager
             StringTemplate st = CodeNote.Common.TemplateWrap.GetSt("article_detail");
             if (st != null)
             {
-                //markdown to html
                 article.Body = CodeNote.Markdown.Default.Transform(article.Body);
-
-                st.SetAttribute("entity", article);
+                //markdown to html
                 st.SetAttribute("update", html.Upda);
                 st.SetAttribute("keywords", article.Tag);//搜索关键字
                 st.SetAttribute("taglinks", TagInfoManager.TagLinks(article.Tag));
+                st.SetAttribute("description", CodeNote.Common.StringFilter.ClearHtml(article.Body,200));
+                st.SetAttribute("entity", article);
+
                 return CodeNote.Common.IoWrap.WriteFile(CodeNote.Common.ConfigWrap.FiePath(STATIC_HTML_DIR) + html.Url, st.ToString());
             }
             else

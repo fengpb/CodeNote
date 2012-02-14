@@ -36,7 +36,7 @@ namespace CodeNote.Web
         public string ClearHtml(string text)
         {
             string str = Markdown.Default.Transform(text);
-            str = CodeNote.Common.StringFilter.HtmlFilter(str);
+            str = CodeNote.Common.StringFilter.ClearHtml(str);
             return str;
         }
     }
@@ -70,7 +70,7 @@ namespace CodeNote.Web
         public string ClearHtml(string text)
         {
             string str = Markdown.Default.Transform(text);
-            str = CodeNote.Common.StringFilter.HtmlFilter(str);
+            str = CodeNote.Common.StringFilter.ClearHtml(str);
             return str;
         }
     }

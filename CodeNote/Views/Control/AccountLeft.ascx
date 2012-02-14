@@ -27,6 +27,8 @@
         <dd>
             <a href="#">站内统计</a></dd>
         <dd>
+            <%= Html.ActionLink("新日志", "AddArticle", "Article")%></dd>
+        <dd>
             <%= Html.ActionLink("站内分类","Category","Account") %>
         </dd>
         <dd>

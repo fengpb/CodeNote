@@ -5,9 +5,6 @@
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
-<asp:Content ID="Content4" ContentPlaceHolderID="Navigation" runat="server">
-    <% Html.RenderAction("Navigation", "Control"); %>
-</asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="LeftBox" runat="server">
     <h1 class="title">
         Tag List</h1>

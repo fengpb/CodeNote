@@ -12,9 +12,6 @@
     <script src="/js/Markdown.Sanitizer.js" type="text/javascript"></script>
     <script src="/js/Markdown.Editor.js" type="text/javascript"></script>
 </asp:Content>
-<asp:Content ID="nav" ContentPlaceHolderID="Navigation" runat="server">
-    <% Html.RenderAction("AccountNav", "Control"); %>
-</asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="LeftBox" runat="server">
     <% Html.RenderPartial("AddOrEditArticle", Model); %>
 </asp:Content>

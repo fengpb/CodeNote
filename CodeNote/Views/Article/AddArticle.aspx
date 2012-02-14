@@ -2,7 +2,7 @@
 
 <%@ Import Namespace="CodeNote.Entity" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
-   A Pure Boy: Add Articles
+    A Pure Boy: Add Articles
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="HeadContent" runat="server">
     <link href="/css/wmd.css" rel="stylesheet" type="text/css" />
@@ -10,9 +10,6 @@
     <script src="/js/Markdown.Converter.js" type="text/javascript"></script>
     <script src="/js/Markdown.Sanitizer.js" type="text/javascript"></script>
     <script src="/js/Markdown.Editor.js" type="text/javascript"></script>
-</asp:Content>
-<asp:Content ID="nav" ContentPlaceHolderID="Navigation" runat="server">
-    <% Html.RenderAction("AccountNav", "Control"); %>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="LeftBox" runat="server">
     <% Html.RenderPartial("AddOrEditArticle", Model); %>

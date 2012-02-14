@@ -37,3 +37,4 @@
 </div>
 <%} %>
 <!-- End:相关分类 -->
+<% Html.RenderAction("Topic", "Control", new { categoryID = ViewData["categoryID"] }); %>

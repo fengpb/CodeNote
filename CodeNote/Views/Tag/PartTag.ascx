@@ -18,13 +18,13 @@
         <dl>
             <dd class="end">
                 <label title="日期">
-                    <%: item.CreateDate%></label></dd>
+                    Date：<%: item.CreateDate%></label></dd>
             <dd>
                 <label title="作者">
-                    <%:item.CreateName%></label></dd>
+                    By：<%:item.CreateName%></label></dd>
             <dd>
                 <label title="分类">
-                    <%= Html.ActionLink(item.CategoryTitle, "Category", "Category", new { categoryName = item.CategoryName }, new { title = item.CategoryTitle })%></label></dd>
+                    Topic：<%= Html.ActionLink(item.CategoryTitle, "Category", "Category", new { categoryName = item.CategoryName }, new { title = item.CategoryTitle })%></label></dd>
             <% if (!string.IsNullOrEmpty(item.Tag))
                { %>
             <dd>

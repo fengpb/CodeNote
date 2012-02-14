@@ -1,6 +1,6 @@
 ﻿/*用于输出信息*/
 var url = {
-    navbar: '/Control/Navigation',
+    header: '/Control/Header',
     reply: '/Reply/ReplyList', //文章回复信息
     categorylist: '/Category/CategoryList', //分类列表
     articlerec: '/Article/ArticleRec', //推荐文章
@@ -8,12 +8,12 @@ var url = {
 };
 
 var write = {
-    navbar: function (categoryID)
+    header: function ()
     {
-        document.write('<div id="navbar"></div>');
-        jQuery.get(url.navbar, { categoryID: categoryID }, function (data)
+        document.write('<div id="header"></div>');
+        jQuery.get(url.header, function (data)
         {
-            $('#navbar').replaceWith(data);
+            $('#header').replaceWith(data);
         });
     },
     reply: function (articleID)

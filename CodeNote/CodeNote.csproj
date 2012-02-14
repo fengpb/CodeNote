@@ -94,6 +94,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Views\Article\SimArticleList.ascx" />
+    <Content Include="Views\Control\Topic.ascx" />
     <Content Include="Views\Control\AccountNav.ascx" />
     <Content Include="Views\Account\Category.aspx" />
     <Content Include="Views\Account\Index.aspx" />

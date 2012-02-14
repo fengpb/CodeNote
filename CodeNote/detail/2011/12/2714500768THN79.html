@@ -3,6 +3,402 @@
 <head>
     <title>从概念理解Lucene的Index（索引）文档模型</title>
     <meta name="keywords" content="从概念理解Lucene的Index（索引）文档模型 " />
+	<meta name="description" content="Lucene主要有两种文档模型：Document和Field，一个Document可能包含若干个Field。
+
+每一个Field有不同的策略：
+
+1.被索引 or not，将该字段（Field）经过分析（Analyisi）后，加入索引中，并不是原文 。
+
+2.如果被索引，可选择是否保存“term vector”(向量)，用于相似检索。
+
+3.可选择是否存储(store)，将原文直接拷贝 ，不做索引，用于检索后的取出。
+
+Lucene中的文档模型类似于数据库，但是又不完全相同，体现在如下几方面：
+
+1.无规范格式，即无需固定的Schema，无列等预先设计，同一个索引中加入的Document可包含不同的Field 。
+
+2.非正规化，Lucene中的文档模型是一个平面化 的结构，没有递归定义，自然连接等等复杂的结构。
+
+2.2  理解索引过程
+
+总体来说，索引过程为：
+
+1.提取摘要：从原文提取，并创建Document和Field对象。Tika 提供了PDF、Word等非文本的文本提取。
+
+2.分析：Analysis，首先对Document的Field进行分解，产生token流，然后经过一系列Filter（如小写化）等。
+
+3.建立索引：通过IndexWriter的addDocument写入到索引中。Lunece使用了反向索引 ，即“那个Document包含单词X”，而不是“Document包含哪些Word”
+
+索引文件组成
+
+为了保证效率，每个索引由若干segments组成：
+
+_X.cfs  每个segments由若干个cfs组成，X为0,1,2….如果开启了useCompoundFile，则只有一个.cfs文件。
+
+segments_：记载每个分区对应的cfs文件。
+
+每个一段时间后，在调用IndexWriter时，会自动合并这些segment
+
+2.3  索引的基本操作
+
+首先创建IndexWriter
+
+IndexWriter(dir,new WhiteSpaceAnalyser(),IndexWriter.MaxField.UNLIMITED);
+
+dir是索引的保存路径，WhiteSpaceAnalyser是基于空白的分词 ，最后部限定Field的数量。
+
+依次创建文档Document和Field
+
+Document doc = new Document();
+
+doc.add(new Filed(key,value,STORE?,INDEX?)
+
+key就是field的检索字段名，value就是待写入/分析的文本。
+
+STORE ，与索引无关，是否额外存储原文 ，可以在搜索结果后调用出来，NO不额外存储；YES，额外存储。
+
+INDEX ，NO，不索引；ANALYZED，分词后索引；NOTANALYZED，不分词索引；ANALYZEDNONORMS，分词索引，不存储NORMS；NOTANALYZEDNONORMS，不分词，索引，不存储NORMS。除了NO外都算索引，可以搜索 。NORMS存储了boost所需信息，包含了NORM可能会占用更多内存？
+
+删除索引
+
+IndexWriter提供了删除Document的功能：
+
+deleteDocumen(Term) 
+
+deleteDocumen(Term[])
+
+deleteDocumen(Query)
+
+deleteDocumen(Query [])
+
+特别注意Term不一定是唯一的，所以有可能误删除多个 。另外最好选择唯一的、非索引的Term 以防混乱（比如唯一ID）。
+
+删除后commit()然后close才能真正写入索引文件中。
+
+删除后只是标记为删除，maxDoc()返回所有文档（含已经删除，但未清理的）；numDocs：未删除的文档数量
+
+使用delete后，再optimize()：压缩删除的空间、再commit才真正的删除释放空间。
+
+更新索引
+
+updateDocument(Term,Document)，Lunce只支持全部替换，即整个Docuemnt要被替换掉，没法更新单独的Field。
+
+2.4  Field的选项
+
+选项分为三类：index、storing和term vector。
+
+Index选项
+
+Index.ANALYZED ：分词后索引
+
+Index.NOT_ANALYZED ： 不分词直接索引，例如URL、系统路径等，用于精确检索 。
+
+Index.ANALYZEDNONORMS ： 类似Index.ANALYZED，但不存储NORM TERMS，节约内存但不支持Boost。
+
+Index.NOTANALYZEDNONORMS ： 类似Index.NOTANALYZED，但不存储NORM TERMS，节约内存但不支持Boost，非常常用 。
+
+Index.NO ： 根本不索引，所以不会被检索到
+
+默认情况，Luncene会存储所有单词的出现位置，可以用Field.setOmitTermFreqAndPositions(true)关闭，但是会影响PhraseQuery和SpanQuery。
+
+Store选项
+
+Store.YES ：存储原始value数值，可在检索后被提取 。
+
+Store.NO ：不存储原始数值，检索后无法重新提取。
+
+CompressionTools 可用于压缩、解压缩byte数组。
+
+Term Vector选项
+
+Term Vector主要用于为相似搜索 提供支持 ，例如搜索cat，返回cat。
+
+TermVector.YES ：记录Term Vector
+
+TermVector.WITH_POSITIONS ：记录Term Vector以及每个Term出现的位置
+
+TermVector.WITH_OFFSETS ：记录Term Vector以及每个Term出现的偏移
+
+TermVector.WITHPOSITIONSOFFSETS ：记录Term Vector以及出现的位置+偏移
+
+TermVector.NO ：不存储TermVector
+
+如果Index选择了No，则TermVector必须选择No
+
+将String外的类型作为Field的数据源
+
+Reader：无法被STORE，默认TokenStream始终被分词和索引。
+
+TokenStream：分词之后的结果作为源，无法被Store，始终analyzed并索引。
+
+byte[] ：无法被索引，没有TermVector，必须被Store.YES
+
+与排序相关选项
+
+数字Field可以用NumericField，如果是文本Field必须Field.Index.NOT_ANALYZED，才能排序，即保证这个Field只含有一个Token才能排序 。
+
+多值Field（Multi-valued Fields）
+
+比如一本书有多个作者，怎么办呢？
+
+一种方法是，添加多个同一key，不同value的Field
+
+Document doc = new Document();
+    for (int i = 0; i &lt; authors.length; i++) {
+      doc.add(new Field(“author”, authors[i],
+                        Field.Store.YES,
+                        Field.Index.ANALYZED));
+    }
+
+还有一种方法在第4章中提出。
+
+2.5  Boost（提升）
+
+boost可以对影响搜索返回结果的排序 。
+
+boost可以在index或者搜索时候完成，后者更具有灵活性可独立制定但耗费更多CPU。
+
+Booost Doument
+
+index时候boost将存储在NORMS TERM中。默认情况下，所有Document有相等的Boost，即1.0，可以手动提升一个Docuemnt的Boost数值。
+
+Document.settBoost(float bei)，bei是1.0的倍数。
+
+Boost Field
+
+也可以对Field进行索引，使用Document的Boost，对下属的Field都执行相同的Field。
+
+单独对Field进行Boost
+
+Field.boost(float)
+
+注意：Lucene的Rank算法由多种因素组成，Boost只是一个因素之一，不是决定性因素 。
+
+Norms
+
+boost的数值存储在Norms中，可能会导致Search时占用大量内存。因此可将其关闭：
+
+设置NO_NORMS，或者再Field中指定Field.setOmitNorms(true)。
+
+2.6  对数字、日期、时间等进行索引
+
+索引数字
+
+有两种场景：
+
+1.数字嵌入在Text中，例如“Be sure to include Form 1099 in your tax return”，而你想要搜索1099这个词。此时需要选择不分解数字的Analyzer ，例如WhitespaceAnalyzer或者StandardAnalyzer。而SimpleAnalyzer和StopAnalyzer会忽略数字，无法通过1099检出。
+
+2.数字式单独的Field，2.9之后，Lucene支持了数字类型，使用NumericField即可：doc.add(new NumericField(“price”).setDoubleValue(19.99));此时，对数字Field使用字典树存储，
+
+可向document中添加一样的NumericField数值，在NumericRangeQuery、NumericRangeFilter中以or的方式支持，但是排序中不支持。因此如果要排序，必须添加唯一的NumericField。
+
+precisionStep控制了扫描精度，越小越精确但速度越慢。
+
+索引日期和时间
+
+方法是：将日期转化为时间戳（长整数） ，然后按照NumericField进行处理。
+
+或者，如果不需要精确到毫秒，可以转化成秒处理
+
+doc.add(new NumericField(“day”) .setIntValue((int) (new Date().getTime()/24/3600)));
+
+甚至对某一天进行索引而不是具体时间。
+
+Calendar cal = Calendar.getInstance();
+cal.setTime(date);
+doc.add(new NumericField(“dayOfMonth”)
+        .setIntValue(cal.get(Calendar.DAY_OF_MONTH)));
+
+
+2.7  Field截断
+
+Lucene支持对字段的截断。IndexWriter.MaxFieldLength表示字段的最大长度，默认为MaxFieldLength.UNLIMITED，无限。
+
+而MaxFieldLength.LIMITED表示有限制，可以通过setMaxFieldLength（int n）进行指定。
+
+上述设定之后，只保留前n个字符。
+
+可以通过setInfoStream(System.out)获得详细日志信息。
+
+2.8  实时搜索
+
+2.9后支持实时搜索，或者说很快的入索引–检索过程 。
+
+IndexReader  IndexWriter.getReader()
+
+本方法将立即刷新Index的缓存，生效后立即返回IndexReader用于搜索。
+
+2.9  优化索引
+
+索引优化可以提升搜索速度 ，而非索引速度。它指的是将小索引文件合并成几个。
+
+IndexWriter提供了几个优化方法：
+
+optimize()：将索引合并为一个段，完成前不会返回。但是太耗费资源。
+
+optimize(int maxNumSegments)：部分优化，优化到最多maxNumSegments个段？是优化于上述极端情况的这种，例如5个。
+
+optimize(boolean doWait)：通optimize()，但是它将立即返回。
+
+optimize(int maxNumSegments, boolean doWait)：同optimize(int maxNumSegments)，但是将立即返回。
+
+另外：在优化中会耗费大量的额外空间 。即旧的废弃段直到IndexWriter.commit()之后才能被移除 。
+
+2.10  Directory
+
+Directory封装了存储的API，向上提供了抽象的接口，有以下几类：
+
+SimpleFSDirectory：存储于本地磁盘使用java.io，不支持多线程，要自己加锁 。
+
+NIOFSDirectory：多线程可拓展，使用java.nio，支持多线程安全，但是Windows下有Bug 。
+
+MMapDirectory：内存映射存储（将文件映射到内存中进行操作，类似nmap）。
+
+RAMDirectory：全部在内存中存储。
+
+FileSwitchDirectory：使用两个目录，切换交替使用。
+
+使用FSDirectory.open将自动挑选合适的Directory。也可以自己指定：
+
+Directory ramDir = new RAMDirectory();
+IndexWriter writer = new IndexWriter(ramDir, analyzer,  IndexWriter.MaxFieldLength.UNLIMITED);
+
+RAMDirectory适用于内存比较小的情况。
+
+可以拷贝索引以用于加速：
+
+Directory ramDir = new RAMDirectory(otherDir);
+
+或者
+
+Directory.copy(Directory sourceDir,
+               Directory destDir,
+               boolean closeDirSrc);
+
+2.11  线程安全、锁
+
+线程、多JVM安全
+
+任意多个IndexReaders可同时打开，可以跨JVM。
+
+同一时间 ，只能打开一个 IndexWriter，独占写锁 。内建线程安全机制。
+
+IndexReaders可以在IndexWriter打开的时候打开。
+
+多线程间可共享IndexReader或者IndexWriter，他们是线程安全的，内建同步机制且性能较高。
+
+通过远程文件系统共享IndexWriter
+
+注意不要反复打开、关闭，否则会影响性能。
+
+Index的锁
+
+以文件锁的形式，名为write.lock。
+
+如果在已经被锁定的情况下再创建一个IndexWriter，会遇到LockObtainFailedException。
+
+也支持其他锁定方式，但是一般情况下无需改变它们。
+
+IndexWriter.isLocked(Directory)：检查某目录是否被锁。
+
+IndexWriter.unlock(Directory)：对某目录解锁，危险！。
+
+注意！每次IndexWriter无论执行了什么操作，都要显示的close ！不会自动释放锁的！
+
+2.12  调试索引
+
+2.14  高级的索引选项
+
+IndexReader可以用来彻底删除已经去除的Index，优点如下：
+
+1.通过Document的具体Number来删除，更精确而IndexWriter不行。
+
+2.IndexReader可以在删除后立即显示出来，而IndexWriter必须重新打开才能显示出来。
+
+3.IndexReader拥有undeleteAll，可以撤销所有删除的索引（只对尚未merged的有效 ）。
+
+释放删除索引后的空间
+
+可以调用expungeDeletes显示的释放空间，它将执行merge从而释放删除但仅仅做了标记，尚未释放的空间。
+
+缓存和刷新
+
+当添加索引、删除索引时候，在内存中建立了一个缓存以减少磁盘I/O，Lucene会定期把这些缓存中的改动放入Directory中便形成了一个segment （段）。
+
+IndexWriter刷新缓存的条件是：
+
+当内存中数据已经大于setRAMBufferSizeMB的指定。
+
+当索引中的Document数量多于setMaxBufferedDocs的指定。
+
+当索引被删除的数量多于setMaxBufferedDeleteTerms的指定。
+
+上述条件之一发生时，即触发缓存刷进，它将建立新的Segment但不存入磁盘，只有当commit后才写入磁盘的index。
+
+索引的commit
+
+commit将改动持久化到本次索引中。只有调用commit后，再打开的IndexReader或者IndexSearcher才能看到最近一次commit之后的结果。
+
+关闭close也将间接调用commit。
+
+与commit相对的是rollback方法，它将撤销上次commit之后的所有改动。
+
+commit非常耗时，不能经常调用。
+
+“双缓冲”的commit
+
+在图形界面开发中，经常有双缓冲技术，即一个用于被刷新，一个用于显示，两个之间互换使用。Lucene也支持这样的机制。
+
+Lucene暴露了两个接口：
+
+prepareCommit
+
+Commit
+
+prepareCommit比较慢，而调用prepareCommit后再调用Commit则会非常快。
+
+删除策略
+
+IndexDeletionPolicy决定了删除策略。可以决定是否保留之前的commit版本。
+
+Lucene对ACID的事务支持
+
+这主要是通过“同时只能打开一个IndexWriter”来实现的。
+
+如果JVM、OS或者机器挂了，Lucene会自动恢复到上一个commit版本。
+
+合并Merge
+
+当索引有过多的Segnmnet的时候，需要进行合并Merge。优点：
+
+1.减少了Segnment的文件数量
+
+2.减少索引文件占用的空间大小。
+
+MERGEPOLICY决定何时需要执行合并Merge
+
+MERGEPOLICY
+
+选择那些文件需要被合并，默认有两种策略：
+
+LogByteSizeMergePolicy ：根据Index大小决定是否需要合并
+
+LogDocMergePolicy ：根据Document的数量决定是否需要合并
+
+分别通过
+
+setMergeFactor
+
+和setMaxMergeDocs来指定，具体参数见API。
+
+MERGESCHEDULER
+
+决定如何进行合并：
+
+ConcurrentMergeScheduler，后台额外线程进行合并，可通过waitForMerges得知合并完成。
+
+SerialMergeScheduler，在addDocument时候串行合并，使用统一线程。
+"/>
     <link href="/css/base.css" rel="stylesheet" type="text/css" />
     <script src="/js/jquery-1.4.1.min.js" type="text/javascript"></script>
     <script src="/js/CodeNote.Script.js" type="text/javascript"></script>
@@ -15,7 +411,7 @@
 </head>
 <body>
     <script type="text/javascript">
-        write.navbar('100');
+        write.header();
     </script>
     <!--start content -->
     <div id="content">
@@ -35,7 +431,7 @@
                                 By：<a href="/">robin</a></label></dd>
                         <dd>
                             <label>
-                                Notic：<a href="/Topic/CodeNote" title="文字">文字</a></label>
+                                Topic：<a href="/Topic/CodeNote" title="文字">文字</a></label>
                         </dd>
                         <dd>
                             <label title="标签">
@@ -473,7 +869,7 @@ IndexWriter writer = new IndexWriter(ramDir, analyzer,  IndexWriter.MaxFieldLeng
                             </div>
                         </dd>
                         <dd class="btn">
-                            <input type="button" onclick="Replay()" value="提交评论" />&nbsp;<span id="replayMessage"
+                            <input type="button" onclick="Replay()" class="button" value="提交评论" />&nbsp;<span id="replayMessage"
                                 class="message"><!--Ctrl+Enter--></span></dd>
                     </dl>
                 </div>
@@ -497,6 +893,20 @@ IndexWriter writer = new IndexWriter(ramDir, analyzer,  IndexWriter.MaxFieldLeng
         write.footer();
     </script>
     <script src="/js/detail.js" type="text/javascript"></script>
+	<script type="text/javascript">
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-29148337-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function ()
+        {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+
+   </script>
 </body>
 </html>
 <!-- up date: 2011/12/27 14:50:07 -->

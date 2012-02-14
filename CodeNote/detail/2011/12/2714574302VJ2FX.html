@@ -3,6 +3,12 @@
 <head>
     <title>Lucene.Net 删除索引DeleteDocuments的注意事项</title>
     <meta name="keywords" content="Lucene.Net 删除索引DeleteDocuments的注意事项 " />
+	<meta name="description" content="Lucene.Net 在删除索引时，经常会出现代码成功执行，但索引并未正直删除的现象，总结一下，要注意以下因素:
+1.在创建Term时，注意Term的key一定要是以"词"为单位，否则删除不成功，例如：添加索引时，如果把"d:\doc\id.txt"当作要索引的字符串索引过了，那么在删除时，如果直接把"d:\doc\id.txt"作为查询的key来创建Term是无效的，应该用Id.txt(但这样会把所有文件名为Id.txt的都删除，所以官方建议最好用一个能唯一标识的关键字来删除，比如产品编号，新闻编号等)
+2.要删除的“词”,在创建索引时，一定要是Tokened过的，否则也不成功
+3.IndexReader,IndexModifer,IndexWriter都提供了DeleteDocuements方法，但建议用IndexModifer来操作，原因是IndexModifer内部做了很多线程安全处理
+4.删除完成后，一定要调用相应的Close方法,否则并未真正从索引中删除
+"/>
     <link href="/css/base.css" rel="stylesheet" type="text/css" />
     <script src="/js/jquery-1.4.1.min.js" type="text/javascript"></script>
     <script src="/js/CodeNote.Script.js" type="text/javascript"></script>
@@ -15,7 +21,7 @@
 </head>
 <body>
     <script type="text/javascript">
-        write.navbar('100');
+        write.header();
     </script>
     <!--start content -->
     <div id="content">
@@ -35,7 +41,7 @@
                                 By：<a href="/">robin</a></label></dd>
                         <dd>
                             <label>
-                                Notic：<a href="/Topic/CodeNote" title="文字">文字</a></label>
+                                Topic：<a href="/Topic/CodeNote" title="文字">文字</a></label>
                         </dd>
                         <dd>
                             <label title="标签">
@@ -83,7 +89,7 @@
                             </div>
                         </dd>
                         <dd class="btn">
-                            <input type="button" onclick="Replay()" value="提交评论" />&nbsp;<span id="replayMessage"
+                            <input type="button" onclick="Replay()" class="button" value="提交评论" />&nbsp;<span id="replayMessage"
                                 class="message"><!--Ctrl+Enter--></span></dd>
                     </dl>
                 </div>
@@ -107,6 +113,20 @@
         write.footer();
     </script>
     <script src="/js/detail.js" type="text/javascript"></script>
+	<script type="text/javascript">
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-29148337-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function ()
+        {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+
+   </script>
 </body>
 </html>
 <!-- up date: 2011/12/27 14:57:42 -->

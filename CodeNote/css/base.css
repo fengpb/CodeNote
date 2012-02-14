@@ -5,10 +5,18 @@ a:hover { text-decoration: underline; color: #000; color: #323232; }
 h2 a, h3 a { color: #323232; }
 /* Layout
 ----------------------------------------------*/
+#header { height: 86px; border-top: 5px solid #336600; border-bottom: 1px solid #323232; }
+#divlogo { margin-left: 175px; width: 1000px; }
+#divlogo a { text-decoration: none; border: none; color:#789c33; }
+#logo { position: relative; float: left; height:80px; }
+#logo h1 { font-size: 2em; line-height:100%; margin-top:0.25em; }
+#logo h1 sub { font-size: 0.8em; color: #d9d9d9; }
+#logo .sitedesp { font-size:0.8em; color:#d9d9d9;}
+#hright { position: relative; float: right; top: 2px; right: 0px; border: 1px dashed #fff; height: 80px; width: 500px; }
 
 ul#navbar { height: 41px; border-top: 5px solid #336600; }
 ul#navbar li { float: left; position: relative; height: 40px; margin: 1px 5px 0px 0px; line-height: 30px; border: none; }
-ul#navbar li a { float: left; font-size: 16px; overflow: hidden; font-weight: bold; color: #474747; background-color: #fff; border-top: 1px solid #fff; margin-top: 7px; padding-left: 15px; padding-right: 15px; height: 32px; line-height: 35px; }
+ul#navbar li a { float: left; font-size: 16px; text-decoration: none; overflow: hidden; font-weight: bold; color: #474747; background-color: #fff; border-top: 1px solid #fff; margin-top: 7px; padding-left: 15px; padding-right: 15px; height: 32px; line-height: 35px; }
 ul#navbar li a:hover { color: #789c33; border: none; border-top: 1px solid #d9d9d9; background-color: #fff; }
 ul#navbar li.cur, ul#navbar li:hover { background-color: #f0f0f0; }
 ul#navbar li.cur a { height: 32px; color: #789c33; border-top: 1px solid #d9d9d9; }
@@ -25,7 +33,8 @@ ul#navbar { padding-left: 175px; }
 .left { width: 730px; height: 100%; padding-top: 10px; padding-bottom: 10px; padding-right: 15px; }
 .right { width: 230px; height: 100%; padding-left: 15px; padding-top: 10px; padding-bottom: 10px; }
 #footer { clear: both; padding: 4px 8px; border-top: 4px solid #339900; font-size: 12px; }
-#footer p { color: #474747; }
+#footer p { color: #474747; width: 500px; }
+#footer div { text-align: right; float: right; }
 
 /* clear*/
 #maincontent:after, #footer:after, .taglist { content: '\0020'; display: block; height: 0; clear: both; }
@@ -62,7 +71,7 @@ ul.rightlist li { margin: 2px; font-size: 0.8em; }
 .replyList dl { margin: 4px 0px; padding: 3px; border: 1px dashed #EDEEFF; }
 .replyList dl dt { float: left; width: 48px; }
 .replyList dl dd { margin-left: 55px; }
-.replyList dl dd .bcon { font-size:0.8em; line-height:130%; }
+.replyList dl dd .bcon { font-size: 0.8em; line-height: 130%; }
 .replay .edit textarea { width: 100%; }
 
 /* Other

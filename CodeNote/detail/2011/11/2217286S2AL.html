@@ -3,6 +3,22 @@
 <head>
     <title>Sitemaps XML format </title>
     <meta name="keywords" content="Sitemaps XML format  sitemap" />
+	<meta name="description" content="This document describes the XML schema for the Sitemap protocol.
+
+The Sitemap protocol format consists of XML tags. All data values in a Sitemap must be entity-escaped. The file itself must be UTF-8 encoded.
+
+The Sitemap must:
+
+Begin with an opening &lt;urlset&gt; tag and end with a closing &lt;/urlset&gt; tag.
+Specify the namespace (protocol standard) within the &lt;urlset&gt; tag.
+Include a &lt;url&gt; entry for each URL, as a parent XML tag.
+Include a &lt;loc&gt; child entry for each &lt;url&gt; parent tag.
+
+
+All other tags are optional. Support for these optional tags may vary among search engines. Refer to each search engine's documentation for details.
+
+Also, all URLs in a Sitemap must be from a single host, such as www.example.com or store.example.com. For further details, refer the Sitemap file location
+"/>
     <link href="/css/base.css" rel="stylesheet" type="text/css" />
     <script src="/js/jquery-1.4.1.min.js" type="text/javascript"></script>
     <script src="/js/CodeNote.Script.js" type="text/javascript"></script>
@@ -15,7 +31,7 @@
 </head>
 <body>
     <script type="text/javascript">
-        write.navbar('100');
+        write.header();
     </script>
     <!--start content -->
     <div id="content">
@@ -35,7 +51,7 @@
                                 By：<a href="/">robin</a></label></dd>
                         <dd>
                             <label>
-                                Notic：<a href="/Topic/CodeNote" title="文字">文字</a></label>
+                                Topic：<a href="/Topic/CodeNote" title="文字">文字</a></label>
                         </dd>
                         <dd>
                             <label title="标签">
@@ -93,7 +109,7 @@ Include a &lt;loc&gt; child entry for each &lt;url&gt; parent tag.
                             </div>
                         </dd>
                         <dd class="btn">
-                            <input type="button" onclick="Replay()" value="提交评论" />&nbsp;<span id="replayMessage"
+                            <input type="button" onclick="Replay()" class="button" value="提交评论" />&nbsp;<span id="replayMessage"
                                 class="message"><!--Ctrl+Enter--></span></dd>
                     </dl>
                 </div>
@@ -117,6 +133,20 @@ Include a &lt;loc&gt; child entry for each &lt;url&gt; parent tag.
         write.footer();
     </script>
     <script src="/js/detail.js" type="text/javascript"></script>
+	<script type="text/javascript">
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-29148337-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function ()
+        {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+
+   </script>
 </body>
 </html>
 <!-- up date: 2011/11/23 10:34:00 -->
